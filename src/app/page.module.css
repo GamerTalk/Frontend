@@ -1,4 +1,4 @@
-.container {
-  background: linear-gradient(white, coral);
-  height: 100vh;
+.tracker {
+  border: 3px solid green;
+  margin-top: 30px;
 }

@@ -2,8 +2,16 @@ import styles from './page.module.css';
 
 export default function Home() {
 return ( 
-  <div className="">
+  <>
+    <div className={styles.tracker}> Tracker box (should maybe be it's own component) </div>
 
-  </div>
+    <div className={styles.tracker}> Monthly breakdown</div>
+
+    <div className={styles.tracker}> bills</div>
+
+
+
+
+  </>
 )
 }

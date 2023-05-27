@@ -15,9 +15,12 @@ export default function Header() {
             <p id={styles.headerName}>Japan <br />Finance</p>
           </Link>
           </div>
-         <div className={styles.imageContainer}>
-          <img id={styles.image} src="https://cdn2.thecatapi.com/images/MjA1OTMwMA.jpg" alt="user-photo" />
+        <div className={styles.userInfo}>
+          <div className={styles.imageContainer}>
+            <img id={styles.image} src="https://cdn2.thecatapi.com/images/MjA1OTMwMA.jpg" alt="user-photo" />
           </div>
+          <p id={styles.userName}>User Name</p>
+        </div>
         </header>
       </div>
     )

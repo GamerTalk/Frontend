@@ -1,12 +1,13 @@
 import './globals.css'
-import { Inter } from 'next/font/google'
+import { Inter, Offside } from 'next/font/google'
 import Header from './components/layouts/Header'
 
 const inter = Inter({ subsets: ['latin'] })
+const offside = Offside({ subsets: ['latin'], weight:['400']})
 
 export const metadata = {
-  title: 'Japan Finance',
-  description: 'Save you money in Japan',
+  title: 'GamerTalk',
+  description: 'Learn languages with games!',
 }
 
 export default function RootLayout({
@@ -16,7 +17,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body className={offside.className}>
 
       <Header />
       

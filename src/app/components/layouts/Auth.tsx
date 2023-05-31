@@ -28,34 +28,38 @@ const Auth = ({isSignIn}: Props) => {
       {isSignIn ? (
         <p className={styles.title}>Hello Welcome Back!</p>
          ) : (
-        <p className={styles.title}>Hello Welcome! We wait your sign up</p>
+        <p className={styles.title}>Hello! We can not wait your sign up!</p>
       )}
       
       <form onSubmit={handleSubmit}>
-        <div className={styles.emailContainer}>    
-          <label htmlFor="email" className={styles.labels}>Email</label>
+
+        <div className={styles.formGroup}>    
+    
           <input
             type="email"
             placeholder="Email"
             value={email}
             id="email"
+            className={styles.input}
             onChange={(e) => setEmail(e.target.value)}
           />
         </div>
-        <div className={styles.passwordContainer}>     
-        <label htmlFor="password" className="labels">Password</label>
+
+        <div className={styles.formGroup}>  
+         
         <input
           type="password"
           placeholder="Password"
           value={password}
           id="password"  
+          className={styles.input}
           onChange={(e) => setPassword(e.target.value)}
         />
         </div>
         
         {isSignIn ? (
           <>
-            <Button word="Sign In"/>
+           <Button word="Sign In"/>
           </>
           ) : (
             <>

@@ -4,7 +4,8 @@ import { createUserWithEmailAndPassword,
          signOut
        } 
 from "firebase/auth";
-import { auth } from "../firebase/firebase";
+
+import { auth } from "../firebase/firebase"
 import { createContext, useContext, useState, useEffect} from "react";
 
 const UserContext = createContext();
@@ -13,14 +14,14 @@ export const AuthContextProvider = ({children}) => {
   const [user, setUser] = useState({});
 
 
-  const createUser = (email, password) => {
-    const userCred = await(createUserWithEmailAndPasswor(auth, email, password))
+  const createUser = async (email, password) => {
+    const userCred = await(createUserWithEmailAndPassword(auth, email, password))
     console.log(userCred)
     return createUserWithEmailAndPassword(auth, email, password)
   }
 
   //this all goes in the server
-  const loginUser = async (email, password) => {
+  const loginUser = async (email, password) =>  {
     const userCred = await(signInWithEmailAndPassword(auth, email, password))
     console.log(userCred)
     return signInWithEmailAndPassword(auth, email, password)

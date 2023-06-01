@@ -19,7 +19,6 @@ export default function Home() {
   },[name])
 
 
-
 return ( 
   <>
     <div> PLACEHOLDER  </div>

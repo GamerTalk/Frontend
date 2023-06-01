@@ -18,12 +18,15 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+     
       <body className={offside.className}>
 
+      <AuthContextProvider>
+        
       <Header />
 
-      <AuthContextProvider>
         {children}
+
       </AuthContextProvider>
       
     

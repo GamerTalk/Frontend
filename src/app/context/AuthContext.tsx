@@ -17,12 +17,14 @@ createUser: (email: string, password: string) => Promise<any>;
 loginUser: (email: string, password: string) => Promise<any>;
 logOut: () => Promise<any>;
 user: User;
+userEmail: string | null
 }
 
 const UserContext = createContext<AuthContextProps | null>(null);
 
 export const AuthContextProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
 const [user, setUser] = useState<User>({});
+const [userEmail, setUserEmail] = useState<null | string>(null);
 
 const createUser = async (email: string, password: string) => {
 const userCred = await createUserWithEmailAndPassword(auth, email, password);
@@ -44,12 +46,13 @@ useEffect(() => {
 const authenticatedUser = onAuthStateChanged(auth, (currentUser) => {
 console.log(currentUser);
 setUser(currentUser || {});
+setUserEmail(currentUser?.email || null);
 });
 return authenticatedUser;
 }, []);
 
 return (
-<UserContext.Provider value={{ createUser, loginUser, logOut, user }}>
+<UserContext.Provider value={{ createUser, loginUser, logOut, user, userEmail }}>
 {children}
 </UserContext.Provider>
 );

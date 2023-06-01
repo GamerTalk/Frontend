@@ -2,7 +2,7 @@
 
 import React, {useState} from 'react';
 import Link from 'next/link';
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation';
 import { UserAuth } from '../../context/AuthContext';
 
 export default function SignUp() {
@@ -16,7 +16,8 @@ export default function SignUp() {
     e.preventDefault();
     try {
       await createUser(email,password);
-      router.push('/home')
+      console.log('success!')
+      router.push('/')
     } catch (err) {
       console.error(err);
     }

@@ -2,7 +2,7 @@
 
 import React, {useState} from 'react';
 import Link from 'next/link';
-import { useRouter } from 'next/router';
+import { useRouter } from 'next/navigation';
 import { UserAuth } from '../../context/AuthContext'
 
 
@@ -11,17 +11,16 @@ export default function SignIn() {
   const [password, setPassword] = useState('');
   
   const { loginUser } = UserAuth();
-  const router= useRouter();
+  const router = useRouter();
 
-  const handleLogin = async (e: { preventDefault: () => void; }) => {
+  const handleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
-      await loginUser(email, password)
-      router.push('/home')
-    } catch(err) {
+      await loginUser(email, password);
+      router.push('/');
+    } catch (err) {
       console.error(err);
     }
-    
   }
 
   return (
@@ -50,7 +49,7 @@ export default function SignIn() {
          <button type="submit">Sign In</button>
       </form>
       <p>
-        New? <Link href='/signup'>Sign Up</Link>
+        New? <Link href='test/signup'>Sign Up</Link>
      </p>
     </div>
   )

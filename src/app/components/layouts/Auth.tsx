@@ -30,7 +30,7 @@ const Auth = ({isSignIn}: Props) => {
     } catch (err) {
       console.error(err);
     }
-    console.log(email, password);
+    console.log('EMAIL', email, 'PASSWORD', password);
   };
 
   return (

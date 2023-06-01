@@ -28,13 +28,13 @@ const [userEmail, setUserEmail] = useState<null | string>(null);
 
 const createUser = async (email: string, password: string) => {
 const userCred = await createUserWithEmailAndPassword(auth, email, password);
-console.log(userCred);
+console.log('USER-CRED', userCred);
 return userCred;
 };
 
 const loginUser = async (email: string, password: string) => {
 const userCred = await signInWithEmailAndPassword(auth, email, password);
-console.log(userCred);
+console.log('USER-CRED', userCred);
 return userCred;
 };
 
@@ -44,7 +44,7 @@ return signOut(auth);
 
 useEffect(() => {
 const authenticatedUser = onAuthStateChanged(auth, (currentUser) => {
-console.log(currentUser);
+console.log('CURRENT-USER', currentUser);
 setUser(currentUser || {});
 setUserEmail(currentUser?.email || null);
 });

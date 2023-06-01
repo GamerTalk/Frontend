@@ -35,4 +35,5 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-test/
+/src/app/test/
+.gitignore 

@@ -3,6 +3,9 @@ import { useState , FC} from "react"
 import styles from "./Auth.module.css"
 import Link from "next/link"
 import Button from "../elements/SubmitBtn"
+import { useRouter } from 'next/navigation';
+import { UserAuth } from '../../context/AuthContext'
+
 
 // for props
  interface Props {
@@ -14,11 +17,20 @@ const Auth = ({isSignIn}: Props) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
+  const { loginUser } = UserAuth();
+  const router = useRouter();
+
   // handling submit email and password
-  const handleSubmit = (e:React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e:React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     // form
-    console.log(email, password);
+    try {
+      await loginUser(email, password);
+      router.push('/');
+    } catch (err) {
+      console.error(err);
+    }
+    console.log('EMAIL', email, 'PASSWORD', password);
   };
 
   return (
@@ -28,7 +40,7 @@ const Auth = ({isSignIn}: Props) => {
       {isSignIn ? (
         <p className={styles.title}>Hello Welcome Back!</p>
          ) : (
-        <p className={styles.title}>Hello! We can not wait your sign up!</p>
+        <p className={styles.title}>Don't have an account? Sign Up!</p>
       )}
       
       <form onSubmit={handleSubmit}>
@@ -63,9 +75,9 @@ const Auth = ({isSignIn}: Props) => {
           </>
           ) : (
             <>
-              <Button word="Sign In"/>
+              <Button word="Sign Up"/>
               <Link href="/auth/signin">
-               <p id={styles.toSignIn}>Alredy a user? Sign-in</p>
+               <p id={styles.toSignIn}>Already a user? Sign-in</p>
               </Link>
            </>      
         )

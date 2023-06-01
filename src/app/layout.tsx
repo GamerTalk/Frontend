@@ -1,6 +1,7 @@
 import './globals.css'
 import { Inter, Offside } from 'next/font/google'
 import Header from './components/layouts/Header'
+import { AuthContextProvider } from './context/AuthContext'
 
 const inter = Inter({ subsets: ['latin'] })
 const offside = Offside({ subsets: ['latin'], weight:['400']})
@@ -17,11 +18,18 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+     
       <body className={offside.className}>
 
+      <AuthContextProvider>
+        
       <Header />
+
+        {children}
+
+      </AuthContextProvider>
       
-      {children}
+    
 
       </body>
     </html>

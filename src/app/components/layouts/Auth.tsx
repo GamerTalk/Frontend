@@ -2,12 +2,10 @@
 import { useState , FC} from "react"
 import styles from "./Auth.module.css"
 import Link from "next/link"
-import Button from "../elements/SubmitBtn"
+import SubmitButton from "../elements/SubmitBtn"
 import { useRouter } from 'next/navigation';
 import { UserAuth } from '../../context/AuthContext'
 
-
-// for props
  interface Props {
   isSignIn: boolean
 }
@@ -71,11 +69,11 @@ const Auth = ({isSignIn}: Props) => {
         
         {isSignIn ? (
           <>
-           <Button word="Sign In"/>
+           <SubmitButton word="Sign In"/>
           </>
           ) : (
             <>
-              <Button word="Sign Up"/>
+              <SubmitButton word="Sign Up"/>
               <Link href="/auth/signin">
                <p id={styles.toSignIn}>Already a user? Sign-in</p>
               </Link>

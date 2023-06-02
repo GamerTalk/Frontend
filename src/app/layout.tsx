@@ -24,13 +24,9 @@ export default function RootLayout({
       <AuthContextProvider>
         
       <Header />
-
-        {children}
-
+      {children}
       </AuthContextProvider>
       
-    
-
       </body>
     </html>
   )

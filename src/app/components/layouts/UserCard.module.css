@@ -1,0 +1,10 @@
+.userCard{
+  background-color: rgb(251, 251, 251);
+  height: 15%;
+  width: min(100%,600px);
+  border-radius: 1px;
+  border-bottom: 1px solid #000;
+  margin: 0 auto;
+  font-family: Arial, Helvetica, sans-serif;
+}
+

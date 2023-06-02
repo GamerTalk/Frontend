@@ -4,7 +4,7 @@ interface Prpos {
   word: string
 };
 
-const Button = (props:Prpos) => { 
+const SubmitButton = (props:Prpos) => { 
   const { word } = props;
 
   return (
@@ -12,4 +12,4 @@ const Button = (props:Prpos) => {
   );
 }
 
-export default Button;
+export default SubmitButton;

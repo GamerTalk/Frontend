@@ -15,14 +15,14 @@ export default function Home() {
       setName(names)
     }
     getNames()
-    console.log('NAME', name)
-  },[name])
+  },[])
 
 
 
 return ( 
   <>
     <div> PLACEHOLDER  </div>
+    <h2>{name[0]}</h2>
   </>
 )
 }

@@ -1,0 +1,17 @@
+.language {
+  border: 3px solid red;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin: 10px;
+  background-color: lightcyan;
+}
+
+.learning {
+  border: 3px solid green;
+  display: grid;
+  background-color: lightcyan;
+}
+
+.learningRows {
+  display: flex;
+}

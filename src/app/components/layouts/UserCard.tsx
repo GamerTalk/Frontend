@@ -3,7 +3,8 @@
 import styles from "./UserCard.module.css";
 import {data, Person} from "../../test/user"
 import { useEffect, useState } from "react";
-
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faPlaystation , faXbox, faSteam} from "@fortawesome/free-brands-svg-icons";
 const UserCard = () => { 
 
   
@@ -22,7 +23,6 @@ const UserCard = () => {
 
   return (
     <>
-      {console.log(user)}
       <div className={styles.userCard} onClick={()=>console.log("押されたよ")}>
 
         <div className={styles.userInfo}>
@@ -36,19 +36,43 @@ const UserCard = () => {
                 <p>Emma</p>
             </div>
             <div className={styles.text}>
-                <p>Speaks: En</p>
+                <p>Speaks:En</p>
             </div>
             <div className={styles.text}>
               <div>
-                <p>Learning: JP</p>
+                <p>Learning:JP Level1</p>
               </div>
-              {/* <div>ゲージ</div> */}
+              
             </div>
           </div>
 
           <div className={styles.systems}>
+            <div className={styles.gamesWrapper}>
             <div className={styles.game}>
+              <FontAwesomeIcon
+                icon={faPlaystation}
+                className={styles.game} 
+                />
+              </div>
 
+              <div className={styles.game}>
+              <FontAwesomeIcon
+                icon={faPlaystation}
+                className={styles.game} 
+                />
+              </div>
+              <div className={styles.game}>
+              <FontAwesomeIcon
+                icon={faPlaystation}
+                className={styles.game} 
+                />
+              </div>
+              <div className={styles.game}>
+              <FontAwesomeIcon
+                icon={faPlaystation}
+                className={styles.game} 
+                />
+              </div>
             </div>
           </div>
 

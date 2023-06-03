@@ -2,6 +2,9 @@ import './globals.css'
 import { Inter, Offside } from 'next/font/google'
 import Header from './components/layouts/Header'
 import { AuthContextProvider } from './context/AuthContext'
+import "@fortawesome/fontawesome-svg-core/styles.css";
+import { config } from "@fortawesome/fontawesome-svg-core";
+config.autoAddCss = false;
 
 const inter = Inter({ subsets: ['latin'] })
 const offside = Offside({ subsets: ['latin'], weight:['400']})
@@ -24,6 +27,7 @@ export default function RootLayout({
       <AuthContextProvider>
         
       <Header />
+      
       {children}
       </AuthContextProvider>
       

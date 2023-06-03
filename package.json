@@ -8,9 +8,6 @@
     "start": "next start",
     "lint": "next lint"
   },
-
-  "proxy":"http://127.0.0.1:8000/",
-
   "dependencies": {
     "@types/node": "20.2.3",
     "@types/react": "18.2.7",

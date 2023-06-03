@@ -36,9 +36,9 @@ const Auth = ({isSignIn}: Props) => {
     <div className={styles.authContainer}>
 
       {isSignIn ? (
-        <p className={styles.title}>Hello Welcome Back!</p>
+        <p className={styles.title}>Hello, Welcome Back.</p>
          ) : (
-        <p className={styles.title}>Don't have an account? Sign Up!</p>
+        <p className={styles.title}>Do not have an account? Sign Up</p>
       )}
       
       <form onSubmit={handleSubmit}>

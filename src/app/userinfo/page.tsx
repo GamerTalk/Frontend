@@ -1,6 +1,6 @@
 "use client"
 
-import Checkbox from "../components/elements/Checkbox" 
+import Checkbox from "../utils/Checkbox" 
 import styles from './UserInfo.module.css'
 import { useState, useEffect, ChangeEvent } from "react"
 
@@ -8,8 +8,12 @@ import { useState, useEffect, ChangeEvent } from "react"
 export default function UserInfo() {
   const [username, setUsername] = useState<string>("");
   const [language, setLanguage] = useState<string[]>([])
+  const [learning, setLearning] = useState([{}])
+  const [system, setSystem] = useState<string[]>([])
+  const [genre, setGenre] = useState<string[]>([])
   const [aboutMe, setAboutMe] = useState<string>("");
   const [currPlay, setCurrPlay] = useState<string>("");
+  
 
 
   const handleUsername = (event: ChangeEvent<HTMLInputElement>) => {
@@ -17,8 +21,8 @@ export default function UserInfo() {
     setUsername(value);
   }
 
-  const handleLanguage = (event: { target: { value: any, name : any }; }) => {
-    const { value, name } = event.target;
+  const handleLanguage = (event: { target: {  name : any }; }) => {
+    const {  name } = event.target;
     if (language.includes(name)) {
       // If language is already selected, remove it from the array
       setLanguage((prevLanguages) => prevLanguages.filter((lang) => lang !== name));
@@ -28,10 +32,34 @@ export default function UserInfo() {
     }
   }
 
+  const handleSystem = (event: { target: { name : any }; }) => {
+    const { name } = event.target;
+    if (system.includes(name)) {
+      // If system is already selected, remove it from the array
+      setSystem((prevSystem) => prevSystem.filter((sys) => sys !== name));
+    } else {
+      // If system is not selected, add it to the array
+      setSystem((prevSystem) => [...prevSystem, name]);
+    }
+  }
+
+  const handleGenre = (event: { target: { name : any }; }) => {
+    const { name } = event.target;
+    if (genre.includes(name)) {
+      // If system is already selected, remove it from the array
+      setGenre((prevGenre) => prevGenre.filter((gen) => gen !== name));
+    } else {
+      // If system is not selected, add it to the array
+      setGenre((prevGenre) => [...prevGenre, name]);
+    }
+  }
+  
+  
   const handleAboutMe = (event: { target: { value: string; }; }) => {
     const { value } = event.target;
     setAboutMe(value);
   }
+  
 
   const handleCurrPlay = (event: { target: { value: string; }; }) => {
     const { value } = event.target;
@@ -40,8 +68,8 @@ export default function UserInfo() {
 
 
   useEffect(() => {
-    console.log(language)
-  },[language])
+    console.log(genre)
+  },[genre])
   
 
   return (
@@ -125,22 +153,22 @@ export default function UserInfo() {
 
       <p>Systems</p>
       <div className={styles.language}> 
-       <Checkbox label="PC"/>
-       <Checkbox label="Switch"/>
-       <Checkbox label="PlayStation"/>
-       <Checkbox label="Xbox"/>
+       <Checkbox label="PC" name="PC"  onChange={handleSystem}/>
+       <Checkbox label="Switch" name="Switch" onChange={handleSystem}/>
+       <Checkbox label="PlayStation" name="PlayStation" onChange={handleSystem}/>
+       <Checkbox label="Xbox" name="Xbox" onChange={handleSystem}/>
       </div>
 
       <p>Genre</p>
       <div className={styles.language}> 
-       <Checkbox label="Shooters"/>
-       <Checkbox label="Survial"/>
-       <Checkbox label="Battle Royal"/>
-       <Checkbox label="Strategy"/>
-       <Checkbox label="Party"/>
-       <Checkbox label="Fighting"/>
-       <Checkbox label="RPG"/>
-       <Checkbox label="MMO"/>
+       <Checkbox label="Shooters" name="Shooters" onChange={handleGenre}/>
+       <Checkbox label="Survial" name="Survival" onChange={handleGenre}/>
+       <Checkbox label="Battle Royal" name="Battle Royal" onChange={handleGenre}/>
+       <Checkbox label="Strategy" name="Strategy" onChange={handleGenre}/>
+       <Checkbox label="Party" name="Party" onChange={handleGenre}/>
+       <Checkbox label="Fighting" name="Fighting" onChange={handleGenre}/>
+       <Checkbox label="RPG" name="RPG" onChange={handleGenre}/>
+       <Checkbox label="MMO" name="MMO" onChange={handleGenre}/>
       </div>
 
       <p>About Me</p>
@@ -149,16 +177,6 @@ export default function UserInfo() {
       <p>Currently Playing</p>
 
       <textarea onChange={handleCurrPlay}/>
-
-      
-
-
-
-
-
-
-
-
 
     </form>
        

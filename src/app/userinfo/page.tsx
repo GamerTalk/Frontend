@@ -1,6 +1,7 @@
 "use client"
 
 import Checkbox from "../utils/Checkbox" 
+import LearningCheckbox from "../utils/Learning-Checkbox "
 import styles from './UserInfo.module.css'
 import { useState, useEffect, ChangeEvent } from "react"
 
@@ -9,6 +10,7 @@ export default function UserInfo() {
   const [username, setUsername] = useState<string>("");
   const [language, setLanguage] = useState<string[]>([])
   const [learning, setLearning] = useState([{}])
+  const [birthday, setBirthday] = useState("");
   const [system, setSystem] = useState<string[]>([])
   const [genre, setGenre] = useState<string[]>([])
   const [aboutMe, setAboutMe] = useState<string>("");
@@ -32,6 +34,11 @@ export default function UserInfo() {
     }
   }
 
+  const handleBirthday = (event: ChangeEvent<HTMLInputElement>) => {
+    const dateValue = event.target.value;
+    setBirthday(dateValue);
+  };
+
   const handleSystem = (event: { target: { name : any }; }) => {
     const { name } = event.target;
     if (system.includes(name)) {
@@ -54,12 +61,10 @@ export default function UserInfo() {
     }
   }
   
-  
   const handleAboutMe = (event: { target: { value: string; }; }) => {
     const { value } = event.target;
     setAboutMe(value);
   }
-  
 
   const handleCurrPlay = (event: { target: { value: string; }; }) => {
     const { value } = event.target;
@@ -68,8 +73,8 @@ export default function UserInfo() {
 
 
   useEffect(() => {
-    console.log(genre)
-  },[genre])
+    console.log('BIRTHDAY',birthday)
+  },[birthday])
   
 
   return (
@@ -98,10 +103,7 @@ export default function UserInfo() {
       <div className={styles.learning}>
 
        <div className ={styles.learningRows}>
-        <Checkbox label="English"/>
-        <Checkbox label="1"/>
-        <Checkbox label="2"/>
-        <Checkbox label="3"/>
+        <LearningCheckbox label="English" name="English" onChange={handleAboutMe}/>
        </div>
 
        <div className ={styles.learningRows}>
@@ -149,7 +151,8 @@ export default function UserInfo() {
       </div>
 
       <p>Date of Birth</p>
-      <input type="date"></input>
+      <input type="date" onChange={handleBirthday}></input>
+      <p>Date as String: {birthday}</p>
 
       <p>Systems</p>
       <div className={styles.language}> 

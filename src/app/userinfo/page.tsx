@@ -9,21 +9,23 @@ import { useState, useEffect, ChangeEvent } from "react"
 export default function UserInfo() {
   const [username, setUsername] = useState<string>("");
   const [language, setLanguage] = useState<string[]>([])
-  const [learning, setLearning] = useState([{}])
+  const [learning, setLearning] = useState<string[]>([])
   const [birthday, setBirthday] = useState("");
   const [system, setSystem] = useState<string[]>([])
   const [genre, setGenre] = useState<string[]>([])
   const [aboutMe, setAboutMe] = useState<string>("");
   const [currPlay, setCurrPlay] = useState<string>("");
   
+  /*
 
+  */
 
   const handleUsername = (event: ChangeEvent<HTMLInputElement>) => {
     const { value } = event.target;
     setUsername(value);
   }
 
-  const handleLanguage = (event: { target: {  name : any }; }) => {
+  const handleLanguage = (event: { target: {  name : string, value: string }; }) => {
     const {  name } = event.target;
     if (language.includes(name)) {
       // If language is already selected, remove it from the array
@@ -33,6 +35,24 @@ export default function UserInfo() {
       setLanguage((prevLanguages) => [...prevLanguages, name]);
     }
   }
+  
+  const handleLearning = (event: { target: { name: string; value: string }; }) => {
+    const { name, value } = event.target;
+    const newObj = { language: name, level: value };
+  
+    const languageExists = learning.some((learn: any) => learn.language === name);
+    if (languageExists) {
+      // If language is already selected, update its level only
+      setLearning((prevLearning) =>
+        prevLearning.map((learn: any) =>
+          learn.language === name ? { ...learn, level: value } : learn
+        )
+      );
+    } else {
+      // If language is not selected, add it to the array
+      setLearning((prevLearning : any) => [...prevLearning, newObj]);
+    }
+  };
 
   const handleBirthday = (event: ChangeEvent<HTMLInputElement>) => {
     const dateValue = event.target.value;
@@ -71,21 +91,22 @@ export default function UserInfo() {
     setCurrPlay(value);
   }
 
-
   useEffect(() => {
-    console.log('BIRTHDAY',birthday)
-  },[birthday])
-  
+    console.log(learning)
+  },[learning])
 
+  
   return (
     <>
     <h1>Welcome!</h1>
     <p>Tell us a little about yourself so people can find you</p>
 
     <form>
-      <div> 
+      <div className={styles.usernameBox}> 
         <label htmlFor="Username"> Username: </label>
-        <input type="text" id="UserName" name="Username" onChange={handleUsername}></input>
+        <div>
+          <input type="text" id="UserName" name="Username" onChange={handleUsername}></input>
+        </div>
       </div>
 
       <p>Fluent: Check all that apply</p>
@@ -100,54 +121,16 @@ export default function UserInfo() {
       </div>
 
       <p>Language you want to learn:</p>
+      <p>1: Beginner, 2: Intermediate, 3: Advanced</p>
       <div className={styles.learning}>
-
-       <div className ={styles.learningRows}>
-        <LearningCheckbox label="English" name="English" onChange={handleAboutMe}/>
-       </div>
-
-       <div className ={styles.learningRows}>
-        <Checkbox label="Spanish"/>
-        <Checkbox label="1"/>
-        <Checkbox label="2"/>
-        <Checkbox label="3"/>
-       </div>
-
-       <div className ={styles.learningRows}>
-        <Checkbox label="German"/>
-        <Checkbox label="1"/>
-        <Checkbox label="2"/>
-        <Checkbox label="3"/>
-       </div>
-
-       <div className ={styles.learningRows}>
-        <Checkbox label="French"/>
-        <Checkbox label="1"/>
-        <Checkbox label="2"/>
-        <Checkbox label="3"/>
-       </div>
-
-       <div className ={styles.learningRows}>
-        <Checkbox label="Japanese"/>
-        <Checkbox label="1"/>
-        <Checkbox label="2"/>
-        <Checkbox label="3"/>
-       </div>
-
-       <div className ={styles.learningRows}>
-        <Checkbox label="Chinese"/>
-        <Checkbox label="1"/>
-        <Checkbox label="2"/>
-        <Checkbox label="3"/>
-       </div>
-
-       <div className ={styles.learningRows}>
-        <Checkbox label="Korean"/>
-        <Checkbox label="1"/>
-        <Checkbox label="2"/>
-        <Checkbox label="3"/>
-       </div>
-  
+        <LearningCheckbox label="English" name="English" onChange={handleLearning}/>
+        <LearningCheckbox label="Spanish" name="Spanish"  onChange={handleLearning}/>
+        <LearningCheckbox label="German" name="German" onChange={handleLearning} />
+        <LearningCheckbox label="French" name="French" onChange={handleLearning} />
+        <LearningCheckbox label="Japanese" name="Japanese"  onChange={handleLearning} />
+        <LearningCheckbox label="Chinese" name="Chinese"  onChange={handleLearning}/>
+        <LearningCheckbox label="Korean" name="Korean"  onChange={handleLearning}/>
+        <LearningCheckbox label="Spanish" name="Spanish" onChange={handleLearning}/>
       </div>
 
       <p>Date of Birth</p>
@@ -180,6 +163,8 @@ export default function UserInfo() {
       <p>Currently Playing</p>
 
       <textarea onChange={handleCurrPlay}/>
+
+      
 
     </form>
        

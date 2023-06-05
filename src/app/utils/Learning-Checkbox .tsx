@@ -1,42 +1,31 @@
-"use client"
-
-import { useState, useEffect, ChangeEventHandler } from "react";
+import React, { useState, useEffect, ChangeEventHandler } from "react";
+import styles from '../userinfo/UserInfo.module.css'
 
 interface Param {
- label: string,
- name: string,
- onChange : ChangeEventHandler<HTMLInputElement>
+  label: string;
+  name: string;
+  onChange : ChangeEventHandler<HTMLInputElement>
 }
 
-const LearningCheckbox = ({ label, name, onChange }: Param) => {
-  const [isChecked, setIsChecked] = useState(false);
-  const [num, setNum] = useState(1)
+interface LanguageLevel {
+  language: string;
+  level: number;
+}
+
+const LearningCheckbox: React.FC<Param> = ({ label, name, onChange }) => {
+  const [isChecked, setIsChecked] = useState<boolean>(false);
+  const [num, setNum] = useState<LanguageLevel[]>([]);
 
   useEffect(() => {
-    console.log(num)
-  },[num])
-
-  const handleCheckboxChange: ChangeEventHandler<HTMLInputElement> = (event) => {
-    setIsChecked(event.target.checked);
-    onChange(event); // Call the provided onChange event handler
-  };
-
-  const handleNumberChange: ChangeEventHandler<HTMLInputElement> = (event) => {
-    setIsChecked(event.target.checked);
-    const {  name } = event.target;
-    setNum(parseInt(name))
-  };
-
+    console.log(num);
+  }, [num]);
 
   return (
     <div className="checkbox-wrapper">
-      <label>
-        <input type="checkbox"  checked={isChecked} onChange={handleCheckboxChange} name={name} />
-        <input type="radio" name="1" onChange={handleNumberChange}/>
-        <input type="radio" name="2" onChange={handleNumberChange}/>
-        <input type="radio" name="3" onChange={handleNumberChange}/>
-        <span>{label}</span>
-      </label>
+     <div> <span>{label}</span></div> 
+      <div><input type="radio" name={name} value="1" onChange={onChange} /> </div>
+      <div><input type="radio" name={name} value="2" onChange={onChange} /> </div>
+      <div><input type="radio" name={name} value="3" onChange={onChange} /> </div>
     </div>
   );
 };

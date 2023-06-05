@@ -4,9 +4,15 @@ import Checkbox from "../utils/Checkbox"
 import LearningCheckbox from "../utils/Learning-Checkbox "
 import styles from './UserInfo.module.css'
 import { useState, useEffect, ChangeEvent } from "react"
+import { UserAuth } from "../context/AuthContext"
+import { useRouter } from 'next/navigation';
+import axios from "axios"
+
+
 
 
 export default function UserInfo() {
+  const {uid} = UserAuth()
   const [username, setUsername] = useState<string>("");
   const [language, setLanguage] = useState<string[]>([])
   const [learning, setLearning] = useState<string[]>([])
@@ -16,9 +22,41 @@ export default function UserInfo() {
   const [aboutMe, setAboutMe] = useState<string>("");
   const [currPlay, setCurrPlay] = useState<string>("");
   
+  const router = useRouter()
   /*
-
+      "uid": "delete me",
+#     "username": "GodSlayerXD",
+#     "about_me": "I was born in a log cabin.",
+#     "fluent": ["english", "spanish"],
+#     "learning": [{"language":"german", "level": 1}, {"language":"japanese", "level": 3}],
+#     "date_of_birth": "1999-01-01",
+#     "systems": ["playstation","PC"],
+#     "genre": ["FPS", "survival"],
+#     "currently_playing": "I am currently playing COD MW2, Fortnite, and some Ark Survival"
   */
+
+const handleFormSubmit = (event: { preventDefault: () => void }) => {
+  event.preventDefault();
+  axios.post('http://127.0.0.1:8000/api/new-user/', {
+    uid,
+    username,
+    about_me: aboutMe,
+    fluent: language,
+    learning,
+    date_of_birth: birthday,
+    systems: system,
+    genre,
+    currently_playing: currPlay
+  })
+  .then(response => {
+    router.push('/')
+  })
+  .catch(error => {
+    console.log(error);
+  });
+}
+
+
 
   const handleUsername = (event: ChangeEvent<HTMLInputElement>) => {
     const { value } = event.target;
@@ -91,9 +129,6 @@ export default function UserInfo() {
     setCurrPlay(value);
   }
 
-  useEffect(() => {
-    console.log(learning)
-  },[learning])
 
   
   return (
@@ -101,7 +136,7 @@ export default function UserInfo() {
     <h1>Welcome!</h1>
     <p>Tell us a little about yourself so people can find you</p>
 
-    <form>
+    <form onSubmit={handleFormSubmit}>
       <div className={styles.usernameBox}> 
         <label htmlFor="Username"> Username: </label>
         <div>
@@ -124,18 +159,16 @@ export default function UserInfo() {
       <p>1: Beginner, 2: Intermediate, 3: Advanced</p>
       <div className={styles.learning}>
         <LearningCheckbox label="English" name="English" onChange={handleLearning}/>
-        <LearningCheckbox label="Spanish" name="Spanish"  onChange={handleLearning}/>
+        <LearningCheckbox label="Spanish" name="Spanish" onChange={handleLearning}/>
         <LearningCheckbox label="German" name="German" onChange={handleLearning} />
         <LearningCheckbox label="French" name="French" onChange={handleLearning} />
-        <LearningCheckbox label="Japanese" name="Japanese"  onChange={handleLearning} />
-        <LearningCheckbox label="Chinese" name="Chinese"  onChange={handleLearning}/>
-        <LearningCheckbox label="Korean" name="Korean"  onChange={handleLearning}/>
-        <LearningCheckbox label="Spanish" name="Spanish" onChange={handleLearning}/>
+        <LearningCheckbox label="Japanese" name="Japanese" onChange={handleLearning} />
+        <LearningCheckbox label="Chinese" name="Chinese" onChange={handleLearning}/>
+        <LearningCheckbox label="Korean" name="Korean" onChange={handleLearning}/>
       </div>
 
       <p>Date of Birth</p>
       <input type="date" onChange={handleBirthday}></input>
-      <p>Date as String: {birthday}</p>
 
       <p>Systems</p>
       <div className={styles.language}> 
@@ -164,7 +197,7 @@ export default function UserInfo() {
 
       <textarea onChange={handleCurrPlay}/>
 
-      
+      <div><button type="submit">Submit</button></div>
 
     </form>
        

@@ -22,10 +22,10 @@ const LearningCheckbox: React.FC<Param> = ({ label, name, onChange }) => {
 
   return (
     <div className="checkbox-wrapper">
-     <div> <span>{label}</span></div> 
-      <div><input type="radio" name={name} value="1" onChange={onChange} /> </div>
-      <div><input type="radio" name={name} value="2" onChange={onChange} /> </div>
-      <div><input type="radio" name={name} value="3" onChange={onChange} /> </div>
+      <span>{label}</span>
+      <input type="radio" name={name} value="1" onChange={onChange} /> 
+      <input type="radio" name={name} value="2" onChange={onChange} /> 
+      <input type="radio" name={name} value="3" onChange={onChange} /> 
     </div>
   );
 };

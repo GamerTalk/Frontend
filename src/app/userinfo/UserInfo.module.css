@@ -2,8 +2,17 @@
   margin-bottom: 30px;
 }
 
+.headings {
+  font-weight: 800;
+  font-size: 20px;
+}
+
+.subheading {
+  margin-top: -18px;
+  font-size: 15px;
+}
+
 .language {
-  border: 3px solid red;
   display: grid;
   grid-template-columns: 1fr 1fr;
   margin: 10px;
@@ -11,15 +20,10 @@
 }
 
 .learning {
-  border: 3px solid green;
   display: grid;
-  
+  grid-template-columns: 1fr 1fr;
   max-width: 480px;
   background-color: lightcyan;
-}
-
-.checkbox-wrapper {
-  border: 3px solid blue
 }
 
 .learningRows {

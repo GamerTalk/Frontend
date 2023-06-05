@@ -1,28 +1,25 @@
 "use client"
 
-import Checkbox from "../utils/Checkbox" 
-import LearningCheckbox from "../utils/Learning-Checkbox "
-import styles from './UserInfo.module.css'
-import { useState, useEffect, ChangeEvent } from "react"
-import { UserAuth } from "../context/AuthContext"
+import Checkbox from "../utils/Checkbox" ;
+import LearningCheckbox from "../utils/Learning-Checkbox";
+import styles from './UserInfo.module.css';
+import { useState, useEffect, ChangeEvent } from "react";
+import { UserAuth } from "../context/AuthContext";
 import { useRouter } from 'next/navigation';
-import axios from "axios"
-
-
-
+import axios from "axios";
 
 export default function UserInfo() {
   const {uid} = UserAuth()
   const [username, setUsername] = useState<string>("");
-  const [language, setLanguage] = useState<string[]>([])
-  const [learning, setLearning] = useState<string[]>([])
+  const [language, setLanguage] = useState<string[]>([]);
+  const [learning, setLearning] = useState<string[]>([]);
   const [birthday, setBirthday] = useState("");
-  const [system, setSystem] = useState<string[]>([])
-  const [genre, setGenre] = useState<string[]>([])
+  const [system, setSystem] = useState<string[]>([]);
+  const [genre, setGenre] = useState<string[]>([]);
   const [aboutMe, setAboutMe] = useState<string>("");
   const [currPlay, setCurrPlay] = useState<string>("");
   
-  const router = useRouter()
+  const router = useRouter();
   /*
       "uid": "delete me",
 #     "username": "GodSlayerXD",
@@ -55,8 +52,6 @@ const handleFormSubmit = (event: { preventDefault: () => void }) => {
     console.log(error);
   });
 }
-
-
 
   const handleUsername = (event: ChangeEvent<HTMLInputElement>) => {
     const { value } = event.target;
@@ -111,10 +106,10 @@ const handleFormSubmit = (event: { preventDefault: () => void }) => {
   const handleGenre = (event: { target: { name : any }; }) => {
     const { name } = event.target;
     if (genre.includes(name)) {
-      // If system is already selected, remove it from the array
+      // If genre is already selected, remove it from the array
       setGenre((prevGenre) => prevGenre.filter((gen) => gen !== name));
     } else {
-      // If system is not selected, add it to the array
+      // If genre is not selected, add it to the array
       setGenre((prevGenre) => [...prevGenre, name]);
     }
   }
@@ -129,8 +124,6 @@ const handleFormSubmit = (event: { preventDefault: () => void }) => {
     setCurrPlay(value);
   }
 
-
-  
   return (
     <>
     <h1>Welcome!</h1>
@@ -138,13 +131,14 @@ const handleFormSubmit = (event: { preventDefault: () => void }) => {
 
     <form onSubmit={handleFormSubmit}>
       <div className={styles.usernameBox}> 
-        <label htmlFor="Username"> Username: </label>
+        <label htmlFor="Username" className={styles.headings}> Username: </label>
         <div>
           <input type="text" id="UserName" name="Username" onChange={handleUsername}></input>
         </div>
       </div>
 
-      <p>Fluent: Check all that apply</p>
+      <p className={styles.headings}>Fluent</p>
+      <p className={styles.subheading}>Check all that apply</p>
       <div className={styles.language}> 
        <Checkbox label="English" name="English" onChange={handleLanguage}/>
        <Checkbox label="Spanish" name="Spanish" onChange={handleLanguage} />
@@ -155,8 +149,8 @@ const handleFormSubmit = (event: { preventDefault: () => void }) => {
        <Checkbox label="Korean" name="Korean" onChange={handleLanguage}/>
       </div>
 
-      <p>Language you want to learn:</p>
-      <p>1: Beginner, 2: Intermediate, 3: Advanced</p>
+      <p className={styles.headings}>Language you want to learn:</p>
+      <p className={styles.subheading}>1: Beginner, 2: Intermediate, 3: Advanced</p>
       <div className={styles.learning}>
         <LearningCheckbox label="English" name="English" onChange={handleLearning}/>
         <LearningCheckbox label="Spanish" name="Spanish" onChange={handleLearning}/>
@@ -167,10 +161,10 @@ const handleFormSubmit = (event: { preventDefault: () => void }) => {
         <LearningCheckbox label="Korean" name="Korean" onChange={handleLearning}/>
       </div>
 
-      <p>Date of Birth</p>
+      <p className={styles.headings}>Date of Birth</p>
       <input type="date" onChange={handleBirthday}></input>
 
-      <p>Systems</p>
+      <p className={styles.headings}>Systems</p>
       <div className={styles.language}> 
        <Checkbox label="PC" name="PC"  onChange={handleSystem}/>
        <Checkbox label="Switch" name="Switch" onChange={handleSystem}/>
@@ -178,7 +172,7 @@ const handleFormSubmit = (event: { preventDefault: () => void }) => {
        <Checkbox label="Xbox" name="Xbox" onChange={handleSystem}/>
       </div>
 
-      <p>Genre</p>
+      <p className={styles.headings}>Genre</p>
       <div className={styles.language}> 
        <Checkbox label="Shooters" name="Shooters" onChange={handleGenre}/>
        <Checkbox label="Survial" name="Survival" onChange={handleGenre}/>
@@ -190,12 +184,12 @@ const handleFormSubmit = (event: { preventDefault: () => void }) => {
        <Checkbox label="MMO" name="MMO" onChange={handleGenre}/>
       </div>
 
-      <p>About Me</p>
-      <textarea onChange={handleAboutMe}/>
+      <p className={styles.headings}>About Me</p>
+      <textarea rows={5} cols={40} onChange={handleAboutMe}/>
 
-      <p>Currently Playing</p>
+      <p className={styles.headings}>Currently Playing</p>
 
-      <textarea onChange={handleCurrPlay}/>
+      <textarea rows={5} cols={40} onChange={handleCurrPlay}/>
 
       <div><button type="submit">Submit</button></div>
 
@@ -204,7 +198,3 @@ const handleFormSubmit = (event: { preventDefault: () => void }) => {
     </>
   )
 }
-function UseState(arg0: string): [any, any] {
-  throw new Error("Function not implemented.")
-}
-

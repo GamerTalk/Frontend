@@ -6,6 +6,7 @@ import { IconDefinition } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlaystation, faXbox, faSteam } from "@fortawesome/free-brands-svg-icons";
 import { faGamepad } from "@fortawesome/free-solid-svg-icons";
+import { User } from "./../../global.t";
 
 const UserCard = () => {   
 
@@ -21,25 +22,6 @@ const UserCard = () => {
     PlayStation: faPlaystation,
     Switch: faGamepad
   }
-
-  // user data info 
-  interface User {
-    id: number;
-    uid: string;
-    username: string;
-    date_of_birth: string;
-    about_me: string;
-    languages: {
-      fluent: string[];
-      learning: {
-        level: number;
-        language: string;
-      }[];
-    };
-    currently_playing: string;
-    user_systems: string[];
-  }
-  
 
   const fecthUserInfo = async () => {
     try { 

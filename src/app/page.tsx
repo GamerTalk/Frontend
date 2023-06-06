@@ -6,29 +6,13 @@ import React from 'react'
 import { useState, useEffect } from "react";
 import UserCard from "./components/layouts/UserCard";
 import FilterArea from "./components/layouts/FilterArea";
+import {User} from "./global.t"
 
 export default function Home() {
   // for User Card 
   const [users, setUsers] = useState<User[]>([]);
   // for Filter Area component 
   const [filterWords, setFilterWords] = useState([]);
-
-  interface User {
-    id: number;
-    uid: string;
-    username: string;
-    date_of_birth: string;
-    about_me: string;
-    languages: {
-      fluent: string[];
-      learning: {
-        level: number;
-        language: string;
-      }[];
-    };
-    currently_playing: string;
-    user_systems: string[];
-  }
 
   const fetchAllusers = async () => { 
     try { 
@@ -45,7 +29,7 @@ export default function Home() {
     if (setFilterWords.length === 0) {
       fetchAllusers();
     } else { 
-      
+      console.log("Filter");
     }
   },[])
 

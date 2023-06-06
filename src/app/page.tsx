@@ -5,6 +5,7 @@ import axios from 'axios'
 import React from 'react'
 import { useState, useEffect } from "react";
 import UserCard from "./components/layouts/UserCard";
+import FilterArea from "./components/layouts/FilterArea";
 
 export default function Home() {
 
@@ -22,8 +23,9 @@ export default function Home() {
   return ( 
     <>
       <div>
-      <h2>{name[0]}</h2>
-      <UserCard />
+        <h2>{name[0]}</h2>
+         <FilterArea/>
+         <UserCard />
       </div>
   </>
 )

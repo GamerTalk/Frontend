@@ -92,7 +92,7 @@ const handleFormSubmit = (event: { preventDefault: () => void }) => {
     setBirthday(dateValue);
   };
 
-  const handleSystem = (event: { target: { name : any }; }) => {
+  const handleSystem = (event: { target: { name : string }; }) => {
     const { name } = event.target;
     if (system.includes(name)) {
       // If system is already selected, remove it from the array
@@ -103,7 +103,7 @@ const handleFormSubmit = (event: { preventDefault: () => void }) => {
     }
   }
 
-  const handleGenre = (event: { target: { name : any }; }) => {
+  const handleGenre = (event: { target: { name : string }; }) => {
     const { name } = event.target;
     if (genre.includes(name)) {
       // If genre is already selected, remove it from the array

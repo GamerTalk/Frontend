@@ -14,12 +14,7 @@ interface LanguageLevel {
 
 const LearningCheckbox: React.FC<Param> = ({ label, name, onChange }) => {
   const [isChecked, setIsChecked] = useState<boolean>(false);
-  const [num, setNum] = useState<LanguageLevel[]>([]);
-
-  useEffect(() => {
-    console.log(num);
-  }, [num]);
-
+  
   return (
     <div className="checkbox-wrapper">
       <span>{label}</span>

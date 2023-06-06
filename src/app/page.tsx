@@ -8,22 +8,51 @@ import UserCard from "./components/layouts/UserCard";
 import FilterArea from "./components/layouts/FilterArea";
 
 export default function Home() {
+  // for User Card 
+  const [users, setUsers] = useState<User[]>([]);
+  // for Filter Area component 
+  const [filterWords, setFilterWords] = useState([]);
 
-  const [name, setName] = useState([]);
+  interface User {
+    id: number;
+    uid: string;
+    username: string;
+    date_of_birth: string;
+    about_me: string;
+    languages: {
+      fluent: string[];
+      learning: {
+        level: number;
+        language: string;
+      }[];
+    };
+    currently_playing: string;
+    user_systems: string[];
+  }
+
+  const fetchAllusers = async () => { 
+    try { 
+      const response = await axios.get("http://127.0.0.1:8000/api/all-users/");
+      const allUsers: User[] = response.data;
+      setUsers(allUsers);
+    } catch (error) {
+      console.log(error);
+    }
+  }
 
   useEffect(() => {
-    async function getNames() {
-      const names : any = await axios.get('http://localhost:8000/api/test/').then((result) => result.data)
-      setName(names)
+    // default 
+    if (setFilterWords.length === 0) {
+      fetchAllusers();
+    } else { 
+      
     }
-    getNames()
   },[])
 
 
   return ( 
     <>
       <div>
-        <h2>{name[0]}</h2>
          <FilterArea/>
          <UserCard />
       </div>

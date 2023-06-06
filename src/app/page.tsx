@@ -11,7 +11,7 @@ export default function Home() {
 
   useEffect(() => {
     async function getNames() {
-      const names : any = await axios.get("api/test").then((result) => result.data)
+      const names : any = await axios.get("http://127.0.0.1:8000/api/test").then((result) => result.data)
       setName(names)
     }
     getNames()

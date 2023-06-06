@@ -34,7 +34,8 @@ export default function UserInfo() {
 
 const handleFormSubmit = (event: { preventDefault: () => void }) => {
   event.preventDefault();
-  axios.post('http://127.0.0.1:8000/api/new-user/', {
+
+  const payload = {
     uid,
     username,
     about_me: aboutMe,
@@ -44,7 +45,11 @@ const handleFormSubmit = (event: { preventDefault: () => void }) => {
     systems: system,
     genre,
     currently_playing: currPlay
-  })
+  }
+
+  console.log(payload);
+
+  axios.post('http://127.0.0.1:8000/api/new-user/', payload)
   .then(response => {
     router.push('/')
   })
@@ -71,7 +76,7 @@ const handleFormSubmit = (event: { preventDefault: () => void }) => {
   
   const handleLearning = (event: { target: { name: string; value: string }; }) => {
     const { name, value } = event.target;
-    const newObj = { language: name, level: value };
+    const newObj = { language: name, level: Number(value) };
   
     const languageExists = learning.some((learn: any) => learn.language === name);
     if (languageExists) {
@@ -127,7 +132,7 @@ const handleFormSubmit = (event: { preventDefault: () => void }) => {
   return (
     <>
     <h1>Welcome!</h1>
-    <p>Tell us a little about yourself so people can find you</p>
+    <p>Tell us a about yourself!</p>
 
     <form onSubmit={handleFormSubmit}>
       <div className={styles.usernameBox}> 
@@ -137,7 +142,7 @@ const handleFormSubmit = (event: { preventDefault: () => void }) => {
         </div>
       </div>
 
-      <p className={styles.headings}>Fluent</p>
+      <p className={styles.headings}>What language(s) are you fluent in?</p>
       <p className={styles.subheading}>Check all that apply</p>
       <div className={styles.language}> 
        <Checkbox label="English" name="English" onChange={handleLanguage}/>
@@ -149,9 +154,9 @@ const handleFormSubmit = (event: { preventDefault: () => void }) => {
        <Checkbox label="Korean" name="Korean" onChange={handleLanguage}/>
       </div>
 
-      <p className={styles.headings}>Language you want to learn:</p>
+      <p className={styles.headings}>What language(s) do you want to learn?</p>
       <p className={styles.subheading}>1: Beginner, 2: Intermediate, 3: Advanced</p>
-      <div className={styles.learning}>
+      <div>
         <LearningCheckbox label="English" name="English" onChange={handleLearning}/>
         <LearningCheckbox label="Spanish" name="Spanish" onChange={handleLearning}/>
         <LearningCheckbox label="German" name="German" onChange={handleLearning} />
@@ -161,7 +166,7 @@ const handleFormSubmit = (event: { preventDefault: () => void }) => {
         <LearningCheckbox label="Korean" name="Korean" onChange={handleLearning}/>
       </div>
 
-      <p className={styles.headings}>Date of Birth</p>
+      <p className={styles.headings}>Date of Birth:</p>
       <input type="date" onChange={handleBirthday}></input>
 
       <p className={styles.headings}>Systems</p>
@@ -172,7 +177,7 @@ const handleFormSubmit = (event: { preventDefault: () => void }) => {
        <Checkbox label="Xbox" name="Xbox" onChange={handleSystem}/>
       </div>
 
-      <p className={styles.headings}>Genre</p>
+      <p className={styles.headings}>Genre:</p>
       <div className={styles.language}> 
        <Checkbox label="Shooters" name="Shooters" onChange={handleGenre}/>
        <Checkbox label="Survial" name="Survival" onChange={handleGenre}/>
@@ -184,14 +189,14 @@ const handleFormSubmit = (event: { preventDefault: () => void }) => {
        <Checkbox label="MMO" name="MMO" onChange={handleGenre}/>
       </div>
 
-      <p className={styles.headings}>About Me</p>
+      <p className={styles.headings}>About Me:</p>
       <textarea rows={5} cols={40} onChange={handleAboutMe}/>
 
-      <p className={styles.headings}>Currently Playing</p>
+      <p className={styles.headings}>Currently Playing:</p>
 
       <textarea rows={5} cols={40} onChange={handleCurrPlay}/>
 
-      <div><button type="submit">Submit</button></div>
+      <div><button className={styles.button} type="submit">Submit</button></div>
 
     </form>
        

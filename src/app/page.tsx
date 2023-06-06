@@ -20,13 +20,13 @@ export default function Home() {
       const allUsers: User[] = response.data;
       setUsers(allUsers);
     } catch (error) {
-      console.log(error);
+      
     }
   }
 
   useEffect(() => {
     // default 
-    if (setFilterWords.length === 0) {
+    if (filterWords.length === 0) {
       fetchAllusers();
     } else { 
       console.log("Filter");
@@ -37,8 +37,8 @@ export default function Home() {
   return ( 
     <>
       <div>
-         <FilterArea/>
-         <UserCard />
+        <FilterArea/>
+        <UserCard users={users}/>
       </div>
   </>
 )

@@ -1,4 +1,4 @@
-
+import { IconDefinition } from '@fortawesome/fontawesome-svg-core';
 
 export interface User { 
   id: number;
@@ -15,4 +15,8 @@ export interface User {
     };
     currently_playing: string;
     user_systems: string[];
+}
+
+export interface Systems { 
+  [key: string]: IconDefinition;
 }

@@ -1,47 +1,26 @@
 "use client"
 import styles from "./UserCard.module.css";
-import axios from "axios";
-import { useEffect, useState } from "react";
-import { IconDefinition } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlaystation, faXbox, faSteam } from "@fortawesome/free-brands-svg-icons";
 import { faGamepad } from "@fortawesome/free-solid-svg-icons";
-import { User } from "./../../global.t";
+import { User , Systems } from "./../../global.t";
 
-const UserCard = () => {   
+interface usersProps { 
+  users : User[]
+}
 
-  const [userData, setUserData] = useState<User[]>([]);
-
-  interface Systems { 
-    [key: string]: IconDefinition;
-  }
-  
-  const systems:Systems = {
+const UserCard = ({ users }: usersProps) => {   
+    const systems:Systems = {
     PC: faSteam,
     Xbox: faXbox,
     PlayStation: faPlaystation,
     Switch: faGamepad
   }
 
-  const fecthUserInfo = async () => {
-    try { 
-      const res = await axios.get("http://127.0.0.1:8000/api/all-users/");
-      const userAllData: User[] = res.data;
-      console.log(userAllData);
-      setUserData(userAllData);
-    } catch (error) { 
-      console.log(error);
-    }
-  }
-  
-  useEffect(() => { 
-    fecthUserInfo();
-  },[]);
-
   return (
     <>
       {
-      userData.map((user, index) => { 
+      users.map((user, index) => { 
         return (
         <div className={styles.userCard} onClick={() => console.log(user.id)} key={index}>
         <div className={styles.userInfo}>

@@ -16,7 +16,6 @@ const Checkbox = ({ label, name, onChange }: Param) => {
     onChange(event); // Call the provided onChange event handler
   };
 
-
   return (
     <div className="checkbox-wrapper">
       <label>

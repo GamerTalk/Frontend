@@ -20,3 +20,9 @@ export interface User {
 export interface Systems { 
   [key: string]: IconDefinition;
 }
+
+export interface Search { 
+  systems: string[],
+  genre: string[],
+  language: string
+}

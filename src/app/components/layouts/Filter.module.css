@@ -4,3 +4,10 @@
   background-color: rgb(194, 237, 158);
   margin: 0 auto;
 }
+
+.filterCategory{
+  width: min(100%,600px);
+  height: 50px;
+  background-color: rgb(194, 237, 158);
+  margin: 0 auto;
+}

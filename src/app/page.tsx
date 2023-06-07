@@ -12,7 +12,7 @@ export default function Home() {
   // for User Card 
   const [users, setUsers] = useState<User[]>([]);
   // for Filter Area component 
-  const [filterWords, setFilterWords] = useState([]);
+  const [filterWords, setFilterWords] = useState<string[]>([]);
 
   const fetchAllusers = async () => { 
     try { 
@@ -20,7 +20,7 @@ export default function Home() {
       const allUsers: User[] = response.data;
       setUsers(allUsers);
     } catch (error) {
-      
+      console.log(error);
     }
   }
 
@@ -29,16 +29,17 @@ export default function Home() {
     if (filterWords.length === 0) {
       fetchAllusers();
     } else { 
-      console.log("Filter");
+      console.log("おわた");
     }
-  },[])
-
+  },[filterWords])
 
   return ( 
     <>
+      {console.log(filterWords)}
       <div>
-        <FilterArea/>
-        <UserCard users={users}/>
+        <FilterArea setUsers={setUsers} setFilterWords={setFilterWords} filterWords={filterWords} />
+        <UserCard users={users} />
+        <div>{filterWords}</div>
       </div>
   </>
 )

@@ -10,16 +10,15 @@ import {User} from "./global.t"
 
 
 export default function Home() {
-  // for User Card 
+
   const [users, setUsers] = useState<User[]>([]);
-  // for Filter Area component 
   const [filterWords, setFilterWords] = useState<string[]>([]);
   const [isShowUserCard, setShowUserCard] = useState(true);
 
   const fetchAllusers = async () => { 
     try { 
       const response = await axios.get("http://127.0.0.1:8000/api/filter-users/");
-      console.log(response);
+      console.log("userData",response.data);
       const allUsers: User[] = response.data;
       setUsers(allUsers);
     } catch (error) {
@@ -28,19 +27,16 @@ export default function Home() {
   }
 
   useEffect(() => {
-    if (filterWords.length === 0) {
+    if (filterWords.length === 0 && users.length === 0) {
       fetchAllusers();
     }
   },[filterWords])
 
   return ( 
     <>
-      {console.log(users)}
       <div>
         <FilterArea setUsers={setUsers} setFilterWords={setFilterWords} filterWords={filterWords} setShowUserCard={setShowUserCard} />
-        
         {isShowUserCard && <UserCard users={users} />}
-        <div>{filterWords}</div>
       </div>
   </>
 )

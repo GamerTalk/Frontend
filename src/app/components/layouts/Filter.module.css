@@ -1,13 +1,15 @@
 .filterArea{
   width: min(100%,600px);
-  height: 50px;
   background-color: rgb(194, 237, 158);
   margin: 0 auto;
+  display: flex;
 }
 
-.filterCategory{
-  width: min(100%,600px);
+.word {
+  margin-right: 10px; 
+}
+
+.category{
+  display: inline-block;
   height: 50px;
-  background-color: rgb(194, 237, 158);
-  margin: 0 auto;
 }

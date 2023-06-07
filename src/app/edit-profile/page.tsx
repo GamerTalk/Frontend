@@ -21,6 +21,7 @@ export default function Profile() {
 
   const [profile, setProfile] = useState<any>()
   const [system, setSystem] = useState<string[]>([])
+  
 
   useEffect(() => {
     async function getData() {

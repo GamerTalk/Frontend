@@ -15,7 +15,7 @@ export default function Profile() {
   const config = {
     method: 'GET',
     headers: {
-      'uid' : 'e3mGrFMSOnTuDGz1v6pTujwVI063'
+      'uid' : uid
     }
   }
 
@@ -33,6 +33,7 @@ export default function Profile() {
   useEffect(() => {
     async function getData() {
       try {
+        if (uid) { 
         const userData : any  = await axios.get(url, config).then((result) => result.data)
         setProfile(userData)
         console.log(userData)
@@ -41,7 +42,8 @@ export default function Profile() {
         setGenre(userData.user_genre)
         setLearning(userData.languages.learning)
         setAboutMe(userData.about_me)
-        setCurrPlay(userData.currently_playing)
+        setCurrPlay(userData.currently_playing) 
+      }
       } 
       catch(error) {
        console.log(error)
@@ -49,6 +51,8 @@ export default function Profile() {
     }
     getData()
   },[uid])
+
+
 
 
   const handleSystem = (event: { target: { name : string }; }) => {

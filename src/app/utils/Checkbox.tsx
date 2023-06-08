@@ -10,13 +10,11 @@ interface Param {
 
 const Checkbox = ({ label, name, onChange }: Param) => {
   const [isChecked, setIsChecked] = useState(false);
-
-
+  // console.log(isChecked);
   const handleCheckboxChange: ChangeEventHandler<HTMLInputElement> = (event) => {
     setIsChecked(event.target.checked);
     onChange(event); // Call the provided onChange event handler
   };
-
 
   return (
     <div className="checkbox-wrapper">

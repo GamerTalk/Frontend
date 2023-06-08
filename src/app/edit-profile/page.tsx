@@ -26,8 +26,8 @@ export default function Profile() {
   const [learning, setLearning] = useState<string[]>([]);
   const [system, setSystem] = useState<string[]>([])
   const [genre, setGenre] = useState<string[]>([]);
-  const [aboutMe, setAboutMe] = useState<string>("");
-  const [currPlay, setCurrPlay] = useState<string>("");
+  const [aboutMe, setAboutMe] = useState<string>(profile ? profile.about_me : "");
+  const [currPlay, setCurrPlay] = useState<string>(profile ? profile.currently_playing : "");
 
 
   useEffect(() => {
@@ -40,6 +40,8 @@ export default function Profile() {
         setLanguage(userData.languages.fluent)
         setGenre(userData.user_genre)
         setLearning(userData.languages.learning)
+        setAboutMe(userData.about_me)
+        setCurrPlay(userData.currently_playing)
       } 
       catch(error) {
        console.log(error)
@@ -156,8 +158,8 @@ export default function Profile() {
 
       <p className={styles.heading}>Genre:</p>
       <div className={styles.language}> 
-       <Checkbox label="Shooters" name="Shooters" onChange={handleGenre}  defaultChecked={genre.includes('Shooters')}/>
-       <Checkbox label="Survial" name="Survival" onChange={handleGenre}  defaultChecked={genre.includes('Survivial')}/>
+       <Checkbox label="Shooters" name="Shooters" onChange={handleGenre} defaultChecked={genre.includes('Shooters')}/>
+       <Checkbox label="Survial" name="Survival" onChange={handleGenre} defaultChecked={genre.includes('Survivial')}/>
        <Checkbox label="Battle Royal" name="Battle Royal" onChange={handleGenre} defaultChecked={genre.includes('Battle Royal')}/>
        <Checkbox label="Strategy" name="Strategy" onChange={handleGenre} defaultChecked={genre.includes('Strategy')}/>
        <Checkbox label="Party" name="Party" onChange={handleGenre} defaultChecked={genre.includes('Party')}/>
@@ -167,13 +169,12 @@ export default function Profile() {
       </div>
 
     <p className={styles.heading}>About Me:</p>
-    <textarea rows={5} cols={40} value={profile.about_me} onChange={handleAboutMe} readOnly={false}/>
+    <textarea rows={5} cols={40} value={aboutMe} onChange={handleAboutMe}/>
 
     <p className={styles.heading}>Currently Playing:</p> 
-    <textarea rows={5} cols={40} value={profile.currently_playing} onChange={handleCurrPlay} />
+    <textarea rows={5} cols={40} value={currPlay} onChange={handleCurrPlay} />
 
     <div><button className={styles.editButton} type="submit">Submit</button></div>
-
 
 
     </>

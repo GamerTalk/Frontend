@@ -142,57 +142,57 @@ const handleFormSubmit = (event: { preventDefault: () => void }) => {
         </div>
       </div>
 
-      <p className={styles.headings}>What language(s) are you fluent in?</p>
+      <p className={styles.heading}>What language(s) are you fluent in?</p>
       <p className={styles.subheading}>Check all that apply</p>
       <div className={styles.language}> 
-       <Checkbox label="English" name="English" onChange={handleLanguage}/>
-       <Checkbox label="Spanish" name="Spanish" onChange={handleLanguage} />
-       <Checkbox label="German" name="German" onChange={handleLanguage} />
-       <Checkbox label="French" name="French" onChange={handleLanguage}/>
-       <Checkbox label="Japanese" name="Japanese" onChange={handleLanguage}/>
-       <Checkbox label="Chinese"name="Chinese" onChange={handleLanguage}/>
-       <Checkbox label="Korean" name="Korean" onChange={handleLanguage}/>
+       <Checkbox label="English" name="English" onChange={handleLanguage} defaultChecked={false} />
+       <Checkbox label="Spanish" name="Spanish" onChange={handleLanguage}  defaultChecked={false}/>
+       <Checkbox label="German" name="German" onChange={handleLanguage} defaultChecked={false} />
+       <Checkbox label="French" name="French" onChange={handleLanguage} defaultChecked={false}/>
+       <Checkbox label="Japanese" name="Japanese" onChange={handleLanguage} defaultChecked={false}/>
+       <Checkbox label="Chinese"name="Chinese" onChange={handleLanguage} defaultChecked={false}/>
+       <Checkbox label="Korean" name="Korean" onChange={handleLanguage} defaultChecked={false}/>
       </div>
 
-      <p className={styles.headings}>What language(s) do you want to learn?</p>
+      <p className={styles.heading}>What language(s) do you want to learn?</p>
       <p className={styles.subheading}>1: Beginner, 2: Intermediate, 3: Advanced</p>
       <div>
-        <LearningCheckbox label="English" name="English" onChange={handleLearning}/>
-        <LearningCheckbox label="Spanish" name="Spanish" onChange={handleLearning}/>
-        <LearningCheckbox label="German" name="German" onChange={handleLearning} />
-        <LearningCheckbox label="French" name="French" onChange={handleLearning} />
-        <LearningCheckbox label="Japanese" name="Japanese" onChange={handleLearning} />
-        <LearningCheckbox label="Chinese" name="Chinese" onChange={handleLearning}/>
-        <LearningCheckbox label="Korean" name="Korean" onChange={handleLearning}/>
+        <LearningCheckbox label="English" name="English" onChange={handleLearning} defaultChecked1={false} defaultChecked2={false} defaultChecked3={false}/>
+        <LearningCheckbox label="Spanish" name="Spanish" onChange={handleLearning} defaultChecked1={false} defaultChecked2={false} defaultChecked3={false}/>
+        <LearningCheckbox label="German" name="German" onChange={handleLearning} defaultChecked1={false} defaultChecked2={false} defaultChecked3={false}/>
+        <LearningCheckbox label="French" name="French" onChange={handleLearning} defaultChecked1={false} defaultChecked2={false} defaultChecked3={false}/>
+        <LearningCheckbox label="Japanese" name="Japanese" onChange={handleLearning} defaultChecked1={false} defaultChecked2={false} defaultChecked3={false}/>
+        <LearningCheckbox label="Chinese" name="Chinese" onChange={handleLearning} defaultChecked1={false} defaultChecked2={false} defaultChecked3={false}/>
+        <LearningCheckbox label="Korean" name="Korean" onChange={handleLearning} defaultChecked1={false} defaultChecked2={false} defaultChecked3={false}/>
       </div>
 
-      <p className={styles.headings}>Date of Birth:</p>
+      <p className={styles.heading}>Date of Birth:</p>
       <input type="date" onChange={handleBirthday}></input>
 
-      <p className={styles.headings}>Systems</p>
+      <p className={styles.heading}>Systems</p>
       <div className={styles.language}> 
-       <Checkbox label="PC" name="PC"  onChange={handleSystem}/>
-       <Checkbox label="Switch" name="Switch" onChange={handleSystem}/>
-       <Checkbox label="PlayStation" name="PlayStation" onChange={handleSystem}/>
-       <Checkbox label="Xbox" name="Xbox" onChange={handleSystem}/>
+       <Checkbox label="PC" name="PC"  onChange={handleSystem}  defaultChecked={false}/>
+       <Checkbox label="Switch" name="Switch" onChange={handleSystem} defaultChecked={false}/>
+       <Checkbox label="PlayStation" name="PlayStation" onChange={handleSystem} defaultChecked={false}/>
+       <Checkbox label="Xbox" name="Xbox" onChange={handleSystem} defaultChecked={false}/>
       </div>
 
-      <p className={styles.headings}>Genre:</p>
+      <p className={styles.heading}>Genre:</p>
       <div className={styles.language}> 
-       <Checkbox label="Shooters" name="Shooters" onChange={handleGenre}/>
-       <Checkbox label="Survial" name="Survival" onChange={handleGenre}/>
-       <Checkbox label="Battle Royal" name="Battle Royal" onChange={handleGenre}/>
-       <Checkbox label="Strategy" name="Strategy" onChange={handleGenre}/>
-       <Checkbox label="Party" name="Party" onChange={handleGenre}/>
-       <Checkbox label="Fighting" name="Fighting" onChange={handleGenre}/>
-       <Checkbox label="RPG" name="RPG" onChange={handleGenre}/>
-       <Checkbox label="MMO" name="MMO" onChange={handleGenre}/>
+       <Checkbox label="Shooters" name="Shooters" onChange={handleGenre}  defaultChecked={false}/>
+       <Checkbox label="Survial" name="Survival" onChange={handleGenre}  defaultChecked={false}/>
+       <Checkbox label="Battle Royal" name="Battle Royal" onChange={handleGenre} defaultChecked={false}/>
+       <Checkbox label="Strategy" name="Strategy" onChange={handleGenre} defaultChecked={false}/>
+       <Checkbox label="Party" name="Party" onChange={handleGenre} defaultChecked={false}/>
+       <Checkbox label="Fighting" name="Fighting" onChange={handleGenre} defaultChecked={false}/>
+       <Checkbox label="RPG" name="RPG" onChange={handleGenre} defaultChecked={false}/>
+       <Checkbox label="MMO" name="MMO" onChange={handleGenre} defaultChecked={false}/>
       </div>
 
-      <p className={styles.headings}>About Me:</p>
+      <p className={styles.heading}>About Me:</p>
       <textarea rows={5} cols={40} onChange={handleAboutMe}/>
 
-      <p className={styles.headings}>Currently Playing:</p>
+      <p className={styles.heading}>Currently Playing:</p>
 
       <textarea rows={5} cols={40} onChange={handleCurrPlay}/>
 

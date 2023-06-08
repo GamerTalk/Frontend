@@ -5,12 +5,14 @@ import { useState, useEffect, ChangeEventHandler } from "react";
 interface Param {
  label: string,
  name: string,
- onChange : ChangeEventHandler<HTMLInputElement>
+ onChange : ChangeEventHandler<HTMLInputElement>,
+ defaultChecked: boolean;
 }
 
-const Checkbox = ({ label, name, onChange }: Param) => {
-  const [isChecked, setIsChecked] = useState(false);
-  // console.log(isChecked);
+const Checkbox = ({ label, name, onChange, defaultChecked }: Param) => {
+  const [isChecked, setIsChecked] = useState(defaultChecked);
+
+
   const handleCheckboxChange: ChangeEventHandler<HTMLInputElement> = (event) => {
     setIsChecked(event.target.checked);
     onChange(event); // Call the provided onChange event handler

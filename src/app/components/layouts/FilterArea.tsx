@@ -152,8 +152,6 @@ const FilterArea: React.FC<Param> = ({ setUsers, setFilterWords, filterWords , s
         </form>
         </div>
         
-
-
       ) : (
       <div className={styles.filterArea}>
         <div className={styles.filter}>
@@ -175,30 +173,3 @@ const FilterArea: React.FC<Param> = ({ setUsers, setFilterWords, filterWords , s
 }
 
 export default FilterArea
-
-  /* 
-   const config = {
-    method: 'GET',
-    headers: {
-      'uid' : 'e3mGrFMSOnTuDGz1v6pTujwVI063'
-    }
-  }
-
-  const url = "http://localhost:8000/api/user-info/"
-  
-   useEffect(() => {
-    async function getData() {
-      try {
-        const userData : any  = await axios.get(url, config).then((result) => result.data)
-        setProfile(userData)
-        setSystem(userData.user_systems)
-      } 
-      catch(error) {
-       console.log(error)
-      }
-    }
-    getData()
-  },[uid])
-
-  
-  */

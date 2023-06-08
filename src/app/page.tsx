@@ -18,7 +18,6 @@ export default function Home() {
   const fetchAllusers = async () => { 
     try { 
       const response = await axios.get("http://127.0.0.1:8000/api/filter-users/");
-      console.log("userData",response.data);
       const allUsers: User[] = response.data;
       setUsers(allUsers);
     } catch (error) {

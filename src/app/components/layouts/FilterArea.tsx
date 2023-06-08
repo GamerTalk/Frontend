@@ -53,7 +53,6 @@ const FilterArea: React.FC<Param> = ({ setUsers, setFilterWords, filterWords , s
 
      try { 
       const response = await axios.get(url, config);
-      console.log(response.data);
       const allWords: string[] = [...selectedSystems, ...selectedGenres];
       allWords.push(selectedLanguage);
       setFilterWords(allWords);

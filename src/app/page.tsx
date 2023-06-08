@@ -8,20 +8,20 @@ export default function Home() {
 
   const [name, setName] = useState([]);
 
-  useEffect(() => {
-    async function getNames() {
-      const names : any = await axios.get("http://127.0.0.1:8000/api/test").then((result) => result.data)
-      setName(names)
-    }
-    getNames()
-  },[])
+  // useEffect(() => {
+  //   async function getNames() {
+  //     const names : any = await axios.get("http://127.0.0.1:8000/api/test").then((result) => result.data)
+  //     setName(names)
+  //   }
+  //   getNames()
+  // },[])
 
 
 
 return ( 
   <>
-    <div> PLACEHOLDER  </div>
-    <h2>{name[0]}</h2>
+     <div> WELCOME!  </div> 
+    {/* <h2>{name[0]}</h2> */}
   </>
 )
 }

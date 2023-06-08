@@ -6,6 +6,7 @@ import styles from '../userinfo/UserInfo.module.css'
 import { UserAuth } from '../context/AuthContext';
 import Checkbox from '../utils/Checkbox';
 import LearningCheckbox from '../utils/Learning-Checkbox';
+import langCall from '../utils/langCheckFunc';
 
 export default function Profile() {
 
@@ -22,9 +23,11 @@ export default function Profile() {
 
   const [profile, setProfile] = useState<any>()
   const [language, setLanguage] = useState<string[]>([]);
-  const [system, setSystem] = useState<string[]>([])
   const [learning, setLearning] = useState<string[]>([]);
+  const [system, setSystem] = useState<string[]>([])
   const [genre, setGenre] = useState<string[]>([]);
+  const [aboutMe, setAboutMe] = useState<string>("");
+  const [currPlay, setCurrPlay] = useState<string>("");
 
 
   useEffect(() => {
@@ -35,7 +38,7 @@ export default function Profile() {
         console.log(userData)
         setSystem(userData.user_systems)
         setLanguage(userData.languages.fluent)
-        setGenre(userData.user_Genre)
+        setGenre(userData.user_genre)
         setLearning(userData.languages.learning)
       } 
       catch(error) {
@@ -43,14 +46,6 @@ export default function Profile() {
       }
     }
     getData()
-  },[uid])
-
-  useEffect(() => {
-    console.log('LEARNING', learning)
-  },[system])
-
-  useEffect(() => {
-    console.log('UID',uid)
   },[uid])
 
 
@@ -105,12 +100,16 @@ export default function Profile() {
     }
   }
 
+  const handleAboutMe = (event: { target: { value: string; }; }) => {
+    const { value } = event.target;
+    setAboutMe(value);
+  }
 
-   /*
-console.log(response.languages.fluent); // Output: ["English"]
-console.log(response.languages.learning); // Output: [{level: 2, language: "German"}, {level: 1, language: "Japanese"}, {level: 1, language: "Korean"}]
+  const handleCurrPlay = (event: { target: { value: string; }; }) => {
+    const { value } = event.target;
+    setCurrPlay(value);
+  }
 
-   */
   return (
     <>
     <h1>Profile</h1>
@@ -146,32 +145,34 @@ console.log(response.languages.learning); // Output: [{level: 2, language: "Germ
     <p className={styles.heading}>What language(s) do you want to learn?</p>
       <p className={styles.subheading}>1: Beginner, 2: Intermediate, 3: Advanced</p>
       <div>
-        <LearningCheckbox label="English" name="English" onChange={handleLearning} defaultChecked1={false} defaultChecked2={false} defaultChecked3={false}/>
-        <LearningCheckbox label="Spanish" name="Spanish" onChange={handleLearning} defaultChecked={false}/>
-        <LearningCheckbox label="German" name="German" onChange={handleLearning} defaultChecked={false}/>
-        <LearningCheckbox label="French" name="French" onChange={handleLearning} defaultChecked={false}/>
-        <LearningCheckbox label="Japanese" name="Japanese" onChange={handleLearning} defaultChecked={false}/>
-        <LearningCheckbox label="Chinese" name="Chinese" onChange={handleLearning} defaultChecked={false}/>
-        <LearningCheckbox label="Korean" name="Korean" onChange={handleLearning} defaultChecked={false}/>
+        <LearningCheckbox label="English" name="English" onChange={handleLearning} defaultChecked1={langCall('English',1,learning)} defaultChecked2={langCall('English',2,learning)} defaultChecked3={langCall('English',3,learning)}/>
+        <LearningCheckbox label="Spanish" name="Spanish" onChange={handleLearning} defaultChecked1={langCall('Spanish',1,learning)} defaultChecked2={langCall('Spanish',2,learning)} defaultChecked3={langCall('Spanish',3,learning)}/>
+        <LearningCheckbox label="German" name="German" onChange={handleLearning} defaultChecked1={langCall('German',1,learning)} defaultChecked2={langCall('German',2,learning)} defaultChecked3={langCall('German',3,learning)}/>
+        <LearningCheckbox label="French" name="French" onChange={handleLearning} defaultChecked1={langCall('French',1,learning)} defaultChecked2={langCall('French',2,learning)} defaultChecked3={langCall('French',3,learning)}/>
+        <LearningCheckbox label="Japanese" name="Japanese" onChange={handleLearning} defaultChecked1={langCall('Japanese',1,learning)} defaultChecked2={langCall('Japanese',2,learning)} defaultChecked3={langCall('Japanese',3,learning)}/>
+        <LearningCheckbox label="Chinese" name="Chinese" onChange={handleLearning} defaultChecked1={langCall('Chinese',1,learning)} defaultChecked2={langCall('Chinese',2,learning)} defaultChecked3={langCall('Chinese',3,learning)}/>
+        <LearningCheckbox label="Korean" name="Korean" onChange={handleLearning} defaultChecked1={langCall('Korean',1,learning)} defaultChecked2={langCall('Korean',2,learning)} defaultChecked3={langCall('Korean',3,learning)}/>
       </div>
 
       <p className={styles.heading}>Genre:</p>
       <div className={styles.language}> 
-       <Checkbox label="Shooters" name="Shooters" onChange={handleGenre}  defaultChecked={false}/>
-       <Checkbox label="Survial" name="Survival" onChange={handleGenre}  defaultChecked={false}/>
-       <Checkbox label="Battle Royal" name="Battle Royal" onChange={handleGenre} defaultChecked={false}/>
-       <Checkbox label="Strategy" name="Strategy" onChange={handleGenre} defaultChecked={false}/>
-       <Checkbox label="Party" name="Party" onChange={handleGenre} defaultChecked={false}/>
-       <Checkbox label="Fighting" name="Fighting" onChange={handleGenre} defaultChecked={false}/>
-       <Checkbox label="RPG" name="RPG" onChange={handleGenre} defaultChecked={false}/>
-       <Checkbox label="MMO" name="MMO" onChange={handleGenre} defaultChecked={false}/>
+       <Checkbox label="Shooters" name="Shooters" onChange={handleGenre}  defaultChecked={genre.includes('Shooters')}/>
+       <Checkbox label="Survial" name="Survival" onChange={handleGenre}  defaultChecked={genre.includes('Survivial')}/>
+       <Checkbox label="Battle Royal" name="Battle Royal" onChange={handleGenre} defaultChecked={genre.includes('Battle Royal')}/>
+       <Checkbox label="Strategy" name="Strategy" onChange={handleGenre} defaultChecked={genre.includes('Strategy')}/>
+       <Checkbox label="Party" name="Party" onChange={handleGenre} defaultChecked={genre.includes('Party')}/>
+       <Checkbox label="Fighting" name="Fighting" onChange={handleGenre} defaultChecked={genre.includes('Fighting')}/>
+       <Checkbox label="RPG" name="RPG" onChange={handleGenre} defaultChecked={genre.includes('RPG')}/>
+       <Checkbox label="MMO" name="MMO" onChange={handleGenre} defaultChecked={genre.includes('MMO')}/>
       </div>
 
     <p className={styles.heading}>About Me:</p>
-    <textarea rows={5} cols={40} value={profile.about_me}/>
+    <textarea rows={5} cols={40} value={profile.about_me} onChange={handleAboutMe} readOnly={false}/>
 
     <p className={styles.heading}>Currently Playing:</p> 
-    <textarea rows={5} cols={40} value={profile.currently_playing}/>
+    <textarea rows={5} cols={40} value={profile.currently_playing} onChange={handleCurrPlay} />
+
+    <div><button className={styles.editButton} type="submit">Submit</button></div>
 
 
 

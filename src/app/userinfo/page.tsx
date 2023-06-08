@@ -157,13 +157,13 @@ const handleFormSubmit = (event: { preventDefault: () => void }) => {
       <p className={styles.heading}>What language(s) do you want to learn?</p>
       <p className={styles.subheading}>1: Beginner, 2: Intermediate, 3: Advanced</p>
       <div>
-        <LearningCheckbox label="English" name="English" onChange={handleLearning}/>
-        <LearningCheckbox label="Spanish" name="Spanish" onChange={handleLearning}/>
-        <LearningCheckbox label="German" name="German" onChange={handleLearning} />
-        <LearningCheckbox label="French" name="French" onChange={handleLearning} />
-        <LearningCheckbox label="Japanese" name="Japanese" onChange={handleLearning} />
-        <LearningCheckbox label="Chinese" name="Chinese" onChange={handleLearning}/>
-        <LearningCheckbox label="Korean" name="Korean" onChange={handleLearning}/>
+        <LearningCheckbox label="English" name="English" onChange={handleLearning} defaultChecked1={false} defaultChecked2={false} defaultChecked3={false}/>
+        <LearningCheckbox label="Spanish" name="Spanish" onChange={handleLearning} defaultChecked1={false} defaultChecked2={false} defaultChecked3={false}/>
+        <LearningCheckbox label="German" name="German" onChange={handleLearning} defaultChecked1={false} defaultChecked2={false} defaultChecked3={false}/>
+        <LearningCheckbox label="French" name="French" onChange={handleLearning} defaultChecked1={false} defaultChecked2={false} defaultChecked3={false}/>
+        <LearningCheckbox label="Japanese" name="Japanese" onChange={handleLearning} defaultChecked1={false} defaultChecked2={false} defaultChecked3={false}/>
+        <LearningCheckbox label="Chinese" name="Chinese" onChange={handleLearning} defaultChecked1={false} defaultChecked2={false} defaultChecked3={false}/>
+        <LearningCheckbox label="Korean" name="Korean" onChange={handleLearning} defaultChecked1={false} defaultChecked2={false} defaultChecked3={false}/>
       </div>
 
       <p className={styles.heading}>Date of Birth:</p>

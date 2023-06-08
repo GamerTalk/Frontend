@@ -5,6 +5,7 @@ import axios from 'axios';
 import styles from '../userinfo/UserInfo.module.css'
 import { UserAuth } from '../context/AuthContext';
 import Checkbox from '../utils/Checkbox';
+import LearningCheckbox from '../utils/Learning-Checkbox';
 
 export default function Profile() {
 
@@ -23,6 +24,8 @@ export default function Profile() {
   const [language, setLanguage] = useState<string[]>([]);
   const [system, setSystem] = useState<string[]>([])
   const [learning, setLearning] = useState<string[]>([]);
+  const [genre, setGenre] = useState<string[]>([]);
+
 
   useEffect(() => {
     async function getData() {
@@ -32,6 +35,8 @@ export default function Profile() {
         console.log(userData)
         setSystem(userData.user_systems)
         setLanguage(userData.languages.fluent)
+        setGenre(userData.user_Genre)
+        setLearning(userData.languages.learning)
       } 
       catch(error) {
        console.log(error)
@@ -41,7 +46,7 @@ export default function Profile() {
   },[uid])
 
   useEffect(() => {
-    console.log('LANGUAGE', language)
+    console.log('LEARNING', learning)
   },[system])
 
   useEffect(() => {
@@ -68,6 +73,35 @@ export default function Profile() {
     } else {
       // If language is not selected, add it to the array
       setLanguage((prevLanguages) => [...prevLanguages, name]);
+    }
+  }
+
+  const handleLearning = (event: { target: { name: string; value: string }; }) => {
+    const { name, value } = event.target;
+    const newObj = { language: name, level: Number(value) };
+  
+    const languageExists = learning.some((learn: any) => learn.language === name);
+    if (languageExists) {
+      // If language is already selected, update its level only
+      setLearning((prevLearning) =>
+        prevLearning.map((learn: any) =>
+          learn.language === name ? { ...learn, level: value } : learn
+        )
+      );
+    } else {
+      // If language is not selected, add it to the array
+      setLearning((prevLearning : any) => [...prevLearning, newObj]);
+    }
+  };
+
+  const handleGenre = (event: { target: { name : string }; }) => {
+    const { name } = event.target;
+    if (genre.includes(name)) {
+      // If genre is already selected, remove it from the array
+      setGenre((prevGenre) => prevGenre.filter((gen) => gen !== name));
+    } else {
+      // If genre is not selected, add it to the array
+      setGenre((prevGenre) => [...prevGenre, name]);
     }
   }
 
@@ -109,12 +143,34 @@ console.log(response.languages.learning); // Output: [{level: 2, language: "Germ
        <Checkbox label="Xbox" name="Xbox" onChange={handleSystem}  defaultChecked={system.includes('Xbox')}/>
     </div>
 
-    
+    <p className={styles.heading}>What language(s) do you want to learn?</p>
+      <p className={styles.subheading}>1: Beginner, 2: Intermediate, 3: Advanced</p>
+      <div>
+        <LearningCheckbox label="English" name="English" onChange={handleLearning} defaultChecked1={false} defaultChecked2={false} defaultChecked3={false}/>
+        <LearningCheckbox label="Spanish" name="Spanish" onChange={handleLearning} defaultChecked={false}/>
+        <LearningCheckbox label="German" name="German" onChange={handleLearning} defaultChecked={false}/>
+        <LearningCheckbox label="French" name="French" onChange={handleLearning} defaultChecked={false}/>
+        <LearningCheckbox label="Japanese" name="Japanese" onChange={handleLearning} defaultChecked={false}/>
+        <LearningCheckbox label="Chinese" name="Chinese" onChange={handleLearning} defaultChecked={false}/>
+        <LearningCheckbox label="Korean" name="Korean" onChange={handleLearning} defaultChecked={false}/>
+      </div>
+
+      <p className={styles.heading}>Genre:</p>
+      <div className={styles.language}> 
+       <Checkbox label="Shooters" name="Shooters" onChange={handleGenre}  defaultChecked={false}/>
+       <Checkbox label="Survial" name="Survival" onChange={handleGenre}  defaultChecked={false}/>
+       <Checkbox label="Battle Royal" name="Battle Royal" onChange={handleGenre} defaultChecked={false}/>
+       <Checkbox label="Strategy" name="Strategy" onChange={handleGenre} defaultChecked={false}/>
+       <Checkbox label="Party" name="Party" onChange={handleGenre} defaultChecked={false}/>
+       <Checkbox label="Fighting" name="Fighting" onChange={handleGenre} defaultChecked={false}/>
+       <Checkbox label="RPG" name="RPG" onChange={handleGenre} defaultChecked={false}/>
+       <Checkbox label="MMO" name="MMO" onChange={handleGenre} defaultChecked={false}/>
+      </div>
 
     <p className={styles.heading}>About Me:</p>
     <textarea rows={5} cols={40} value={profile.about_me}/>
 
-    <p className={styles.heading}>Playing:</p> 
+    <p className={styles.heading}>Currently Playing:</p> 
     <textarea rows={5} cols={40} value={profile.currently_playing}/>
 
 

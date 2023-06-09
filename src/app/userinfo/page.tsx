@@ -70,14 +70,6 @@ const handleFormSubmit = (event: { preventDefault: () => void }) => {
     setRegion(value);
   }
 
-  useEffect(() => {
-    console.log(region)
-  },[region])
-
-  useEffect(() => {
-    console.log(username)
-  },[username])
-
   const handleLanguage = (event: { target: {  name : string, value: string }; }) => {
     const {  name } = event.target;
     if (language.includes(name)) {
@@ -161,7 +153,7 @@ const handleFormSubmit = (event: { preventDefault: () => void }) => {
       <div className={styles.language}> 
         <Checkbox type="radio" label="North America" name="region" value="North America" onChange={handleRegion} defaultChecked={false} />
         <Checkbox type="radio" label="South America" name="region" value="South America" onChange={handleRegion} defaultChecked={false} />
-        <Checkbox type="radio"label="Europe" name="region" value="Eurpoe" onChange={handleRegion} defaultChecked={false} />
+        <Checkbox type="radio"label="Europe" name="region" value="Europe" onChange={handleRegion} defaultChecked={false} />
         <Checkbox type="radio" label="Asia" name="region" value="Asia" onChange={handleRegion} defaultChecked={false} />
         <Checkbox type="radio" label="Oceania" name="region" value="Oceania" onChange={handleRegion} defaultChecked={false} />
         <Checkbox type="radio" label="Africa" name="region" value ="Africa" onChange={handleRegion} defaultChecked={false} />

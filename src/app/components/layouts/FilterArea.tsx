@@ -1,8 +1,7 @@
 import styles from "./Filter.module.css"
-import { User , Search} from "../../global.t";
-import { useEffect, useState } from "react";
-import React, { Dispatch, SetStateAction } from "react";
-import Checkbox from "@/app/utils/Checkbox";
+import { User } from "../../global.t";
+import { useState } from "react";
+import React from "react";
 import axios from 'axios';
 
 interface Param {
@@ -19,12 +18,14 @@ const FilterArea: React.FC<Param> = ({ setUsers, setFilterWords, filterWords , s
   const [selectedSystems, setSystem] = useState<string[]>([]);
   const [selectedGenres, setGenre] = useState<string[]>([]);
   const [selectedLanguage, setLanguage] = useState<string>("");
+  const [selectedRegion, setRegion] = useState<string[]>([]);
 
   const languages: string[] = ["English", "Spanish", "German", "French", "Japanese", "Chinese", "Korean"];
   const genres: string[] = ["shooters", "survial", "Battle Royal", "strategy","party","fighting","RPG","MMO"];
   const systems: string[] = ["PC", "Switch", "PlayStation", "Xbox"];
-
-  const handleClick = (e:React.MouseEvent<HTMLButtonElement>) => { 
+  const regions: string[] = ["North", "America", "South America", "Africa", "Europe", "Asia", "Oceania"];
+  
+  const handleFilterClick = (e:React.MouseEvent<HTMLButtonElement>) => { 
     setClick(!isClick);
     setShowUserCard(false);
     // the words for filter is reset;
@@ -67,14 +68,20 @@ const FilterArea: React.FC<Param> = ({ setUsers, setFilterWords, filterWords , s
     }
   }
 
-  const handleSelection = (name:string,
+  /**
+   * check slectedItems has target or not.
+   * @param target  
+   * @param selectedItems 
+   * @param setItems 
+   */
+
+  const handleSelection = (target:string,
     selectedItems: string[],
     setItems: React.Dispatch<React.SetStateAction<string[]>>): void => {
-
-    if (selectedItems.includes(name)) {
-      setItems((prevItems: string[]) => prevItems.filter((item: string) => item !== name));
+    if (selectedItems.includes(target)) {
+      setItems((prevItems: string[]) => prevItems.filter((item: string) => item !== target));
     } else {
-      setItems((prevItems: string[]) => [...prevItems, name]);
+      setItems((prevItems: string[]) => [...prevItems, target]);
     }
   };
   
@@ -87,6 +94,11 @@ const FilterArea: React.FC<Param> = ({ setUsers, setFilterWords, filterWords , s
     const { name } = event.target;
     handleSelection(name, selectedSystems, setSystem);
   }
+
+  const handleRegion = (event: { target: { name: string } }) => { 
+    const { name } = event.target;
+    handleSelection(name, selectedRegion, setRegion);
+  } 
 
   const handleLanguage = (event: { target: {name:string} }) => { 
     const { name } = event.target;
@@ -133,11 +145,26 @@ const FilterArea: React.FC<Param> = ({ setUsers, setFilterWords, filterWords , s
                 })} 
               </fieldset>
             </div>
+            
+            <div className={styles.filterCategory}>
+              <fieldset>
+                {regions.map((region, key) => { 
+                  const isCheckBoxChecked = selectedRegion.includes(region);
+                  return (
+                    <div className={styles.category} key={key} >
+                     <label>
+                        <input type="checkbox" name={region} checked={isCheckBoxChecked} onChange={handleRegion} />
+                        <span>{region}</span>
+                      </label>
+                    </div>
+                  )
+                })} 
+              </fieldset>
+          </div>
 
           <div className={styles.filterCategory}>
               <fieldset>
               {languages.map((language, key) => { 
-                  const isCheckBoxChecked = selectedGenres.includes(language);
                   return (
                     <div className={styles.category} key={key} >
                        <label>
@@ -157,7 +184,7 @@ const FilterArea: React.FC<Param> = ({ setUsers, setFilterWords, filterWords , s
       ) : (
       <div className={styles.filterArea}>
         <div className={styles.filter}>
-          <button onClick={handleClick}>Filter</button>
+          <button onClick={handleFilterClick}>Filter</button>
         </div>
               {filterWords.map((word,key) => { 
                 return (

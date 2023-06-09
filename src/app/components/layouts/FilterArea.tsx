@@ -67,22 +67,25 @@ const FilterArea: React.FC<Param> = ({ setUsers, setFilterWords, filterWords , s
     }
   }
 
+  const handleSelection = (name:string,
+    selectedItems: string[],
+    setItems: React.Dispatch<React.SetStateAction<string[]>>): void => {
+
+    if (selectedItems.includes(name)) {
+      setItems((prevItems: string[]) => prevItems.filter((item: string) => item !== name));
+    } else {
+      setItems((prevItems: string[]) => [...prevItems, name]);
+    }
+  };
+  
   const handleGenre = (event: { target: { name : string }; }) => {
     const { name } = event.target;
-    if (selectedGenres.includes(name)) {
-      setGenre((prevGenre) => prevGenre.filter((gen) => gen !== name));
-    } else {
-      setGenre((prevGenre) => [...prevGenre, name]);
-    }
+    handleSelection(name, selectedGenres, setGenre);
   }
 
   const handleSystem = (event: { target: { name : string }; }) => {
     const { name } = event.target;
-    if (selectedSystems.includes(name)) {
-      setSystem((prevSystem) => prevSystem.filter((sys) => sys !== name));
-    } else {
-      setSystem((prevSystem) => [...prevSystem, name]);
-    }
+    handleSelection(name, selectedSystems, setSystem);
   }
 
   const handleLanguage = (event: { target: {name:string} }) => { 
@@ -156,7 +159,6 @@ const FilterArea: React.FC<Param> = ({ setUsers, setFilterWords, filterWords , s
         <div className={styles.filter}>
           <button onClick={handleClick}>Filter</button>
         </div>
-        {/* <div className={styles.filterWordsWrapper}> */}
               {filterWords.map((word,key) => { 
                 return (
                   <div className={styles.word} key={key}>
@@ -164,7 +166,6 @@ const FilterArea: React.FC<Param> = ({ setUsers, setFilterWords, filterWords , s
                   </div>
                 )
               })}
-        {/* </div> */}
       </div>
       ) }
     </>

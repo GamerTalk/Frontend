@@ -139,7 +139,7 @@ const handleFormSubmit = (event: { preventDefault: () => void }) => {
   return (
     <>
     <h1>Welcome!</h1>
-    <p>Tell us a about yourself!</p>
+    <p>Tell us about yourself!</p>
 
     <form onSubmit={handleFormSubmit}>
       <div className={styles.usernameBox}> 
@@ -151,9 +151,9 @@ const handleFormSubmit = (event: { preventDefault: () => void }) => {
 
       <p className={styles.heading}>Region:</p>
       <div className={styles.language}> 
-        <Checkbox type="radio" label="North America" name="region" value="North America" onChange={handleRegion} defaultChecked={false} />
-        <Checkbox type="radio" label="South America" name="region" value="South America" onChange={handleRegion} defaultChecked={false} />
-        <Checkbox type="radio"label="Europe" name="region" value="Europe" onChange={handleRegion} defaultChecked={false} />
+        <Checkbox type="radio" label="North America" name="region" value="North_America" onChange={handleRegion} defaultChecked={false} />
+        <Checkbox type="radio" label="South America" name="region" value="South_America" onChange={handleRegion} defaultChecked={false} />
+        <Checkbox type="radio" label="Europe" name="region" value="Europe" onChange={handleRegion} defaultChecked={false} />
         <Checkbox type="radio" label="Asia" name="region" value="Asia" onChange={handleRegion} defaultChecked={false} />
         <Checkbox type="radio" label="Oceania" name="region" value="Oceania" onChange={handleRegion} defaultChecked={false} />
         <Checkbox type="radio" label="Africa" name="region" value ="Africa" onChange={handleRegion} defaultChecked={false} />
@@ -198,7 +198,7 @@ const handleFormSubmit = (event: { preventDefault: () => void }) => {
       <p className={styles.heading}>Genre:</p>
       <div className={styles.language}> 
        <Checkbox type="checkbox" label="Shooters" name="Shooters" value="" onChange={handleGenre}  defaultChecked={false}/>
-       <Checkbox type="checkbox" label="Survial" name="Survival" value="" onChange={handleGenre}  defaultChecked={false}/>
+       <Checkbox type="checkbox" label="Survival" name="Survival" value="" onChange={handleGenre}  defaultChecked={false}/>
        <Checkbox type="checkbox" label="Battle Royal" name="Battle Royal" value="" onChange={handleGenre} defaultChecked={false}/>
        <Checkbox type="checkbox" label="Strategy" name="Strategy" value="" onChange={handleGenre} defaultChecked={false}/>
        <Checkbox type="checkbox" label="Party" name="Party" value="" onChange={handleGenre} defaultChecked={false}/>

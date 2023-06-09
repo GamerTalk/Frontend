@@ -73,7 +73,6 @@ export default function Profile() {
     currently_playing: currPlay
   }
 
-  console.log('EDITED', payload);
 
   axios.patch('http://127.0.0.1:8000/api/edit-user/', payload)
   .then(response => {
@@ -83,7 +82,6 @@ export default function Profile() {
     console.log(error);
   });
 }
-
 
   const handleSystem = (event: { target: { name : string }; }) => {
     const { name } = event.target;
@@ -162,12 +160,12 @@ export default function Profile() {
 
     <p className={styles.heading}>Region:</p>
       <div className={styles.language}> 
-        <Checkbox type="radio" label="North America" name="region" value="North America" onChange={handleRegion} defaultChecked={region === 'North America'} />
-        <Checkbox type="radio" label="South America" name="region" value="South America" onChange={handleRegion} defaultChecked={region === 'Southh America'} />
-        <Checkbox type="radio" label="Europe" name="region" value="Europe" onChange={handleRegion} defaultChecked={region === 'Europe'} />
-        <Checkbox type="radio" label="Asia" name="region" value="Asia" onChange={handleRegion} defaultChecked={region === 'Asia'} />
-        <Checkbox type="radio" label="Oceania" name="region" value="Oceania" onChange={handleRegion} defaultChecked={region === 'Oceania'} />
-        <Checkbox type="radio" label="Africa" name="region" value ="Africa" onChange={handleRegion} defaultChecked={region === 'Africa'} />
+        <Checkbox type="radio" label="North America" name="region" value="North_America" onChange={handleRegion} defaultChecked={region == 'North_America'} />
+        <Checkbox type="radio" label="South America" name="region" value="South_America" onChange={handleRegion} defaultChecked={region == 'South_America'} />
+        <Checkbox type="radio" label="Europe" name="region" value="Europe" onChange={handleRegion} defaultChecked={region == 'Europe'} />
+        <Checkbox type="radio" label="Asia" name="region" value="Asia" onChange={handleRegion} defaultChecked={region == 'Asia'} />
+        <Checkbox type="radio" label="Oceania" name="region" value="Oceania" onChange={handleRegion} defaultChecked={region == 'Oceania'} />
+        <Checkbox type="radio" label="Africa" name="region" value ="Africa" onChange={handleRegion} defaultChecked={region == 'Africa'} />
       </div>
 
     
@@ -225,8 +223,6 @@ export default function Profile() {
     <textarea rows={5} cols={40} value={currPlay} onChange={handleCurrPlay} />
 
     <div><button className={styles.editButton} type="submit">Submit</button></div>
-
-   
 
 
     </>

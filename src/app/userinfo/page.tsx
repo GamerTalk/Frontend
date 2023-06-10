@@ -11,6 +11,7 @@ import axios from "axios";
 export default function UserInfo() {
   const {uid} = UserAuth()
   const [username, setUsername] = useState<string>("");
+  const [region, setRegion] = useState<string>("")
   const [language, setLanguage] = useState<string[]>([]);
   const [learning, setLearning] = useState<string[]>([]);
   const [birthday, setBirthday] = useState("");
@@ -38,6 +39,7 @@ const handleFormSubmit = (event: { preventDefault: () => void }) => {
   const payload = {
     uid,
     username,
+    region,
     about_me: aboutMe,
     fluent: language,
     learning,
@@ -61,6 +63,11 @@ const handleFormSubmit = (event: { preventDefault: () => void }) => {
   const handleUsername = (event: ChangeEvent<HTMLInputElement>) => {
     const { value } = event.target;
     setUsername(value);
+  }
+
+  const handleRegion= (event: ChangeEvent<HTMLInputElement>) => {
+    const { value } = event.target;
+    setRegion(value);
   }
 
   const handleLanguage = (event: { target: {  name : string, value: string }; }) => {
@@ -132,67 +139,78 @@ const handleFormSubmit = (event: { preventDefault: () => void }) => {
   return (
     <>
     <h1>Welcome!</h1>
-    <p>Tell us a about yourself!</p>
+    <p>Tell us about yourself!</p>
 
     <form onSubmit={handleFormSubmit}>
       <div className={styles.usernameBox}> 
-        <label htmlFor="Username" className={styles.headings}> Username: </label>
+        <label htmlFor="Username" className={styles.heading}> Username: </label>
         <div>
           <input type="text" id="UserName" name="Username" onChange={handleUsername}></input>
         </div>
       </div>
 
-      <p className={styles.headings}>What language(s) are you fluent in?</p>
+      <p className={styles.heading}>Region:</p>
+      <div className={styles.language}> 
+        <Checkbox type="radio" label="North America" name="region" value="North_America" onChange={handleRegion} defaultChecked={false} />
+        <Checkbox type="radio" label="South America" name="region" value="South_America" onChange={handleRegion} defaultChecked={false} />
+        <Checkbox type="radio" label="Europe" name="region" value="Europe" onChange={handleRegion} defaultChecked={false} />
+        <Checkbox type="radio" label="Asia" name="region" value="Asia" onChange={handleRegion} defaultChecked={false} />
+        <Checkbox type="radio" label="Oceania" name="region" value="Oceania" onChange={handleRegion} defaultChecked={false} />
+        <Checkbox type="radio" label="Africa" name="region" value ="Africa" onChange={handleRegion} defaultChecked={false} />
+      </div>
+
+
+      <p className={styles.heading}>What language(s) are you fluent in?</p>
       <p className={styles.subheading}>Check all that apply</p>
       <div className={styles.language}> 
-       <Checkbox label="English" name="English" onChange={handleLanguage}/>
-       <Checkbox label="Spanish" name="Spanish" onChange={handleLanguage} />
-       <Checkbox label="German" name="German" onChange={handleLanguage} />
-       <Checkbox label="French" name="French" onChange={handleLanguage}/>
-       <Checkbox label="Japanese" name="Japanese" onChange={handleLanguage}/>
-       <Checkbox label="Chinese"name="Chinese" onChange={handleLanguage}/>
-       <Checkbox label="Korean" name="Korean" onChange={handleLanguage}/>
+       <Checkbox type="checkbox" label="English" name="English" value="" onChange={handleLanguage} defaultChecked={false} />
+       <Checkbox type="checkbox" label="Spanish" name="Spanish" value="" onChange={handleLanguage}  defaultChecked={false}/>
+       <Checkbox type="checkbox" label="German" name="German" value="" onChange={handleLanguage} defaultChecked={false} />
+       <Checkbox type="checkbox" label="French" name="French" value="" onChange={handleLanguage} defaultChecked={false}/>
+       <Checkbox type="checkbox" label="Japanese" name="Japanese" value="" onChange={handleLanguage} defaultChecked={false}/>
+       <Checkbox type="checkbox" label="Chinese"name="Chinese" value="" onChange={handleLanguage} defaultChecked={false}/>
+       <Checkbox type="checkbox" label="Korean" name="Korean" value="" onChange={handleLanguage} defaultChecked={false}/>
       </div>
 
-      <p className={styles.headings}>What language(s) do you want to learn?</p>
+      <p className={styles.heading}>What language(s) do you want to learn?</p>
       <p className={styles.subheading}>1: Beginner, 2: Intermediate, 3: Advanced</p>
       <div>
-        <LearningCheckbox label="English" name="English" onChange={handleLearning}/>
-        <LearningCheckbox label="Spanish" name="Spanish" onChange={handleLearning}/>
-        <LearningCheckbox label="German" name="German" onChange={handleLearning} />
-        <LearningCheckbox label="French" name="French" onChange={handleLearning} />
-        <LearningCheckbox label="Japanese" name="Japanese" onChange={handleLearning} />
-        <LearningCheckbox label="Chinese" name="Chinese" onChange={handleLearning}/>
-        <LearningCheckbox label="Korean" name="Korean" onChange={handleLearning}/>
+        <LearningCheckbox label="English" name="English" onChange={handleLearning} defaultChecked1={false} defaultChecked2={false} defaultChecked3={false}/>
+        <LearningCheckbox label="Spanish" name="Spanish" onChange={handleLearning} defaultChecked1={false} defaultChecked2={false} defaultChecked3={false}/>
+        <LearningCheckbox label="German" name="German" onChange={handleLearning} defaultChecked1={false} defaultChecked2={false} defaultChecked3={false}/>
+        <LearningCheckbox label="French" name="French" onChange={handleLearning} defaultChecked1={false} defaultChecked2={false} defaultChecked3={false}/>
+        <LearningCheckbox label="Japanese" name="Japanese" onChange={handleLearning} defaultChecked1={false} defaultChecked2={false} defaultChecked3={false}/>
+        <LearningCheckbox label="Chinese" name="Chinese" onChange={handleLearning} defaultChecked1={false} defaultChecked2={false} defaultChecked3={false}/>
+        <LearningCheckbox label="Korean" name="Korean" onChange={handleLearning} defaultChecked1={false} defaultChecked2={false} defaultChecked3={false}/>
       </div>
 
-      <p className={styles.headings}>Date of Birth:</p>
+      <p className={styles.heading}>Date of Birth:</p>
       <input type="date" onChange={handleBirthday}></input>
 
-      <p className={styles.headings}>Systems</p>
+      <p className={styles.heading}>System(s):</p>
       <div className={styles.language}> 
-       <Checkbox label="PC" name="PC"  onChange={handleSystem}/>
-       <Checkbox label="Switch" name="Switch" onChange={handleSystem}/>
-       <Checkbox label="PlayStation" name="PlayStation" onChange={handleSystem}/>
-       <Checkbox label="Xbox" name="Xbox" onChange={handleSystem}/>
+       <Checkbox type="checkbox" label="PC" name="PC" value="" onChange={handleSystem}  defaultChecked={false}/>
+       <Checkbox type="checkbox" label="Switch" name="Switch" value="" onChange={handleSystem} defaultChecked={false}/>
+       <Checkbox type="checkbox" label="PlayStation" name="PlayStation"value=""  onChange={handleSystem} defaultChecked={false}/>
+       <Checkbox type="checkbox" label="Xbox" name="Xbox" value="" onChange={handleSystem} defaultChecked={false}/>
       </div>
 
-      <p className={styles.headings}>Genre:</p>
+      <p className={styles.heading}>Genre:</p>
       <div className={styles.language}> 
-       <Checkbox label="Shooters" name="Shooters" onChange={handleGenre}/>
-       <Checkbox label="Survial" name="Survival" onChange={handleGenre}/>
-       <Checkbox label="Battle Royal" name="Battle Royal" onChange={handleGenre}/>
-       <Checkbox label="Strategy" name="Strategy" onChange={handleGenre}/>
-       <Checkbox label="Party" name="Party" onChange={handleGenre}/>
-       <Checkbox label="Fighting" name="Fighting" onChange={handleGenre}/>
-       <Checkbox label="RPG" name="RPG" onChange={handleGenre}/>
-       <Checkbox label="MMO" name="MMO" onChange={handleGenre}/>
+       <Checkbox type="checkbox" label="Shooters" name="Shooters" value="" onChange={handleGenre}  defaultChecked={false}/>
+       <Checkbox type="checkbox" label="Survival" name="Survival" value="" onChange={handleGenre}  defaultChecked={false}/>
+       <Checkbox type="checkbox" label="Battle Royal" name="Battle Royal" value="" onChange={handleGenre} defaultChecked={false}/>
+       <Checkbox type="checkbox" label="Strategy" name="Strategy" value="" onChange={handleGenre} defaultChecked={false}/>
+       <Checkbox type="checkbox" label="Party" name="Party" value="" onChange={handleGenre} defaultChecked={false}/>
+       <Checkbox type="checkbox" label="Fighting" name="Fighting" value="" onChange={handleGenre} defaultChecked={false}/>
+       <Checkbox type="checkbox" label="RPG" name="RPG" value="" onChange={handleGenre} defaultChecked={false}/>
+       <Checkbox type="checkbox" label="MMO" name="MMO" value="" onChange={handleGenre} defaultChecked={false}/>
       </div>
 
-      <p className={styles.headings}>About Me:</p>
+      <p className={styles.heading}>About Me:</p>
       <textarea rows={5} cols={40} onChange={handleAboutMe}/>
 
-      <p className={styles.headings}>Currently Playing:</p>
+      <p className={styles.heading}>Currently Playing:</p>
 
       <textarea rows={5} cols={40} onChange={handleCurrPlay}/>
 

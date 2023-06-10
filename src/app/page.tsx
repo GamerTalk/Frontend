@@ -1,28 +1,41 @@
 'use client'
 
-import styles from "./page.module.css";
 import axios from 'axios'
 import React from 'react'
 import { useState, useEffect } from "react";
+import UserCard from "./components/layouts/UserCard";
+import FilterArea from "./components/layouts/FilterArea";
+import {User} from "./global.t"
+
 
 export default function Home() {
 
-  const [name, setName] = useState([]);
+  const [users, setUsers] = useState<User[]>([]);
+  const [filterWords, setFilterWords] = useState<string[]>([]);
+  const [isShowUserCard, setShowUserCard] = useState(true);
+
+  const fetchAllusers = async () => { 
+    try { 
+      const response = await axios.get("http://127.0.0.1:8000/api/filter-users/");
+      const allUsers: User[] = response.data;
+      setUsers(allUsers);
+    } catch (error) {
+      console.log(error);
+    }
+  }
 
   useEffect(() => {
-    async function getNames() {
-      const names : any = await axios.get("http://127.0.0.1:8000/api/test").then((result) => result.data)
-      setName(names)
+    if (filterWords.length === 0 && users.length === 0) {
+      fetchAllusers();
     }
-    getNames()
-  },[])
+  },[filterWords])
 
-
-
-return ( 
-  <>
-    <div> PLACEHOLDER  </div>
-    <h2>{name[0]}</h2>
+  return ( 
+    <>
+      <div>
+        <FilterArea setUsers={setUsers} setFilterWords={setFilterWords} filterWords={filterWords} setShowUserCard={setShowUserCard} />
+        {isShowUserCard && <UserCard users={users} />}
+      </div>
   </>
 )
 }

@@ -11,10 +11,10 @@ interface usersProps {
 
 const UserCard = ({ users }: usersProps) => {   
     const systems:Systems = {
-    PC: faSteam,
-    Xbox: faXbox,
-    PlayStation: faPlaystation,
-    Switch: faGamepad
+    pc: faSteam,
+    xbox: faXbox,
+    playstation: faPlaystation,
+    switch: faGamepad
   }
 
   return (
@@ -22,7 +22,7 @@ const UserCard = ({ users }: usersProps) => {
       {
       users.map((user, index) => { 
         return (
-        <div className={styles.userCard} onClick={() => console.log(user.id)} key={index}>
+        <div className={styles.userCard} onClick={() => console.log(user.uid)} key={index}>
         <div className={styles.userInfo}>
           <div className={styles.userImg}>
             <img src="https://cdn2.thecatapi.com/images/MjA1OTMwMA.jpg" id={styles.image} />
@@ -55,8 +55,8 @@ const UserCard = ({ users }: usersProps) => {
                   <div className={styles.game} key={index}>
                     <FontAwesomeIcon
                     icon={systems[system]}
-                  className={styles.game} 
-                />
+                        className={styles.game} 
+                      />
               </div>
                  )
               })}

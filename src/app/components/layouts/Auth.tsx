@@ -69,13 +69,16 @@ const Auth = ({isSignIn}: Props) => {
         
         {isSignIn ? (
           <>
-           <SubmitButton word="Sign In"/>
+            <SubmitButton word="Sign In" />
+              <Link href="/auth/signup">
+               <p id={styles.toAuth}>Would you like to sigh-up?</p>
+              </Link>
           </>
           ) : (
             <>
               <SubmitButton word="Sign Up"/>
               <Link href="/auth/signin">
-               <p id={styles.toSignIn}>Already a user? Sign-in</p>
+               <p id={styles.toAuth}>Already a user? Sign-in</p>
               </Link>
            </>      
         )

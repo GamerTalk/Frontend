@@ -22,7 +22,7 @@ const UserCard = ({ users }: usersProps) => {
       {
       users.map((user, index) => { 
         return (
-        <div className={styles.userCard} onClick={() => console.log(user.id)} key={index}>
+        <div className={styles.userCard} onClick={() => console.log(user.uid)} key={index}>
         <div className={styles.userInfo}>
           <div className={styles.userImg}>
             <img src="https://cdn2.thecatapi.com/images/MjA1OTMwMA.jpg" id={styles.image} />

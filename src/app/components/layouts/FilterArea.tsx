@@ -2,7 +2,7 @@ import styles from "./Filter.module.css"
 import { User , Search} from "../../global.t";
 import { useEffect, useState } from "react";
 import React, { Dispatch, SetStateAction } from "react";
-import Checkbox from "@/app/utils/Checkbox";
+import Checkbox from "@/app/components/elements/Checkbox";
 import axios from 'axios';
 
 interface Param {

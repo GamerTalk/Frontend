@@ -11,10 +11,10 @@ interface usersProps {
 
 const UserCard = ({ users }: usersProps) => {   
     const systems:Systems = {
-    PC: faSteam,
-    Xbox: faXbox,
-    PlayStation: faPlaystation,
-    Switch: faGamepad
+    pc: faSteam,
+    xbox: faXbox,
+    playstation: faPlaystation,
+    switch: faGamepad
   }
 
   return (
@@ -55,8 +55,8 @@ const UserCard = ({ users }: usersProps) => {
                   <div className={styles.game} key={index}>
                     <FontAwesomeIcon
                     icon={systems[system]}
-                  className={styles.game} 
-                />
+                        className={styles.game} 
+                      />
               </div>
                  )
               })}

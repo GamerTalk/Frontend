@@ -21,9 +21,9 @@ const FilterArea: React.FC<Param> = ({ setUsers, setFilterWords, filterWords , s
   const [selectedRegion, setRegion] = useState<string[]>([]);
 
   const languages: string[] = ["English", "Spanish", "German", "French", "Japanese", "Chinese", "Korean"];
-  const genres: string[] = ["shooters", "survial", "Battle Royal", "strategy","party","fighting","RPG","MMO"];
+  const genres: string[] = ["Shooters", "Survial", "Battle Royal", "Strategy","Party","Fighting","RPG","MMO"];
   const systems: string[] = ["PC", "Switch", "PlayStation", "Xbox"];
-  const regions: string[] = ["North", "America", "South America", "Africa", "Europe", "Asia", "Oceania"];
+  const regions: string[] = ["North America", "South America", "Africa", "Europe", "Asia", "Oceania"];
   
   const handleFilterClick = (e:React.MouseEvent<HTMLButtonElement>) => { 
     setClick(!isClick);
@@ -42,14 +42,16 @@ const FilterArea: React.FC<Param> = ({ setUsers, setFilterWords, filterWords , s
       headers: {
         systems:JSON.stringify(selectedSystems),
         genre: JSON.stringify(selectedGenres),
-        language: selectedLanguage.toLocaleLowerCase()
+        language: selectedLanguage.toLowerCase(),
+        regions: JSON.stringify(selectedRegion)
       }
     }
 
     console.log({
       systems: JSON.stringify(selectedSystems),
       genre: JSON.stringify(selectedGenres),
-      language: selectedLanguage.toLocaleLowerCase()
+      language: selectedLanguage.toLowerCase(),
+      regions: JSON.stringify(selectedRegion)
     });
 
      try { 
@@ -78,10 +80,11 @@ const FilterArea: React.FC<Param> = ({ setUsers, setFilterWords, filterWords , s
   const handleSelection = (target:string,
     selectedItems: string[],
     setItems: React.Dispatch<React.SetStateAction<string[]>>): void => {
-    if (selectedItems.includes(target)) {
-      setItems((prevItems: string[]) => prevItems.filter((item: string) => item !== target));
+    const targetLowerCase = target.toLowerCase();
+    if (selectedItems.includes(targetLowerCase)) {
+      setItems((prevItems: string[]) => prevItems.filter((item: string) => item !== targetLowerCase));
     } else {
-      setItems((prevItems: string[]) => [...prevItems, target]);
+      setItems((prevItems: string[]) => [...prevItems, targetLowerCase]);
     }
   };
   
@@ -105,7 +108,7 @@ const FilterArea: React.FC<Param> = ({ setUsers, setFilterWords, filterWords , s
     if (selectedLanguage === name) {
       setLanguage("");
     } else {
-      setLanguage(name);
+      setLanguage(name.toLocaleLowerCase);
     }
   }
 
@@ -117,7 +120,7 @@ const FilterArea: React.FC<Param> = ({ setUsers, setFilterWords, filterWords , s
             <div className={styles.filterCategory}>
               <fieldset>
                 {systems.map((system, key) => { 
-                  const isCheckBoxChecked = selectedSystems.includes(system);
+                  const isCheckBoxChecked = selectedSystems.includes(system.toLowerCase());
                   return (
                     <div className={styles.category}  key={key}>
                       <label>
@@ -133,7 +136,7 @@ const FilterArea: React.FC<Param> = ({ setUsers, setFilterWords, filterWords , s
         <div className={styles.filterCategory}>
               <fieldset>
                 {genres.map((genre, key) => { 
-                  const isCheckBoxChecked = selectedGenres.includes(genre);
+                  const isCheckBoxChecked = selectedGenres.includes(genre.toLowerCase());
                   return (
                     <div className={styles.category} key={key} >
                      <label>
@@ -149,7 +152,7 @@ const FilterArea: React.FC<Param> = ({ setUsers, setFilterWords, filterWords , s
             <div className={styles.filterCategory}>
               <fieldset>
                 {regions.map((region, key) => { 
-                  const isCheckBoxChecked = selectedRegion.includes(region);
+                  const isCheckBoxChecked = selectedRegion.includes(region.toLowerCase());
                   return (
                     <div className={styles.category} key={key} >
                      <label>
@@ -168,7 +171,7 @@ const FilterArea: React.FC<Param> = ({ setUsers, setFilterWords, filterWords , s
                   return (
                     <div className={styles.category} key={key} >
                        <label>
-                        <input type="checkbox" name={language} checked={selectedLanguage === language} onChange={handleLanguage} />
+                        <input type="checkbox" name={language} checked={selectedLanguage === language.toLowerCase()} onChange={handleLanguage} />
                         <span>{language}</span>
                       </label>
                     </div>

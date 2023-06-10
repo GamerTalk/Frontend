@@ -18,6 +18,7 @@ loginUser: (email: string, password: string) => Promise<any>;
 logOut: () => Promise<any>;
 user: User;
 userEmail: string | null
+uid: string | null
 }
 
 const UserContext = createContext<AuthContextProps | null>(null);
@@ -25,6 +26,7 @@ const UserContext = createContext<AuthContextProps | null>(null);
 export const AuthContextProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
 const [user, setUser] = useState<User>({});
 const [userEmail, setUserEmail] = useState<null | string>(null);
+const [uid, setUid] = useState<null | string>(null)
 
 const createUser = async (email: string, password: string) => {
 const userCred = await createUserWithEmailAndPassword(auth, email, password);
@@ -47,12 +49,13 @@ const authenticatedUser = onAuthStateChanged(auth, (currentUser) => {
 console.log('CURRENT-USER', currentUser);
 setUser(currentUser || {});
 setUserEmail(currentUser?.email || null);
+setUid(currentUser?.uid || null)
 });
 return authenticatedUser;
 }, []);
 
 return (
-<UserContext.Provider value={{ createUser, loginUser, logOut, user, userEmail }}>
+<UserContext.Provider value={{ createUser, loginUser, logOut, user, userEmail, uid }}>
 {children}
 </UserContext.Provider>
 );

@@ -47,16 +47,9 @@ const FilterArea: React.FC<Param> = ({ setUsers, setFilterWords, filterWords , s
       }
     }
 
-    console.log({
-      systems: JSON.stringify(selectedSystems),
-      genre: JSON.stringify(selectedGenres),
-      language: selectedLanguage.toLowerCase(),
-      regions: JSON.stringify(selectedRegion)
-    });
-
      try { 
       const response = await axios.get(url, config);
-      const allWords: string[] = [...selectedSystems, ...selectedGenres];
+      const allWords: string[] = [...selectedSystems, ...selectedGenres, ...selectedRegion];
       allWords.push(selectedLanguage);
       setFilterWords(allWords);
       
@@ -108,7 +101,7 @@ const FilterArea: React.FC<Param> = ({ setUsers, setFilterWords, filterWords , s
     if (selectedLanguage === name) {
       setLanguage("");
     } else {
-      setLanguage(name.toLocaleLowerCase);
+      setLanguage(name);
     }
   }
 
@@ -171,7 +164,7 @@ const FilterArea: React.FC<Param> = ({ setUsers, setFilterWords, filterWords , s
                   return (
                     <div className={styles.category} key={key} >
                        <label>
-                        <input type="checkbox" name={language} checked={selectedLanguage === language.toLowerCase()} onChange={handleLanguage} />
+                        <input type="checkbox" name={language} checked={selectedLanguage === language} onChange={handleLanguage} />
                         <span>{language}</span>
                       </label>
                     </div>

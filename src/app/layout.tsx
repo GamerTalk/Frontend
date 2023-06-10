@@ -1,9 +1,14 @@
+"use client"
+
 import './globals.css'
 import { Inter, Offside } from 'next/font/google'
 import Header from './components/layouts/Header'
+import Landing from './landing/page'
+import { useRouter } from "next/router";
 import { AuthContextProvider } from './context/AuthContext'
 import "@fortawesome/fontawesome-svg-core/styles.css";
 import { config } from "@fortawesome/fontawesome-svg-core";
+import { usePathname } from 'next/navigation';
 config.autoAddCss = false;
 
 const inter = Inter({ subsets: ['latin'] })
@@ -14,19 +19,24 @@ export const metadata = {
   description: 'Learn languages with games!',
 }
 
+
+
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode
+ 
 }) {
+  const pathname = usePathname()
   return (
     <html lang="en">
-     
       <body className={offside.className}>
 
+      
+      
       <AuthContextProvider>
-        
-      <Header />
+      
+      {pathname === "/landing" ? "" :<Header />}
       
       {children}
       </AuthContextProvider>
@@ -35,3 +45,4 @@ export default function RootLayout({
     </html>
   )
 }
+

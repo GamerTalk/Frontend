@@ -1,7 +1,12 @@
+"use client"
+
 import React from 'react';
 import styles from './landing.module.css';
-
+import Auth from "../components/layouts/Auth"
 import { UserAuth } from '../context/AuthContext';
+import Link from 'next/link';
+
+
 
 export default function Landing() {
   const renderCircleElements = () => {
@@ -32,10 +37,8 @@ export default function Landing() {
           <h1 className={styles.title}>GamerTalk</h1>
           <h2 className={styles.subtitle}>Learn a Language Through Gaming</h2>
         </div>
-        <h2>Sign In</h2>
-        <form>
-          <input></input>
-        </form>
+        <Link href="/auth/signin"> <button className={styles.signin}> Sign In </button> </Link>
+        <Link href="/auth/signup"> <p className={styles.singup}>Not a member? Sign Up!</p></Link>
       </div>
     </div>
   );

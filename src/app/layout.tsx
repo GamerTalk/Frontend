@@ -38,6 +38,7 @@ export default function RootLayout({
       
       {pathname === "/landing" ? "" :<Header />}
       
+      
       {children}
       </AuthContextProvider>
       

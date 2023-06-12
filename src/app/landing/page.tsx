@@ -7,7 +7,6 @@ import { UserAuth } from '../context/AuthContext';
 import Link from 'next/link';
 
 
-
 export default function Landing() {
   const renderCircleElements = () => {
     const circleElements = [];
@@ -34,7 +33,7 @@ export default function Landing() {
       </div>
       <div className={styles.context}>
         <div className={styles.box}>
-          <h1 className={styles.title}>GamerTalk</h1>
+        <h1 className={styles.title}>GamerTalk</h1>
           <h2 className={styles.subtitle}>Learn a Language Through Gaming</h2>
         </div>
         <Link href="/auth/signin"> <button className={styles.signin}> Sign In </button> </Link>

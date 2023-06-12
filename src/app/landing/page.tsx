@@ -37,7 +37,7 @@ export default function Landing() {
           <h2 className={styles.subtitle}>Learn a Language Through Gaming</h2>
         </div>
         <Link href="/auth/signin"> <button className={styles.signin}> Sign In </button> </Link>
-        <Link href="/auth/signup"> <p className={styles.singup}>Not a member? Sign Up!</p></Link>
+        <Link href="/auth/signup"> <p className={styles.signup}>Not a member? Sign Up!</p></Link>
       </div>
     </div>
   );

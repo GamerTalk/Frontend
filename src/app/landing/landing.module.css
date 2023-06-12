@@ -16,15 +16,17 @@
 .signin {
   width: 120px;
   height: 50px;
-  background-color: black;
+  background-color: rgb(165, 55, 153);
   color: white;
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-  font-size: 15px;
+  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-size: 20px;
+  border: 3px solid white;
   border-radius: 25px;
 }
 
-.singup{
-  color: blue;
+.signup{
+  color: white;
+  text-decoration: underline;
 }
 
 
@@ -40,7 +42,7 @@
 }
 
 .area {
-  background: #b63ef7;
+  background: #363636;
   background: -webkit-linear-gradient(to left, #8f94fb, #4e54c8);
   width: 100%;
   height: 100vh;

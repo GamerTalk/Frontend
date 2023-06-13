@@ -37,28 +37,51 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 
 ```
 Frontend
+├─ LICENSE
+├─ next.config.js
 ├─ README.md
 ├─ src
 │  └─ app
+│     ├─ auth
+│     │  ├─ signin
+│     │  │  └─ page.tsx
+│     │  └─ signup
+│     │     └─ page.tsx
 │     ├─ components
+│     │  ├─ elements
+│     │  │  ├─ Checkbox.tsx
+│     │  │  ├─ Learning-Checkbox.tsx
+│     │  │  ├─ SubmitBtn.module.css
+│     │  │  └─ SubmitBtn.tsx
 │     │  └─ layouts
+│     │     ├─ Auth.module.css
+│     │     ├─ Auth.tsx
+│     │     ├─ Filter.module.css
+│     │     ├─ FilterArea.tsx
 │     │     ├─ Header.module.css
-│     │     └─ Header.tsx
+│     │     ├─ Header.tsx
+│     │     ├─ UserCard.module.css
+│     │     └─ UserCard.tsx
 │     ├─ context
-│     │  └─ AuthContext.jsx
+│     │  └─ AuthContext.tsx
+│     ├─ edit-profile
+│     │  └─ page.tsx
+│     ├─ entry-form
+│     │  ├─ page.tsx
+│     │  └─ UserInfo.module.css
 │     ├─ favicon.ico
 │     ├─ firebase
 │     │  └─ firebase.ts
+│     ├─ global.t.tsx
 │     ├─ globals.css
+│     ├─ landing
+│     │  └─ page.tsx
+│     ├─ landingLayout.tsx
 │     ├─ layout.tsx
 │     ├─ page.module.css
 │     ├─ page.tsx
-│     └─ test
-│        ├─ page.tsx
-│        ├─ signin
-│        │  └─ page.tsx
-│        └─ signup
-│           └─ page.tsx
+│     └─ utils
+│        └─ langCheckFunc.tsx
 └─ tsconfig.json
 
 ```

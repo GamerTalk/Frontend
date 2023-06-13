@@ -73,11 +73,11 @@ return authenticatedUser;
 }, []);
 
 
-useEffect(() => {
+  useEffect(() => {
   retrieve()
-},[user])
-
-return (
+}, [user])
+  
+  return (
 <UserContext.Provider value={{ createUser, loginUser, logOut, user, userEmail, uid, userInfo }}>
 {children}
 </UserContext.Provider>

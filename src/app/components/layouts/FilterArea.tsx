@@ -1,8 +1,7 @@
 import styles from "./Filter.module.css"
-import { User , Search} from "../../global.t";
-import { useEffect, useState } from "react";
-import React, { Dispatch, SetStateAction } from "react";
-import Checkbox from "@/app/utils/Checkbox";
+import { User } from "../../global.t";
+import { useState } from "react";
+import React from "react";
 import axios from 'axios';
 
 interface Param {
@@ -19,12 +18,14 @@ const FilterArea: React.FC<Param> = ({ setUsers, setFilterWords, filterWords , s
   const [selectedSystems, setSystem] = useState<string[]>([]);
   const [selectedGenres, setGenre] = useState<string[]>([]);
   const [selectedLanguage, setLanguage] = useState<string>("");
+  const [selectedRegion, setRegion] = useState<string[]>([]);
 
   const languages: string[] = ["English", "Spanish", "German", "French", "Japanese", "Chinese", "Korean"];
-  const genres: string[] = ["shooters", "survial", "Battle Royal", "strategy","party","fighting","RPG","MMO"];
+  const genres: string[] = ["Shooters", "Survial", "Battle Royal", "Strategy","Party","Fighting","RPG","MMO"];
   const systems: string[] = ["PC", "Switch", "PlayStation", "Xbox"];
-
-  const handleClick = (e:React.MouseEvent<HTMLButtonElement>) => { 
+  const regions: string[] = ["North America", "South America", "Africa", "Europe", "Asia", "Oceania"];
+  
+  const handleFilterClick = (e:React.MouseEvent<HTMLButtonElement>) => { 
     setClick(!isClick);
     setShowUserCard(false);
     // the words for filter is reset;
@@ -41,19 +42,14 @@ const FilterArea: React.FC<Param> = ({ setUsers, setFilterWords, filterWords , s
       headers: {
         systems:JSON.stringify(selectedSystems),
         genre: JSON.stringify(selectedGenres),
-        language: selectedLanguage.toLocaleLowerCase()
+        language: selectedLanguage.toLowerCase(),
+        regions: JSON.stringify(selectedRegion)
       }
     }
 
-    console.log({
-      systems: JSON.stringify(selectedSystems),
-      genre: JSON.stringify(selectedGenres),
-      language: selectedLanguage.toLocaleLowerCase()
-    });
-
      try { 
       const response = await axios.get(url, config);
-      const allWords: string[] = [...selectedSystems, ...selectedGenres];
+      const allWords: string[] = [...selectedSystems, ...selectedGenres, ...selectedRegion];
       allWords.push(selectedLanguage);
       setFilterWords(allWords);
       
@@ -67,23 +63,38 @@ const FilterArea: React.FC<Param> = ({ setUsers, setFilterWords, filterWords , s
     }
   }
 
+  /**
+   * check slectedItems has target or not.
+   * @param target  
+   * @param selectedItems 
+   * @param setItems 
+   */
+
+  const handleSelection = (target:string,
+    selectedItems: string[],
+    setItems: React.Dispatch<React.SetStateAction<string[]>>): void => {
+    const targetLowerCase = target.toLowerCase();
+    if (selectedItems.includes(targetLowerCase)) {
+      setItems((prevItems: string[]) => prevItems.filter((item: string) => item !== targetLowerCase));
+    } else {
+      setItems((prevItems: string[]) => [...prevItems, targetLowerCase]);
+    }
+  };
+  
   const handleGenre = (event: { target: { name : string }; }) => {
     const { name } = event.target;
-    if (selectedGenres.includes(name)) {
-      setGenre((prevGenre) => prevGenre.filter((gen) => gen !== name));
-    } else {
-      setGenre((prevGenre) => [...prevGenre, name]);
-    }
+    handleSelection(name, selectedGenres, setGenre);
   }
 
   const handleSystem = (event: { target: { name : string }; }) => {
     const { name } = event.target;
-    if (selectedSystems.includes(name)) {
-      setSystem((prevSystem) => prevSystem.filter((sys) => sys !== name));
-    } else {
-      setSystem((prevSystem) => [...prevSystem, name]);
-    }
+    handleSelection(name, selectedSystems, setSystem);
   }
+
+  const handleRegion = (event: { target: { name: string } }) => { 
+    const { name } = event.target;
+    handleSelection(name, selectedRegion, setRegion);
+  } 
 
   const handleLanguage = (event: { target: {name:string} }) => { 
     const { name } = event.target;
@@ -102,7 +113,7 @@ const FilterArea: React.FC<Param> = ({ setUsers, setFilterWords, filterWords , s
             <div className={styles.filterCategory}>
               <fieldset>
                 {systems.map((system, key) => { 
-                  const isCheckBoxChecked = selectedSystems.includes(system);
+                  const isCheckBoxChecked = selectedSystems.includes(system.toLowerCase());
                   return (
                     <div className={styles.category}  key={key}>
                       <label>
@@ -118,7 +129,7 @@ const FilterArea: React.FC<Param> = ({ setUsers, setFilterWords, filterWords , s
         <div className={styles.filterCategory}>
               <fieldset>
                 {genres.map((genre, key) => { 
-                  const isCheckBoxChecked = selectedGenres.includes(genre);
+                  const isCheckBoxChecked = selectedGenres.includes(genre.toLowerCase());
                   return (
                     <div className={styles.category} key={key} >
                      <label>
@@ -130,11 +141,26 @@ const FilterArea: React.FC<Param> = ({ setUsers, setFilterWords, filterWords , s
                 })} 
               </fieldset>
             </div>
+            
+            <div className={styles.filterCategory}>
+              <fieldset>
+                {regions.map((region, key) => { 
+                  const isCheckBoxChecked = selectedRegion.includes(region.toLowerCase());
+                  return (
+                    <div className={styles.category} key={key} >
+                     <label>
+                        <input type="checkbox" name={region} checked={isCheckBoxChecked} onChange={handleRegion} />
+                        <span>{region}</span>
+                      </label>
+                    </div>
+                  )
+                })} 
+              </fieldset>
+          </div>
 
           <div className={styles.filterCategory}>
               <fieldset>
               {languages.map((language, key) => { 
-                  const isCheckBoxChecked = selectedGenres.includes(language);
                   return (
                     <div className={styles.category} key={key} >
                        <label>
@@ -154,9 +180,8 @@ const FilterArea: React.FC<Param> = ({ setUsers, setFilterWords, filterWords , s
       ) : (
       <div className={styles.filterArea}>
         <div className={styles.filter}>
-          <button onClick={handleClick}>Filter</button>
+          <button onClick={handleFilterClick}>Filter</button>
         </div>
-        {/* <div className={styles.filterWordsWrapper}> */}
               {filterWords.map((word,key) => { 
                 return (
                   <div className={styles.word} key={key}>
@@ -164,7 +189,6 @@ const FilterArea: React.FC<Param> = ({ setUsers, setFilterWords, filterWords , s
                   </div>
                 )
               })}
-        {/* </div> */}
       </div>
       ) }
     </>

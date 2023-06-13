@@ -160,25 +160,25 @@ export default function Profile() {
 
     <p className={styles.heading}>Region:</p>
       <div className={styles.language}> 
-        <Checkbox type="radio" label="North America" name="region" value="North_America" onChange={handleRegion} defaultChecked={region == 'North_America'} />
-        <Checkbox type="radio" label="South America" name="region" value="South_America" onChange={handleRegion} defaultChecked={region == 'South_America'} />
-        <Checkbox type="radio" label="Europe" name="region" value="Europe" onChange={handleRegion} defaultChecked={region == 'Europe'} />
-        <Checkbox type="radio" label="Asia" name="region" value="Asia" onChange={handleRegion} defaultChecked={region == 'Asia'} />
-        <Checkbox type="radio" label="Oceania" name="region" value="Oceania" onChange={handleRegion} defaultChecked={region == 'Oceania'} />
-        <Checkbox type="radio" label="Africa" name="region" value ="Africa" onChange={handleRegion} defaultChecked={region == 'Africa'} />
+        <Checkbox type="radio" label="North America" name="region" value="north america" onChange={handleRegion} defaultChecked={region == 'north america'} />
+        <Checkbox type="radio" label="South America" name="region" value="south america" onChange={handleRegion} defaultChecked={region == 'south america'} />
+        <Checkbox type="radio" label="Europe" name="region" value="europe" onChange={handleRegion} defaultChecked={region == 'europe'} />
+        <Checkbox type="radio" label="Asia" name="region" value="asia" onChange={handleRegion} defaultChecked={region == 'asia'} />
+        <Checkbox type="radio" label="Oceania" name="region" value="oceania" onChange={handleRegion} defaultChecked={region == 'oceania'} />
+        <Checkbox type="radio" label="Africa" name="region" value ="africa" onChange={handleRegion} defaultChecked={region == 'africa'} />
       </div>
 
     
     <p className={styles.heading}>What language(s) are you fluent in?:</p>
     <p className={styles.subheading}>Check all that apply</p>
       <div className={styles.language}> 
-       <Checkbox type="Checkbox" label="English" name="English" value="" onChange={handleLanguage} defaultChecked={language.includes('English')} />
-       <Checkbox type="Checkbox" label="Spanish" name="Spanish" value="" onChange={handleLanguage}  defaultChecked={language.includes('Spanish')}/>
-       <Checkbox type="Checkbox" label="German" name="German" value="" onChange={handleLanguage} defaultChecked={language.includes('German')} />
-       <Checkbox type="Checkbox" label="French" name="French" value="" onChange={handleLanguage} defaultChecked={language.includes('French')}/>
-       <Checkbox type="Checkbox" label="Japanese" name="Japanese" value="" onChange={handleLanguage} defaultChecked={language.includes('Japanese')}/>
-       <Checkbox type="Checkbox" label="Chinese"name="Chinese" value="" onChange={handleLanguage} defaultChecked={language.includes('Chinese')}/>
-       <Checkbox type="Checkbox" label="Korean" name="Korean" value="" onChange={handleLanguage} defaultChecked={language.includes('Korean')}/>
+       <Checkbox type="Checkbox" label="English" name="english" value="" onChange={handleLanguage} defaultChecked={language.includes('english')} />
+       <Checkbox type="Checkbox" label="Spanish" name="spanish" value="" onChange={handleLanguage}  defaultChecked={language.includes('spanish')}/>
+       <Checkbox type="Checkbox" label="German" name="german" value="" onChange={handleLanguage} defaultChecked={language.includes('german')} />
+       <Checkbox type="Checkbox" label="French" name="french" value="" onChange={handleLanguage} defaultChecked={language.includes('french')}/>
+       <Checkbox type="Checkbox" label="Japanese" name="japanese" value="" onChange={handleLanguage} defaultChecked={language.includes('japanese')}/>
+       <Checkbox type="Checkbox" label="Chinese"name="chinese" value="" onChange={handleLanguage} defaultChecked={language.includes('chinese')}/>
+       <Checkbox type="Checkbox" label="Korean" name="korean" value="" onChange={handleLanguage} defaultChecked={language.includes('korean')}/>
       </div>
 
     <p className={styles.heading}>Date of Birth: </p>
@@ -186,34 +186,34 @@ export default function Profile() {
 
     <p className={styles.heading}>User Systems:</p>
     <div className={styles.language}> 
-       <Checkbox type="Checkbox" label="PC" name="PC" value="" onChange={handleSystem} defaultChecked={system.includes('PC')}/>
-       <Checkbox type="Checkbox" label="Switch" name="Switch" value="" onChange={handleSystem}  defaultChecked={system.includes('Switch')}/>
-       <Checkbox type="Checkbox" label="PlayStation" name="PlayStation" value="" onChange={handleSystem}  defaultChecked={system.includes('PlayStation')}/>
-       <Checkbox type="Checkbox" label="Xbox" name="Xbox" value="" onChange={handleSystem}  defaultChecked={system.includes('Xbox')}/>
+       <Checkbox type="Checkbox" label="PC" name="pc" value="" onChange={handleSystem} defaultChecked={system.includes('pc')}/>
+       <Checkbox type="Checkbox" label="Switch" name="switch" value="" onChange={handleSystem}  defaultChecked={system.includes('switch')}/>
+       <Checkbox type="Checkbox" label="PlayStation" name="playstation" value="" onChange={handleSystem}  defaultChecked={system.includes('playstation')}/>
+       <Checkbox type="Checkbox" label="Xbox" name="xbox" value="" onChange={handleSystem}  defaultChecked={system.includes('xbox')}/>
     </div>
 
     <p className={styles.heading}>What language(s) do you want to learn?</p>
       <p className={styles.subheading}>1: Beginner, 2: Intermediate, 3: Advanced</p>
       <div>
-        <LearningCheckbox label="English" name="English" onChange={handleLearning} defaultChecked1={langCall('English',1,learning)} defaultChecked2={langCall('English',2,learning)} defaultChecked3={langCall('English',3,learning)}/>
-        <LearningCheckbox label="Spanish" name="Spanish"  onChange={handleLearning} defaultChecked1={langCall('Spanish',1,learning)} defaultChecked2={langCall('Spanish',2,learning)} defaultChecked3={langCall('Spanish',3,learning)}/>
-        <LearningCheckbox label="German" name="German" onChange={handleLearning} defaultChecked1={langCall('German',1,learning)} defaultChecked2={langCall('German',2,learning)} defaultChecked3={langCall('German',3,learning)}/>
-        <LearningCheckbox label="French" name="French" onChange={handleLearning} defaultChecked1={langCall('French',1,learning)} defaultChecked2={langCall('French',2,learning)} defaultChecked3={langCall('French',3,learning)}/>
-        <LearningCheckbox label="Japanese" name="Japanese" onChange={handleLearning} defaultChecked1={langCall('Japanese',1,learning)} defaultChecked2={langCall('Japanese',2,learning)} defaultChecked3={langCall('Japanese',3,learning)}/>
-        <LearningCheckbox label="Chinese" name="Chinese" onChange={handleLearning} defaultChecked1={langCall('Chinese',1,learning)} defaultChecked2={langCall('Chinese',2,learning)} defaultChecked3={langCall('Chinese',3,learning)}/>
-        <LearningCheckbox label="Korean" name="Korean" onChange={handleLearning} defaultChecked1={langCall('Korean',1,learning)} defaultChecked2={langCall('Korean',2,learning)} defaultChecked3={langCall('Korean',3,learning)}/>
+        <LearningCheckbox label="English" name="english" onChange={handleLearning} defaultChecked1={langCall('english',1,learning)} defaultChecked2={langCall('english',2,learning)} defaultChecked3={langCall('english',3,learning)}/>
+        <LearningCheckbox label="Spanish" name="spanish"  onChange={handleLearning} defaultChecked1={langCall('spanish',1,learning)} defaultChecked2={langCall('spanish',2,learning)} defaultChecked3={langCall('spanish',3,learning)}/>
+        <LearningCheckbox label="German" name="german" onChange={handleLearning} defaultChecked1={langCall('german',1,learning)} defaultChecked2={langCall('german',2,learning)} defaultChecked3={langCall('german',3,learning)}/>
+        <LearningCheckbox label="French" name="french" onChange={handleLearning} defaultChecked1={langCall('french',1,learning)} defaultChecked2={langCall('french',2,learning)} defaultChecked3={langCall('french',3,learning)}/>
+        <LearningCheckbox label="Japanese" name="japanese" onChange={handleLearning} defaultChecked1={langCall('japanese',1,learning)} defaultChecked2={langCall('japanese',2,learning)} defaultChecked3={langCall('japanese',3,learning)}/>
+        <LearningCheckbox label="Chinese" name="chinese" onChange={handleLearning} defaultChecked1={langCall('chinese',1,learning)} defaultChecked2={langCall('chinese',2,learning)} defaultChecked3={langCall('chinese',3,learning)}/>
+        <LearningCheckbox label="Korean" name="korean" onChange={handleLearning} defaultChecked1={langCall('korean',1,learning)} defaultChecked2={langCall('korean',2,learning)} defaultChecked3={langCall('korean',3,learning)}/>
       </div>
 
       <p className={styles.heading}>Genre:</p>
       <div className={styles.language}> 
-       <Checkbox type="Checkbox" label="Shooters" name="Shooters" value="" onChange={handleGenre} defaultChecked={genre.includes('Shooters')}/>
-       <Checkbox type="Checkbox" label="Survial" name="Survival" value="" onChange={handleGenre} defaultChecked={genre.includes('Survivial')}/>
-       <Checkbox type="Checkbox" label="Battle Royal" name="Battle Royal" value="" onChange={handleGenre} defaultChecked={genre.includes('Battle Royal')}/>
-       <Checkbox type="Checkbox" label="Strategy" name="Strategy" value="" onChange={handleGenre} defaultChecked={genre.includes('Strategy')}/>
-       <Checkbox type="Checkbox" label="Party" name="Party" value="" onChange={handleGenre} defaultChecked={genre.includes('Party')}/>
-       <Checkbox type="Checkbox" label="Fighting" name="Fighting" value="" onChange={handleGenre} defaultChecked={genre.includes('Fighting')}/>
-       <Checkbox type="Checkbox" label="RPG" name="RPG" value="" onChange={handleGenre} defaultChecked={genre.includes('RPG')}/>
-       <Checkbox type="Checkbox" label="MMO" name="MMO" value="" onChange={handleGenre} defaultChecked={genre.includes('MMO')}/>
+       <Checkbox type="Checkbox" label="Shooters" name="shooters" value="" onChange={handleGenre} defaultChecked={genre.includes('shooters')}/>
+       <Checkbox type="Checkbox" label="Survial" name="survival" value="" onChange={handleGenre} defaultChecked={genre.includes('survivial')}/>
+       <Checkbox type="Checkbox" label="Battle Royal" name="battle royal" value="" onChange={handleGenre} defaultChecked={genre.includes('battle royal')}/>
+       <Checkbox type="Checkbox" label="Strategy" name="strategy" value="" onChange={handleGenre} defaultChecked={genre.includes('strategy')}/>
+       <Checkbox type="Checkbox" label="Party" name="party" value="" onChange={handleGenre} defaultChecked={genre.includes('party')}/>
+       <Checkbox type="Checkbox" label="Fighting" name="fighting" value="" onChange={handleGenre} defaultChecked={genre.includes('fighting')}/>
+       <Checkbox type="Checkbox" label="RPG" name="rpg" value="" onChange={handleGenre} defaultChecked={genre.includes('rpg')}/>
+       <Checkbox type="Checkbox" label="MMO" name="mmo" value="" onChange={handleGenre} defaultChecked={genre.includes('mmo')}/>
       </div>
 
     <p className={styles.heading}>About Me:</p>

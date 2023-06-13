@@ -14,10 +14,10 @@ config.autoAddCss = false;
 const inter = Inter({ subsets: ['latin'] })
 const offside = Offside({ subsets: ['latin'], weight:['400']})
 
-export const metadata = {
-  title: 'GamerTalk',
-  description: 'Learn languages with games!',
-}
+// export const metadata = {
+//   title: 'GamerTalk',
+//   description: 'Learn languages with games!',
+// }
 
 
 

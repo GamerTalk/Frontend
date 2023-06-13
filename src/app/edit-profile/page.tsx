@@ -2,7 +2,7 @@
 
 import React, { ChangeEvent, useEffect, useState } from 'react'
 import axios from 'axios';
-import styles from '../userinfo/UserInfo.module.css'
+import styles from '../entry-form/UserInfo.module.css'
 import { UserAuth } from '../context/AuthContext';
 import Checkbox from '../components/elements/Checkbox';
 import LearningCheckbox from '../components/elements/Learning-Checkbox';

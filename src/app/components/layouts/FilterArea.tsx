@@ -1,7 +1,8 @@
+"use client";
+
 import styles from "./Filter.module.css"
 import { User , Search} from "../../global.t";
-import { useEffect, useState } from "react";
-import React, { Dispatch, SetStateAction } from "react";
+import React, { useEffect, useState } from "react";
 import Checkbox from "@/app/components/elements/Checkbox";
 import axios from 'axios';
 

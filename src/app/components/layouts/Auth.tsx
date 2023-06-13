@@ -15,7 +15,7 @@ const Auth = ({isSignIn}: Props) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const { loginUser } = UserAuth();
+  const { loginUser, createUser } = UserAuth();
   const router = useRouter();
 
   // handling submit email and password
@@ -31,6 +31,16 @@ const Auth = ({isSignIn}: Props) => {
     console.log('EMAIL', email, 'PASSWORD', password);
   };
 
+  const handleSignUp = async (e: { preventDefault: () => void }) => {
+    e.preventDefault();
+    try {
+      await createUser(email,password);
+      router.push('/entry-form')
+    } catch (err) {
+      console.error(err);
+    }
+  }
+
   return (
     
     <div className={styles.authContainer}>
@@ -41,7 +51,7 @@ const Auth = ({isSignIn}: Props) => {
         <p className={styles.title}>Do not have an account? Sign Up</p>
       )}
       
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={ isSignIn ? handleSubmit : handleSignUp}>
 
         <div className={styles.formGroup}>    
     

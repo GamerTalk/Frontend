@@ -6,6 +6,9 @@ import { useState, useEffect } from "react";
 import UserCard from "./components/layouts/UserCard";
 import FilterArea from "./components/layouts/FilterArea";
 import {User} from "./global.t"
+import Landing from './landing/page';
+import { UserAuth } from './context/AuthContext';
+import { useRouter, redirect } from 'next/navigation';
 
 
 export default function Home() {
@@ -13,6 +16,9 @@ export default function Home() {
   const [users, setUsers] = useState<User[]>([]);
   const [filterWords, setFilterWords] = useState<string[]>([]);
   const [isShowUserCard, setShowUserCard] = useState(true);
+
+  const {uid} = UserAuth()
+  const router = useRouter()
 
   const fetchAllusers = async () => { 
     try { 
@@ -30,12 +36,33 @@ export default function Home() {
     }
   },[filterWords])
 
-  return ( 
-    <>
-      <div>
-        <FilterArea setUsers={setUsers} setFilterWords={setFilterWords} filterWords={filterWords} setShowUserCard={setShowUserCard} />
-        {isShowUserCard && <UserCard users={users} />}
-      </div>
-  </>
-)
+  useEffect(() => {
+    if (!uid) {
+      const timeout = setTimeout(() => {
+        router.push('/landing');
+      }, 1000); // Delay of 3 seconds before redirecting
+
+      return () => {
+        clearTimeout(timeout);
+      };
+    }
+  }, [uid]);
+
+  if (uid) {
+    return (
+      <>
+        <div>
+          <FilterArea
+            setUsers={setUsers}
+            setFilterWords={setFilterWords}
+            filterWords={filterWords}
+            setShowUserCard={setShowUserCard}
+          />
+          {isShowUserCard && <UserCard users={users} />}
+        </div>
+      </>
+    );
+  }
+
+  return null;
 }

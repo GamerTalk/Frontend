@@ -1,7 +1,7 @@
 "use client"
 
-import Checkbox from "../utils/Checkbox" ;
-import LearningCheckbox from "../utils/Learning-Checkbox";
+import Checkbox from "../components/elements/Checkbox" ;
+import LearningCheckbox from "../components/elements/Learning-Checkbox";
 import styles from './UserInfo.module.css';
 import { useState, useEffect, ChangeEvent } from "react";
 import { UserAuth } from "../context/AuthContext";

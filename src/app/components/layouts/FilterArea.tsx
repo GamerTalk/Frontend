@@ -1,7 +1,8 @@
 import styles from "./Filter.module.css"
-import { User } from "../../global.t";
-import { useState } from "react";
-import React from "react";
+import { User , Search} from "../../global.t";
+import { useEffect, useState } from "react";
+import React, { Dispatch, SetStateAction } from "react";
+import Checkbox from "@/app/components/elements/Checkbox";
 import axios from 'axios';
 
 interface Param {

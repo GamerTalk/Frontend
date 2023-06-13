@@ -1,5 +1,5 @@
 import React, { useState, useEffect, ChangeEventHandler } from "react";
-import styles from '../userinfo/UserInfo.module.css'
+import styles from '../../entry-form/UserInfo.module.css'
 
 interface Param {
   label: string;

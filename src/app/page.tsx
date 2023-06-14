@@ -28,6 +28,7 @@ export default function Home() {
   axios.post('http://127.0.0.1:8000/api/new-post/', payload)
   .then(response => {
     console.log('success!')
+    router.push('/')
   })
   .catch(error => {
     console.log(error);
@@ -79,28 +80,28 @@ export default function Home() {
     return (
       <>
       <form onSubmit={handleFormSubmit}>
-      <textarea rows={5} cols={40} onChange={handleMessage} className={styles.textarea} /> 
-      <div><button>Post</button> </div>
+      <textarea rows={5} cols={40} onChange={handleMessage} className={styles.textarea}/> 
+      <div><button className={styles.button}>Post</button></div>
 
     
       </form>
 
       {posts.map((x: any) => {
+
+        const messageDate = new Date(x.time_of_message);
+        // Format the date and time
+        const formattedDate = messageDate.toLocaleDateString(); // Change the date format as desired
+        const formattedTime = messageDate.toLocaleTimeString(); // Change the time format as desired
+
         return <div className={styles.post}>
         <div className={styles.pic}>Picture</div>
-        <div className={styles.time}>{(x.time_of_message)}</div>
+        <div className={styles.time}>{formattedDate} {formattedTime}</div>
         <div className={styles.user}>{x.sender_data.username}</div>
         <div className={styles.message}>{x.message}</div>
       </div>
       } )}
     
 
-      {/* <div className={styles.post}>
-        <div className={styles.pic}>Picture</div>
-        <div className={styles.time}>Time</div>
-        <div className={styles.user}>Username</div>
-        <div className={styles.message}>Message</div>
-      </div> */}
 
       </>
     )

@@ -1,0 +1,35 @@
+.textarea {
+  margin-top: 20px;
+}
+
+.post{
+  border: 3px solid green;
+  display: grid;
+  grid-template-columns: 30% 70%;
+  gap: 10px;
+  
+}
+
+.pic {
+ grid-column: 1/2;
+ grid-row: 1/3;
+ border: 3px solid greenyellow;
+ border-radius: 25px;
+}
+
+.time {
+grid-column: 2/2;
+grid-row: 2/2;
+border: 3px solid blue;
+
+}
+
+.user {
+border: 3px solid purple;
+}
+
+.message {
+grid-row: 3/3;
+grid-column: 1/3;
+border: 3px solid grey;
+}

@@ -1,0 +1,5 @@
+.footerDiv {
+    display: flex;
+    justify-content: space-between;
+    background-color: lightslategrey;
+}

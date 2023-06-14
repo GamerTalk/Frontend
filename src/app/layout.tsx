@@ -3,6 +3,7 @@
 import './globals.css'
 import { Inter, Offside } from 'next/font/google'
 import Header from './components/layouts/Header'
+import Footer from './components/layouts/Footer'
 import Landing from './landing/page'
 import { useRouter } from "next/router";
 import { AuthContextProvider } from './context/AuthContext'
@@ -40,6 +41,7 @@ export default function RootLayout({
       
       
       {children}
+      <Footer />
       </AuthContextProvider>
       
       </body>

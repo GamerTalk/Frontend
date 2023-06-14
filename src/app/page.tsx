@@ -8,19 +8,13 @@ import axios from "axios";
 
 export default function Home() {
   const [message, setMessage] = useState<string>("")
-  const [posts, setPosts] = use
+  const [posts, setPosts] = useState([])
 
 
   const {uid, userInfo} = UserAuth()
   const router = useRouter()
 
-//   new_post_payload = {
-//     'sender': uid,
-//     'time_of_message': time_of_message,
-//     'message': message
-// }
-
-const handleFormSubmit = (event: { preventDefault: () => void }) => {
+  const handleFormSubmit = (event: { preventDefault: () => void }) => {
   event.preventDefault();
 
   const payload = {
@@ -40,12 +34,10 @@ const handleFormSubmit = (event: { preventDefault: () => void }) => {
   });
 }
 
-const handleMessage = (event: { target: { value: string; }; }) => {
+  const handleMessage = (event: { target: { value: string; }; }) => {
   const { value } = event.target;
   setMessage(value);
 }
-
-
 
   useEffect(() => {
     if (!uid) {
@@ -59,6 +51,30 @@ const handleMessage = (event: { target: { value: string; }; }) => {
     }
   }, [uid]);
 
+  useEffect(() => {
+    async function getData() {
+      try {
+        if (uid) { 
+        const userData : any  = await axios.get('http://localhost:8000/api/get-posts').then((result) => result.data)
+        setPosts(userData)
+      } 
+    }
+      catch(error) {
+       console.log(error)
+      }
+    }
+    getData()
+    console.log('saved')
+  },[uid])
+
+  useEffect(() => {
+    console.log(posts)
+    //x.message - message
+    //x.time_of_message = date
+    //x.sender_data.username = username
+  },[posts])
+
+
   if (uid) {
     return (
       <>
@@ -69,12 +85,22 @@ const handleMessage = (event: { target: { value: string; }; }) => {
     
       </form>
 
-      <div className={styles.post}>
+      {posts.map((x: any) => {
+        return <div className={styles.post}>
+        <div className={styles.pic}>Picture</div>
+        <div className={styles.time}>{(x.time_of_message)}</div>
+        <div className={styles.user}>{x.sender_data.username}</div>
+        <div className={styles.message}>{x.message}</div>
+      </div>
+      } )}
+    
+
+      {/* <div className={styles.post}>
         <div className={styles.pic}>Picture</div>
         <div className={styles.time}>Time</div>
         <div className={styles.user}>Username</div>
         <div className={styles.message}>Message</div>
-      </div>
+      </div> */}
 
       </>
     )

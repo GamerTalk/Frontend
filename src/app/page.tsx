@@ -78,13 +78,14 @@ export default function Home() {
 
   if (uid) {
     return (
-      <>
+      <div style={{background: '#F0F2F5'}}>
       <form onSubmit={handleFormSubmit}>
-      <textarea rows={5} cols={40} onChange={handleMessage} className={styles.textarea}/> 
+      <textarea rows={5} cols={40} onChange={handleMessage} className={styles.textarea} placeholder="What's going on?"/> 
       <div><button className={styles.button}>Post</button></div>
 
     
       </form>
+
 
       {posts.map((x: any) => {
 
@@ -103,7 +104,7 @@ export default function Home() {
     
 
 
-      </>
+      </div>
     )
   }
 

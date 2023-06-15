@@ -3,14 +3,12 @@
   justify-content: center; 
 }
 
-.box {
-  margin-top: 200px;
-  color: white;
-}
-
-.subtitle {
-  margin-top: -25px;
-  font-size: 20px;
+.image {
+  width: 350px;
+  height: 250px;
+  margin-top: 100px;
+ 
+  margin-bottom: -40px;
 }
 
 .signin {
@@ -29,7 +27,6 @@
   text-decoration: underline;
 }
 
-
 .context {
   width: 100%;
   position: absolute;
@@ -38,11 +35,13 @@
 .context h1 {
   text-align: center;
   color: #fff;
-  font-size: 50px;
+  font-size: 50px
 }
 
+
+
 .area {
-  background: #363636;
+  background: #767676;
   background: -webkit-linear-gradient(to left, #8f94fb, #4e54c8);
   width: 100%;
   height: 100vh;

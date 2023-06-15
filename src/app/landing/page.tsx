@@ -33,8 +33,7 @@ export default function Landing() {
       </div>
       <div className={styles.context}>
         <div className={styles.box}>
-        <h1 className={styles.title}>GamerTalk</h1>
-          <h2 className={styles.subtitle}>Learn a Language Through Gaming</h2>
+        <img className={styles.image} src="/GamerTalkLogotransparent.png" alt="user-photo" />
         </div>
         <Link href="/auth/signin"> <button className={styles.signin}> Sign In </button> </Link>
         <Link href="/auth/signup"> <p className={styles.signup}>Not a member? Sign Up!</p></Link>

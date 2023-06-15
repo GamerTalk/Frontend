@@ -3,6 +3,7 @@
 import './globals.css'
 import { Inter, Offside } from 'next/font/google'
 import Header from './components/layouts/Header'
+import Footer from './components/layouts/Footer'
 import Landing from './landing/page'
 import { useRouter } from "next/router";
 import { AuthContextProvider } from './context/AuthContext'
@@ -31,19 +32,20 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={offside.className}>
+        <AuthContextProvider>
+          {pathname === "/landing" ? "" : <Header />}
 
-      
-      
-      <AuthContextProvider>
-      
-      {pathname === "/landing" ? "" :<Header />}
-      
-      
-      {children}
-      </AuthContextProvider>
-      
+          {children}
+          {(pathname === "/landing" ||
+          pathname === "/auth/signin" ||
+          pathname === "/auth/signup") ? (
+            ""
+          ) : (
+            <Footer />
+          )}
+        </AuthContextProvider>
       </body>
     </html>
-  )
+  );
 }
 

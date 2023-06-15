@@ -101,7 +101,7 @@ export default function Home() {
         <div className={styles.pic}>Picture</div>
         <div className={styles.time}>{formattedDate} {formattedTime}</div>
         <div className={styles.user}>{x.sender_data.username}</div>
-        <div className={styles.message}>{x.message.split('\n').map((e: string) => <p>{e}</p>)}</div>
+        <div className={styles.message}>{x.message.split('\n').map((e: string, index: number) => <p key={index}>{e}</p>)}</div>
       </div>
       } )}
     

@@ -8,7 +8,7 @@ import {
   faMessage,
   faUser,
 } from "@fortawesome/free-solid-svg-icons";
-
+//faUser;
 export default function Footer() {
   const { user } = UserAuth();
 

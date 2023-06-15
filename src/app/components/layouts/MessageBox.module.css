@@ -1,0 +1,18 @@
+
+.messageBox{
+  height: 50px;
+  width: 80%;
+  display: flex;
+  background-color: rgb(198, 198, 198);
+  border: 2px solid #000;
+  border-radius: 10px;
+  margin: 0 auto;
+}
+
+#userImg{
+  height: 40px;
+  width: 40px;
+}
+.userInfo{
+  border: 2px solid #3705ff;
+}

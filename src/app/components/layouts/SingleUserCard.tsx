@@ -50,7 +50,7 @@ export default function SingleUserCard(userObject: OtherUsers) {
           {userObject.user_systems.map((system: string, index: number) => <p key={index}>{system}</p>)}
           <div className={styles.language}>
             <p className={styles.heading}>Genres they play:</p>
-            {userObject.user_genre.map((genre:string, index:number) => <p key={index}>{genre}</p>)}
+            {userObject.user_genre.map((genre:string, index:number) => <p key={index}>{Upper(genre)}</p>)}
 
             <p className={styles.heading}>About Me:</p>
             <p>{userObject.about_me}</p>

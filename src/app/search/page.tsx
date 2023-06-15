@@ -5,6 +5,7 @@ import UserCard from "../components/layouts/UserCard";
 import FilterArea from "../components/layouts/FilterArea";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import SingleUserCard from "../components/layouts/SingleUserCard";
 
 export default function Search(){
   

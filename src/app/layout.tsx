@@ -32,20 +32,20 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={offside.className}>
+        <AuthContextProvider>
+          {pathname === "/landing" ? "" : <Header />}
 
-      
-      
-      <AuthContextProvider>
-      
-      {pathname === "/landing" ? "" :<Header />}
-      
-      
-      {children}
-      <Footer />
-      </AuthContextProvider>
-      
+          {children}
+          {(pathname === "/landing" ||
+          pathname === "/auth/signin" ||
+          pathname === "/auth/signup") ? (
+            ""
+          ) : (
+            <Footer />
+          )}
+        </AuthContextProvider>
       </body>
     </html>
-  )
+  );
 }
 

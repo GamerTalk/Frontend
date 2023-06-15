@@ -11,7 +11,6 @@ import Upper from "@/app/utils/Upper";
 import { OtherUsers } from "@/app/global.t";
 
 export default function SingleUserCard(userObject: OtherUsers) {
-
   const { uid } = UserAuth();
 
   return (
@@ -25,28 +24,39 @@ export default function SingleUserCard(userObject: OtherUsers) {
           <p className={styles.heading}>Region:</p>
           <p>{TitleCase(userObject.user_region)}</p>
 
-
-
-          <p className={styles.heading}>What language(s) are you fluent in?:</p>
-          <p className={styles.subheading}>Check all that apply</p>
+          <p className={styles.heading}>This user speaks:</p>
+          {userObject.languages.fluent.map((element: string, index: number) => (
+            <p key={index}>{element}</p>
+          ))}
+          <p className={styles.heading}>This user is learning:</p>
+          {userObject.languages.learning.map(
+            (
+              element: {
+                level: number;
+                language: string;
+              },
+              index: number
+            ) => (
+              <p key={index}>
+                Learning {element.language} at level {element.level}
+              </p>
+            )
+          )}
 
           <p className={styles.heading}>Date of Birth: </p>
           <p> {userObject.date_of_birth}</p>
 
           <p className={styles.heading}>User Systems:</p>
+          {userObject.user_systems.map((system: string, index: number) => <p key={index}>{system}</p>)}
           <div className={styles.language}>
-            <p className={styles.heading}>
-              What language(s) do you want to learn?
-            </p>
-            <p className={styles.subheading}>
-              1: Beginner, 2: Intermediate, 3: Advanced
-            </p>
-
-            <p className={styles.heading}>Genre:</p>
+            <p className={styles.heading}>Genres they play:</p>
+            {userObject.user_genre.map((genre:string, index:number) => <p key={index}>{genre}</p>)}
 
             <p className={styles.heading}>About Me:</p>
+            <p>{userObject.about_me}</p>
 
             <p className={styles.heading}>Currently Playing:</p>
+            <p>{userObject.currently_playing}</p>
           </div>
         </>
       ) : (

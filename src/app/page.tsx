@@ -13,7 +13,7 @@ export default function Home() {
     if (!uid) {
       const timeout = setTimeout(() => {
         router.push('/landing');
-      }, 1000); // Delay of 3 seconds before redirecting
+      }, 3000); // Delay of 3 seconds before redirecting
 
       return () => {
         clearTimeout(timeout);

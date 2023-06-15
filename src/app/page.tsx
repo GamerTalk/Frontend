@@ -5,7 +5,6 @@ import { UserAuth } from './context/AuthContext';
 import { useRouter } from 'next/navigation';
 import styles from './page.module.css';
 import axios from "axios";
-import { Old_Standard_TT } from "next/font/google";
 
 export default function Home() {
   const [message, setMessage] = useState<string>("")
@@ -102,7 +101,7 @@ export default function Home() {
         <div className={styles.pic}>Picture</div>
         <div className={styles.time}>{formattedDate} {formattedTime}</div>
         <div className={styles.user}>{x.sender_data.username}</div>
-        <div className={styles.message}>{x.message}</div>
+        <div className={styles.message}>{x.message.split('\n').map((e: string) => <p>{e}</p>)}</div>
       </div>
       } )}
     

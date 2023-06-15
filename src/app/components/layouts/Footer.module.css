@@ -8,4 +8,9 @@
 .footerIconDiv {
     display: flex;
     flex-direction: column;
+    color: black;
+}
+
+.black {
+    color: black;
 }

@@ -15,14 +15,13 @@ export default function Footer() {
   return (
     <div className={styles.footerDiv}>
       <div className={styles.footerIconDiv}>
-        <Link href='/'>
+        <Link className={styles.black} href="/">
           <FontAwesomeIcon icon={faHome} className={styles.footerIcon} />
           <p>Home</p>
-
         </Link>
       </div>
       <div className={styles.footerIconDiv}>
-        <Link href='/search'>
+        <Link className={styles.black} href="/search">
           <FontAwesomeIcon
             icon={faMagnifyingGlass}
             className={styles.footerIcon}
@@ -35,8 +34,11 @@ export default function Footer() {
         <p>Messages</p>
       </div>
       <div className={styles.footerIconDiv}>
-        <FontAwesomeIcon icon={faUser} className={styles.footerIcon} />
-        <p>Profile</p>
+        <Link className={styles.black} href="/edit-profile">
+          <FontAwesomeIcon icon={faUser} className={styles.footerIcon} />
+          <p>Profile</p>
+
+        </Link>
       </div>
     </div>
   );

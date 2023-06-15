@@ -44,7 +44,7 @@ export default function Home() {
     if (!uid) {
       const timeout = setTimeout(() => {
         router.push('/landing');
-      }, 2000); // Delay of 2 seconds before redirecting
+      }, 3000); // Delay of 3 seconds before redirecting
 
       return () => {
         clearTimeout(timeout);

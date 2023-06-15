@@ -1,0 +1,16 @@
+.footerDiv {
+    display: flex;
+    justify-content: space-around;
+    background-color: lightslategrey;
+    padding-top: 10px;
+}
+
+.footerIconDiv {
+    display: flex;
+    flex-direction: column;
+    color: black;
+}
+
+.black {
+    color: black;
+}

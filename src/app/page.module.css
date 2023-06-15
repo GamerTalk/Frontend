@@ -28,6 +28,12 @@
   margin-top: 10px;
 }
 
+.image {
+  width: 75px;
+  height: 75px;
+  border: 3 solid green;
+}
+
 .time {
  grid-column: 2/2;
  grid-row: 2/2;

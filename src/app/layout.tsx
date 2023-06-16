@@ -33,10 +33,10 @@ export default function RootLayout({
     <html lang="en">
       <body className={offside.className}>
         <AuthContextProvider>
-          {pathname === "/landing" ? "" : <Header />}
+          {pathname === "/landing" || pathname === '/' ? "" : <Header />}
 
           {children}
-          {(pathname === "/landing" ||
+          {(pathname === "/landing" || pathname === '/' ||
           pathname === "/auth/signin" ||
           pathname === "/auth/signup") ? (
             ""

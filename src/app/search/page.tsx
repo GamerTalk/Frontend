@@ -12,6 +12,8 @@ export default function Search() {
   const [users, setUsers] = useState<User[]>([]);
   const [filterWords, setFilterWords] = useState<string[]>([]);
   const [isShowUserCard, setShowUserCard] = useState(true);
+  const [showSingleUser, setShowSingleUser] = useState<Boolean>(false);
+  const [singleUser, setSingleUser] = useState<User|object>({});
 
   const fetchAllusers = async () => {
     try {

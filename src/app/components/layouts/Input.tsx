@@ -16,7 +16,6 @@ import { db } from '@/app/firebase/firebase';
 import { MessagesContext } from '@/app/context/MessageContext';
 import { UserAuth } from '@/app/context/AuthContext';
 import { v4 as uuid } from 'uuid';
-import path from 'path';
 
 const Input = () => {
 
@@ -58,23 +57,23 @@ const Input = () => {
     }
 
     const payloadForCurrentUserChats = {
-      [chatId + ".userInfo"]: {
-        uid: uid,
-      },
-      [chatId + ".lastMessage"]: {
-        text: message
-      },
-      [chatId + ".date"]: serverTimestamp(),
+      [chatId]: {
+        date: serverTimestamp(),
+        userInfo: {
+          uid: chatUserId,
+          lastMessage: message
+        }
+      }
     }
 
     const payloadForMessagingUserChats = {
-      [chatId + ".userInfo"]: {
-        uid: chatUserId,
-      },
-      [chatId + ".lastMessage"]: {
-        text: message
-      },
-      [chatId + ".date"]: serverTimestamp(),
+      [chatId]: {
+        date: serverTimestamp(),
+        userInfo: {
+          uid: uid,
+          lastMessage: message
+        }
+      }
     }
 
 
@@ -87,12 +86,15 @@ const Input = () => {
           // create chats with combinedId
           console.log("Chats is created by combinedId");
           await setFireStore(CHATS, chatId, { messages: [] });
+          await updateFireStore(CHATS,chatId, payloadForChats)
           console.log("User Chats is created for current user");
           await setFireStore(USER_CHATS, uid, payloadForCurrentUserChats);
           console.log("User Chats is created for a user who a current user chat with");
           await setFireStore(USER_CHATS, chatUserId, payloadForMessagingUserChats);
         } else {
-          
+          await updateFireStore(CHATS, chatId, payloadForChats);
+          await updateFireStore(USER_CHATS, uid, payloadForCurrentUserChats);
+          await updateFireStore(USER_CHATS, chatUserId, payloadForMessagingUserChats);
         }
   
       } catch (error) {

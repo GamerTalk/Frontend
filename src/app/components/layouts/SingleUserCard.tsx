@@ -49,16 +49,23 @@ export default function SingleUserCard(props:any) {
           <p> {userObject.date_of_birth}</p>
 
           <p className={styles.heading}>User Systems:</p>
-          {userObject.user_systems.map((system: string, index: number) => <p key={index}>{Upper(system)}</p>)}
+          {userObject.user_systems.map((system: string, index: number) => (
+            <p key={index}>{Upper(system)}</p>
+          ))}
           <div className={styles.language}>
             <p className={styles.heading}>Genres they play:</p>
-            {userObject.user_genre.map((genre:string, index:number) => <p key={index}>{Upper(genre)}</p>)}
+            {userObject.user_genre.map((genre: string, index: number) => (
+              <p key={index}>{Upper(genre)}</p>
+            ))}
 
             <p className={styles.heading}>About Me:</p>
             <p>{userObject.about_me}</p>
 
             <p className={styles.heading}>Currently Playing:</p>
             <p>{userObject.currently_playing}</p>
+            <button onClick={() => alert("Work in procress")}>
+              Send A Message
+            </button>
           </div>
         </>
       ) : (

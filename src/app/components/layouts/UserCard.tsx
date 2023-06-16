@@ -17,6 +17,9 @@ interface usersProps {
 const UserCard = (props: any) => {
   const user: User = props.user;
   const key: number = props.key;
+  const setSingleUser: Function = props.setSingleUser;
+  const setShowSingleUser: Function = props.setShowSingleUser;
+
   const systems: Systems = {
     pc: faSteam,
     xbox: faXbox,
@@ -28,7 +31,11 @@ const UserCard = (props: any) => {
     <>
       <div
         className={styles.userCard}
-        onClick={() => console.log(user.uid)}
+        onClick={() => {
+          console.log(user.uid);
+          setSingleUser(user);
+          setShowSingleUser(true);
+        }}
         key={key}
       >
         <div className={styles.userInfo}>

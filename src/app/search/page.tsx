@@ -13,7 +13,7 @@ export default function Search() {
   const [filterWords, setFilterWords] = useState<string[]>([]);
   const [isShowUserCard, setShowUserCard] = useState(true);
   const [showSingleUser, setShowSingleUser] = useState<Boolean>(false);
-  const [singleUser, setSingleUser] = useState<User|object>({});
+  const [singleUser, setSingleUser] = useState<User | object>({});
 
   const fetchAllusers = async () => {
     try {
@@ -42,12 +42,23 @@ export default function Search() {
           filterWords={filterWords}
           setShowUserCard={setShowUserCard}
         />
+        <button onClick={(e) => setShowSingleUser(!showSingleUser)}>SingleUser</button>
         {isShowUserCard && (
           <div>
-            {users[0] ? <SingleUserCard userObject={users[0]} /> : ""}
-            {users.map((user:User, index:number) => {
-              return <UserCard user={user} key={index} />
-            })}
+            {showSingleUser ? <SingleUserCard userObject={singleUser} /> : ""}
+
+            {!showSingleUser
+              ? users.map((user: User, index: number) => {
+                  return (
+                    <UserCard
+                      user={user}
+                      key={index}
+                      setShowSingleUser={setShowSingleUser}
+                      setSingleUser={setSingleUser}
+                    />
+                  );
+                })
+              : ""}
             {/* <UserCard users={users} /> */}
           </div>
         )}

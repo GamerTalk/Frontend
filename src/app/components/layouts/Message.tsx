@@ -1,8 +1,13 @@
 import React from 'react'
+import styles from "./Message.module.css"
 
 const Message = () => {
   return (
-    <div>Message</div>
+    <> 
+    <div className={styles.messageBox}>
+      <div className={styles.message}><p>Hi Yamato</p></div>
+    </div>
+    </>
   )
 }
 

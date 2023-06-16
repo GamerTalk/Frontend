@@ -3,15 +3,15 @@ import Message from './Message'
 import Input from './Input'
 import styels from './Chat.module.css'
 
-interface Prop{
-  isChat: React.Dispatch<React.SetStateAction<boolean>>
-}
-
-const Chat = (props:Prop) => {
+const Chat = () => {
   return (
     <>
       <div className={styels.chatBox}>
-          
+        <Message />
+        <Message />
+        <Message />
+        <Message />
+        <Input />
       </div>
     </>
   )

@@ -1,8 +1,19 @@
 import React from 'react'
+import Message from './Message'
+import Input from './Input'
+import styels from './Chat.module.css'
 
-const Chat = () => {
+interface Prop{
+  isChat: React.Dispatch<React.SetStateAction<boolean>>
+}
+
+const Chat = (props:Prop) => {
   return (
-    <div>Chat</div>
+    <>
+      <div className={styels.chatBox}>
+          
+      </div>
+    </>
   )
 }
 

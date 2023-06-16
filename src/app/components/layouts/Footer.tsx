@@ -15,7 +15,7 @@ export default function Footer() {
   return (
     <div className={styles.footerDiv}>
       <div className={styles.footerIconDiv}>
-        <Link className={styles.black} href="/">
+        <Link className={styles.black} href="/home">
           <FontAwesomeIcon icon={faHome} className={styles.footerIcon} />
           <p>Home</p>
         </Link>

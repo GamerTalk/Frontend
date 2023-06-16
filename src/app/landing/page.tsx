@@ -1,6 +1,6 @@
 "use client"
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from './landing.module.css';
 import Auth from "../components/layouts/Auth"
 import { UserAuth } from '../context/AuthContext';
@@ -8,6 +8,9 @@ import Link from 'next/link';
 
 
 export default function Landing() {
+  const {uid, userInfo} = UserAuth()
+  const [flag, setFlag] = useState(false)
+
   const renderCircleElements = () => {
     const circleElements = [];
 
@@ -39,5 +42,5 @@ export default function Landing() {
         <Link href="/auth/signup"> <p className={styles.signup}>Not a member? Sign Up!</p></Link>
       </div>
     </div>
-  );
+    );
 }

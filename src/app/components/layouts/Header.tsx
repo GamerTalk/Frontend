@@ -29,7 +29,7 @@ export default function Header() {
         <header className={styles.headerContainer}>
         {/* link tag to home "/" */}
           <div className={styles.headerTitleContainer}>
-           <Link href="/">
+           <Link href="/home">
             <p id={styles.headerName}> GamerTalk </p>
           </Link>
           </div>

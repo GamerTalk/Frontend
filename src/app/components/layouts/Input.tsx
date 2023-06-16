@@ -15,7 +15,8 @@ import {
 import { db } from '@/app/firebase/firebase';
 import { MessagesContext } from '@/app/context/MessageContext';
 import { UserAuth } from '@/app/context/AuthContext';
-import { randomUUID } from 'crypto';
+import { v4 as uuid } from 'uuid';
+import path from 'path';
 
 const Input = () => {
 
@@ -24,50 +25,82 @@ const Input = () => {
 
   const [message, setMessage] = useState<string>('');
 
-  const handleMessageChange = (event:any) => {
+  const handleMessageChange = (event: any) => {
     setMessage(event.target.value);
   };
+  
+  // firestore collection path
+  const USER_CHATS  = "userChats";
+  const CHATS = "chats";
 
-  const handleSubmit = async(event:any) => {
+  async function updateFireStore(collectionPath: string, documentId: string, data: any) {
+    await updateDoc(doc(db, collectionPath, documentId), data);
+  }
+  
+  async function setFireStore(collectionPath: string, documentId: string, data: any) {
+    await setDoc(doc(db, collectionPath, documentId), data);
+  }
+
+  const handleSubmit = async (event: any) => {
     event.preventDefault();
-    if (uid) {
-      // create a chat room id for one-on-one messaging
-      const combinedId: string = uid > chatUserId ? uid + chatUserId : chatUserId + uid
+    console.log(message);
+    console.log("👹",chatId);
+    console.log("👺", chatUserId);
 
+    const payloadForChats = {
+      messages: arrayUnion({
+        id: uuid(),
+        text: message,
+        senderId: uid,
+        date: Timestamp.now(),
+      }
+      )
+    }
+
+    const payloadForCurrentUserChats = {
+      [chatId + ".userInfo"]: {
+        uid: uid,
+      },
+      [chatId + ".lastMessage"]: {
+        text: message
+      },
+      [chatId + ".date"]: serverTimestamp(),
+    }
+
+    const payloadForMessagingUserChats = {
+      [chatId + ".userInfo"]: {
+        uid: chatUserId,
+      },
+      [chatId + ".lastMessage"]: {
+        text: message
+      },
+      [chatId + ".date"]: serverTimestamp(),
+    }
+
+
+    if (uid) {
       try { 
-        const res = await getDoc(doc(db, "chats", combinedId));
+        const res = await getDoc(doc(db, "chats", chatId));
         console.log("chat id is exist?", res.exists());
-        
+        // when chat room does not exist 
         if (!res.exists()) {
           // create chats with combinedId
           console.log("Chats is created by combinedId");
-          await setDoc(doc(db, "chats", combinedId), { messages: [] });
-          updateChatId(combinedId);
+          await setFireStore(CHATS, chatId, { messages: [] });
+          console.log("User Chats is created for current user");
+          await setFireStore(USER_CHATS, uid, payloadForCurrentUserChats);
+          console.log("User Chats is created for a user who a current user chat with");
+          await setFireStore(USER_CHATS, chatUserId, payloadForMessagingUserChats);
+        } else {
+          
         }
-
-        // save a messages to chats 
-        await updateDoc(doc(db, "chats", chatId), {
-          messages: arrayUnion({
-            id: randomUUID,
-            text: message,
-            senderId: uid,
-            date: Timestamp.now(),
-          })
-        })
-      
-      // save a last message for current user
-        await updateDoc(doc(db, "userChats", ), {
-
-        })
-
-        await updateDoc(doc(db, "userChats", ))
+  
       } catch (error) {
         // error handling
         console.log(error);
       }
     }
-    
-    console.log('send message:', message);
+
     // reset messages
     setMessage('');
   };
@@ -78,8 +111,8 @@ const Input = () => {
         <div className={styles.inputText}>
       <textarea
         value={message}
-        onChange={handleMessageChange}
         placeholder="here message"
+        onChange={handleMessageChange}
         className={styles.textbox}
         />
       </div>

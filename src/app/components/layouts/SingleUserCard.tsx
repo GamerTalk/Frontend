@@ -16,16 +16,22 @@ export default function SingleUserCard(props: any) {
   const userObject: OtherUsers = props.userObject
   console.log("🐝", userObject)
   
-  const { chatUserId, updateChatUserId } = useContext(MessagesContext);
+  const { updateChatUserId , updateChatId } = useContext(MessagesContext);
 
   const router = useRouter();
-  const handleGoToMessages = () => { 
-    // use context and save a specific user who current user want to chat with
-    updateChatUserId(userObject.uid);
-    console.log("👹", chatUserId);
-    // to go to /messages/id
-    router.push(`/messages/${userObject.uid}`);
-    
+
+  const handleGoToMessages = () => {
+    if (uid) {
+      // create combinedId for messging 
+      const combinedId: string = uid > userObject.uid ? uid + userObject.uid : userObject.uid + uid;
+
+      updateChatUserId(userObject.uid); 
+      updateChatId(combinedId);
+
+      // go to /messages/id
+      router.push(`/messages/${userObject.uid}`);
+    }
+   
   }
 
   return (

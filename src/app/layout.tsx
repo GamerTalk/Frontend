@@ -36,7 +36,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={offside.className}>
         <AuthContextProvider>
-          <MessageContextProvider>
+         <MessageContextProvider>
           {pathname === "/landing" || pathname === '/' ? "" : <Header />}
           {children}
           {(pathname === "/landing" || pathname === '/' ||
@@ -45,7 +45,7 @@ export default function RootLayout({
             ""
             ) : (
               <Footer />
-              )}
+            )}
           </MessageContextProvider>
         </AuthContextProvider>
       </body>

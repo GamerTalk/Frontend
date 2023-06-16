@@ -1,6 +1,6 @@
 import React, { ChangeEvent, useEffect, useState } from "react";
 import axios from "axios";
-import styles from "../entry-form/UserInfo.module.css";
+import styles from "./SingleUserCard.module.css";
 import { UserAuth } from "@/app/context/AuthContext";
 import Checkbox from "../elements/Checkbox";
 import LearningCheckbox from "../elements/Learning-Checkbox";
@@ -10,13 +10,15 @@ import TitleCase from "@/app/utils/TitleCase";
 import Upper from "@/app/utils/Upper";
 import { OtherUsers } from "@/app/global.t";
 
-export default function SingleUserCard(userObject: OtherUsers) {
+export default function SingleUserCard(props:any) {
   const { uid } = UserAuth();
+  const userObject: OtherUsers = props.userObject
+  console.log(userObject)
 
   return (
     <div>
       <h1>Profile</h1>
-      {userObject ? (
+      {userObject.about_me ? (
         <>
           <p className={styles.heading}>Username:</p>
           <p>{userObject.username}</p>
@@ -26,7 +28,7 @@ export default function SingleUserCard(userObject: OtherUsers) {
 
           <p className={styles.heading}>This user speaks:</p>
           {userObject.languages.fluent.map((element: string, index: number) => (
-            <p key={index}>{element}</p>
+            <p key={index}>{Upper(element)}</p>
           ))}
           <p className={styles.heading}>This user is learning:</p>
           {userObject.languages.learning.map(
@@ -38,7 +40,7 @@ export default function SingleUserCard(userObject: OtherUsers) {
               index: number
             ) => (
               <p key={index}>
-                Learning {element.language} at level {element.level}
+                Learning {Upper(element.language)} at level {element.level}
               </p>
             )
           )}
@@ -47,7 +49,7 @@ export default function SingleUserCard(userObject: OtherUsers) {
           <p> {userObject.date_of_birth}</p>
 
           <p className={styles.heading}>User Systems:</p>
-          {userObject.user_systems.map((system: string, index: number) => <p key={index}>{system}</p>)}
+          {userObject.user_systems.map((system: string, index: number) => <p key={index}>{Upper(system)}</p>)}
           <div className={styles.language}>
             <p className={styles.heading}>Genres they play:</p>
             {userObject.user_genre.map((genre:string, index:number) => <p key={index}>{Upper(genre)}</p>)}

@@ -6,6 +6,7 @@ import FilterArea from "../components/layouts/FilterArea";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import SingleUserCard from "../components/layouts/SingleUserCard";
+import { OtherUsers } from "../global.t";
 
 export default function Search(){
   
@@ -38,7 +39,16 @@ export default function Search(){
             filterWords={filterWords}
             setShowUserCard={setShowUserCard}
           />
-          {isShowUserCard && <UserCard users={users} />}
+          {isShowUserCard && 
+          <div>
+            {users[0] ?
+            <SingleUserCard userObject={users[0]} /> :
+            ""
+          }
+            <UserCard users={users} />
+
+          </div>
+            }
         </div> 
     </>
   )

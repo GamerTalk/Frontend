@@ -24,7 +24,7 @@ const Auth = ({isSignIn}: Props) => {
     // form
     try {
       await loginUser(email, password);
-      router.push('/');
+      router.push('/home');
     } catch (err) {
       console.error(err);
     }

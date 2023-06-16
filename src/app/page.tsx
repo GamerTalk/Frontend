@@ -12,16 +12,10 @@ const router = useRouter()
 
 const [timer, setTimer] = useState(false)
 
-useEffect(()=> {
-  setTimeout(() => {
-    setTimer(true)
-  }, 2000)
-})
-
 useEffect(() => {
   setTimeout(() => {
     setTimer(true);
-  }, 3000);
+  }, 2000);
 }, []);
 
 useEffect(() => {

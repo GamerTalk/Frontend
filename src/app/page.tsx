@@ -15,7 +15,7 @@ const [timer, setTimer] = useState(false)
 useEffect(() => {
   setTimeout(() => {
     setTimer(true);
-  }, 2000);
+  }, 1000);
 }, []);
 
 useEffect(() => {

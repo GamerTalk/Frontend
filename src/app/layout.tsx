@@ -21,8 +21,6 @@ const offside = Offside({ subsets: ['latin'], weight:['400']})
 //   description: 'Learn languages with games!',
 // }
 
-
-
 export default function RootLayout({
   children,
 }: {

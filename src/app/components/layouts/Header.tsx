@@ -14,7 +14,7 @@ export default function Header() {
   const pathName = usePathname();
   // checking current endpoint has id or something 
   const messagePath = /^\/messages\/\w+$/;
-  // if current endpoint is message page, header will be changed for that
+  // if current endpoint is message page, header will be changed for messagePage
   const isMessagesPage = messagePath.test(pathName);
   
   const handleLogOut = async() => {
@@ -30,7 +30,22 @@ export default function Header() {
   return (
     <>
     {isMessagesPage ? (
-      <div>hoge</div>
+        <div className={styles.messageHeader}>
+          <div>
+            <Link href={"/messages/"}>
+            <button>Back</button>
+            </Link>
+          </div>
+          <div className={styles.userInfoForMessage}>
+            <div>
+            <img src="../../../favicon.ico" alt="userImage" id={styles.image} />
+            </div>
+            <div>
+              <p>User Name</p>
+            </div>
+          </div>
+        </div>
+        
       ) :
     <div>
       <Head>

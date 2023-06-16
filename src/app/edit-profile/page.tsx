@@ -39,15 +39,20 @@ export default function Profile() {
       try {
         if (uid) { 
         const userData : any  = await axios.get(url, config).then((result) => result.data)
-        setProfile(userData)
-        console.log(userData)
-        setRegion(userData.user_region)
-        setSystem(userData.user_systems)
-        setLanguage(userData.languages.fluent)
-        setGenre(userData.user_genre)
-        setLearning(userData.languages.learning)
-        setAboutMe(userData.about_me)
-        setCurrPlay(userData.currently_playing) 
+        if (userData.languages !== null) {
+          setProfile(userData)
+          console.log(userData)
+          setRegion(userData.user_region)
+          setSystem(userData.user_systems)
+          setLanguage(userData.languages.fluent)
+          setGenre(userData.user_genre)
+          setLearning(userData.languages.learning)
+          setAboutMe(userData.about_me)
+          setCurrPlay(userData.currently_playing) 
+          
+        } else {
+          console.log('fail')
+        }
       }
       } 
       catch(error) {

@@ -31,7 +31,7 @@ export default function Footer() {
       </div>
       <div className={styles.footerIconDiv}>
         {/* To change when the message endpoint is finished */}
-        <Link className={styles.black} href="/"> 
+        <Link className={styles.black} href="/messages"> 
           <FontAwesomeIcon icon={faMessage} className={styles.footerIcon} />
           <p>Messages</p>
 

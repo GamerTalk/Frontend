@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useEffect, useState } from "react";
+import React, { ChangeEvent, useContext, useEffect, useState } from "react";
 import axios from "axios";
 import styles from "./SingleUserCard.module.css";
 import { UserAuth } from "@/app/context/AuthContext";
@@ -9,11 +9,24 @@ import { useRouter } from "next/navigation";
 import TitleCase from "@/app/utils/TitleCase";
 import Upper from "@/app/utils/Upper";
 import { OtherUsers } from "@/app/global.t";
+import { MessagesContext } from "@/app/context/MessageContext";
 
-export default function SingleUserCard(props:any) {
+export default function SingleUserCard(props: any) {
   const { uid } = UserAuth();
   const userObject: OtherUsers = props.userObject
-  console.log(userObject)
+  console.log("🐝", userObject)
+  
+  const { chatUserId, updateChatUserId } = useContext(MessagesContext);
+
+  const router = useRouter();
+  const handleGoToMessages = () => { 
+    // use context and save a specific user who current user want to chat with
+    updateChatUserId(userObject.uid);
+    console.log("👹", chatUserId);
+    // to go to /messages/id
+    router.push(`/messages/${userObject.uid}`);
+    
+  }
 
   return (
     <div>
@@ -63,7 +76,7 @@ export default function SingleUserCard(props:any) {
 
             <p className={styles.heading}>Currently Playing:</p>
             <p>{userObject.currently_playing}</p>
-            <button onClick={() => alert("Work in procress")}>
+            <button onClick={handleGoToMessages}>
               Send A Message
             </button>
           </div>

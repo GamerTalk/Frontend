@@ -48,15 +48,15 @@ export default function Header() {
         
       ) :
     <div>
-    <Head>
+      <Head>
         <title>GamerTalk</title>
-        </Head>
-        <header className={styles.headerContainer}>
-        {/* link tag to home "/" */}
-          <div className={styles.headerTitleContainer}>
-           <Link href="/home">
-            <p id={styles.headerName}> GamerTalk </p>
-          </Link>
+      </Head>
+      <header className={styles.headerContainer}>
+      {/* link tag to home "/" */}
+        <div className={styles.headerTitleContainer}>
+         <Link href="/home">
+          <p id={styles.headerName}> GamerTalk </p>
+        </Link>
         </div>
       <div className={styles.userInfo}>
         <div className={styles.imageContainer}>

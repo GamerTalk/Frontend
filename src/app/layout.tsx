@@ -10,6 +10,7 @@ import { AuthContextProvider } from './context/AuthContext'
 import "@fortawesome/fontawesome-svg-core/styles.css";
 import { config } from "@fortawesome/fontawesome-svg-core";
 import { usePathname } from 'next/navigation';
+import MessageContextProvider from './context/MessageContext'
 config.autoAddCss = false;
 
 const inter = Inter({ subsets: ['latin'] })
@@ -37,16 +38,17 @@ export default function RootLayout({
     <html lang="en">
       <body className={offside.className}>
         <AuthContextProvider>
+          <MessageContextProvider>
           {pathname === "/landing" || pathname === '/' ? "" : <Header />}
-
           {children}
           {(pathname === "/landing" || pathname === '/' ||
           pathname === "/auth/signin" ||
           pathname === "/auth/signup" || isMessagesPage) ? (
             ""
-          ) : (
-            <Footer />
-          )}
+            ) : (
+              <Footer />
+              )}
+          </MessageContextProvider>
         </AuthContextProvider>
       </body>
     </html>

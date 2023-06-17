@@ -10,13 +10,14 @@ import TitleCase from "@/app/utils/TitleCase";
 import Upper from "@/app/utils/Upper";
 import { OtherUsers } from "@/app/global.t";
 import { MessagesContext } from "@/app/context/MessageContext";
+import { updateCurrentUser } from "firebase/auth";
 
 export default function SingleUserCard(props: any) {
   const { uid } = UserAuth();
   const userObject: OtherUsers = props.userObject
   console.log("🐝", userObject)
   
-  const { updateChatUserId , updateChatId } = useContext(MessagesContext);
+  const { updateChatUserId , updateChatId , updateUserName} = useContext(MessagesContext);
 
   const router = useRouter();
 
@@ -25,8 +26,10 @@ export default function SingleUserCard(props: any) {
       // create combinedId for messging 
       const combinedId: string = uid > userObject.uid ? uid + userObject.uid : userObject.uid + uid;
 
+      // set user info who user want to chat with
       updateChatUserId(userObject.uid); 
       updateChatId(combinedId);
+      updateUserName(userObject.username);
 
       // go to /messages/id
       router.push(`/messages/${userObject.uid}`);

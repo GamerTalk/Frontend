@@ -17,11 +17,12 @@ import { MessagesContext } from '@/app/context/MessageContext';
 import { UserAuth } from '@/app/context/AuthContext';
 import { v4 as uuid } from 'uuid';
 
+
 const Input = () => {
 
-  const { chatId , chatUserId , updateChatId} = useContext(MessagesContext);
-  const { uid } = UserAuth();
-
+  const { chatId , chatUserId , updateChatId, userName} = useContext(MessagesContext);
+  const { uid , userInfo  } = UserAuth();
+  
   const [message, setMessage] = useState<string>('');
 
   const handleMessageChange = (event: any) => {
@@ -33,11 +34,11 @@ const Input = () => {
   const CHATS = "chats";
 
   async function updateFireStore(collectionPath: string, documentId: string, data: any) {
-    await updateDoc(doc(db, collectionPath, documentId), data);
+    await updateDoc(doc(db, collectionPath, documentId), data );
   }
   
   async function setFireStore(collectionPath: string, documentId: string, data: any) {
-    await setDoc(doc(db, collectionPath, documentId), data);
+    await setDoc(doc(db, collectionPath, documentId), data, { merge: true });
   }
 
   const handleSubmit = async (event: any) => {
@@ -45,6 +46,8 @@ const Input = () => {
     console.log(message);
     console.log("👹",chatId);
     console.log("👺", chatUserId);
+    console.log("😊", userName);
+    
 
     const payloadForChats = {
       messages: arrayUnion({
@@ -57,44 +60,53 @@ const Input = () => {
     }
 
     const payloadForCurrentUserChats = {
-      [chatId]: {
+    [chatId]: {
+          userInfo: {
+            uid: chatUserId,
+            userName: userName,
+          },
         date: serverTimestamp(),
-        userInfo: {
-          uid: chatUserId,
-          lastMessage: message
-        }
+        lastMessage: message
+        },
+        
       }
-    }
-
+    
     const payloadForMessagingUserChats = {
       [chatId]: {
-        date: serverTimestamp(),
         userInfo: {
           uid: uid,
-          lastMessage: message
-        }
-      }
+          userName: "hoge",
+        },
+        date: serverTimestamp(),
+        lastMessage: message
+      },
     }
-
-
+    
+    const updatePayloadForUserChats = {
+      [`${chatId}.lastMessage`]: {
+        message,
+      },
+      [`${chatId}.date`]: serverTimestamp()
+    };
+   
     if (uid) {
       try { 
-        const res = await getDoc(doc(db, "chats", chatId));
+        const res = await getDoc(doc(db, CHATS, chatId));
         console.log("chat id is exist?", res.exists());
         // when chat room does not exist 
         if (!res.exists()) {
           // create chats with combinedId
-          console.log("Chats is created by combinedId");
           await setFireStore(CHATS, chatId, { messages: [] });
+        
           await updateFireStore(CHATS,chatId, payloadForChats)
-          console.log("User Chats is created for current user");
           await setFireStore(USER_CHATS, uid, payloadForCurrentUserChats);
-          console.log("User Chats is created for a user who a current user chat with");
           await setFireStore(USER_CHATS, chatUserId, payloadForMessagingUserChats);
+          console.log("new chat is created by combinedId");
         } else {
           await updateFireStore(CHATS, chatId, payloadForChats);
-          await updateFireStore(USER_CHATS, uid, payloadForCurrentUserChats);
-          await updateFireStore(USER_CHATS, chatUserId, payloadForMessagingUserChats);
+          await updateFireStore(USER_CHATS, uid, updatePayloadForUserChats);
+          await updateFireStore(USER_CHATS, chatUserId, updatePayloadForUserChats);
+          console.log("update chat");
         }
   
       } catch (error) {

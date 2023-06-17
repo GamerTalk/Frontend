@@ -197,8 +197,12 @@ export default function Profile() {
        <Checkbox type="Checkbox" label="Xbox" name="xbox" value="" onChange={handleSystem}  defaultChecked={system.includes('xbox')}/>
     </div>
 
-    <p className={styles.heading}>What language(s) do you want to learn?</p>
+    <p id='learning' className={styles.heading}>What language(s) do you want to learn?</p>
       <p className={styles.subheading}>1: Beginner, 2: Intermediate, 3: Advanced</p>
+      <p className={styles.subheading}>For an explaination <a href="#levels-explain">click here</a> </p>
+      <button onClick={(e) => {
+        alert("For beginners we would expect ... \nFor Intermediate we would expect ... \nFor Advance we would expect ...")
+      }}>Explain</button>
       <div>
         <LearningCheckbox label="English" name="english" onChange={handleLearning} defaultChecked1={langCall('english',1,learning)} defaultChecked2={langCall('english',2,learning)} defaultChecked3={langCall('english',3,learning)}/>
         <LearningCheckbox label="Spanish" name="spanish"  onChange={handleLearning} defaultChecked1={langCall('spanish',1,learning)} defaultChecked2={langCall('spanish',2,learning)} defaultChecked3={langCall('spanish',3,learning)}/>
@@ -227,7 +231,16 @@ export default function Profile() {
     <p className={styles.heading}>Currently Playing:</p> 
     <textarea rows={5} cols={40} value={currPlay} onChange={handleCurrPlay} />
 
-    <div><button className={styles.editButton} type="submit">Submit</button></div>
+    <div>
+      <button className={styles.editButton} type="submit">Submit</button>
+    
+    <div id='levels-explain'>more info box
+      <a href="#learning">Go back</a>
+      <p>For beginners we would expect ...</p>
+      <p>For Intermediate we would expect ...</p>
+      <p>For Advance we would expect ...</p>
+    </div>
+    </div>
 
 
     </>

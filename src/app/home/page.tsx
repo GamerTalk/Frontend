@@ -7,6 +7,7 @@ import styles from "./home.module.css";
 import axios from "axios";
 import SingleUserCard from "../components/layouts/SingleUserCard";
 import { OtherUsers, Post } from "../global.t";
+import PostCard from "../components/layouts/PostCard";
 
 export default function Home() {
   const [message, setMessage] = useState<string>("");
@@ -93,26 +94,9 @@ export default function Home() {
         </div>
       </form>
 
-      {posts.map((x: Post) => {
-        const messageDate = new Date(x.time_of_message);
-        // Format the date and time
-        const formattedDate = messageDate.toLocaleDateString(); // Change the date format as desired
-        const formattedTime = messageDate.toLocaleTimeString(); // Change the time format as desired
-
-        return (
-          <div className={styles.post} key={x.id}>
-            <div className={styles.pic}>Picture</div>
-            <div className={styles.time}>
-              {formattedDate} {formattedTime}
-            </div>
-            <div className={styles.user}>{x.sender_data.username}</div>
-            <div className={styles.message}>
-              {x.message.split("\n").map((e: string, index: number) => (
-                <p key={index}>{e}</p>
-              ))}
-            </div>
-          </div>
-        );
+    {/* Renders out the post */}
+      {posts.map((post: Post, index:number) => {
+        return <PostCard key={index} post={post} />
       })}
     </div>
   );

@@ -45,3 +45,12 @@ export interface Search {
   genre: string[];
   language: string;
 }
+
+export interface Post {
+  id: number;
+  sender_uid: string;
+  sender_data: OtherUsers;
+  time_of_message: string;
+  message: string;
+  sender: string;
+}

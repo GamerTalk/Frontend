@@ -197,20 +197,55 @@ export default function Profile() {
        <Checkbox type="Checkbox" label="Xbox" name="xbox" value="" onChange={handleSystem}  defaultChecked={system.includes('xbox')}/>
     </div>
 
-    <p id='learning' className={styles.heading}>What language(s) do you want to learn?</p>
+    <p id='learning' className={styles.heading}>What language(s) do you want to learn and what's your level?</p>
       <p className={styles.subheading}>1: Beginner, 2: Intermediate, 3: Advanced</p>
-      <p className={styles.subheading}>For an explaination <a href="#levels-explain">click here</a> </p>
+      <p className={styles.subheading}>For a more detailed explaination <a href="#levels-explain">click here</a> </p>
       <button onClick={(e) => {
         alert("For beginners we would expect ... \nFor Intermediate we would expect ... \nFor Advance we would expect ...")
       }}>Explain</button>
       <div>
-        <LearningCheckbox label="English" name="english" onChange={handleLearning} defaultChecked1={langCall('english',1,learning)} defaultChecked2={langCall('english',2,learning)} defaultChecked3={langCall('english',3,learning)}/>
-        <LearningCheckbox label="Spanish" name="spanish"  onChange={handleLearning} defaultChecked1={langCall('spanish',1,learning)} defaultChecked2={langCall('spanish',2,learning)} defaultChecked3={langCall('spanish',3,learning)}/>
-        <LearningCheckbox label="German" name="german" onChange={handleLearning} defaultChecked1={langCall('german',1,learning)} defaultChecked2={langCall('german',2,learning)} defaultChecked3={langCall('german',3,learning)}/>
-        <LearningCheckbox label="French" name="french" onChange={handleLearning} defaultChecked1={langCall('french',1,learning)} defaultChecked2={langCall('french',2,learning)} defaultChecked3={langCall('french',3,learning)}/>
-        <LearningCheckbox label="Japanese" name="japanese" onChange={handleLearning} defaultChecked1={langCall('japanese',1,learning)} defaultChecked2={langCall('japanese',2,learning)} defaultChecked3={langCall('japanese',3,learning)}/>
-        <LearningCheckbox label="Chinese" name="chinese" onChange={handleLearning} defaultChecked1={langCall('chinese',1,learning)} defaultChecked2={langCall('chinese',2,learning)} defaultChecked3={langCall('chinese',3,learning)}/>
-        <LearningCheckbox label="Korean" name="korean" onChange={handleLearning} defaultChecked1={langCall('korean',1,learning)} defaultChecked2={langCall('korean',2,learning)} defaultChecked3={langCall('korean',3,learning)}/>
+        <LearningCheckbox 
+          label="English" name="english" onChange={handleLearning} 
+          defaultChecked1={langCall('english',1,learning)} defaultChecked2={langCall('english',2,learning)} 
+          defaultChecked3={langCall('english',3,learning)} defaultChecked4={langCall('english',4,learning)} 
+          defaultChecked5={langCall('english',5,learning)}/>
+
+        <LearningCheckbox 
+          label="Spanish" name="spanish"  onChange={handleLearning} 
+          defaultChecked1={langCall('spanish',1,learning)} defaultChecked2={langCall('spanish',2,learning)} 
+          defaultChecked3={langCall('spanish',3,learning)} defaultChecked4={langCall('spanish',4,learning)} 
+          defaultChecked5={langCall('spanish',5,learning)}/>
+
+        <LearningCheckbox 
+          label="German" name="german" onChange={handleLearning} 
+          defaultChecked1={langCall('german',1,learning)} defaultChecked2={langCall('german',2,learning)} 
+          defaultChecked3={langCall('german',3,learning)} defaultChecked4={langCall('german',4,learning)} 
+          defaultChecked5={langCall('german',5,learning)}/>
+
+        <LearningCheckbox 
+          label="French" name="french" onChange={handleLearning} 
+          defaultChecked1={langCall('french',1,learning)} defaultChecked2={langCall('french',2,learning)} 
+          defaultChecked3={langCall('french',3,learning)} defaultChecked4={langCall('french',4,learning)} 
+          defaultChecked5={langCall('french',5,learning)}/>
+
+        <LearningCheckbox 
+          label="Japanese" name="japanese" onChange={handleLearning} 
+          defaultChecked1={langCall('japanese',1,learning)} defaultChecked2={langCall('japanese',2,learning)} 
+          defaultChecked3={langCall('japanese',3,learning)} defaultChecked4={langCall('japanese',4,learning)} 
+          defaultChecked5={langCall('japanese',5,learning)}/>
+
+        <LearningCheckbox 
+          label="Chinese" name="chinese" onChange={handleLearning} 
+          defaultChecked1={langCall('chinese',1,learning)} defaultChecked2={langCall('chinese',2,learning)} 
+          defaultChecked3={langCall('chinese',3,learning)} defaultChecked4={langCall('chinese',4,learning)} 
+          defaultChecked5={langCall('chinese',5,learning)}/>
+
+        <LearningCheckbox 
+          label="Korean" name="korean" onChange={handleLearning} 
+          defaultChecked1={langCall('korean',1,learning)} defaultChecked2={langCall('korean',2,learning)} 
+          defaultChecked3={langCall('korean',3,learning)} defaultChecked4={langCall('korean',4,learning)}
+          defaultChecked5={langCall('korean',5,learning)}/>
+
       </div>
 
       <p className={styles.heading}>Genre:</p>
@@ -234,7 +269,7 @@ export default function Profile() {
     <div>
       <button className={styles.editButton} type="submit">Submit</button>
     
-    <div id='levels-explain'>more info box
+    <div className={styles.levelsbox}>
       <a href="#learning">Go back</a>
       <p>For beginners we would expect ...</p>
       <p>For Intermediate we would expect ...</p>

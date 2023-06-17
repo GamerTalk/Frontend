@@ -291,7 +291,7 @@ export default function Profile() {
       <h2 className={styles.candoHeadings}>Advanced</h2>
       <p className={styles.cando}>Can express yourself naturally, effortlessly recalling authentic expressions.</p>
       <h2 className={styles.candoHeadings}>Proficient</h2>
-      <p className={styles.cando}>Can comfortable comphrehend most things heard and read.</p>
+      <p className={styles.cando}>Can comfortably comphrehend most things heard and read.</p>
     </div>
     </div>
 

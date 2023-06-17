@@ -17,17 +17,18 @@ import { MessagesContext } from '@/app/context/MessageContext';
 import { UserAuth } from '@/app/context/AuthContext';
 import { v4 as uuid } from 'uuid';
 
-
 const Input = () => {
 
   const { chatId , chatUserId , updateChatId, userName} = useContext(MessagesContext);
-  const { uid , userInfo  } = UserAuth();
+  const { uid , userInfo } = UserAuth();
   
   const [message, setMessage] = useState<string>('');
 
   const handleMessageChange = (event: any) => {
     setMessage(event.target.value);
   };
+  
+  console.log("👹",userInfo.username);
   
   // firestore collection path
   const USER_CHATS  = "userChats";
@@ -75,7 +76,7 @@ const Input = () => {
       [chatId]: {
         userInfo: {
           uid: uid,
-          userName: "hoge",
+          userName: userInfo.username,
         },
         date: serverTimestamp(),
         lastMessage: message

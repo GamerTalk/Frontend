@@ -7,6 +7,8 @@ import { useState, useEffect, ChangeEvent } from "react";
 import { UserAuth } from "../context/AuthContext";
 import { useRouter } from 'next/navigation';
 import axios from "axios";
+import { doc, setDoc } from "firebase/firestore"; 
+import { db } from "../firebase/firebase";
 
 export default function UserInfo() {
   const {uid} = UserAuth()
@@ -52,9 +54,16 @@ const handleFormSubmit = (event: { preventDefault: () => void }) => {
 
   console.log(payload);
 
+  
+
+  setDoc(doc(db, "users", uid!), {
+    uid: uid,
+    userName: username
+  });
+
   axios.post('http://127.0.0.1:8000/api/new-user/', payload)
   .then(response => {
-    router.push('/')
+    router.push('/home')
   })
   .catch(error => {
     console.log(error);

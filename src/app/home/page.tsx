@@ -1,46 +1,48 @@
-'use client'
+"use client";
 
 import React, { useEffect, useState } from "react";
-import { UserAuth } from '../context/AuthContext';
-import { useRouter } from 'next/navigation';
-import styles from './home.module.css';
+import { UserAuth } from "../context/AuthContext";
+import { useRouter } from "next/navigation";
+import styles from "./home.module.css";
 import axios from "axios";
+import SingleUserCard from "../components/layouts/SingleUserCard";
+import { OtherUsers, Post } from "../global.t";
 
 export default function Home() {
-  const [message, setMessage] = useState<string>("")
-  const [posts, setPosts] = useState([])
-  const [counter, setCounter] = useState<number>(0)
+  const [message, setMessage] = useState<string>("");
+  const [posts, setPosts] = useState([]);
+  const [counter, setCounter] = useState<number>(0);
+  const [singleUser, setSingleUser] = useState<OtherUsers | object>({});
 
-
-  const {uid, userInfo} = UserAuth()
-  const router = useRouter()
-  
+  const { uid, userInfo } = UserAuth();
+  const router = useRouter();
 
   const handleFormSubmit = (event: { preventDefault: () => void }) => {
-  event.preventDefault();
+    event.preventDefault();
 
-  const payload = {
-    uid,
-    message: message,
-    time_of_message: new Date().toISOString(),
-  }
+    const payload = {
+      uid,
+      message: message,
+      time_of_message: new Date().toISOString(),
+    };
 
-  console.log(payload);
+    console.log(payload);
 
-  axios.post('http://127.0.0.1:8000/api/new-post/', payload)
-  .then(response => {
-    setCounter(counter+1)
-    setMessage("")
-  })
-  .catch(error => {
-    console.log(error);
-  });
-}
+    axios
+      .post("http://127.0.0.1:8000/api/new-post/", payload)
+      .then((response) => {
+        setCounter(counter + 1);
+        setMessage("");
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
-  const handleMessage = (event: { target: { value: string; }; }) => {
-  const { value } = event.target;
-  setMessage(value);
-}
+  const handleMessage = (event: { target: { value: string } }) => {
+    const { value } = event.target;
+    setMessage(value);
+  };
 
   // useEffect(() => {
   //   if (!uid) {
@@ -57,53 +59,61 @@ export default function Home() {
   useEffect(() => {
     async function getData() {
       try {
-        if (uid) { 
-        const userData : any  = await axios.get('http://localhost:8000/api/get-posts').then((result) => result.data)
-        setPosts(userData)
-      } 
-    }
-      catch(error) {
-       console.log(error)
+        if (uid) {
+          const userData: any = await axios
+            .get("http://localhost:8000/api/get-posts")
+            .then((result) => result.data);
+          setPosts(userData);
+        }
+      } catch (error) {
+        console.log(error);
       }
     }
-    getData()
-    console.log('saved')
-  },[uid, counter])
-
- 
+    getData();
+    console.log("saved");
+  }, [uid, counter]);
 
   useEffect(() => {
-    console.log(posts)
-  },[posts])
+    console.log(posts);
+  }, [posts]);
 
-
-    return (
-      <div style={{background: '#F0F2F5'}}>
+  return (
+    <div style={{ background: "#F0F2F5" }}>
       <form onSubmit={handleFormSubmit}>
-      <textarea rows={5} cols={40} onChange={handleMessage} className={styles.textarea} placeholder="What's going on?" value={message}/> 
-      <div><button className={styles.button}>Post</button></div>
-
-    
+        <textarea
+          rows={5}
+          cols={40}
+          onChange={handleMessage}
+          className={styles.textarea}
+          placeholder="What's going on?"
+          value={message}
+        />
+        <div>
+          <button className={styles.button}>Post</button>
+        </div>
       </form>
 
-       
-      {posts.map((x: any) => {
-
+      {posts.map((x: Post) => {
         const messageDate = new Date(x.time_of_message);
         // Format the date and time
         const formattedDate = messageDate.toLocaleDateString(); // Change the date format as desired
         const formattedTime = messageDate.toLocaleTimeString(); // Change the time format as desired
 
-        return <div className={styles.post} key={x.id}>
-        <div className={styles.pic}>Picture</div>
-        <div className={styles.time}>{formattedDate} {formattedTime}</div>
-        <div className={styles.user}>{x.sender_data.username}</div>
-        <div className={styles.message}>{x.message.split('\n').map((e: string, index: number) => <p key={index}>{e}</p>)}</div>
-      </div>
-      } )}
-    
-
-
-      </div>
-    )
+        return (
+          <div className={styles.post} key={x.id}>
+            <div className={styles.pic}>Picture</div>
+            <div className={styles.time}>
+              {formattedDate} {formattedTime}
+            </div>
+            <div className={styles.user}>{x.sender_data.username}</div>
+            <div className={styles.message}>
+              {x.message.split("\n").map((e: string, index: number) => (
+                <p key={index}>{e}</p>
+              ))}
+            </div>
+          </div>
+        );
+      })}
+    </div>
+  );
 }

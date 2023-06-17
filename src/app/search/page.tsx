@@ -42,7 +42,11 @@ export default function Search() {
           filterWords={filterWords}
           setShowUserCard={setShowUserCard}
         />
-        <button onClick={(e) => setShowSingleUser(!showSingleUser)}>SingleUser</button>
+        {showSingleUser ? (
+          <button onClick={(e) => setShowSingleUser(false)}>Back</button>
+        ) : (
+          ""
+        )}
         {isShowUserCard && (
           <div>
             {showSingleUser ? <SingleUserCard userObject={singleUser} /> : ""}
@@ -59,7 +63,6 @@ export default function Search() {
                   );
                 })
               : ""}
-            {/* <UserCard users={users} /> */}
           </div>
         )}
       </div>

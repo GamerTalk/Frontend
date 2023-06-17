@@ -29,6 +29,10 @@ export default function RootLayout({
  
 }) {
   const pathname = usePathname()
+  const messagePath = /^\/messages\/\w+$/;
+
+  const isMessagesPage = messagePath.test(pathname);
+
   return (
     <html lang="en">
       <body className={offside.className}>
@@ -38,7 +42,7 @@ export default function RootLayout({
           {children}
           {(pathname === "/landing" || pathname === '/' ||
           pathname === "/auth/signin" ||
-          pathname === "/auth/signup") ? (
+          pathname === "/auth/signup" || isMessagesPage) ? (
             ""
           ) : (
             <Footer />

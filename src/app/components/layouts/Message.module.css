@@ -1,0 +1,15 @@
+.messageBox{
+  height: 30px;
+  width: 50%;
+  background-color: beige;
+  border-radius: 5px;
+  font-family: sans-serif;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  margin: 10px;
+}
+
+.message{
+  margin-left: 5px;
+}

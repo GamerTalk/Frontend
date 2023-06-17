@@ -14,6 +14,7 @@ export default function Home() {
   const [posts, setPosts] = useState([]);
   const [counter, setCounter] = useState<number>(0);
   const [singleUser, setSingleUser] = useState<OtherUsers | object>({});
+  const [showProfilePage, setShowProfilePage] = useState<boolean>(false);
 
   const { uid, userInfo } = UserAuth();
   const router = useRouter();
@@ -80,24 +81,40 @@ export default function Home() {
 
   return (
     <div style={{ background: "#F0F2F5" }}>
-      <form onSubmit={handleFormSubmit}>
-        <textarea
-          rows={5}
-          cols={40}
-          onChange={handleMessage}
-          className={styles.textarea}
-          placeholder="What's going on?"
-          value={message}
-        />
-        <div>
-          <button className={styles.button}>Post</button>
-        </div>
-      </form>
+      {!showProfilePage ? (
+        <>
+          <form onSubmit={handleFormSubmit}>
+            <textarea
+              rows={5}
+              cols={40}
+              onChange={handleMessage}
+              className={styles.textarea}
+              placeholder="What's going on?"
+              value={message}
+            />
+            <div>
+              <button className={styles.button}>Post</button>
+            </div>
+          </form>
 
-    {/* Renders out the post */}
-      {posts.map((post: Post, index:number) => {
-        return <PostCard key={index} post={post} />
-      })}
+          {/* Renders out the post */}
+          {posts.map((post: Post, index: number) => {
+            return (
+              <PostCard
+                key={index}
+                post={post}
+                setShowProfilePage={setShowProfilePage}
+                setSingleUser={setSingleUser}
+              />
+            );
+          })}
+        </>
+      ) : (
+        <>
+          <button onClick={() => setShowProfilePage(false)}>Back</button>
+          <SingleUserCard userObject={singleUser} />
+        </>
+      )}
     </div>
   );
 }

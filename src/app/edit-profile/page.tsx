@@ -198,12 +198,22 @@ export default function Profile() {
     </div>
 
     <p id='learning' className={styles.heading}>What language(s) do you want to learn and what's your level?</p>
-      <p className={styles.subheading}>1: Beginner, 2: Intermediate, 3: Advanced</p>
-      <p className={styles.subheading}>For a more detailed explaination <a href="#levels-explain">click here</a> </p>
-      <button onClick={(e) => {
-        alert("For beginners we would expect ... \nFor Intermediate we would expect ... \nFor Advance we would expect ...")
-      }}>Explain</button>
+      <p className={styles.learningSubheading}> 
+      <p> <span className ={styles.number}>1</span>: Beginner 
+        <span className ={styles.number}> 2</span>: Elementary </p>
+       <p> <span className ={styles.number}>3</span>: Intermediate 
+        <span className ={styles.number}> 4</span>: Advanced 
+        <span className ={styles.number}> 5</span>: Proficent</p> </p>
+      <p className={styles.learningSubheading}>For a more detailed explanation <a href="#levels-explain" className={styles.links}>click here</a> </p>
       <div>
+      <div className={styles.learningHeadings}>
+        <div>Language</div>
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+        <div>4</div>
+        <div>5</div>
+      </div>
         <LearningCheckbox 
           label="English" name="english" onChange={handleLearning} 
           defaultChecked1={langCall('english',1,learning)} defaultChecked2={langCall('english',2,learning)} 
@@ -270,10 +280,18 @@ export default function Profile() {
       <button className={styles.editButton} type="submit">Submit</button>
     
     <div className={styles.levelsbox}>
-      <a href="#learning">Go back</a>
-      <p>For beginners we would expect ...</p>
-      <p>For Intermediate we would expect ...</p>
-      <p>For Advance we would expect ...</p>
+      <a id="levels-explain" href="#learning" className={styles.links}>Go back</a>
+      <h1>Language Levels</h1>
+      <h2 className={styles.candoHeadings}>Beginner</h2>
+      <p className={styles.cando}>Can make introductions and can ask and answer simple questions.</p>
+      <h2 className={styles.candoHeadings}>Elementary</h2>
+      <p className={styles.cando}>Can converse common topics and in daily situations.</p>
+      <h2 className={styles.candoHeadings}>Intermediate</h2>
+      <p className={styles.cando}>Can interact with native speakers more fluently and spontaneously.</p>
+      <h2 className={styles.candoHeadings}>Advanced</h2>
+      <p className={styles.cando}>Can express yourself naturally, effortlessly recalling authentic expressions.</p>
+      <h2 className={styles.candoHeadings}>Proficient</h2>
+      <p className={styles.cando}>Can comfortable comphrehend most things heard and read.</p>
     </div>
     </div>
 

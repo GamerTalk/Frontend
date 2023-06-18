@@ -197,7 +197,7 @@ export default function Profile() {
        <Checkbox type="Checkbox" label="Xbox" name="xbox" value="" onChange={handleSystem}  defaultChecked={system.includes('xbox')}/>
     </div>
 
-    <p id='learning' className={styles.heading}>What language(s) do you want to learn and what's your level?</p>
+    <p id='learning' className={styles.heading}>What language(s) do you want to learn and what is your level?</p>
       <p className={styles.learningSubheading}> 
       <p> <span className ={styles.number}>1</span>: Beginner 
         <span className ={styles.number}> 2</span>: Elementary </p>
@@ -297,7 +297,7 @@ export default function Profile() {
 
 
     </>
-    : <p className={styles.loading}>"Loading Profile..."</p>}
+    : <p className={styles.loading}>Loading Profile...</p>}
   
    </form>
     </>

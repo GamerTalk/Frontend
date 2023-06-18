@@ -182,7 +182,7 @@ const handleFormSubmit = (event: { preventDefault: () => void }) => {
        <Checkbox type="checkbox" label="Korean" name="korean" value="" onChange={handleLanguage} defaultChecked={false}/>
       </div>
 
-      <p id='learning' className={styles.heading}>What language(s) do you want to learn and what's your level?</p>
+      <p id='learning' className={styles.heading}>What language(s) do you want to learn and what is your level?</p>
       <p className={styles.learningSubheading}> 
         <p> <span className ={styles.number}>1</span>: Beginner 
         <span className ={styles.number}> 2</span>: Elementary </p>

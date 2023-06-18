@@ -184,20 +184,21 @@ const handleFormSubmit = (event: { preventDefault: () => void }) => {
 
       <p id='learning' className={styles.heading}>What language(s) do you want to learn and what's your level?</p>
       <p className={styles.learningSubheading}> 
-      <p> <span className ={styles.number}>1</span>: Beginner 
+        <p> <span className ={styles.number}>1</span>: Beginner 
         <span className ={styles.number}> 2</span>: Elementary </p>
-       <p> <span className ={styles.number}>3</span>: Intermediate 
+        <p> <span className ={styles.number}>3</span>: Intermediate 
         <span className ={styles.number}> 4</span>: Advanced 
-        <span className ={styles.number}> 5</span>: Proficent</p> </p>
+        <span className ={styles.number}> 5</span>: Proficent</p> 
+      </p>
       <p className={styles.learningSubheading}>For a more detailed explanation <a href="#levels-explain" className={styles.links}>click here</a> </p>
       <div>
-      <div className={styles.learningHeadings}>
-        <div>Language</div>
-        <div>1</div>
-        <div>2</div>
-        <div>3</div>
-        <div>4</div>
-        <div>5</div>
+        <div className={styles.learningHeadings}>
+          <div>Language</div>
+          <div>1</div>
+          <div>2</div>
+          <div>3</div>
+          <div>4</div>
+         <div>5</div>
       </div>
         <LearningCheckbox 
           label="English" name="english" onChange={handleLearning} 

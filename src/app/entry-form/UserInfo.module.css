@@ -87,3 +87,8 @@
 .candoHeadings{
  text-align: left;
 }
+
+.loading{
+  padding-bottom: 50px;
+  height: 100vh;
+}

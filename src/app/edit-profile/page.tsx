@@ -297,7 +297,7 @@ export default function Profile() {
 
 
     </>
-    : "Loading Profile..."}
+    : <p className={styles.loading}>"Loading Profile..."</p>}
   
    </form>
     </>

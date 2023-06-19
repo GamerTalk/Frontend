@@ -25,7 +25,6 @@ export default function Messages() {
         try {
           // observe userChats data  
           const unsub = await onSnapshot<DocumentData>(doc(db, "userChats", uid), (doc) => {
-            // const chatData = doc.data() as Chat;
             const chatData = doc.data() as { [key: string]: Chat };
             console.log("Current data: ", chatData);
             // setChats(chatData);
@@ -42,7 +41,7 @@ export default function Messages() {
     }
     getChats();
 
-  }, [uid]);
+  }, []);
   console.log("chats data",chats);
   return (
     <>
@@ -52,8 +51,9 @@ export default function Messages() {
         <div>
           {Object.entries(chats).map(([chatId, chatData], key) => (
             <div key={key}>
-              {chatData.userInfo.userName}
-              {chatId}
+              {/* {chatData.userInfo.userName}
+              {chatId} */}
+              <MessageBox chatUserName={chatData.userInfo.userName} chatUserId={chatData.userInfo.uid} chatId={chatId} />
             </div>
           ))}
         </div>

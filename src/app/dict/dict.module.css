@@ -3,7 +3,14 @@
 }
 
 .langBox {
-  border: 3px solid black;
+  border: 1px solid black;
   display: grid;
-  grid-template-columns: 10% 40% 40%;
+  grid-template-columns: 10% 45% 45%;
+  margin-bottom: 1px;
 }
+
+.front {
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+}
+

@@ -45,3 +45,16 @@ export interface Search {
   genre: string[];
   language: string;
 }
+
+
+export interface Chat { 
+    date: {
+      seconds: number;
+      nanoseconds: number;
+    };
+    lastMessage: string ;
+    userInfo: {
+      uid: string;
+      userName: string;
+  }
+}

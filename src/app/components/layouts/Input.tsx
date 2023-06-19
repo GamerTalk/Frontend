@@ -2,8 +2,6 @@
 import React, { useContext, useState } from 'react'
 import styles from "./Input.module.css"
 import {
-  collection,
-  getDocs,
   setDoc,
   doc,
   updateDoc,
@@ -20,15 +18,13 @@ import { v4 as uuid } from 'uuid';
 const Input = () => {
 
   const { chatId , chatUserId , updateChatId, userName} = useContext(MessagesContext);
-  const { uid , userInfo } = UserAuth();
+  const { uid, userInfo } = UserAuth();
   
   const [message, setMessage] = useState<string>('');
 
   const handleMessageChange = (event: any) => {
     setMessage(event.target.value);
   };
-  
-  console.log("👹",userInfo.username);
   
   // firestore collection path
   const USER_CHATS  = "userChats";
@@ -42,14 +38,14 @@ const Input = () => {
     await setDoc(doc(db, collectionPath, documentId), data, { merge: true });
   }
 
+  
   const handleSubmit = async (event: any) => {
     event.preventDefault();
-    console.log(message);
+    console.log("message",message);
     console.log("👹",chatId);
     console.log("👺", chatUserId);
-    console.log("😊", userName);
+    console.log("😊", userInfo.username);
     
-
     const payloadForChats = {
       messages: arrayUnion({
         id: uuid(),
@@ -84,9 +80,7 @@ const Input = () => {
     }
     
     const updatePayloadForUserChats = {
-      [`${chatId}.lastMessage`]: {
-        message,
-      },
+      [`${chatId}.lastMessage`]: message,
       [`${chatId}.date`]: serverTimestamp()
     };
    

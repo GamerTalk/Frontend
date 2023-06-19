@@ -1,0 +1,9 @@
+.body {
+  height: 100vh;
+}
+
+.langBox {
+  border: 3px solid black;
+  display: grid;
+  grid-template-columns: 10% 40% 40%;
+}

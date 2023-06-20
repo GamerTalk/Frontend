@@ -9,7 +9,7 @@ const DictCheckbox: React.FC<Param> = ({ front, back})  => {
 
   return (
     <div className={styles.langBox}>
-    <input type="checkbox"></input>
+    <input className={styles.checkbox} type="checkbox"></input>
     <div className={styles.front}><label>{front}</label></div>
     <div className={styles.back}><label>{back}</label></div>
     </div>

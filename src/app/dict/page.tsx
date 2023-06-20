@@ -6,6 +6,7 @@ import DictCheckbox from '../components/elements/Dict-Checkbox'
 import Add from '../components/elements/dict-add/page'
 import axios from 'axios'
 import { UserAuth } from '../context/AuthContext'
+import Delete from '../components/elements/dict-delete/page'
 
 export default function Dict() {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
@@ -60,7 +61,7 @@ export default function Dict() {
 
       <form>
       <div className={styles.langBoxHeader}>  
-        <input type="checkbox"/> 
+        <input className={styles.checkbox} type="checkbox"/> 
         <p  className={styles.front}>Front</p>
         <p  className={styles.back}> Back</p>
       </div>
@@ -75,6 +76,13 @@ export default function Dict() {
       <button className={styles.plus} onClick={openPopup}>+</button>
       {isPopupOpen && <Add onClose={closePopup} />}
      </div>
+
+     <div>
+     <button className={styles.minus} onClick={openPopup}>+</button>
+      {isPopupOpen && <Delete onClose={closePopup} />}
+     </div>
+
+
 
     </div>
   )  : "Now Loading "

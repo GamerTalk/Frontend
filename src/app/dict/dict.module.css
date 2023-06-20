@@ -12,12 +12,16 @@
 .langBoxHeader {
   display: grid;
   grid-template-columns: 10% 45% 45%;
-  margin-bottom: -12px;
+  font-weight: bold;
+  border: 3px solid black;
+  background-color: black;
+  color: white;
 }
 
-.checkboxAll {
+.checkbox {
   height: 20px;
-  margin-bottom: -10px;
+  width: 20px;
+  margin: 0 auto;
 }
 
 

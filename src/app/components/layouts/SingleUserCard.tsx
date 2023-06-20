@@ -8,13 +8,13 @@ import langCall from "@/app/utils/langCheckFunc";
 import { useRouter } from "next/navigation";
 import TitleCase from "@/app/utils/TitleCase";
 import Upper from "@/app/utils/Upper";
-import { OtherUsers } from "@/app/global.t";
+import { User } from "@/app/global.t";
 import { MessagesContext } from "@/app/context/MessageContext";
 import { updateCurrentUser } from "firebase/auth";
 
 export default function SingleUserCard(props: any) {
   const { uid } = UserAuth();
-  const userObject: OtherUsers = props.userObject
+  const userObject: User = props.userObject
   console.log("🐝", userObject)
   
   const { updateChatUserId , updateChatId , updateUserName} = useContext(MessagesContext);

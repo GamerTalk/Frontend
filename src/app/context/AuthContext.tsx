@@ -55,7 +55,8 @@ const retrieve = async () => {
         'uid' : uid
       }
     }
-    const url = "http://localhost:8000/api/user-info/"
+    const url = (process.env.NEXT_PUBLIC_API_URL + "/api/user-info/");
+    console.log(url)
     const userData : any  = await axios.get(url, config).then((result) => result.data)
     return setUserInfo(userData)
   }

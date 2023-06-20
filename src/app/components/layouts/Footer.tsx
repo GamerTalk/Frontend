@@ -3,12 +3,12 @@ import styles from "./Footer.module.css";
 import { UserAuth } from "../../context/AuthContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
+  faBook,
   faHome,
   faMagnifyingGlass,
   faMessage,
   faUser,
 } from "@fortawesome/free-solid-svg-icons";
-//faUser;
 export default function Footer() {
   const { user } = UserAuth();
 
@@ -34,6 +34,14 @@ export default function Footer() {
         <Link className={styles.black} href="/messages"> 
           <FontAwesomeIcon icon={faMessage} className={styles.footerIcon} />
           <p>Messages</p>
+
+        </Link>
+      </div>
+      <div className={styles.footerIconDiv}>
+        {/* To change when the message endpoint is finished */}
+        <Link className={styles.black} href="/dict"> 
+          <FontAwesomeIcon icon={faBook} className={styles.footerIcon} />
+          <p>Flashcard</p>
 
         </Link>
       </div>

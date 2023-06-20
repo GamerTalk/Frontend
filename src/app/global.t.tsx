@@ -66,3 +66,12 @@ export interface UserMessage {
   senderId: string;
   text: string;
 }
+
+export interface Post {
+  id: number;
+  sender_uid: string;
+  sender_data: User;
+  time_of_message: string;
+  message: string;
+  sender: string;
+}

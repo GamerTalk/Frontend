@@ -2,7 +2,6 @@
 import React from 'react'
 import styles from "./MessageBox.module.css";
 import Link from 'next/link';
-import { UserAuth } from '@/app/context/AuthContext';
 
 interface Prop { 
   chatUserName: string,
@@ -13,14 +12,13 @@ interface Prop {
 
 const MessageBox = (prop:Prop) => {
   const { chatUserName, chatUserId, chatId } = prop;
+
   const handleSelect = (e: React.MouseEvent<HTMLDivElement>) => { 
-    e.preventDefault();
+    
     // set a username, userId and chatId who you want to chat with
-
+    
   }
-
-  const { userInfo } = UserAuth();
-
+  const id = "message";
   return (
     <Link href={`/messages/${chatUserName}`}>
     <div className={styles.messageBox} onClick={handleSelect}>

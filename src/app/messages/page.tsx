@@ -39,10 +39,13 @@ export default function Messages() {
         }
       }
     }
+    
     getChats();
 
-  }, []);
-  console.log("chats data",chats);
+  }, [uid]);
+
+  console.log("chats data", chats);
+  
   return (
     <>
    {chats === undefined ? (

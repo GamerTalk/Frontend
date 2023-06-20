@@ -44,7 +44,7 @@ const Input = () => {
     console.log("message",message);
     console.log("👹",chatId);
     console.log("👺", chatUserId);
-    console.log("😊", userInfo.username);
+    console.log("😊", userInfo?.username);
     
     const payloadForChats = {
       messages: arrayUnion({
@@ -67,17 +67,17 @@ const Input = () => {
         },
         
       }
-    
-    const payloadForMessagingUserChats = {
-      [chatId]: {
-        userInfo: {
-          uid: uid,
-          userName: userInfo.username,
+  
+      const payloadForMessagingUserChats = {
+        [chatId]: {
+          userInfo: {
+            uid: uid,
+            userName: userInfo?.username,
+          },
+          date: serverTimestamp(),
+          lastMessage: message
         },
-        date: serverTimestamp(),
-        lastMessage: message
-      },
-    }
+      }
     
     const updatePayloadForUserChats = {
       [`${chatId}.lastMessage`]: message,

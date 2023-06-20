@@ -6,9 +6,11 @@ import styles from "./Header.module.css"
 import { UserAuth } from '../../context/AuthContext'
 import { useRouter } from 'next/navigation';
 import { usePathname } from 'next/navigation';
+import { MessagesContext } from "@/app/context/MessageContext"
+import { useContext } from "react"
 
 export default function Header() { 
-
+  const { userName } = useContext(MessagesContext);
   const { user, logOut, userEmail} = UserAuth();
   const router = useRouter();
   const pathName = usePathname();
@@ -41,11 +43,10 @@ export default function Header() {
             <img src="../../../favicon.ico" alt="userImage" id={styles.image} />
             </div>
             <div>
-              <p>User Name</p>
+              <p>{userName}</p>
             </div>
           </div>
         </div>
-        
       ) :
     <div>
       <Head>

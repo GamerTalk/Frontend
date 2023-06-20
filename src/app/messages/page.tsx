@@ -18,6 +18,7 @@ import { Chat } from "../global.t";
 export default function Messages() {
   const { uid } = UserAuth();
   const [chats, setChats] = useState<{ [key: string]: Chat } | undefined>(undefined);
+  const [loading, isLoading] = useState<boolean>(true);
 
   useEffect(() => {
     const getChats = async () => {
@@ -29,6 +30,7 @@ export default function Messages() {
             console.log("Current data: ", chatData);
             // setChats(chatData);
             setChats(doc.data());
+            isLoading(false);
           });
           // stop observing user chats data
           return () => {
@@ -48,19 +50,30 @@ export default function Messages() {
   
   return (
     <>
-   {chats === undefined ? (
+   {loading ? (
         <p>Loading...</p>
-      ) : (
-        <div>
-          {Object.entries(chats).map(([chatId, chatData], key) => (
-            <div key={key}>
-              {/* {chatData.userInfo.userName}
-              {chatId} */}
-              <MessageBox chatUserName={chatData.userInfo.userName} chatUserId={chatData.userInfo.uid} chatId={chatId} />
-            </div>
-          ))}
+      // ) : (
+      //   <div>
+      //     {Object.entries(chats).map(([chatId, chatData], key) => (
+      //       <div key={key}>
+      //         {/* {chatData.userInfo.userName}
+      //         {chatId} */}
+      //         <MessageBox chatUserName={chatData.userInfo.userName} chatUserId={chatData.userInfo.uid} chatId={chatId} />
+      //       </div>
+      //     ))}
+      //   </div>
+      // )}
+    ): chats === undefined ?(
+    <p>You have not texted anyone yet.</p>
+   ) : (
+    <div>
+      {Object.entries(chats).map(([chatId, chatData], key) => (
+        <div key={key}>
+          <MessageBox chatUserName={chatData.userInfo.userName} chatUserId={chatData.userInfo.uid} chatId={chatId} />
         </div>
-      )}
+      ))}
+    </div>
+  )}
     </>
   )
 }

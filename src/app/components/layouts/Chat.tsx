@@ -31,8 +31,8 @@ const Chat = () => {
   return (
     <>
       <div className={styels.chatBox}>
-        {messages.map((message) => (
-          <Message message={message.text} date={message.date}/>
+        {messages.map((message,key) => (
+          <Message message={message.text} date={message.date} key={key}/>
           )
         )}
         <Input />

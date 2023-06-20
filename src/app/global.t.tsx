@@ -1,6 +1,7 @@
 import { IconDefinition } from "@fortawesome/fontawesome-svg-core";
 
 export interface User {
+  id: number;
   uid: string;
   username: string;
   date_of_birth: string;
@@ -17,6 +18,7 @@ export interface User {
   user_genre: string[];
   user_region: string;
 }
+
 
 // export interface OtherUsers {
 //   uid: string;

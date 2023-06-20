@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from 'react'
 import styles from './dict.module.css'
 import DictCheckbox from '../components/elements/Dict-Checkbox'
-import Add from '../auth/dict-add/page'
+import Add from '../components/elements/dict-add/page'
 import axios from 'axios'
 import { UserAuth } from '../context/AuthContext'
 
@@ -49,8 +49,13 @@ export default function Dict() {
     setIsPopupOpen(true);
   };
 
-  const closePopup = () => {
-    setIsPopupOpen(false);
+  const closePopup = async () => {
+    setIsPopupOpen(false)
+    async function updateData() {
+      // Perform asynchronous operations here using the await keyword
+      setCards(cards);
+    }
+    await updateData();
   };
   
   return  cards.length > 0 ? (
@@ -66,12 +71,12 @@ export default function Dict() {
 
       {cards.map((card: any) => (
         <DictCheckbox front={card.front} back={card.back} key={card.id} />
-      ))}
+      )).reverse()}
     
       </form>
 
       <div>
-      <button onClick={openPopup}>Open Popup</button>
+      <button className={styles.plus} onClick={openPopup}>+</button>
       {isPopupOpen && <Add onClose={closePopup} />}
      </div>
 

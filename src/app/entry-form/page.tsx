@@ -61,7 +61,9 @@ const handleFormSubmit = (event: { preventDefault: () => void }) => {
     userName: username
   });
 
-  axios.post('http://127.0.0.1:8000/api/new-user/', payload)
+  const url = process.env.NEXT_PUBLIC_API_URL + '/api/new-user/'
+
+  axios.post(url , payload)
   .then(response => {
     router.push('/home')
   })

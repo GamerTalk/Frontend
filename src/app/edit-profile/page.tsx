@@ -19,7 +19,7 @@ export default function Profile() {
     },
   };
 
-  const url = "http://localhost:8000/api/user-info/";
+  const url = process.env.NEXT_PUBLIC_API_URL + "/api/user-info/";
 
   const [profile, setProfile] = useState<any>();
   const [region, setRegion] = useState<string>("");

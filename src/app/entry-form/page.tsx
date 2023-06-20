@@ -7,6 +7,8 @@ import { useState, useEffect, ChangeEvent } from "react";
 import { UserAuth } from "../context/AuthContext";
 import { useRouter } from 'next/navigation';
 import axios from "axios";
+import { doc, setDoc } from "firebase/firestore"; 
+import { db } from "../firebase/firebase";
 
 export default function UserInfo() {
   const {uid} = UserAuth()
@@ -52,9 +54,16 @@ const handleFormSubmit = (event: { preventDefault: () => void }) => {
 
   console.log(payload);
 
+  
+
+  setDoc(doc(db, "users", uid!), {
+    uid: uid,
+    userName: username
+  });
+
   axios.post('http://127.0.0.1:8000/api/new-user/', payload)
   .then(response => {
-    router.push('/')
+    router.push('/home')
   })
   .catch(error => {
     console.log(error);
@@ -173,16 +182,66 @@ const handleFormSubmit = (event: { preventDefault: () => void }) => {
        <Checkbox type="checkbox" label="Korean" name="korean" value="" onChange={handleLanguage} defaultChecked={false}/>
       </div>
 
-      <p className={styles.heading}>What language(s) do you want to learn?</p>
-      <p className={styles.subheading}>1: Beginner, 2: Intermediate, 3: Advanced</p>
+      <p id='learning' className={styles.heading}>What language(s) do you want to learn and what is your level?</p>
+      <p className={styles.learningSubheading}> 
+        <p> <span className ={styles.number}>1</span>: Beginner 
+        <span className ={styles.number}> 2</span>: Elementary </p>
+        <p> <span className ={styles.number}>3</span>: Intermediate 
+        <span className ={styles.number}> 4</span>: Advanced 
+        <span className ={styles.number}> 5</span>: Proficent</p> 
+      </p>
+      <p className={styles.learningSubheading}>For a more detailed explanation <a href="#levels-explain" className={styles.links}>click here</a> </p>
       <div>
-        <LearningCheckbox label="English" name="english" onChange={handleLearning} defaultChecked1={false} defaultChecked2={false} defaultChecked3={false}/>
-        <LearningCheckbox label="Spanish" name="spanish" onChange={handleLearning} defaultChecked1={false} defaultChecked2={false} defaultChecked3={false}/>
-        <LearningCheckbox label="German" name="german" onChange={handleLearning} defaultChecked1={false} defaultChecked2={false} defaultChecked3={false}/>
-        <LearningCheckbox label="French" name="french" onChange={handleLearning} defaultChecked1={false} defaultChecked2={false} defaultChecked3={false}/>
-        <LearningCheckbox label="Japanese" name="japanese" onChange={handleLearning} defaultChecked1={false} defaultChecked2={false} defaultChecked3={false}/>
-        <LearningCheckbox label="Chinese" name="chinese" onChange={handleLearning} defaultChecked1={false} defaultChecked2={false} defaultChecked3={false}/>
-        <LearningCheckbox label="Korean" name="korean" onChange={handleLearning} defaultChecked1={false} defaultChecked2={false} defaultChecked3={false}/>
+        <div className={styles.learningHeadings}>
+          <div>Language</div>
+          <div>1</div>
+          <div>2</div>
+          <div>3</div>
+          <div>4</div>
+         <div>5</div>
+      </div>
+        <LearningCheckbox 
+          label="English" name="english" onChange={handleLearning} 
+          defaultChecked1={false} defaultChecked2={false} 
+          defaultChecked3={false} defaultChecked4={false}
+          defaultChecked5={false}/>
+
+        <LearningCheckbox 
+          label="Spanish" name="spanish"  onChange={handleLearning} 
+          defaultChecked1={false} defaultChecked2={false} 
+          defaultChecked3={false} defaultChecked4={false}
+          defaultChecked5={false}/>
+
+        <LearningCheckbox 
+          label="German" name="german" onChange={handleLearning} 
+          defaultChecked1={false} defaultChecked2={false} 
+          defaultChecked3={false} defaultChecked4={false}
+          defaultChecked5={false}/>
+
+        <LearningCheckbox 
+          label="French" name="french" onChange={handleLearning} 
+          defaultChecked1={false} defaultChecked2={false} 
+          defaultChecked3={false} defaultChecked4={false}
+          defaultChecked5={false}/>
+
+        <LearningCheckbox 
+          label="Japanese" name="japanese" onChange={handleLearning} 
+          defaultChecked1={false} defaultChecked2={false} 
+          defaultChecked3={false} defaultChecked4={false}
+          defaultChecked5={false}/>
+
+        <LearningCheckbox 
+          label="Chinese" name="chinese" onChange={handleLearning} 
+          defaultChecked1={false} defaultChecked2={false} 
+          defaultChecked3={false} defaultChecked4={false}
+          defaultChecked5={false}/>
+
+        <LearningCheckbox 
+          label="Korean" name="korean" onChange={handleLearning} 
+          defaultChecked1={false} defaultChecked2={false} 
+          defaultChecked3={false} defaultChecked4={false}
+          defaultChecked5={false}/>
+
       </div>
 
       <p className={styles.heading}>Date of Birth:</p>
@@ -216,6 +275,21 @@ const handleFormSubmit = (event: { preventDefault: () => void }) => {
       <textarea rows={5} cols={40} onChange={handleCurrPlay}/>
 
       <div><button className={styles.button} type="submit">Submit</button></div>
+
+      <div className={styles.levelsbox}>
+      <a id="levels-explain" href="#learning" className={styles.links}>Go back</a>
+      <h1>Language Levels</h1>
+      <h2 className={styles.candoHeadings}>Beginner</h2>
+      <p className={styles.cando}>Can make introductions and can ask and answer simple questions.</p>
+      <h2 className={styles.candoHeadings}>Elementary</h2>
+      <p className={styles.cando}>Can converse common topics and in daily situations.</p>
+      <h2 className={styles.candoHeadings}>Intermediate</h2>
+      <p className={styles.cando}>Can interact with native speakers more fluently and spontaneously.</p>
+      <h2 className={styles.candoHeadings}>Advanced</h2>
+      <p className={styles.cando}>Can express yourself naturally, effortlessly recalling authentic expressions.</p>
+      <h2 className={styles.candoHeadings}>Proficient</h2>
+      <p className={styles.cando}>Can comfortably comphrehend most things heard and read.</p>
+    </div>
 
     </form>
        

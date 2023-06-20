@@ -1,7 +1,8 @@
 "use client"
-import React from 'react'
+import React, { useContext } from 'react'
 import styles from "./MessageBox.module.css";
 import Link from 'next/link';
+import { MessagesContext } from '@/app/context/MessageContext';
 
 interface Prop { 
   chatUserName: string,
@@ -13,12 +14,16 @@ interface Prop {
 const MessageBox = (prop:Prop) => {
   const { chatUserName, chatUserId, chatId } = prop;
 
+  const { updateChatUserId, updateChatId, updateUserName } = useContext(MessagesContext);
+  
   const handleSelect = (e: React.MouseEvent<HTMLDivElement>) => { 
     
-    // set a username, userId and chatId who you want to chat with
-    
+  // update a username, userId and chatId who you want to chat with
+    updateChatUserId(chatUserId);
+    updateChatId(chatId);
+    updateUserName(chatUserName);
   }
-  const id = "message";
+
   return (
     <Link href={`/messages/${chatUserName}`}>
     <div className={styles.messageBox} onClick={handleSelect}>

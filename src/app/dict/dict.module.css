@@ -9,6 +9,18 @@
   margin-bottom: 1px;
 }
 
+.langBoxHeader {
+  display: grid;
+  grid-template-columns: 10% 45% 45%;
+  margin-bottom: -12px;
+}
+
+.checkboxAll {
+  height: 20px;
+  margin-bottom: -10px;
+}
+
+
 .front {
   border-left: 1px solid black;
   border-right: 1px solid black;

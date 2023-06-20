@@ -37,7 +37,7 @@ const FilterArea: React.FC<Param> = ({ setUsers, setFilterWords, filterWords , s
   const handleApply = async(event: React.FormEvent<HTMLFormElement>) => { 
     event.preventDefault();
     
-    const url = "http://127.0.0.1:8000/api/filter-users/";
+    const url = process.env.NEXT_PUBLIC_API_URL + "/api/filter-users/";
 
     const config = {
       method: 'GET',

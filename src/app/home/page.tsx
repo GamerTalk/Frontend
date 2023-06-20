@@ -30,8 +30,10 @@ export default function Home() {
 
     console.log(payload);
 
+    const url = process.env.NEXT_PUBLIC_API_URL + "/api/new-post/";
+
     axios
-      .post("http://127.0.0.1:8000/api/new-post/", payload)
+      .post(url, payload)
       .then((response) => {
         setCounter(counter + 1);
         setMessage("");
@@ -62,8 +64,9 @@ export default function Home() {
     async function getData() {
       try {
         if (uid) {
+          const url = process.env.NEXT_PUBLIC_API_URL + "/api/get-posts";
           const userData: any = await axios
-            .get("http://localhost:8000/api/get-posts")
+            .get(url)
             .then((result) => result.data);
           setPosts(userData);
         }

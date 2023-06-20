@@ -16,9 +16,8 @@ export default function Search() {
 
   const fetchAllusers = async () => {
     try {
-      const response = await axios.get(
-        "http://127.0.0.1:8000/api/filter-users/"
-      );
+      const url = process.env.NEXT_PUBLIC_API_URL + "/api/filter-users/";
+      const response = await axios.get(url);
       const allUsers: User[] = response.data;
       setUsers(allUsers);
     } catch (error) {

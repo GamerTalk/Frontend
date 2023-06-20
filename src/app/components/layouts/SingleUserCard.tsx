@@ -32,7 +32,7 @@ export default function SingleUserCard(props: any) {
       updateUserName(userObject.username);
 
       // go to /messages/id
-      router.push(`/messages/${userObject.uid}`);
+      router.push("/messages/message");
     }
    
   }

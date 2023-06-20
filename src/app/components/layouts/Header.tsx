@@ -19,12 +19,6 @@ export default function Header() {
   // if current endpoint is message page, header will be changed for messagePage
   const isMessagesPage = messagePath.test(pathName);
   
-  const pathName = usePathname();
-  // checking current endpoint has id or something 
-  const messagePath = /^\/messages\/\w+$/;
-  // if current endpoint is message page, header will be changed for messagePage
-  const isMessagesPage = messagePath.test(pathName);
-  
   const handleLogOut = async() => {
     try {
       await logOut();
@@ -80,10 +74,6 @@ export default function Header() {
         ) : <Link href="/auth/signin">Log In</Link> }
          </div>
         </div>
-      </header>
-        </div>
-      }
-    </>
       </header>
         </div>
       }

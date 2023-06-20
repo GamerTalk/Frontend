@@ -46,7 +46,6 @@ export interface Search {
   language: string;
 }
 
-
 export interface Chat { 
     date: {
       seconds: number;
@@ -57,4 +56,11 @@ export interface Chat {
       uid: string;
       userName: string;
   }
+}
+
+export interface UserMessage {
+  date: Date;
+  id: string;
+  senderId: string;
+  text: string;
 }

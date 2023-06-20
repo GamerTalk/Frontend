@@ -37,7 +37,7 @@ const Add: React.FC<Param> = ({ onClose}) => {
   
     axios.post('http://127.0.0.1:8000/api/new-flashcard/', payload)
       .then(response => {
-      console.log('success!')
+        onClose()
     })
       .catch(error => {
       console.log(error);
@@ -54,11 +54,11 @@ const Add: React.FC<Param> = ({ onClose}) => {
       <div className={styles.content}>
         <h2>Add a new card</h2>
         <form onSubmit={handleFormSubmit}>
-        <div className={styles.card}><p>Front</p><input className={styles.input} onChange={handleFront}/></div>
-        <div className={styles.card}><p>Back</p><input className={styles.input} onChange={handleBack}/></div>
-        <button>Submit</button>
+        <div className={styles.card}><p className={styles.title}>Front</p><input className={styles.input} onChange={handleFront}/></div>
+        <div className={styles.card}><p className={styles.title}>Back</p><input className={styles.input} onChange={handleBack}/></div>
+        <button className={styles.submit}>Add</button>
         </form>
-        <button onClick={onClose}>Close</button>
+        <button onClick={onClose} className={styles.close}>Close</button>
       </div>
     </div>
   );

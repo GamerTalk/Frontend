@@ -22,22 +22,22 @@ export default function Dict() {
 
   const url = "http://localhost:8000/api/get-flashcards/"
 
-  useEffect(() => {
-    async function getData() {
-      try {
-        if (uid) { 
-        const userData : any  = await axios.get(url, config).then((result) => result.data)
-        setCards(userData) 
-        } else {
-          console.log('fail')
-        }
+  const getData = async () => {
+    try {
+      if (uid) {
+        const userData: any = await axios.get(url, config).then((result) => result.data);
+        setCards(userData);
+      } else {
+        console.log('fail');
       }
-      catch(error) {
-       console.log(error)
-      }
+    } catch (error) {
+      console.log(error);
     }
-    getData()
-  },[uid])
+  };
+
+  useEffect(() => {
+    getData();
+  }, [uid]);
 
   useEffect(() => {
     console.log('CAAAAARDs', cards.map((card : any) => card.front))
@@ -50,12 +50,8 @@ export default function Dict() {
   };
 
   const closePopup = async () => {
-    setIsPopupOpen(false)
-    async function updateData() {
-      // Perform asynchronous operations here using the await keyword
-      setCards(cards);
-    }
-    await updateData();
+    setIsPopupOpen(false);
+    await getData();
   };
   
   return  cards.length > 0 ? (

@@ -35,7 +35,8 @@ export default function Search() {
       fetchAllusers();
     }
   }, [filterWords]);
-
+  console.log("hoge",users);
+  
   return (
     <>
       {/* The margin keeps the footer blocking the contents of the div */}

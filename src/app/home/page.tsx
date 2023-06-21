@@ -6,14 +6,14 @@ import { useRouter } from "next/navigation";
 import styles from "./home.module.css";
 import axios from "axios";
 import SingleUserCard from "../components/layouts/SingleUserCard";
-import { OtherUsers, Post } from "../global.t";
+import { User, Post } from "../global.t";
 import PostCard from "../components/layouts/PostCard";
 
 export default function Home() {
   const [message, setMessage] = useState<string>("");
   const [posts, setPosts] = useState([]);
   const [counter, setCounter] = useState<number>(0);
-  const [singleUser, setSingleUser] = useState<OtherUsers | object>({});
+  const [singleUser, setSingleUser] = useState<User | object>({});
   const [showProfilePage, setShowProfilePage] = useState<boolean>(false);
 
   const { uid, userInfo } = UserAuth();

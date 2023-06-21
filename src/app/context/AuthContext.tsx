@@ -8,28 +8,28 @@ import { createUserWithEmailAndPassword,
 import { auth } from "../firebase/firebase";
 import { createContext, useContext, useState, useEffect, ReactNode } from "react";
 import axios from "axios";
-
-interface User {
-// Define your user object type here
-}
+import { User as userInfo } from "../global.t";
+import { User as firebaseAuthUser } from "firebase/auth";
 
 interface AuthContextProps {
 createUser: (email: string, password: string) => Promise<any>;
 loginUser: (email: string, password: string) => Promise<any>;
 logOut: () => Promise<any>;
-user: User;
+user: firebaseAuthUser | null;
 userEmail: string | null
 uid: string | null
-userInfo: object
+userInfo: userInfo | null
 }
 
 const UserContext = createContext<AuthContextProps | null>(null);
 
 export const AuthContextProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
-const [user, setUser] = useState<User>({});
+
+const [user, setUser] = useState<firebaseAuthUser | null>(null); 
 const [userEmail, setUserEmail] = useState<null | string>(null);
 const [uid, setUid] = useState<null | string>(null)
-const [userInfo, setUserInfo] = useState<object>({})
+
+const [userInfo, setUserInfo] = useState<userInfo | null>(null);
 
 const createUser = async (email: string, password: string) => {
 const userCred = await createUserWithEmailAndPassword(auth, email, password);
@@ -57,16 +57,16 @@ const retrieve = async () => {
     }
     const url = (process.env.NEXT_PUBLIC_API_URL + "/api/user-info/");
     console.log(url)
-    const userData : any  = await axios.get(url, config).then((result) => result.data)
+    const userData : userInfo  = await axios.get(url, config).then((result) => result.data)
     console.log(userData)
     return setUserInfo(userData)
   }
 }
 
 useEffect(() => {
-const authenticatedUser = onAuthStateChanged(auth, (currentUser) => {
+const authenticatedUser = onAuthStateChanged(auth, (currentUser:firebaseAuthUser | null) => {
 console.log('CURRENT-USER', currentUser);
-setUser(currentUser || {});
+setUser(currentUser);
 setUserEmail(currentUser?.email || null);
 setUid(currentUser?.uid || null)
 

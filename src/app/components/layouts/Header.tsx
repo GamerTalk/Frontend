@@ -7,13 +7,30 @@ import { UserAuth } from '../../context/AuthContext'
 import { useRouter } from 'next/navigation';
 import { usePathname } from 'next/navigation';
 import { MessagesContext } from "@/app/context/MessageContext"
-import { useContext } from "react"
+import { useContext, useEffect, useState } from "react"
 
 export default function Header() { 
   const { userName } = useContext(MessagesContext);
-  const { user, logOut, userEmail} = UserAuth();
+  const { user, logOut, userEmail, userInfo } = UserAuth();
+  
+  const [loadingImg, setLoading] = useState<boolean>(true);
+
   const router = useRouter();
   const pathName = usePathname();
+
+  useEffect(() => {
+    const img = new Image();
+    if (userInfo?.profile_picture_url) {
+      img.src = userInfo.profile_picture_url;
+      img.onload = () => { 
+        setLoading(!loadingImg);
+      }
+      img.onerror = () => { 
+        setLoading(!loadingImg);
+      }
+    }
+  }, [userInfo?.profile_picture_url]);
+
   // checking current endpoint has id or something 
   const messagePath = /^\/messages\/\w+$/;
   // if current endpoint is message page, header will be changed for messagePage
@@ -27,7 +44,7 @@ export default function Header() {
       console.error(err);
     }
   };
- 
+  console.log(userInfo?.profile_picture_url);
 
   return (
     <>
@@ -59,10 +76,18 @@ export default function Header() {
           <p id={styles.headerName}> GamerTalk </p>
         </Link>
         </div>
-      <div className={styles.userInfo}>
-        <div className={styles.imageContainer}>
-          <img id={styles.image} src="https://cdn2.thecatapi.com/images/MjA1OTMwMA.jpg" alt="user-photo" />
-        </div>
+        <div className={styles.userInfo}>
+              
+        {loadingImg ? (
+         <div className={styles.imageContainer}>
+            <div id={styles.skeletonImage} />
+         </div>
+          ) : (
+          <div className={styles.imageContainer}>
+            <img id={styles.image} src={userInfo?.profile_picture_url} alt="user-photo" />
+          </div>
+          )
+        }
 
         <div className="username">
          { userEmail ? (

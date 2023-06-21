@@ -51,18 +51,7 @@ export default function Messages() {
   return (
     <>
    {loading ? (
-        <p>Loading...</p>
-      // ) : (
-      //   <div>
-      //     {Object.entries(chats).map(([chatId, chatData], key) => (
-      //       <div key={key}>
-      //         {/* {chatData.userInfo.userName}
-      //         {chatId} */}
-      //         <MessageBox chatUserName={chatData.userInfo.userName} chatUserId={chatData.userInfo.uid} chatId={chatId} />
-      //       </div>
-      //     ))}
-      //   </div>
-      // )}
+      <p>Loading...</p>
     ): chats === undefined ?(
     <p>You have not texted anyone yet.</p>
    ) : (

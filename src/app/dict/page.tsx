@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 "use client"
 
 import React, { useEffect, useState } from 'react'
@@ -6,6 +8,7 @@ import DictCheckbox from '../components/elements/Dict-Checkbox'
 import Add from '../components/elements/dict-add/page'
 import axios from 'axios'
 import { UserAuth } from '../context/AuthContext'
+
 
 export default function Dict() {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
@@ -58,8 +61,6 @@ export default function Dict() {
     }
   };
   
-
-
   useEffect(() => {
     getData();
   }, [uid]);
@@ -72,6 +73,7 @@ export default function Dict() {
     setIsPopupOpen(false);
     await getData();
   };
+
 
   const handleDeleteCards = (event: { target: { name: string }; }) => {
     const {  name } = event.target;
@@ -91,14 +93,11 @@ export default function Dict() {
   function myFunction() {
     if (confirm("Are you sure you want to delete these cards?") === true) {
       deleteData()
-    } else {
-      closePopup()
-    }
+    } 
   }
 
 
-  
-  return  cards.length > 0 ? (
+  return cards.length > 0 ? (
     <div className={styles.body}>
       <h1>Dictionary</h1>
 
@@ -110,21 +109,18 @@ export default function Dict() {
         <p>Back</p>
       </div>
 
-    
-      
       {cards.map((card: any) => (
         <DictCheckbox front={card.front} back={card.back} key={card.id} name={card.id} isChecked={false} onChange={handleDeleteCards}/>
       )).reverse()}
 
     </div> 
-    
       </form>
 
       <div className={styles.plusAndMinus}>
 
         <div>
           <button className={styles.plus} onClick={openPopup}>+</button>
-          {isPopupOpen && <Add onClose={closePopup} />}
+          {isPopupOpen && <Add handleClosePopup={closePopup}/>}
         </div>
 
         <div>

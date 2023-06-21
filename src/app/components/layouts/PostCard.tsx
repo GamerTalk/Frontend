@@ -17,11 +17,17 @@ export default function PostCard(props:any) {
   }
   return (
     <div className={styles.post} key={post.id} onClick={singleUserView}>
-      <div className={styles.pic}>Picture</div>
-      <div className={styles.time}>
-        {formattedDate} {formattedTime}
+      <div className={styles.info_contents}>
+        <div className={styles.pic}>Picture</div>
+        <div className={styles.userAndDate}>
+          <div className={styles.user}>{post.sender_data.username}</div>
+          <div className={styles.time}>
+            {formattedDate} {formattedTime}
+          </div>
+
+        </div>
+
       </div>
-      <div className={styles.user}>{post.sender_data.username}</div>
       <div className={styles.message}>
         {post.message.split("\n").map((e: string, index: number) => (
           <p key={index}>{e}</p>

@@ -1,3 +1,9 @@
+.contents_div {
+  background: "#F0F2F5";
+  margin-bottom: 100px;
+  padding: 5px
+}
+
 .textarea {
   margin-top: 20px;
   margin-bottom: 5px;
@@ -10,8 +16,8 @@
 }
 
 .post{
-  background-color: white;
-  border-radius: 25px;
+  background-color: #272727;
+  border-radius: 5px 20px 20px 20px;
   display: grid;
   grid-template-columns: 30% 70%;
   gap: 10px;

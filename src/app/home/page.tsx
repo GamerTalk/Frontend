@@ -83,7 +83,7 @@ export default function Home() {
   }, [posts]);
 
   return (
-    <div style={{ background: "#F0F2F5" }}>
+    <div className={styles.contents_div}>
       {!showProfilePage ? (
         <>
           <form onSubmit={handleFormSubmit}>

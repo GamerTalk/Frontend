@@ -103,17 +103,20 @@ export default function Dict() {
       <h1>Dictionary</h1>
 
       <form>
+      <div className={styles.wholeBox}>  
       <div className={styles.langBoxHeader}>  
         <p></p>
-        <p  className={styles.front}>Front</p>
-        <p  className={styles.back}> Back</p>
+        <p>Front</p>
+        <p>Back</p>
       </div>
 
     
-
+      
       {cards.map((card: any) => (
         <DictCheckbox front={card.front} back={card.back} key={card.id} name={card.id} isChecked={false} onChange={handleDeleteCards}/>
       )).reverse()}
+
+    </div> 
     
       </form>
 
@@ -132,6 +135,6 @@ export default function Dict() {
 
 
     </div>
-  )  : "Now Loading "
+  ) : <p className={styles.loading}>Loading Profile...</p>
 }
 

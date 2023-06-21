@@ -9,16 +9,16 @@ import {
 import { faGamepad } from "@fortawesome/free-solid-svg-icons";
 import { User, Systems } from "./../../global.t";
 
-interface usersProps {
-  users: User[];
+interface Props {
+  user: User;
+  key: number;
+  setSingleUser: Function;
+  setShowSingleUser: Function;
 }
 
 // const UserCard = ({ users }: usersProps) => {
-const UserCard = (props: any) => {
-  const user: User = props.user;
-  const key: number = props.key;
-  const setSingleUser: Function = props.setSingleUser;
-  const setShowSingleUser: Function = props.setShowSingleUser;
+const UserCard = (props: Props) => {
+  const { user, key, setSingleUser, setShowSingleUser } = props;
 
   const systems: Systems = {
     pc: faSteam,

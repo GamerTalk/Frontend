@@ -6,9 +6,11 @@ import styles from "./Header.module.css"
 import { UserAuth } from '../../context/AuthContext'
 import { useRouter } from 'next/navigation';
 import { usePathname } from 'next/navigation';
+import { MessagesContext } from "@/app/context/MessageContext"
+import { useContext } from "react"
 
 export default function Header() { 
-
+  const { userName } = useContext(MessagesContext);
   const { user, logOut, userEmail} = UserAuth();
   const router = useRouter();
   const pathName = usePathname();
@@ -41,22 +43,21 @@ export default function Header() {
             <img src="../../../favicon.ico" alt="userImage" id={styles.image} />
             </div>
             <div>
-              <p>User Name</p>
+              <p>{userName}</p>
             </div>
           </div>
         </div>
-        
       ) :
     <div>
-    <Head>
+      <Head>
         <title>GamerTalk</title>
-        </Head>
-        <header className={styles.headerContainer}>
-        {/* link tag to home "/" */}
-          <div className={styles.headerTitleContainer}>
-           <Link href="/home">
-            <p id={styles.headerName}> GamerTalk </p>
-          </Link>
+      </Head>
+      <header className={styles.headerContainer}>
+      {/* link tag to home "/" */}
+        <div className={styles.headerTitleContainer}>
+         <Link href="/home">
+          <p id={styles.headerName}> GamerTalk </p>
+        </Link>
         </div>
       <div className={styles.userInfo}>
         <div className={styles.imageContainer}>
@@ -65,7 +66,11 @@ export default function Header() {
 
         <div className="username">
          { userEmail ? (
+        <div className="username">
+         { userEmail ? (
         <Link href="" onClick={handleLogOut}>Log Out</Link>
+        ) : <Link href="/auth/signin">Log In</Link> }
+         </div>
         ) : <Link href="/auth/signin">Log In</Link> }
          </div>
         </div>

@@ -6,8 +6,7 @@ import FilterArea from "../components/layouts/FilterArea";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import SingleUserCard from "../components/layouts/SingleUserCard";
-import styles from "./search.module.css";
-import { relative } from "path";
+// import styles from "./search.module.css"; // This would not work
 import { UserAuth } from "../context/AuthContext";
 
 export default function Search() {

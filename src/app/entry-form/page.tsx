@@ -44,7 +44,7 @@ export default function UserInfo() {
     // upload a user profile picutre to firebase
     if (selectedFile) {
       // uid + filename makes a path of profile img in firebase storage
-      const storageRef = ref(storage, `/images/${uid + selectedFile.name}`);
+      const storageRef = ref(storage, `/images/${uid}/${selectedFile.name}`);
       try {
         // upload
        const uploadedSnapshot =  await uploadBytesResumable(storageRef, selectedFile)

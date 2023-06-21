@@ -15,41 +15,33 @@ export default function Footer() {
   return (
     <div className={styles.footerDiv}>
       <div className={styles.footerIconDiv}>
-        <Link className={styles.black} href="/home">
+        <Link className={styles.white} href="/home">
           <FontAwesomeIcon icon={faHome} className={styles.footerIcon} />
-          <p>Home</p>
         </Link>
       </div>
       <div className={styles.footerIconDiv}>
-        <Link className={styles.black} href="/search">
+        <Link className={styles.white} href="/search">
           <FontAwesomeIcon
             icon={faMagnifyingGlass}
             className={styles.footerIcon}
           />
-          <p>Search</p>
         </Link>
       </div>
       <div className={styles.footerIconDiv}>
         {/* To change when the message endpoint is finished */}
-        <Link className={styles.black} href="/messages"> 
-          <FontAwesomeIcon icon={faMessage} className={styles.footerIcon} />
-          <p>Messages</p>
-
+        <Link className={styles.white} href="/messages">
+          <FontAwesomeIcon icon={faMessage} className={styles.footerIcon}/>
         </Link>
       </div>
       <div className={styles.footerIconDiv}>
         {/* To change when the message endpoint is finished */}
-        <Link className={styles.black} href="/dict"> 
+        <Link className={styles.white} href="/dict">
           <FontAwesomeIcon icon={faBook} className={styles.footerIcon} />
-          <p>Flashcard</p>
-
         </Link>
       </div>
       <div className={styles.footerIconDiv}>
-        <Link className={styles.black} href="/edit-profile">
+        <Link className={styles.white} href="/edit-profile">
           <FontAwesomeIcon icon={faUser} className={styles.footerIcon} />
-          <p>Profile</p>
-
         </Link>
       </div>
     </div>

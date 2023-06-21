@@ -1,18 +1,32 @@
 .footerDiv {
     display: flex;
     justify-content: space-around;
-    background-color: lightslategrey;
-    padding-top: 10px;
-    position: sticky;
-    bottom: 0px;
+    background-color: #6D67E4;
+    padding-top: 15px;
+    position: fixed;
+    width: 96vw;
+    padding-bottom: 15px;
+    bottom: 10px;
+    left: 2vw;
+    z-index: 9999;
+    border-radius: 25px;
 }
 
 .footerIconDiv {
     display: flex;
     flex-direction: column;
-    color: black;
 }
 
-.black {
-    color: black;
+.footerIcon {
+    width: 25px;
+    height: 25px !important;
+}
+
+.footerText {
+    padding-bottom: 0;
+    margin-bottom: 0;
+}
+
+.white {
+    color: white;
 }

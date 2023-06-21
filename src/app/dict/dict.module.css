@@ -38,3 +38,17 @@
   color: white;
   background-color: #099500;
 }
+
+.minus {
+  margin-top: 50px;
+  height: 50px;
+  width: 50px;
+  font-size: 40px;
+  color: white;
+  background-color: red
+}
+
+.plusAndMinus {
+  display: grid;
+  grid-template-columns: 50% 50%;
+}

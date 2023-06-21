@@ -11,6 +11,7 @@ import Delete from '../components/elements/dict-delete/page'
 export default function Dict() {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const [cards, setCards] = useState<any>([]);
+  const [deleteCards, setDeleteCards] = useState<string[]>([])
 
   const {uid} = UserAuth();
 
@@ -21,12 +22,13 @@ export default function Dict() {
     }
   }
 
-  const url = "http://localhost:8000/api/get-flashcards/"
+  const getURL = "http://localhost:8000/api/get-flashcards/"
+  const deleteURL = "http://localhost:8000/api/delete-flashcard/"
 
   const getData = async () => {
     try {
       if (uid) {
-        const userData: any = await axios.get(url, config).then((result) => result.data);
+        const userData: any = await axios.get(getURL, config).then((result) => result.data);
         setCards(userData);
       } else {
         console.log('fail');
@@ -36,15 +38,32 @@ export default function Dict() {
     }
   };
 
+  const deleteData = async () => {
+    try {
+      if (uid) {
+        await Promise.all(
+          deleteCards.map(async (card) => {
+            const requestData = {
+              user_uid: uid,
+              card_id: card
+            };
+            await axios.delete(deleteURL, { data: requestData, headers: { uid } });
+          })
+        );
+        await getData(); // Refresh the data after deleting the cards
+      } else {
+        console.log('fail');
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  
+
+
   useEffect(() => {
     getData();
   }, [uid]);
-
-  useEffect(() => {
-    console.log('CAAAAARDs', cards.map((card : any) => card.front))
-  },[cards])
-
-
 
   const openPopup = () => {
     setIsPopupOpen(true);
@@ -54,6 +73,31 @@ export default function Dict() {
     setIsPopupOpen(false);
     await getData();
   };
+
+  const handleDeleteCards = (event: { target: { name: string }; }) => {
+    const {  name } = event.target;
+    if (deleteCards.includes(name)) {
+      // If card is already selected, remove it from the array
+      setDeleteCards((prevCards) => prevCards.filter((card) => card !== name));
+    } else {
+      // If card is not selected, add it to the array
+      setDeleteCards((prevCards) => [...prevCards, name]);
+    }
+  }
+
+  useEffect(() => {
+    console.log(deleteCards)
+  },[deleteCards])
+
+  function myFunction() {
+    if (confirm("Are you sure you want to delete these cards?") === true) {
+      deleteData()
+    } else {
+      closePopup()
+    }
+  }
+
+
   
   return  cards.length > 0 ? (
     <div className={styles.body}>
@@ -61,25 +105,29 @@ export default function Dict() {
 
       <form>
       <div className={styles.langBoxHeader}>  
-        <input className={styles.checkbox} type="checkbox"/> 
+        <p></p>
         <p  className={styles.front}>Front</p>
         <p  className={styles.back}> Back</p>
       </div>
 
+    
+
       {cards.map((card: any) => (
-        <DictCheckbox front={card.front} back={card.back} key={card.id} />
+        <DictCheckbox front={card.front} back={card.back} key={card.id} name={card.id} isChecked={false} onChange={handleDeleteCards}/>
       )).reverse()}
     
       </form>
 
-      <div>
-      <button className={styles.plus} onClick={openPopup}>+</button>
-      {isPopupOpen && <Add onClose={closePopup} />}
-     </div>
+      <div className={styles.plusAndMinus}>
 
-     <div>
-     <button className={styles.minus} onClick={openPopup}>+</button>
-      {isPopupOpen && <Delete onClose={closePopup} />}
+        <div>
+          <button className={styles.plus} onClick={openPopup}>+</button>
+          {isPopupOpen && <Add onClose={closePopup} />}
+        </div>
+
+        <div>
+          <button className={styles.minus} onClick={myFunction}>-</button>
+        </div>
      </div>
 
 

@@ -6,7 +6,9 @@ import FilterArea from "../components/layouts/FilterArea";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import SingleUserCard from "../components/layouts/SingleUserCard";
-import { OtherUsers } from "../global.t";
+import styles from "./search.module.css";
+import { relative } from "path";
+import { UserAuth } from "../context/AuthContext";
 
 export default function Search() {
   const [users, setUsers] = useState<User[]>([]);
@@ -14,6 +16,8 @@ export default function Search() {
   const [isShowUserCard, setShowUserCard] = useState(true);
   const [showSingleUser, setShowSingleUser] = useState<Boolean>(false);
   const [singleUser, setSingleUser] = useState<User | object>({});
+
+  const { uid } = UserAuth();
 
   const fetchAllusers = async () => {
     try {
@@ -34,7 +38,8 @@ export default function Search() {
 
   return (
     <>
-      <div>
+      {/* The margin keeps the footer blocking the contents of the div */}
+      <div style={{ marginBottom: "100px" }}>
         <FilterArea
           setUsers={setUsers}
           setFilterWords={setFilterWords}
@@ -52,14 +57,16 @@ export default function Search() {
 
             {!showSingleUser
               ? users.map((user: User, index: number) => {
-                  return (
-                    <UserCard
-                      user={user}
-                      key={index}
-                      setShowSingleUser={setShowSingleUser}
-                      setSingleUser={setSingleUser}
-                    />
-                  );
+                  if (uid !== user.uid) {
+                    return (
+                      <UserCard
+                        user={user}
+                        key={index}
+                        setShowSingleUser={setShowSingleUser}
+                        setSingleUser={setSingleUser}
+                      />
+                    );
+                  }
                 })
               : ""}
           </div>

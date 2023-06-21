@@ -6,12 +6,11 @@ import DictCheckbox from '../components/elements/Dict-Checkbox'
 import Add from '../components/elements/dict-add/page'
 import axios from 'axios'
 import { UserAuth } from '../context/AuthContext'
-import Delete from '../components/elements/dict-delete/page'
 
 export default function Dict() {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const [cards, setCards] = useState<any>([]);
-  const [deleteCards, setDeleteCards] = useState<string[]>([])
+  const [deleteCards, setDeleteCards] = useState<string[]>([]);
 
   const {uid} = UserAuth();
 

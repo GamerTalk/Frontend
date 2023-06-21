@@ -17,26 +17,8 @@ export interface User {
   user_systems: string[];
   user_genre: string[];
   user_region: string;
+  profile_picture_url: string; 
 }
-
-
-// export interface OtherUsers {
-//   uid: string;
-//   username: string;
-//   date_of_birth: string;
-//   about_me: string;
-//   languages: {
-//     fluent: string[];
-//     learning: {
-//       level: number;
-//       language: string;
-//     }[];
-//   };
-//   currently_playing: string;
-//   user_systems: string[];
-//   user_genre: string[];
-//   user_region: string;
-// }
 
 export interface Systems {
   [key: string]: IconDefinition;

@@ -6,7 +6,6 @@ import FilterArea from "../components/layouts/FilterArea";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import SingleUserCard from "../components/layouts/SingleUserCard";
-import { OtherUsers } from "../global.t";
 
 export default function Search() {
   const [users, setUsers] = useState<User[]>([]);
@@ -32,6 +31,8 @@ export default function Search() {
     }
   }, [filterWords]);
 
+  console.log("hoge",users);
+  
   return (
     <>
       <div>

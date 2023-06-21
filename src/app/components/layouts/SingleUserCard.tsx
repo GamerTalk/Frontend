@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useEffect, useState } from "react";
+import React, { ChangeEvent, useContext, useEffect, useState } from "react";
 import axios from "axios";
 import styles from "./SingleUserCard.module.css";
 import { UserAuth } from "@/app/context/AuthContext";
@@ -8,12 +8,34 @@ import langCall from "@/app/utils/langCheckFunc";
 import { useRouter } from "next/navigation";
 import TitleCase from "@/app/utils/TitleCase";
 import Upper from "@/app/utils/Upper";
-import { OtherUsers } from "@/app/global.t";
+import { User } from "@/app/global.t";
+import { MessagesContext } from "@/app/context/MessageContext";
+import { updateCurrentUser } from "firebase/auth";
 
-export default function SingleUserCard(props:any) {
+export default function SingleUserCard(props: any) {
   const { uid } = UserAuth();
-  const userObject: OtherUsers = props.userObject
-  console.log(userObject)
+  const userObject: User = props.userObject
+  console.log("🐝", userObject)
+  
+  const { updateChatUserId , updateChatId , updateUserName} = useContext(MessagesContext);
+
+  const router = useRouter();
+
+  const handleGoToMessages = () => {
+    if (uid) {
+      // create combinedId for messging 
+      const combinedId: string = uid > userObject.uid ? uid + userObject.uid : userObject.uid + uid;
+
+      // set user info who user want to chat with
+      updateChatUserId(userObject.uid); 
+      updateChatId(combinedId);
+      updateUserName(userObject.username);
+
+      // go to /messages/id
+      router.push("/messages/message");
+    }
+   
+  }
 
   return (
     <div>
@@ -63,7 +85,7 @@ export default function SingleUserCard(props:any) {
 
             <p className={styles.heading}>Currently Playing:</p>
             <p>{userObject.currently_playing}</p>
-            <button onClick={() => alert("Work in procress")}>
+            <button onClick={handleGoToMessages}>
               Send A Message
             </button>
           </div>

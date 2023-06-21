@@ -77,7 +77,7 @@ export default function Header() {
         </Link>
         </div>
         <div className={styles.userInfo}>
-              
+        {/* skeleton will show up until profile url is being fetched */}
         {loadingImg ? (
          <div className={styles.imageContainer}>
             <div id={styles.skeletonImage} />

@@ -38,7 +38,7 @@ export default function Search() {
   
   return (
     <>
-      {/* The margin keeps the from footer blocking the contents of the div */}
+      {/* The margin keeps the footer from blocking the contents of the div */}
       <div style={{ marginBottom: "100px" }}>
         <FilterArea
           setUsers={setUsers}

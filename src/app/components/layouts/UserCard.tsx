@@ -65,20 +65,24 @@ const UserCard = (props: Props) => {
           </div>
           <div className={styles.userAbout}>
             <div className={styles.text}>
-              <p>{user.username}</p>
+              <p className={styles.userName}>{user.username}</p>
             </div>
             <div className={styles.text}>
-              <p>Speaks:</p>
+              <p className={styles.subTitle}>Speaks:</p>
               {user.languages.fluent.map((language, index) => {
-                return <p key={index}>{Upper(language)}</p>;
+                return (
+                  <p className={styles.languageLine} key={index}>
+                    {Upper(language)}
+                  </p>
+                );
               })}
             </div>
             <div className={styles.text}>
               <div>
-                <p>Learning:</p>
+                <p className={styles.subTitle}>Learning:</p>
                 {user.languages.learning.map((learn, index) => {
                   return (
-                    <p key={index}>
+                    <p className={styles.languageLine} key={index}>
                       {Upper(learn.language)} : {levelLookup[learn.level]}
                     </p>
                   );

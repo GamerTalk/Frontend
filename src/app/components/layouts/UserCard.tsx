@@ -59,7 +59,10 @@ const UserCard = (props: Props) => {
         <div className={styles.userInfo}>
           <div className={styles.userImg}>
             <img
-              src={user.profile_picture_url || "https://cdn2.thecatapi.com/images/MjA1OTMwMA.jpg"}
+              src={
+                user.profile_picture_url ||
+                "https://firebasestorage.googleapis.com/v0/b/gamertalk-8133c.appspot.com/o/images%2Fdefault%2Fuserdefault.png?alt=media&token=f5201169-c537-485f-ba41-ec38e44464ca"
+              }
               id={styles.image}
             />
           </div>

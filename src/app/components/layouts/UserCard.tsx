@@ -59,7 +59,7 @@ const UserCard = (props: Props) => {
         <div className={styles.userInfo}>
           <div className={styles.userImg}>
             <img
-              src="https://cdn2.thecatapi.com/images/MjA1OTMwMA.jpg"
+              src={user.profile_picture_url || "https://cdn2.thecatapi.com/images/MjA1OTMwMA.jpg"}
               id={styles.image}
             />
           </div>

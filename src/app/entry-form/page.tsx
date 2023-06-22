@@ -21,6 +21,7 @@ export default function UserInfo() {
   const [genre, setGenre] = useState<string[]>([]);
   const [aboutMe, setAboutMe] = useState<string>("");
   const [currPlay, setCurrPlay] = useState<string>("");
+  const [profileURL, setProfileURL] = useState<string>("");
   
   const router = useRouter();
   /*
@@ -49,7 +50,8 @@ const handleFormSubmit = (event: { preventDefault: () => void }) => {
     date_of_birth: birthday,
     systems: system,
     genre,
-    currently_playing: currPlay
+    currently_playing: currPlay,
+    profile_picture_url: profileURL,
   }
 
   console.log(payload);

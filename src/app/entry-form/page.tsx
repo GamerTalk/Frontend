@@ -12,7 +12,7 @@ import { db, storage } from "../firebase/firebase";
 import { uploadBytesResumable, ref, getDownloadURL } from "firebase/storage";
 
 export default function UserInfo() {
-  const { uid } = UserAuth();
+  const { uid, user,retrieve } = UserAuth()
   const [username, setUsername] = useState<string>("");
   const [region, setRegion] = useState<string>("");
   const [language, setLanguage] = useState<string[]>([]);
@@ -101,10 +101,12 @@ export default function UserInfo() {
 
     const url = process.env.NEXT_PUBLIC_API_URL + "/api/new-user/";
 
-    axios
-      .post(url, payload)
-      .then((response) => {
-        router.push("/home");
+    axios.post(url, payload)
+      .then(response => {
+        if (user) {
+          retrieve(user);
+        }
+        router.push('/home')
       })
       .catch((error) => {
         console.log(error);

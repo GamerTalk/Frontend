@@ -10,7 +10,7 @@ export default function PostCard(props: any) {
   // Format the date and time
   const formattedDate = messageDate.toLocaleDateString(); // Change the date format as desired
   const formattedTime = messageDate.toLocaleTimeString(); // Change the time format as desired
-
+  
   const singleUserView = () => {
     setSingleUser(post.sender_data);
     setShowProfilePage(true);

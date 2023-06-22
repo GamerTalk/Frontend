@@ -24,22 +24,25 @@
 }
 
 .userImg{
+  display: flex;
   padding-left: 10px;
   padding-top: 20px;
   padding-right: 10px;
   margin: 0 auto;
-  position: relative;
-  width: 30%;
+  justify-content: center;
+  align-items: center;
+  /* position: relative;
+  width: 30%; */
 }
 
 #image {
   width: 75px;
   height: 75px;
-  position: absolute;
+  /* position: absolute; */
   border-radius: 50%;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  /* transform: translate(-50%, -50%); */
 }
 
 .userAbout{

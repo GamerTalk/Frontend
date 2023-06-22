@@ -5,6 +5,7 @@ import { User , Search} from "../../global.t";
 import React, { useEffect, useState } from "react";
 import Checkbox from "@/app/components/elements/Checkbox";
 import axios from 'axios';
+import TitleCase from "@/app/utils/TitleCase";
 
 interface Param {
   setUsers: React.Dispatch<React.SetStateAction<User[]>>,
@@ -187,7 +188,7 @@ const FilterArea: React.FC<Param> = ({ setUsers, setFilterWords, filterWords , s
               {filterWords.map((word,key) => { 
                 return (
                   <div className={styles.word} key={key}>
-                    <p >{word}</p>
+                    <p >{TitleCase(word)}</p>
                   </div>
                 )
               })}

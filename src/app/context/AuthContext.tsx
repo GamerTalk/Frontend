@@ -45,7 +45,8 @@ return userCred;
 };
 
 const logOut = () => {
-return signOut(auth);
+  setUser(null);
+  return signOut(auth);
 };
 
 const retrieve = async (user:firebaseAuthUser | null) => {

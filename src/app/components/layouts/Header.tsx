@@ -16,23 +16,9 @@ export default function Header() {
   
   const { user, logOut, userEmail, userInfo } = UserAuth();
   
-  const [loadingImg, setLoading] = useState<boolean>(true);
 
   const router = useRouter();
   const pathName = usePathname();
-
-  useEffect(() => {
-    const img = new Image();
-    if (userInfo?.profile_picture_url) {
-      img.src = userInfo.profile_picture_url;
-      img.onload = () => { 
-        setLoading(!loadingImg);
-      }
-      img.onerror = () => { 
-        setLoading(!loadingImg);
-      }
-    }
-  }, [userInfo?.profile_picture_url]);
 
   // checking current endpoint has id or something 
   const messagePath = /^\/messages\/\w+$/;
@@ -41,13 +27,14 @@ export default function Header() {
   
   const handleLogOut = async() => {
     try {
+      
       await logOut();
       router.push('/')
     } catch (err) {
       console.error(err);
     }
   };
-  console.log(userProfileURL);
+
   return (
     <>
     {isMessagesPage ? (
@@ -79,17 +66,9 @@ export default function Header() {
         </Link>
         </div>
         <div className={styles.userInfo}>
-        {/* skeleton will show up until profile url is being fetched */}
-        {loadingImg ? (
-         <div className={styles.imageContainer}>
-            <div id={styles.skeletonImage} />
-         </div>
-          ) : (
           <div className={styles.imageContainer}>
             <img id={styles.image} src={userInfo?.profile_picture_url} alt="user-photo" />
           </div>
-          )
-        }
 
         <div className="username">
          { userEmail ? (

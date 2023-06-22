@@ -19,6 +19,7 @@ user: firebaseAuthUser | null;
 userEmail: string | null
 uid: string | null
 userInfo: userInfo | null
+retrieve: (user: firebaseAuthUser) => Promise<void>;
 }
 
 const UserContext = createContext<AuthContextProps | null>(null);
@@ -48,7 +49,7 @@ const logOut = () => {
   return signOut(auth);
 };
 
-const retrieve = async () => {
+const retrieve = async (user:firebaseAuthUser | null) => {
   if (user) {
     const config = {
       method: 'GET',
@@ -77,11 +78,11 @@ return authenticatedUser;
 
 
   useEffect(() => {
-    retrieve()
+    retrieve(user)
   }, [user])
   
   return (
-<UserContext.Provider value={{ createUser, loginUser, logOut, user, userEmail, uid, userInfo }}>
+<UserContext.Provider value={{ createUser, loginUser, logOut, user, userEmail, uid, userInfo, retrieve }}>
 {children}
 </UserContext.Provider>
 );

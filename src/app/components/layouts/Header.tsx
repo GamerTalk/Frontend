@@ -11,9 +11,7 @@ import { useContext, useEffect, useState } from "react";
 
 export default function Header() {
   const { userName, userProfileURL } = useContext(MessagesContext);
-
-  console.log(MessagesContext);
-
+    
   const { user, logOut, userEmail, userInfo } = UserAuth();
 
   const router = useRouter();

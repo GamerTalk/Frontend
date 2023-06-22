@@ -10,7 +10,10 @@ import { MessagesContext } from "@/app/context/MessageContext"
 import { useContext, useEffect, useState } from "react"
 
 export default function Header() { 
-  const { userName } = useContext(MessagesContext);
+  const { userName, userProfileURL } = useContext(MessagesContext);
+  
+  console.log(MessagesContext);
+  
   const { user, logOut, userEmail, userInfo } = UserAuth();
   
   const [loadingImg, setLoading] = useState<boolean>(true);
@@ -44,8 +47,7 @@ export default function Header() {
       console.error(err);
     }
   };
-  console.log(userInfo?.profile_picture_url);
-
+  console.log(userProfileURL);
   return (
     <>
     {isMessagesPage ? (
@@ -57,7 +59,7 @@ export default function Header() {
           </div>
           <div className={styles.userInfoForMessage}>
             <div>
-            <img src="../../../favicon.ico" alt="userImage" id={styles.image} />
+              <img src={userProfileURL} alt="userImage" id={styles.image} />
             </div>
             <div>
               <p>{userName}</p>

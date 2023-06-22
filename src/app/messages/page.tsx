@@ -58,7 +58,8 @@ export default function Messages() {
     <div>
       {Object.entries(chats).map(([chatId, chatData], key) => (
         <div key={key}>
-          <MessageBox chatUserName={chatData.userInfo.userName} chatUserId={chatData.userInfo.uid} chatId={chatId} />
+          <MessageBox chatUserName={chatData.userInfo.userName} chatUserId={chatData.userInfo.uid}
+            chatId={chatId} chatUserProfileURL={chatData.userInfo.userProfileURL} />
         </div>
       ))}
     </div>

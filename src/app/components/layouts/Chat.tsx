@@ -14,19 +14,20 @@ const Chat = () => {
   const [messages, setMessages] = useState<UserMessage[]>([]);
 
   const { chatId, chatUserId, updateChatId, userName } = useContext(MessagesContext);
-  
+
   useEffect(() => {
-    const unsub = onSnapshot(doc(db, "chats", chatId), (doc) => {
-      doc.exists() && setMessages(doc.data().messages);
-    });
+    if (!chatId) {
+      return ;
+    }
+      const unsub = onSnapshot(doc(db, "chats", chatId), (doc) => {
+        doc.exists() && setMessages(doc.data().messages);
+      });
 
     return () => {
       unsub();
     };
 
   },[chatId]);
-
-  console.log(messages);
 
   return (
     <>

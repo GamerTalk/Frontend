@@ -39,6 +39,7 @@ export interface Chat {
     userInfo: {
       uid: string;
       userName: string;
+      userProfileURL: string;
   }
 }
 

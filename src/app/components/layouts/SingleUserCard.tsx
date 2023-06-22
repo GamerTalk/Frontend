@@ -10,27 +10,27 @@ import TitleCase from "@/app/utils/TitleCase";
 import Upper from "@/app/utils/Upper";
 import { User } from "@/app/global.t";
 import { MessagesContext } from "@/app/context/MessageContext";
-import { updateCurrentUser } from "firebase/auth";
 
 export default function SingleUserCard(props: any) {
   const { uid } = UserAuth();
   const userObject: User = props.userObject
   console.log("🐝", userObject)
   
-  const { updateChatUserId , updateChatId , updateUserName} = useContext(MessagesContext);
-
+  const { updateChatUserId, updateChatId, updateUserName, updateUserProfileURL } = useContext(MessagesContext);
+  console.log("message context",MessagesContext);
+  console.log("message context's method",updateChatUserId,updateChatId,updateUserProfileURL);
+  
   const router = useRouter();
 
   const handleGoToMessages = () => {
     if (uid) {
       // create combinedId for messging 
       const combinedId: string = uid > userObject.uid ? uid + userObject.uid : userObject.uid + uid;
-
       // set user info who user want to chat with
       updateChatUserId(userObject.uid); 
       updateChatId(combinedId);
       updateUserName(userObject.username);
-
+      updateUserProfileURL(userObject.profile_picture_url);
       // go to /messages/id
       router.push("/messages/message");
     }
@@ -42,6 +42,9 @@ export default function SingleUserCard(props: any) {
       <h1>Profile</h1>
       {userObject.about_me ? (
         <>
+          <div className={styles.userImg}>
+            <img src={userObject.profile_picture_url || "https://cdn2.thecatapi.com/images/MjA1OTMwMA.jpg"} alt="" id={styles.image} />
+          </div>
           <p className={styles.heading}>Username:</p>
           <p>{userObject.username}</p>
 

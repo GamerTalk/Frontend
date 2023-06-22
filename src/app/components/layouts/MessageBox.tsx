@@ -8,13 +8,13 @@ interface Prop {
   chatUserName: string,
   chatUserId: string,
   chatId: string
-  // user image url : string is going to be add here
+  chatUserProfileURL:string
 }
 
 const MessageBox = (prop:Prop) => {
-  const { chatUserName, chatUserId, chatId } = prop;
+  const { chatUserName, chatUserId, chatId, chatUserProfileURL} = prop;
 
-  const { updateChatUserId, updateChatId, updateUserName } = useContext(MessagesContext);
+  const { updateChatUserId, updateChatId, updateUserName ,updateUserProfileURL} = useContext(MessagesContext);
   
   const handleSelect = (e: React.MouseEvent<HTMLDivElement>) => { 
     
@@ -22,13 +22,14 @@ const MessageBox = (prop:Prop) => {
     updateChatUserId(chatUserId);
     updateChatId(chatId);
     updateUserName(chatUserName);
+    updateUserProfileURL(chatUserProfileURL);
   }
 
   return (
     <Link href={"/messages/message"}>
     <div className={styles.messageBox} onClick={handleSelect}>
       <div className={styles.imageWrapper}>
-      <img src="https://cdn2.thecatapi.com/images/MjA1OTMwMA.jpg" id={styles.userImg} />
+      <img src={chatUserProfileURL} id={styles.userImg} />
       </div>
       <div className={styles.userInfo}>
           <p>{chatUserName}</p>

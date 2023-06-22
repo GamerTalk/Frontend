@@ -15,6 +15,7 @@ export default function Home() {
   const [counter, setCounter] = useState<number>(0);
   const [singleUser, setSingleUser] = useState<User | object>({});
   const [showProfilePage, setShowProfilePage] = useState<boolean>(false);
+  const [showPostForm, setPostForm] = useState<boolean>(true)
 
   const { uid, userInfo } = UserAuth();
   const router = useRouter();
@@ -86,19 +87,23 @@ export default function Home() {
     <div className={styles.contents_div}>
       {!showProfilePage ? (
         <>
-          <form onSubmit={handleFormSubmit}>
-            <textarea
-              rows={5}
-              cols={40}
-              onChange={handleMessage}
-              className={styles.textarea}
-              placeholder="What's going on?"
-              value={message}
-            />
-            <div>
-              <button className={styles.button}>Post</button>
-            </div>
-          </form>
+          {showPostForm ? (
+            <form onSubmit={handleFormSubmit}>
+              <textarea
+                rows={5}
+                cols={40}
+                onChange={handleMessage}
+                className={styles.textarea}
+                placeholder="What's going on?"
+                value={message}
+              />
+              <div>
+                <button className={styles.button}>Post</button>
+              </div>
+            </form>
+
+          ) :
+          (<></>)}
 
           {/* Renders out the post */}
           {posts.map((post: Post, index: number) => {

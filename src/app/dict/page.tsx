@@ -14,6 +14,7 @@ export default function Dict() {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const [cards, setCards] = useState<any>([]);
   const [deleteCards, setDeleteCards] = useState<string[]>([]);
+  const [timer, setTimer] = useState(false)
 
   const {uid} = UserAuth();
 
@@ -90,6 +91,12 @@ export default function Dict() {
     console.log(deleteCards)
   },[deleteCards])
 
+  useEffect(() => {
+    setTimeout(() => {
+      setTimer(true);
+    }, 1000);
+  }, []);
+
   function myFunction() {
     if (confirm("Are you sure you want to delete these cards?") === true) {
       deleteData()
@@ -97,7 +104,7 @@ export default function Dict() {
   }
 
 
-  return cards.length > 0 ? (
+  return timer ? (
     <div className={styles.body}>
       <h1>Dictionary</h1>
 

@@ -34,8 +34,8 @@ export default function Search() {
       fetchAllusers();
     }
   }, [filterWords]);
-  console.log("hoge",users);
-  
+  console.log("hoge", users);
+
   return (
     <>
       {/* The margin keeps the footer from blocking the contents of the div */}
@@ -53,22 +53,22 @@ export default function Search() {
         )}
         {isShowUserCard && (
           <div>
-            {showSingleUser ? <SingleUserCard userObject={singleUser} /> : ""}
-
-            {!showSingleUser
-              ? users.map((user: User, index: number) => {
-                  if (uid !== user.uid) {
-                    return (
-                      <UserCard
-                        user={user}
-                        key={index}
-                        setShowSingleUser={setShowSingleUser}
-                        setSingleUser={setSingleUser}
-                      />
-                    );
-                  }
-                })
-              : ""}
+            {showSingleUser ? (
+              <SingleUserCard userObject={singleUser} />
+            ) : (
+              users.map((user: User, index: number) => {
+                if (uid !== user.uid) {
+                  return (
+                    <UserCard
+                      user={user}
+                      key={index}
+                      setShowSingleUser={setShowSingleUser}
+                      setSingleUser={setSingleUser}
+                    />
+                  );
+                }
+              })
+            )}
           </div>
         )}
       </div>

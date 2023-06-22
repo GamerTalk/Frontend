@@ -1,10 +1,21 @@
 .userCard{
-  background-color: rgb(255, 255, 255);
+  background-color: #272727;
   width: min(100%,600px);
   border-radius: 1px;
   margin: 5px auto;
   border: 1px solid #626262;
   font-family: Arial, Helvetica, sans-serif;
+}
+
+.languageLine {
+  margin-top: 2px;
+  margin-bottom: 2px;
+}
+
+.subTitle {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  text-decoration: underline;
 }
 
 .userInfo{
@@ -13,28 +24,36 @@
 }
 
 .userImg{
+  display: flex;
   padding-left: 10px;
   padding-top: 20px;
   padding-right: 10px;
   margin: 0 auto;
-  position: relative;
-  width: 30%;
+  justify-content: center;
+  align-items: center;
+  /* position: relative;
+  width: 30%; */
 }
 
 #image {
   width: 75px;
   height: 75px;
-  position: absolute;
+  /* position: absolute; */
   border-radius: 50%;
   object-fit: cover;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  /* transform: translate(-50%, -50%); */
 }
 
 .userAbout{
-  background-color:rgb(255, 255, 255);
+  background-color:#272727;
   width: 40%;
+}
+
+.userName {
+  font-size: 20px;
+  margin-bottom: 3px;
 }
 
 .systems{
@@ -47,10 +66,10 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color: rgb(255, 255, 255);
+  background-color: rgb(255, 237, 237);
   width: 90%;
-  height: 85%;
-  box-shadow: 4px 5px 10px rgb(175, 175, 175);
+  height: 75px;
+  box-shadow: 4px 5px 10px rgb(255, 255, 255);
   border-radius: 10px;
   display: flex;
   flex-wrap: wrap;
@@ -60,6 +79,6 @@
 .game{
   color: #000;
   font-size: 50px;
-  display: grid;
+  display: flex;
   align-items: center;
 }

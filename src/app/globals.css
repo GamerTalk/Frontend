@@ -1,7 +1,9 @@
 body{
   margin: 0;
-  height: 100vh;
+  height: 100%;
   text-align: center;
+  background-color: #453C67;
+  color: white;
 }
 
 a {

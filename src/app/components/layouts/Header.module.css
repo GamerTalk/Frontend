@@ -1,9 +1,11 @@
 
 .headerContainer{
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
-  background-color: rgb(209, 224, 224);
+  background-color: #6D67E4;
+  border-bottom-right-radius: 75px;
+  padding: 0 50px 5px 10px;
 }
 
 #headerName {

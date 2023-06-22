@@ -8,12 +8,22 @@ import {
 } from "@fortawesome/free-brands-svg-icons";
 import { faGamepad } from "@fortawesome/free-solid-svg-icons";
 import { User, Systems } from "./../../global.t";
+import Upper from "@/app/utils/Upper";
 
 interface Props {
   user: User;
   key: number;
   setSingleUser: Function;
   setShowSingleUser: Function;
+}
+
+interface LevelLookup {
+  [key: number]: string;
+  1: string;
+  2: string;
+  3: string;
+  4: string;
+  5: string;
 }
 
 // const UserCard = ({ users }: usersProps) => {
@@ -25,6 +35,14 @@ const UserCard = (props: Props) => {
     xbox: faXbox,
     playstation: faPlaystation,
     switch: faGamepad,
+  };
+
+  const levelLookup: LevelLookup = {
+    1: "Beginner",
+    2: "Elementary",
+    3: "Intermediate",
+    4: "Advanced",
+    5: "Proficient",
   };
 
   return (
@@ -47,21 +65,25 @@ const UserCard = (props: Props) => {
           </div>
           <div className={styles.userAbout}>
             <div className={styles.text}>
-              <p>{user.username}</p>
+              <p className={styles.userName}>{user.username}</p>
             </div>
             <div className={styles.text}>
-              <p>speaks:</p>
+              <p className={styles.subTitle}>Speaks:</p>
               {user.languages.fluent.map((language, index) => {
-                return <p key={index}>{language}</p>;
+                return (
+                  <p className={styles.languageLine} key={index}>
+                    {Upper(language)}
+                  </p>
+                );
               })}
             </div>
             <div className={styles.text}>
               <div>
-                <p>Learning:</p>
+                <p className={styles.subTitle}>Learning:</p>
                 {user.languages.learning.map((learn, index) => {
                   return (
-                    <p key={index}>
-                      {learn.language} : level {learn.level}
+                    <p className={styles.languageLine} key={index}>
+                      {Upper(learn.language)} : {levelLookup[learn.level]}
                     </p>
                   );
                 })}

@@ -33,6 +33,7 @@ export default function Profile() {
   const [currPlay, setCurrPlay] = useState<string>(
     profile ? profile.currently_playing : ""
   );
+    const [profileURL, setProfileURL] = useState<string>(profile ? profile.profile_picture_url : "");
 
   const router = useRouter();
 
@@ -55,6 +56,7 @@ export default function Profile() {
             setCurrPlay(userData.currently_playing);
           } else {
             console.log("fail");
+            setProfile({})
           }
         }
       } catch (error) {
@@ -78,6 +80,7 @@ export default function Profile() {
       systems: system,
       genre,
       currently_playing: currPlay,
+      profile_picture_url: profileURL,
     };
 
     const url = process.env.NEXT_PUBLIC_API_URL + "/api/edit-user/";

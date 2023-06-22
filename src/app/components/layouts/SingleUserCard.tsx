@@ -14,28 +14,29 @@ import { updateCurrentUser } from "firebase/auth";
 
 export default function SingleUserCard(props: any) {
   const { uid } = UserAuth();
-  const userObject: User = props.userObject
-  console.log("🐝", userObject)
-  
-  const { updateChatUserId , updateChatId , updateUserName} = useContext(MessagesContext);
+  const userObject: User = props.userObject;
+  console.log("🐝", userObject);
+
+  const { updateChatUserId, updateChatId, updateUserName } =
+    useContext(MessagesContext);
 
   const router = useRouter();
 
   const handleGoToMessages = () => {
     if (uid) {
-      // create combinedId for messging 
-      const combinedId: string = uid > userObject.uid ? uid + userObject.uid : userObject.uid + uid;
+      // create combinedId for messging
+      const combinedId: string =
+        uid > userObject.uid ? uid + userObject.uid : userObject.uid + uid;
 
       // set user info who user want to chat with
-      updateChatUserId(userObject.uid); 
+      updateChatUserId(userObject.uid);
       updateChatId(combinedId);
       updateUserName(userObject.username);
 
       // go to /messages/id
       router.push("/messages/message");
     }
-   
-  }
+  };
 
   return (
     <div>
@@ -85,10 +86,8 @@ export default function SingleUserCard(props: any) {
 
             <p className={styles.heading}>Currently Playing:</p>
             <p>{userObject.currently_playing}</p>
-            <button onClick={handleGoToMessages}>
-              Send A Message
-            </button>
           </div>
+          <button onClick={handleGoToMessages}>Send A Message</button>
         </>
       ) : (
         "Loading Profile..."

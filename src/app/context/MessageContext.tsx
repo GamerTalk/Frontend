@@ -26,16 +26,6 @@ export const MessagesContext = createContext<MessagesContextProp>(
       updateUserProfileURL: () => { }
     }
 );
-// {
-//   chatUserId: "",
-//     chatId: "",
-//       userName: "",
-//         userProfileURL: "",
-//           updateChatUserId: () => { },
-//             updateChatId: () => { },
-//               updateUserName: () => { },
-//                 updateUserProfileURL: () => { }
-// }
 
 const MessageContextProvider: React.FC<{ children: ReactNode }> = ({ children }) => { 
   

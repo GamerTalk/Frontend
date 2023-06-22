@@ -47,23 +47,33 @@ export default function UserInfo() {
       const storageRef = ref(storage, `/images/${uid}/${selectedFile.name}`);
       try {
         // upload
-       const uploadedSnapshot =  await uploadBytesResumable(storageRef, selectedFile)
+        const uploadedSnapshot = await uploadBytesResumable(storageRef, selectedFile)
         // url to access to firebase storage
-        const downLoadURL = await getDownloadURL(uploadedSnapshot.ref);
+        const downLoadURL:string = await getDownloadURL(uploadedSnapshot.ref);
         // send to data to 
         sendFormData(downLoadURL);
-
         console.log("upload is successed");
         
-      }catch(error){
+      } catch (error) {
         // error handling
         console.error("Upload error:", error);
       }
+    } else { 
+      // user image as default
+        const defaultPath = "/images/default/userdefault.png";
+        const storageRef = ref(storage, defaultPath)
+        try {
+          const downloadURL = await getDownloadURL(storageRef);
+          sendFormData(downloadURL);
+          console.log("default image upload is successed");
+        } catch (error) {
+          console.error("down load error", error);
+        }
     }
   }
 
   const sendFormData = (profileImagURL: string) => {
-
+    console.log(profileImagURL)
     const payload = {
       uid,
       username,

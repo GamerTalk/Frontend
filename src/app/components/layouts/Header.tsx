@@ -16,7 +16,6 @@ export default function Header() {
   
   const { user, logOut, userEmail, userInfo } = UserAuth();
   
-
   const router = useRouter();
   const pathName = usePathname();
 
@@ -27,7 +26,6 @@ export default function Header() {
   
   const handleLogOut = async() => {
     try {
-      
       await logOut();
       router.push('/')
     } catch (err) {

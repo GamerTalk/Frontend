@@ -11,8 +11,7 @@ import Upper from "@/app/utils/Upper";
 import { User } from "@/app/global.t";
 import { MessagesContext } from "@/app/context/MessageContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faGlobe } from "@fortawesome/free-solid-svg-icons";
-
+import { faGamepad, faGlobe } from "@fortawesome/free-solid-svg-icons";
 
 interface LevelLookup {
   [key: number]: string;
@@ -63,7 +62,7 @@ export default function SingleUserCard(props: any) {
             <img
               src={
                 userObject.profile_picture_url ||
-                "https://cdn2.thecatapi.com/images/MjA1OTMwMA.jpg"
+                "https://firebasestorage.googleapis.com/v0/b/gamertalk-8133c.appspot.com/o/images%2Fdefault%2Fuserdefault.png?alt=media&token=f5201169-c537-485f-ba41-ec38e44464ca"
               }
               alt=""
               id={styles.image}
@@ -72,7 +71,9 @@ export default function SingleUserCard(props: any) {
           <p className={styles.heading}>Username:</p>
           <p>{userObject.username}</p>
 
-          <p className={styles.heading}>Region:</p>
+          <p className={styles.heading}>
+            Region: <FontAwesomeIcon icon={faGlobe} />
+          </p>
           <p>{TitleCase(userObject.user_region)}</p>
 
           <p className={styles.heading}>This user speaks:</p>
@@ -89,7 +90,8 @@ export default function SingleUserCard(props: any) {
               index: number
             ) => (
               <p key={index}>
-                Learning {Upper(element.language)} at {levelLookup[element.level]}
+                Learning {Upper(element.language)} at{" "}
+                {levelLookup[element.level]}
               </p>
             )
           )}
@@ -110,7 +112,9 @@ export default function SingleUserCard(props: any) {
             <p className={styles.heading}>About Me:</p>
             <p>{userObject.about_me}</p>
 
-            <p className={styles.heading}>Currently Playing:</p>
+            <p className={styles.heading}>
+              Currently Playing: <FontAwesomeIcon icon={faGamepad} />
+            </p>
             <p>{userObject.currently_playing}</p>
           </div>
           <button onClick={handleGoToMessages}>Send A Message</button>

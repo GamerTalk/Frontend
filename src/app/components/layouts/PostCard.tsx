@@ -19,7 +19,9 @@ export default function PostCard(props:any) {
   return (
     <div className={styles.post} key={post.id} onClick={singleUserView}>
       <div className={styles.info_contents}>
-        <div className={styles.pic}>Picture</div>
+        <div className={styles.pic}>
+          <img src={post.sender_data.profile_picture_url} alt="" className={styles.image}/>
+        </div>
         <div className={styles.userAndDate}>
           <div className={styles.user}>{post.sender_data.username}</div>
           <div className={styles.time}>

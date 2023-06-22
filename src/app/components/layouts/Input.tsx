@@ -17,7 +17,7 @@ import { v4 as uuid } from 'uuid';
 
 const Input = () => {
 
-  const { chatId , chatUserId , updateChatId, userName} = useContext(MessagesContext);
+  const { chatId , chatUserId , updateChatId, userName, userProfileURL} = useContext(MessagesContext);
   const { uid, userInfo } = UserAuth();
   
   const [message, setMessage] = useState<string>('');
@@ -61,6 +61,7 @@ const Input = () => {
           userInfo: {
             uid: chatUserId,
             userName: userName,
+            userProfileURL: userProfileURL
           },
         date: serverTimestamp(),
         lastMessage: message
@@ -73,6 +74,7 @@ const Input = () => {
           userInfo: {
             uid: uid,
             userName: userInfo?.username,
+            userProfileURL: userInfo?.profile_picture_url
           },
           date: serverTimestamp(),
           lastMessage: message

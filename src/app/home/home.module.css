@@ -43,6 +43,7 @@
   width: 75px;
   height: 75px;
   border: 3 solid green;
+  object-fit: cover;
 }
 
 .time {

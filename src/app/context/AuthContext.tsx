@@ -76,8 +76,8 @@ return authenticatedUser;
 
 
   useEffect(() => {
-  retrieve()
-}, [user])
+    retrieve()
+  }, [user])
   
   return (
 <UserContext.Provider value={{ createUser, loginUser, logOut, user, userEmail, uid, userInfo }}>

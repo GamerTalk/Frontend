@@ -16,11 +16,31 @@
 }
 
 #image {
-  width: 75px;
-  height: 75px;
+  width: 55px;
+  height: 55px;
   border-radius: 50%;
   padding: 0px;
   padding-left: 5px;
+  object-fit: cover;
+}
+
+#skeletonImage{
+  width: 55px;
+  height: 55px;  
+  border-radius: 50%;
+  background-color: rgb(221, 221, 221);
+  /* animation */
+  background: linear-gradient(90deg, transparent, rgba(169, 169, 169, 0.5), transparent);
+  animation: loading 5.0s linear infinite;
+}
+
+@keyframes loading {
+  0% {
+    background-position: -100px 0;
+  }
+  100% {
+    background-position: 100px 0;
+  }
 }
 
 #userName{

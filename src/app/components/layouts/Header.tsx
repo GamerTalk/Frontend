@@ -7,13 +7,18 @@ import { UserAuth } from '../../context/AuthContext'
 import { useRouter } from 'next/navigation';
 import { usePathname } from 'next/navigation';
 import { MessagesContext } from "@/app/context/MessageContext"
-import { useContext } from "react"
+import { useContext, useEffect, useState } from "react"
 
 export default function Header() { 
-  const { userName } = useContext(MessagesContext);
-  const { user, logOut, userEmail} = UserAuth();
+  const { userName, userProfileURL } = useContext(MessagesContext);
+  
+  console.log(MessagesContext);
+  
+  const { user, logOut, userEmail, userInfo } = UserAuth();
+  
   const router = useRouter();
   const pathName = usePathname();
+
   // checking current endpoint has id or something 
   const messagePath = /^\/messages\/\w+$/;
   // if current endpoint is message page, header will be changed for messagePage
@@ -27,7 +32,6 @@ export default function Header() {
       console.error(err);
     }
   };
- 
 
   return (
     <>
@@ -40,7 +44,7 @@ export default function Header() {
           </div>
           <div className={styles.userInfoForMessage}>
             <div>
-            <img src="../../../favicon.ico" alt="userImage" id={styles.image} />
+              <img src={userProfileURL} alt="userImage" id={styles.image} />
             </div>
             <div>
               <p>{userName}</p>
@@ -59,10 +63,10 @@ export default function Header() {
           <p id={styles.headerName}> GamerTalk </p>
         </Link>
         </div>
-      <div className={styles.userInfo}>
-        <div className={styles.imageContainer}>
-          <img id={styles.image} src="https://cdn2.thecatapi.com/images/MjA1OTMwMA.jpg" alt="user-photo" />
-        </div>
+        <div className={styles.userInfo}>
+          <div className={styles.imageContainer}>
+            <img id={styles.image} src={userInfo?.profile_picture_url} alt="user-photo" />
+          </div>
 
         <div className="username">
          { userEmail ? (

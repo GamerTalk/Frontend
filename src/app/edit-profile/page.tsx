@@ -171,7 +171,7 @@ export default function Profile() {
 
   return (
     <>
-      <form onSubmit={handleFormSubmit}>
+      <form style={{paddingBottom: "100px"}} onSubmit={handleFormSubmit}>
         <h1>Profile</h1>
         {profile ? (
           <>

@@ -10,15 +10,32 @@ import TitleCase from "@/app/utils/TitleCase";
 import Upper from "@/app/utils/Upper";
 import { User } from "@/app/global.t";
 import { MessagesContext } from "@/app/context/MessageContext";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faGamepad, faGlobe } from "@fortawesome/free-solid-svg-icons";
+
+interface LevelLookup {
+  [key: number]: string;
+  1: string;
+  2: string;
+  3: string;
+  4: string;
+  5: string;
+}
 
 export default function SingleUserCard(props: any) {
   const { uid } = UserAuth();
   const userObject: User = props.userObject
   console.log("🐝", userObject)
   
+  const levelLookup: LevelLookup = {
+    1: "Beginner",
+    2: "Elementary",
+    3: "Intermediate",
+    4: "Advanced",
+    5: "Proficient",
+  };
+
   const { updateChatUserId, updateChatId, updateUserName, updateUserProfileURL } = useContext(MessagesContext);
-  console.log("message context",MessagesContext);
-  console.log("message context's method",updateChatUserId,updateChatId,updateUserProfileURL);
   
   const router = useRouter();
 
@@ -42,12 +59,21 @@ export default function SingleUserCard(props: any) {
       {userObject.about_me ? (
         <>
           <div className={styles.userImg}>
-            <img src={userObject.profile_picture_url || "https://cdn2.thecatapi.com/images/MjA1OTMwMA.jpg"} alt="" id={styles.image} />
+            <img
+              src={
+                userObject.profile_picture_url ||
+                "https://firebasestorage.googleapis.com/v0/b/gamertalk-8133c.appspot.com/o/images%2Fdefault%2Fuserdefault.png?alt=media&token=f5201169-c537-485f-ba41-ec38e44464ca"
+              }
+              alt=""
+              id={styles.image}
+            />
           </div>
           <p className={styles.heading}>Username:</p>
           <p>{userObject.username}</p>
 
-          <p className={styles.heading}>Region:</p>
+          <p className={styles.heading}>
+            Region: <FontAwesomeIcon icon={faGlobe} />
+          </p>
           <p>{TitleCase(userObject.user_region)}</p>
 
           <p className={styles.heading}>This user speaks:</p>
@@ -64,7 +90,8 @@ export default function SingleUserCard(props: any) {
               index: number
             ) => (
               <p key={index}>
-                Learning {Upper(element.language)} at level {element.level}
+                Learning {Upper(element.language)} at{" "}
+                {levelLookup[element.level]}
               </p>
             )
           )}
@@ -85,7 +112,9 @@ export default function SingleUserCard(props: any) {
             <p className={styles.heading}>About Me:</p>
             <p>{userObject.about_me}</p>
 
-            <p className={styles.heading}>Currently Playing:</p>
+            <p className={styles.heading}>
+              Currently Playing: <FontAwesomeIcon icon={faGamepad} />
+            </p>
             <p>{userObject.currently_playing}</p>
           </div>
           <button onClick={handleGoToMessages}>Send A Message</button>

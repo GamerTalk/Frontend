@@ -8,14 +8,15 @@ import DictCheckbox from '../components/elements/Dict-Checkbox'
 import Add from '../components/elements/dict-add/page'
 import axios from 'axios'
 import { UserAuth } from '../context/AuthContext'
+import { saveAs } from 'file-saver';
+import Papa from 'papaparse';
 
 
 export default function Dict() {
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const [cards, setCards] = useState<any>([]);
-  const [deleteCards, setDeleteCards] = useState<string[]>([]);
+  const [selectedCards, setSelectedCards] = useState<string[]>([]);
   const [timer, setTimer] = useState(false)
-
   const {uid} = UserAuth();
 
   const config = {
@@ -45,7 +46,7 @@ export default function Dict() {
     try {
       if (uid) {
         await Promise.all(
-          deleteCards.map(async (card) => {
+          selectedCards.map(async (card) => {
             const requestData = {
               user_uid: uid,
               card_id: card
@@ -75,21 +76,20 @@ export default function Dict() {
     await getData();
   };
 
-
   const handleDeleteCards = (event: { target: { name: string }; }) => {
     const {  name } = event.target;
-    if (deleteCards.includes(name)) {
+    if (selectedCards.includes(name)) {
       // If card is already selected, remove it from the array
-      setDeleteCards((prevCards) => prevCards.filter((card) => card !== name));
+      setSelectedCards((prevCards) => prevCards.filter((card) => card !== name));
     } else {
       // If card is not selected, add it to the array
-      setDeleteCards((prevCards) => [...prevCards, name]);
+      setSelectedCards((prevCards) => [...prevCards, name]);
     }
   }
 
   useEffect(() => {
-    console.log(deleteCards)
-  },[deleteCards])
+    console.log(selectedCards)
+  },[selectedCards])
 
   useEffect(() => {
     setTimeout(() => {
@@ -97,11 +97,37 @@ export default function Dict() {
     }, 1000);
   }, []);
 
+  useEffect(() => {
+    console.log(cards)
+  }, [cards]);
+
+
   function myFunction() {
     if (confirm("Are you sure you want to delete these cards?") === true) {
       deleteData()
     } 
   }
+
+  const downloadCSV = () => {
+    let csvData = [];
+    if (selectedCards.length > 0) {
+      csvData = cards
+        .filter((card) => selectedCards.includes(String(card.id)))
+        .map((card) => [card.front, card.back]);
+    } else {
+      csvData = cards.reverse().map((card) => [card.front, card.back]);
+    }
+  
+  
+    // Convert data to CSV format using PapaParse
+    const csvContent = Papa.unparse(csvData);
+  
+    // Create a Blob object from the CSV content
+    const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+  
+    // Save the file using FileSaver.js
+    saveAs(blob, 'filename.csv');
+  };
 
 
   return timer ? (
@@ -122,9 +148,7 @@ export default function Dict() {
 
     </div> 
       </form>
-
       <div className={styles.plusAndMinus}>
-
         <div>
           <button className={styles.plus} onClick={openPopup}>+</button>
           {isPopupOpen && <Add handleClosePopup={closePopup}/>}
@@ -133,7 +157,13 @@ export default function Dict() {
         <div>
           <button className={styles.minus} onClick={myFunction}>-</button>
         </div>
+  
      </div>
+
+     <div>
+      <button className={styles.csv} onClick={downloadCSV}>Download CSV</button>
+     </div>
+     
 
 
 

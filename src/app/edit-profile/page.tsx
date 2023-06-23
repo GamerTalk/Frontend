@@ -141,7 +141,6 @@ export default function Profile() {
     axios
       .patch(url, payload)
       .then((response) => {
-        console.log(response.data);
         updateUserInfo(response.data);
         router.push("/");
       })

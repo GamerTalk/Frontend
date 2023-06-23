@@ -14,7 +14,7 @@ import { db, storage } from "../firebase/firebase";
 import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
 
 export default function Profile() {
-  const { uid } = UserAuth(); 
+  const { uid , updateUserInfo} = UserAuth(); 
 
   const config = {
     method: "GET",
@@ -78,9 +78,7 @@ export default function Profile() {
     const userChatRef = doc(db, "userChats", uid!);
     let newProfileURL = profileURL || "";
 
-    const result = await getDoc(userChatRef);
-    let chatRoomIds = Object.keys(result.data() as {});
-   
+    
     
     if (selectedFile) {
       // upload new image to firebase storage
@@ -93,7 +91,7 @@ export default function Profile() {
         const downLoadURL: string = await getDownloadURL(uploadedSnapshot.ref);
         setProfileURL(downLoadURL);
         newProfileURL = downLoadURL;
-       // update user info in firebase firestore
+        // update user info in firebase firestore
         try { 
           const updateUserData = {
             // uid: uid,
@@ -101,16 +99,20 @@ export default function Profile() {
             [`${uid}.profileURL`]: newProfileURL
           }
           updateDoc(doc(db, "users", uid!), updateUserData);
-
-          const userChats: object[] = Object.values(result.data() as {});
-          // update each users /userchats/userinfo/profileurl in firebase firestore when current user changes user profile
-          if (Object.keys(userChats).length !== 0) { 
-            userChats.forEach(async (element: any,key:number) => {
-              console.log(element.userInfo.uid);
-              await updateDoc(doc(db, "userChats", element.userInfo.uid),{
-                [`${chatRoomIds[key]}.userInfo.userProfileURL`]: newProfileURL
+          
+          const result = await getDoc(userChatRef);
+          if (result.exists()) {
+            let chatRoomIds = Object.keys(result.data() as {});
+            const userChats: object[] = Object.values(result.data() as {});
+            // update each users /userchats/userinfo/profileurl in firebase firestore when current user changes user profile
+            if (Object.keys(userChats).length !== 0) { 
+              userChats.forEach(async (element: any,key:number) => {
+                console.log(element.userInfo.uid);
+                await updateDoc(doc(db, "userChats", element.userInfo.uid),{
+                  [`${chatRoomIds[key]}.userInfo.userProfileURL`]: newProfileURL
+                });
               });
-            });
+            }
           }
         } catch (error) {
           console.error(error);
@@ -139,7 +141,8 @@ export default function Profile() {
     axios
       .patch(url, payload)
       .then((response) => {
-        
+        console.log(response.data);
+        updateUserInfo(response.data);
         router.push("/");
       })
       .catch((error) => {

@@ -20,6 +20,7 @@ userEmail: string | null
 uid: string | null
 userInfo: userInfo | null
 retrieve: (user: firebaseAuthUser) => Promise<void>;
+updateUserInfo: (userData: userInfo) => void;
 }
 
 const UserContext = createContext<AuthContextProps | null>(null);
@@ -38,6 +39,9 @@ console.log('USER-CRED', userCred);
 return userCred;
 };
 
+  const updateUserInfo = (userData: userInfo) => { 
+    setUserInfo(userData)
+  }
 const loginUser = async (email: string, password: string) => {
 const userCred = await signInWithEmailAndPassword(auth, email, password);
 console.log('USER-CRED', userCred);
@@ -82,7 +86,7 @@ return authenticatedUser;
   }, [user])
   
   return (
-<UserContext.Provider value={{ createUser, loginUser, logOut, user, userEmail, uid, userInfo, retrieve }}>
+<UserContext.Provider value={{ createUser, loginUser, logOut, user, userEmail, uid, userInfo, retrieve,updateUserInfo}}>
 {children}
 </UserContext.Provider>
 );

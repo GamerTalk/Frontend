@@ -12,7 +12,7 @@ import { db, storage } from "../firebase/firebase";
 import { uploadBytesResumable, ref, getDownloadURL } from "firebase/storage";
 
 export default function UserInfo() {
-  const { uid, user,retrieve } = UserAuth()
+  const { uid, user,updateUserInfo} = UserAuth()
   const [username, setUsername] = useState<string>("");
   const [region, setRegion] = useState<string>("");
   const [language, setLanguage] = useState<string[]>([]);
@@ -103,9 +103,7 @@ export default function UserInfo() {
 
     axios.post(url, payload)
       .then(response => {
-        if (user) {
-          retrieve(user);
-        }
+        updateUserInfo(response.data);
         router.push('/home')
       })
       .catch((error) => {

@@ -176,14 +176,14 @@ const FilterArea: React.FC<Param> = ({ setUsers, setFilterWords, filterWords , s
               </fieldset>
           </div>
           
-          <button type="submit">Filter</button>
+          <button className={styles.button} type="submit">Filter</button>
         </form>
         </div>
         
       ) : (
       <div className={styles.filterArea}>
         <div className={styles.filter}>
-          <button onClick={handleFilterClick}>Filter</button>
+          <button className={styles.button} onClick={handleFilterClick}>Filter</button>
         </div>
               {filterWords.map((word,key) => { 
                 return (

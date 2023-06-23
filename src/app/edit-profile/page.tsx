@@ -9,7 +9,7 @@ import Checkbox from "../components/elements/Checkbox";
 import LearningCheckbox from "../components/elements/Learning-Checkbox";
 import langCall from "../utils/langCheckFunc";
 import { useRouter } from "next/navigation";
-import { collection, doc, getDoc, getDocs, setDoc, updateDoc } from "firebase/firestore";
+import { DocumentData, collection, doc, getDoc, getDocs, setDoc, updateDoc } from "firebase/firestore";
 import { db, storage } from "../firebase/firebase";
 import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
 
@@ -75,8 +75,13 @@ export default function Profile() {
 
     console.log("検証中");
     const userRef = doc(db, "users", uid!);
-  
+    const userChatRef = doc(db, "userChats", uid!);
     let newProfileURL = profileURL || "";
+
+    const result = await getDoc(userChatRef);
+    let chatRoomIds = Object.keys(result.data() as {});
+   
+    
     if (selectedFile) {
       // upload new image to firebase storage
       // path /user/uid/image
@@ -84,27 +89,36 @@ export default function Profile() {
       const uploadedSnapshot = await uploadBytesResumable(
         storageRef,
         selectedFile
-      );
-      const downLoadURL: string = await getDownloadURL(uploadedSnapshot.ref);
-      setProfileURL(downLoadURL);
-      newProfileURL = downLoadURL;
-      // update user info in firebase firestore
-      try { 
-        const updateUserData = {
-          uid: uid,
-          userName: profile?.username,
-          profileURL: newProfileURL
-        }
-        updateDoc(doc(db, "users", uid!), updateUserData);
-      } catch (error) {
-        console.error(error);
-        
-      }
-    }
-    console.log("newProfileURL", newProfileURL);
-    sendFormData(newProfileURL);
-  }
+        );
+        const downLoadURL: string = await getDownloadURL(uploadedSnapshot.ref);
+        setProfileURL(downLoadURL);
+        newProfileURL = downLoadURL;
+       // update user info in firebase firestore
+        try { 
+          const updateUserData = {
+            // uid: uid,
+            // userName: profile?.username,
+            [`${uid}.profileURL`]: newProfileURL
+          }
+          updateDoc(doc(db, "users", uid!), updateUserData);
 
+          const userChats: object[] = Object.values(result.data() as {});
+          // update each users /userchats/userinfo/profileurl in firebase firestore when current user changes user profile
+          if (Object.keys(userChats).length !== 0) { 
+            userChats.forEach(async (element: any,key:number) => {
+              console.log(element.userInfo.uid);
+              await updateDoc(doc(db, "userChats", element.userInfo.uid),{
+                [`${chatRoomIds[key]}.userInfo.userProfileURL`]: newProfileURL
+              });
+            });
+          }
+        } catch (error) {
+          console.error(error);
+        }
+      }
+      sendFormData(newProfileURL);
+    }
+    
   const sendFormData = (profileImagURL:string = profileURL) => {
     const payload = {
       uid,

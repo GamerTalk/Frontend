@@ -17,7 +17,6 @@ const MessageBox = (prop:Prop) => {
   const { updateChatUserId, updateChatId, updateUserName ,updateUserProfileURL} = useContext(MessagesContext);
   
   const handleSelect = (e: React.MouseEvent<HTMLDivElement>) => { 
-    
   // update a username, userId and chatId who you want to chat with
     updateChatUserId(chatUserId);
     updateChatId(chatId);

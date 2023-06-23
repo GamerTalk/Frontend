@@ -1,16 +1,20 @@
 "use client";
 
-import React, { ChangeEvent, useEffect, useState } from "react";
+import React, { ChangeEvent, useContext, useEffect, useState } from "react";
 import axios from "axios";
 import styles from "../entry-form/UserInfo.module.css";
 import { UserAuth } from "../context/AuthContext";
+import { MessagesContext } from "@/app/context/MessageContext";
 import Checkbox from "../components/elements/Checkbox";
 import LearningCheckbox from "../components/elements/Learning-Checkbox";
 import langCall from "../utils/langCheckFunc";
 import { useRouter } from "next/navigation";
+import { collection, doc, getDoc, getDocs, setDoc, updateDoc } from "firebase/firestore";
+import { db, storage } from "../firebase/firebase";
+import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
 
 export default function Profile() {
-  const { uid } = UserAuth();
+  const { uid } = UserAuth(); 
 
   const config = {
     method: "GET",
@@ -18,9 +22,7 @@ export default function Profile() {
       uid: uid,
     },
   };
-
   const url = process.env.NEXT_PUBLIC_API_URL + "/api/user-info/";
-
   const [profile, setProfile] = useState<any>();
   const [region, setRegion] = useState<string>("");
   const [language, setLanguage] = useState<string[]>([]);
@@ -33,8 +35,9 @@ export default function Profile() {
   const [currPlay, setCurrPlay] = useState<string>(
     profile ? profile.currently_playing : ""
   );
-    const [profileURL, setProfileURL] = useState<string>(profile ? profile.profile_picture_url : "");
-
+  const [profileURL, setProfileURL] = useState<string>(profile ? profile.profile_picture_url : "");
+  // for setting up user profile image
+  const [selectedFile, setSelectedFile] = useState<File | null>(null);
   const router = useRouter();
 
   useEffect(() => {
@@ -47,6 +50,7 @@ export default function Profile() {
           if (userData.languages !== null) {
             setProfile(userData);
             console.log(userData);
+            setProfileURL(userData.userProfileURL);
             setRegion(userData.user_region);
             setSystem(userData.user_systems);
             setLanguage(userData.languages.fluent);
@@ -66,9 +70,42 @@ export default function Profile() {
     getData();
   }, [uid]);
 
-  const handleFormSubmit = (event: { preventDefault: () => void }) => {
+  const handleFormSubmit = async(event: { preventDefault: () => void }) => {
     event.preventDefault();
 
+    console.log("検証中");
+    const userRef = doc(db, "users", uid!);
+  
+    let newProfileURL = profileURL || "";
+    if (selectedFile) {
+      // upload new image to firebase storage
+      // path /user/uid/image
+      const storageRef = ref(storage, `/images/${uid}/${selectedFile.name}`);
+      const uploadedSnapshot = await uploadBytesResumable(
+        storageRef,
+        selectedFile
+      );
+      const downLoadURL: string = await getDownloadURL(uploadedSnapshot.ref);
+      setProfileURL(downLoadURL);
+      newProfileURL = downLoadURL;
+      // update user info in firebase firestore
+      try { 
+        const updateUserData = {
+          uid: uid,
+          userName: profile?.username,
+          profileURL: newProfileURL
+        }
+        updateDoc(doc(db, "users", uid!), updateUserData);
+      } catch (error) {
+        console.error(error);
+        
+      }
+    }
+    console.log("newProfileURL", newProfileURL);
+    sendFormData(newProfileURL);
+  }
+
+  const sendFormData = (profileImagURL:string = profileURL) => {
     const payload = {
       uid,
       username: profile.username,
@@ -80,7 +117,7 @@ export default function Profile() {
       systems: system,
       genre,
       currently_playing: currPlay,
-      profile_picture_url: profileURL,
+      profile_picture_url: profileImagURL,
     };
 
     const url = process.env.NEXT_PUBLIC_API_URL + "/api/edit-user/";
@@ -88,12 +125,15 @@ export default function Profile() {
     axios
       .patch(url, payload)
       .then((response) => {
+        
         router.push("/");
       })
       .catch((error) => {
         console.log(error);
       });
+    
   };
+
 
   const handleSystem = (event: { target: { name: string } }) => {
     const { name } = event.target;
@@ -169,12 +209,33 @@ export default function Profile() {
     setCurrPlay(value);
   };
 
+  const handleFileChange = (event: ChangeEvent<HTMLInputElement>) => {
+    if (event.target.files && event.target.files.length > 0) {
+      setSelectedFile(event.target.files[0]);
+    }
+  };
+
   return (
     <>
       <form style={{paddingBottom: "100px"}} onSubmit={handleFormSubmit}>
         <h1>Profile</h1>
         {profile ? (
           <>
+          <div className={styles.userImg}>
+            <img
+              src={
+                profile.profile_picture_url  ||
+                "https://firebasestorage.googleapis.com/v0/b/gamertalk-8133c.appspot.com/o/images%2Fdefault%2Fuserdefault.png?alt=media&token=f5201169-c537-485f-ba41-ec38e44464ca"
+              }
+              alt=""
+              id={styles.image}
+            />
+            </div>
+            <div className={styles.userUploadImg}>
+              <label>
+                 <input type="file" name="image" onChange={handleFileChange} />
+              </label>
+          </div>
             <p className={styles.heading}>Username:</p>
             <p>{profile.username}</p>
 

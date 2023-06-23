@@ -1,6 +1,6 @@
 "use client"
 
-import { createContext, ReactNode, useState } from "react";
+import { createContext, ReactNode, useEffect, useState } from "react";
 
 interface MessagesContextProp { 
   chatUserId: string;
@@ -33,7 +33,7 @@ const MessageContextProvider: React.FC<{ children: ReactNode }> = ({ children })
   const [chatId, setChatId] = useState<string>("");
   const [userName, setUserName] = useState<string>("");
   const [userProfileURL, setUserProfileURL] = useState<string>("");
-
+  
   // a user id who you chat with is updated
   const updateChatUserId = (newChatUserId: string) => {
     setChatUserId(newChatUserId);
@@ -53,7 +53,7 @@ const MessageContextProvider: React.FC<{ children: ReactNode }> = ({ children })
   const updateUserProfileURL = (newUserProfileURL: string) => { 
     setUserProfileURL(newUserProfileURL);
   }
-  
+ 
   const contextValue: MessagesContextProp = {
     chatUserId,
     chatId,

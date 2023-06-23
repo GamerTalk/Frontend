@@ -41,10 +41,6 @@ const Input = () => {
   
   const handleSubmit = async (event: any) => {
     event.preventDefault();
-    console.log("message",message);
-    console.log("👹",chatId);
-    console.log("👺", chatUserId);
-    console.log("😊", userInfo?.username);
     
     const payloadForChats = {
       messages: arrayUnion({

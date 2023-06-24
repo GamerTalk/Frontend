@@ -11,7 +11,7 @@ import Upper from "@/app/utils/Upper";
 import { User } from "@/app/global.t";
 import { MessagesContext } from "@/app/context/MessageContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faGamepad, faGlobe } from "@fortawesome/free-solid-svg-icons";
+import { faGamepad, faGlobe,} from "@fortawesome/free-solid-svg-icons";
 
 interface LevelLookup {
   [key: number]: string;
@@ -117,7 +117,7 @@ export default function SingleUserCard(props: any) {
             </p>
             <p>{userObject.currently_playing}</p>
           </div>
-          <button onClick={handleGoToMessages}>Send A Message</button>
+          <button className={styles.button} onClick={handleGoToMessages}> Message</button>
         </>
       ) : (
         "Loading Profile..."

@@ -45,27 +45,26 @@
 .button { 
   margin-top: 30px;
   margin-bottom: 30px;
+  margin-bottom: 20px;
+  border-radius: 25px;
   font-size: 20px;
-  width: 200px;
   height: 50px;
+  width: 150px;
+  background-color: #6D67E4;
   color: white;
-  background-color: hwb(240 0% 0%);
-  border-radius: 10px;
-  box-shadow: 2px 2px 2px rgb(82, 82, 82,50%);
-  font-family: Arial, Helvetica, sans-serif;
+  border: 3px solid white;
 }
 
 .editButton { 
-  margin-top: 30px;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
+  border-radius: 25px;
   font-size: 20px;
-  width: 200px;
   height: 50px;
+  width: 150px;
+  background-color: #6D67E4;
   color: white;
-  background-color: hwb(138 2% 40%);
-  border-radius: 10px;
-  box-shadow: 2px 2px 2px rgb(82, 82, 82,50%);
-  font-family: Arial, Helvetica, sans-serif;
+  margin-top: 20px;
+  border: 3px solid white;
 }
 
 .levelsbox{

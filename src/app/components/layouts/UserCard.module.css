@@ -24,13 +24,13 @@
 .userInfo{
   text-align: left;
   display: flex;  
-  flex
+
 }
 
 .userImg{
   display: flex;
   padding-right: 10px;
-  margin: 0 auto;
+  margin: 0 20px;
   justify-content: center;
   align-items: center;
   /* position: relative;
@@ -50,12 +50,11 @@
 
 .userAbout{
   background-color:#272727;
-  width: 40%;
 }
 
 .userName {
   font-size: 20px;
-  margin: 3px 0;
+  margin: 3px 0 5px;
 }
 
 .systems{
@@ -73,7 +72,7 @@
   border-radius: 10px;
   display: flex;
   flex-wrap: wrap;
-  justify-content:space-around;
+  /* justify-content:space-around; */
 }
 
 .game{
@@ -81,4 +80,9 @@
   font-size: 30px;
   display: flex;
   align-items: center;
+  margin-right: 10px;
+}
+
+.text {
+  margin-bottom: 5px;
 }

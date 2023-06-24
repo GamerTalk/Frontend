@@ -1,6 +1,6 @@
 .filterArea{
   width: min(100%,600px);
-  background-color: #272727;
+  /* background-color: #272727; */
   margin: 0 auto;
   display: flex;
 }

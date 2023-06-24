@@ -92,8 +92,6 @@ const UserCard = (props: Props) => {
                 })}
               </div>
             </div>
-          </div>
-
           <div className={styles.systems}>
             <div className={styles.gamesWrapper}>
               {user.user_systems.map((system, index) => {
@@ -108,6 +106,8 @@ const UserCard = (props: Props) => {
               })}
             </div>
           </div>
+          </div>
+
         </div>
       </div>
     </>

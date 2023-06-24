@@ -10,6 +10,8 @@ import axios from 'axios'
 import { UserAuth } from '../context/AuthContext'
 import { saveAs } from 'file-saver';
 import Papa from 'papaparse';
+import { faPlus, faTrash } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 
 export default function Dict() {
@@ -150,12 +152,12 @@ export default function Dict() {
       </form>
       <div className={styles.plusAndMinus}>
         <div>
-          <button className={styles.plus} onClick={openPopup}>+</button>
+          <button className={styles.plus} onClick={openPopup}><FontAwesomeIcon icon={faPlus} /></button>
           {isPopupOpen && <Add handleClosePopup={closePopup}/>}
         </div>
 
         <div>
-          <button className={styles.minus} onClick={myFunction}>-</button>
+          <button className={styles.minus} onClick={myFunction}><FontAwesomeIcon icon={faTrash}/> </button>
         </div>
   
      </div>

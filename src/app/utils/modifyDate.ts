@@ -1,9 +1,6 @@
 // modifyDate 
 
 export const modifyDate = (seconds: number, nanoseconds: number): string => {
-  console.log(seconds);
-  console.log(nanoseconds);
-  
   const currentDate = new Date();
   const messageDate = new Date(seconds * 1000 + nanoseconds / 1000000);
   

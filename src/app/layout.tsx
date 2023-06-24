@@ -34,6 +34,9 @@ export default function RootLayout({
 
   return (
     <html lang="en">
+      <head>
+        <title>GamerTalk</title>
+      </head>
       <body className={offside.className}>
          <MessageContextProvider>
           <AuthContextProvider>

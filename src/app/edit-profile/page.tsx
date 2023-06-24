@@ -73,7 +73,6 @@ export default function Profile() {
   const handleFormSubmit = async(event: { preventDefault: () => void }) => {
     event.preventDefault();
 
-    console.log("検証中");
     const userRef = doc(db, "users", uid!);
     const userChatRef = doc(db, "userChats", uid!);
     let newProfileURL = profileURL || "";

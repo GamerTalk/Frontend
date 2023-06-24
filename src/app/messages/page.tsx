@@ -27,7 +27,6 @@ export default function Messages() {
           // observe userChats data  
           const unsub = await onSnapshot<DocumentData>(doc(db, "userChats", uid), (doc) => {
             const chatData = doc.data() as { [key: string]: Chat };
-            console.log("Current data: ", chatData);
             // setChats(chatData);
             setChats(doc.data());
             isLoading(false);
@@ -45,9 +44,7 @@ export default function Messages() {
 
   }, [uid]);
 
-  console.log("chats data", chats);
-  
-  return (
+return (
     <>
    {loading ? (
       <p>Loading...</p>
@@ -55,10 +52,18 @@ export default function Messages() {
     <p>You have not texted anyone yet.</p>
    ) : (
     <div>
-      {Object.entries(chats).map(([chatId, chatData], key) => (
+      {Object.entries(chats).sort((a, b) => {
+       const dateA = a[1].date && new Date(a[1].date.seconds * 1000 + a[1].date.nanoseconds / 1000000);
+       const dateB = b[1].date && new Date(b[1].date.seconds * 1000 + b[1].date.nanoseconds / 1000000);
+       if (dateA && dateB) {
+         return dateB.getTime() - dateA.getTime();
+       }
+        return 0;
+      }
+      ).map(([chatId, chatData], key) => (
         <div key={key}>
           <MessageBox chatUserName={chatData.userInfo.userName} chatUserId={chatData.userInfo.uid}
-            chatId={chatId} chatUserProfileURL={chatData.userInfo.userProfileURL} />
+            chatId={chatId} chatUserProfileURL={chatData.userInfo.userProfileURL} lastMessage={chatData.lastMessage} messageDate={chatData.date} />
         </div>
       ))}
     </div>

@@ -3,16 +3,19 @@ import React, { useContext } from 'react'
 import styles from "./MessageBox.module.css";
 import Link from 'next/link';
 import { MessagesContext } from '@/app/context/MessageContext';
+import { modifyDate } from '@/app/utils/modifyDate';
 
 interface Prop { 
   chatUserName: string,
   chatUserId: string,
   chatId: string
-  chatUserProfileURL:string
+  chatUserProfileURL: string
+  lastMessage: string
+  messageDate: { seconds: number; nanoseconds: number; };
 }
 
 const MessageBox = (prop:Prop) => {
-  const { chatUserName, chatUserId, chatId, chatUserProfileURL} = prop;
+  const { chatUserName, chatUserId, chatId, chatUserProfileURL,lastMessage,messageDate} = prop;
 
   const { updateChatUserId, updateChatId, updateUserName ,updateUserProfileURL} = useContext(MessagesContext);
   
@@ -23,15 +26,33 @@ const MessageBox = (prop:Prop) => {
     updateUserName(chatUserName);
     updateUserProfileURL(chatUserProfileURL);
   }
-
+  
   return (
     <Link href={"/messages/message"}>
     <div className={styles.messageBox} onClick={handleSelect}>
       <div className={styles.imageWrapper}>
       <img src={chatUserProfileURL} id={styles.userImg} />
       </div>
-      <div className={styles.userInfo}>
-          <p>{chatUserName}</p>
+        <div className={styles.messageInfo}>
+          <div className={styles.messageContentLeft}>
+            <p>{chatUserName}</p>
+          </div>
+          <div className={styles.messageContentLeft}>
+            {lastMessage.length > 10 ? (
+              <>
+                <p>{lastMessage.slice(0, 10)}...</p>
+              </>
+            ): (
+              <>
+                <p>{lastMessage}</p>
+               </>
+              )
+            }
+          </div>
+          <div className={styles.messageContentRight}>
+            <p> {modifyDate(messageDate.seconds,messageDate.nanoseconds)}</p>
+            {/* <p>{lastDate.toLocaleDateString()}20</p> */}
+          </div>
       </div>
     </div>
     </Link>

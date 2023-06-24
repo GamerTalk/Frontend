@@ -3,16 +3,42 @@
   height: 50px;
   width: 80%;
   display: flex;
-  background-color: rgb(198, 198, 198);
-  border: 2px solid #000;
+  background-color: rgb(40, 40, 40);
+  border: 1px solid #00000038;
   border-radius: 10px;
   margin: 0 auto;
+  margin-top: 1px;
 }
 
+
+.imageWrapper{
+  margin-top: 5px;
+  margin-left: 4px;
+}
 #userImg{
   height: 40px;
   width: 40px;
+  object-fit: cover;
+  border-radius: 10px;
 }
-.userInfo{
-  border: 2px solid #3705ff;
+.messageInfo{
+  display: flex;
+  width: 100%;
 }
+.messageContentLeft{
+  margin-left: 10px;
+  color: rgb(255, 255, 255);
+  font-family: sans-serif;
+}
+
+.messageContentRight{
+  margin-left: auto;
+  margin-right: 5px;
+  color: rgb(255, 255, 255);
+  font-family: sans-serif;
+
+}
+.messageContent:nth-last-child(2){
+  flex: 1;
+}
+

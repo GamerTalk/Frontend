@@ -103,7 +103,9 @@ export default function Home() {
             </form>
 
           ) :
-          (<></>)}
+          (<button onClick={() => {
+            setPostForm(!showPostForm)
+          }}>Make a post!</button>)}
 
           {/* Renders out the post */}
           {posts.map((post: Post, index: number) => {

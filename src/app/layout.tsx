@@ -36,7 +36,10 @@ export default function RootLayout({
 
   return (
     <html lang="en">
-      <body className={asap.className}>
+      <head>
+        <title>GamerTalk</title>
+      </head>
+      <body className={offside.className}>
          <MessageContextProvider>
           <AuthContextProvider>
           {pathname === "/landing" || pathname === '/' ? "" : <Header />}

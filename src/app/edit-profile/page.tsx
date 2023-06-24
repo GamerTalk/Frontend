@@ -73,7 +73,6 @@ export default function Profile() {
   const handleFormSubmit = async(event: { preventDefault: () => void }) => {
     event.preventDefault();
 
-    console.log("検証中");
     const userRef = doc(db, "users", uid!);
     const userChatRef = doc(db, "userChats", uid!);
     let newProfileURL = profileURL || "";
@@ -232,7 +231,7 @@ export default function Profile() {
   };
 
   return (
-    <>
+
       <form style={{paddingBottom: "100px"}} onSubmit={handleFormSubmit}>
         <h1>Profile</h1>
         {profile ? (
@@ -646,6 +645,6 @@ export default function Profile() {
           <p className={styles.loading}>Loading Profile...</p>
         )}
       </form>
-    </>
+
   );
 }

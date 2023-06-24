@@ -39,7 +39,7 @@ export default function RootLayout({
       <head>
         <title>GamerTalk</title>
       </head>
-      <body className={offside.className}>
+      <body className={asap.className}>
          <MessageContextProvider>
           <AuthContextProvider>
           {pathname === "/landing" || pathname === '/' ? "" : <Header />}

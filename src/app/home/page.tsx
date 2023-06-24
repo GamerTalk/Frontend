@@ -94,7 +94,7 @@ export default function Home() {
                 cols={40}
                 onChange={handleMessage}
                 className={styles.textarea}
-                placeholder="What's going on?"
+                placeholder="What are you playing?"
                 value={message}
               />
               <div>

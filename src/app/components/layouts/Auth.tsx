@@ -46,9 +46,9 @@ const Auth = ({isSignIn}: Props) => {
     <div className={styles.authContainer}>
 
       {isSignIn ? (
-        <p className={styles.title}>Hello, Welcome Back.</p>
+        <p className={styles.title}>Welcome Back!</p>
          ) : (
-        <p className={styles.title}>Do not have an account? Sign Up</p>
+        <p className={styles.title}>Do not have an account? Sign Up!</p>
       )}
       
       <form onSubmit={ isSignIn ? handleSubmit : handleSignUp}>
@@ -81,7 +81,7 @@ const Auth = ({isSignIn}: Props) => {
           <>
             <SubmitButton word="Sign In" />
               <Link href="/auth/signup">
-               <p id={styles.toAuth}>Would you like to Sign-up?</p>
+               <p id={styles.toAuth}>Do not have an account? Sign-up here!</p>
               </Link>
           </>
           ) : (

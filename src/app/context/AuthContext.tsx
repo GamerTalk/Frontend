@@ -35,7 +35,7 @@ const [userInfo, setUserInfo] = useState<userInfo | null>(null);
 
 const createUser = async (email: string, password: string) => {
 const userCred = await createUserWithEmailAndPassword(auth, email, password);
-console.log('USER-CRED', userCred);
+
 return userCred;
 };
 
@@ -44,7 +44,7 @@ return userCred;
   }
 const loginUser = async (email: string, password: string) => {
 const userCred = await signInWithEmailAndPassword(auth, email, password);
-console.log('USER-CRED', userCred);
+
 return userCred;
 };
 
@@ -62,16 +62,13 @@ const retrieve = async (user:firebaseAuthUser | null) => {
       }
     }
     const url = (process.env.NEXT_PUBLIC_API_URL + "/api/user-info/");
-    console.log(url)
     const userData : userInfo  = await axios.get(url, config).then((result) => result.data)
-    console.log(userData)
     return setUserInfo(userData)
   }
 }
 
 useEffect(() => {
 const authenticatedUser = onAuthStateChanged(auth, (currentUser:firebaseAuthUser | null) => {
-console.log('CURRENT-USER', currentUser);
 setUser(currentUser);
 setUserEmail(currentUser?.email || null);
 setUid(currentUser?.uid || null)

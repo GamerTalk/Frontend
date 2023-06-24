@@ -2,9 +2,12 @@
   background-color: #272727;
   width: min(100%,600px);
   border-radius: 1px;
-  margin: 5px auto;
+  width: 90vw;
+  margin: 10px auto;
   border: 1px solid #626262;
+  padding: 10px;
   font-family: Arial, Helvetica, sans-serif;
+  border-radius: 20px;
 }
 
 .languageLine {
@@ -21,14 +24,13 @@
 .userInfo{
   text-align: left;
   display: flex;  
+
 }
 
 .userImg{
   display: flex;
-  padding-left: 10px;
-  padding-top: 20px;
   padding-right: 10px;
-  margin: 0 auto;
+  margin: 0 20px;
   justify-content: center;
   align-items: center;
   /* position: relative;
@@ -36,10 +38,10 @@
 }
 
 #image {
-  width: 75px;
-  height: 75px;
+  width: 100px;
+  height: 100px;
   /* position: absolute; */
-  border-radius: 50%;
+  border-radius: 25px;
   object-fit: cover;
   top: 50%;
   left: 50%;
@@ -48,12 +50,11 @@
 
 .userAbout{
   background-color:#272727;
-  width: 40%;
 }
 
 .userName {
   font-size: 20px;
-  margin-bottom: 3px;
+  margin: 3px 0 5px;
 }
 
 .systems{
@@ -62,23 +63,26 @@
 }
 
 .gamesWrapper{
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-color: rgb(255, 237, 237);
+  /* position: absolute; */
+  /* top: 50%;
+  left: 50%; */
+  /* transform: translate(-50%, -50%); */
   width: 90%;
-  height: 75px;
-  box-shadow: 4px 5px 10px rgb(255, 255, 255);
+  height: 40px;
   border-radius: 10px;
   display: flex;
   flex-wrap: wrap;
-  justify-content:space-around;
+  /* justify-content:space-around; */
 }
 
 .game{
-  color: #000;
-  font-size: 50px;
+  color: white;
+  font-size: 30px;
   display: flex;
   align-items: center;
+  margin-right: 10px;
+}
+
+.text {
+  margin-bottom: 5px;
 }

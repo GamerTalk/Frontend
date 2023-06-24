@@ -2,6 +2,17 @@
   margin-bottom: 30px;
 }
 
+.first {
+  border: 3px solid yellow;
+  display: grid;
+  
+}
+
+.text {
+  border: 3px solid green;
+}
+
+
 .heading {
   font-weight: 800;
   font-size: 20px;
@@ -19,7 +30,6 @@
   /* border: 3px solid rgb(231, 231, 231); */
   padding-top: 10px;
   padding-bottom: 10px;
-
 }
 
 .learning {
@@ -58,11 +68,28 @@
 }
 
 .userImg{
-
+  margin-top: 40px;
+  align-items: left;
+  border: 3px solid red;
 }
 
 #image {
-  width: 75px;
-  height: 75px;
+  width: 100px;
+  height: 100px;
   object-fit: cover;
+}
+
+.speakAndLearn {
+  border: 3px solid green;
+  grid-column: 2/2;
+}
+
+.systems {
+  border: 3px solid green;
+}
+
+.game {
+  border: 3px solid white;
+  height: 50px;
+  width: 100px;
 }

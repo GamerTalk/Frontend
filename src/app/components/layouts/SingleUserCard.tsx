@@ -1,6 +1,7 @@
 import React, { ChangeEvent, useContext, useEffect, useState } from "react";
 import axios from "axios";
 import styles from "./SingleUserCard.module.css";
+import { Systems } from "@/app/global.t";
 import { UserAuth } from "@/app/context/AuthContext";
 import Checkbox from "../elements/Checkbox";
 import LearningCheckbox from "../elements/Learning-Checkbox";
@@ -12,6 +13,7 @@ import { User } from "@/app/global.t";
 import { MessagesContext } from "@/app/context/MessageContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGamepad, faGlobe, faTrash } from "@fortawesome/free-solid-svg-icons";
+import { faPlaystation, faSteam, faXbox } from "@fortawesome/free-brands-svg-icons";
 
 interface LevelLookup {
   [key: number]: string;
@@ -34,6 +36,18 @@ export default function SingleUserCard(props: any) {
     4: "Advanced",
     5: "Proficient",
   };
+
+  const systems: Systems = {
+    pc: faSteam,
+    xbox: faXbox,
+    playstation: faPlaystation,
+    switch: faGamepad,
+  };
+
+  const genres = {
+    
+
+  }
 
   const { updateChatUserId, updateChatId, updateUserName, updateUserProfileURL } = useContext(MessagesContext);
   
@@ -58,6 +72,7 @@ export default function SingleUserCard(props: any) {
       <h1>{userObject.username}</h1>
       {userObject.about_me ? (
         <>
+        <div className={styles.first}>
           <div className={styles.userImg}>
             <img
               src={
@@ -68,18 +83,15 @@ export default function SingleUserCard(props: any) {
               id={styles.image}
             />
           </div>
-        
 
-          <p className={styles.heading}>
-            Region: <FontAwesomeIcon icon={faGlobe} />
-          </p>
-          <p>{TitleCase(userObject.user_region)}</p>
+          <div className={styles.speakAndLearn}>
 
-          <p className={styles.heading}>This user speaks:</p>
+          <p><span className={styles.heading}>Speaks:</span> 
           {userObject.languages.fluent.map((element: string, index: number) => (
-            <p key={index}>{Upper(element)}</p>
-          ))}
-          <p className={styles.heading}>This user is learning:</p>
+            <p key={index}>{" " + Upper(element)}</p>
+          ))}  </p>
+
+          <p> <span className={styles.heading}>Learning:</span>
           {userObject.languages.learning.map(
             (
               element: {
@@ -89,21 +101,39 @@ export default function SingleUserCard(props: any) {
               index: number
             ) => (
               <p key={index}>
-                Learning {Upper(element.language)} at{" "}
+                {Upper(element.language)}:{" "}
                 {levelLookup[element.level]}
               </p>
             )
-          )}
+          )} </p>
 
-          <p className={styles.heading}>Date of Birth: </p>
-          <p> {userObject.date_of_birth}</p>
+          </div>
 
-          <p className={styles.heading}>User Systems:</p>
-          {userObject.user_systems.map((system: string, index: number) => (
-            <p key={index}>{Upper(system)}</p>
-          ))}
+          </div>
+        
+
+          <p className={styles.heading}>
+            Region: <FontAwesomeIcon icon={faGlobe} />
+          </p>
+          <p>{TitleCase(userObject.user_region)}</p>
+
+          
+
+          {/* <p className={styles.heading}>Date of Birth: </p>
+          <p> {userObject.date_of_birth}</p> */}
+
+          <div className={styles.systems}>
+            <p className={styles.heading}>User Systems:</p>
+            {userObject.user_systems.map((system: string, index: number) => (
+            <FontAwesomeIcon
+            icon={systems[system]}
+            className={styles.game}
+            />
+            ))}
+          </div>
+
           <div className={styles.language}>
-            <p className={styles.heading}>Genres they play:</p>
+            <p className={styles.heading}>Genres:</p>
             {userObject.user_genre.map((genre: string, index: number) => (
               <p key={index}>{Upper(genre)}</p>
             ))}

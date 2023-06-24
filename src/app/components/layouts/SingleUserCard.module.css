@@ -2,20 +2,33 @@
   margin-bottom: 30px;
 }
 
-.first {
-  border: 3px solid yellow;
-  display: grid;
-  
+.username {
+  font-size: 40px;
 }
 
 .text {
-  border: 3px solid green;
+  font-size: 25px;
+}
+
+.first {
+  display: grid;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 
 .heading {
   font-weight: 800;
+  font-size: 30px;
+}
+
+.langText {
   font-size: 20px;
+}
+
+.langHeading {
+  font-weight: 800;
+  font-size: 25px;
 }
 
 .subheading {
@@ -44,7 +57,8 @@
 }
 
 .button {
-  margin-bottom: 20px;
+  margin-top: 20px;
+  margin-bottom: 10px;
   border-radius: 25px;
   font-size: 20px;
   height: 50px;
@@ -68,28 +82,40 @@
 }
 
 .userImg{
-  margin-top: 40px;
+  margin-top: 30px;
   align-items: left;
-  border: 3px solid red;
 }
 
 #image {
-  width: 100px;
-  height: 100px;
+  width: 150px;
+  height: 150px;
   object-fit: cover;
 }
 
 .speakAndLearn {
-  border: 3px solid green;
   grid-column: 2/2;
 }
 
 .systems {
-  border: 3px solid green;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin: 0 auto;
+  border: 3px solid gray;
+  border-radius: 25px;
+  width: 70%;
+  background-color: white;
+  color: black
+
 }
 
 .game {
-  border: 3px solid white;
   height: 50px;
   width: 100px;
+}
+
+.sections {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border-top: 3px solid white;
+  border-bottom: 3px solid white;
 }

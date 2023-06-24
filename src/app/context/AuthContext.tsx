@@ -50,6 +50,8 @@ return userCred;
 
 const logOut = () => {
   setUser(null);
+  setUserInfo(null);
+  setUserEmail(null);
   return signOut(auth);
 };
 

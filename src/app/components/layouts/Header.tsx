@@ -8,7 +8,7 @@ import { useRouter } from "next/navigation";
 import { usePathname } from "next/navigation";
 import { MessagesContext } from "@/app/context/MessageContext";
 import { useContext, useEffect, useState } from "react";
-
+import Image from "next/image";
 export default function Header() {
   const { userName, userProfileURL } = useContext(MessagesContext);
     
@@ -57,9 +57,12 @@ export default function Header() {
           <header className={styles.headerContainer}>
             {/* link tag to home "/" */}
             <div className={styles.headerTitleContainer}>
+              {user ? 
               <Link href="/home">
                 <p id={styles.headerName}> GamerTalk </p>
-              </Link>
+              </Link> :
+                <p id={styles.headerName}> GamerTalk </p>
+              }
             </div>
             <div className={styles.userInfo}>
               <div className={styles.imageContainer}>

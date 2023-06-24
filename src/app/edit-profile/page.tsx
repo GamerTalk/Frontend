@@ -231,7 +231,7 @@ export default function Profile() {
   };
 
   return (
-    <>
+
       <form style={{paddingBottom: "100px"}} onSubmit={handleFormSubmit}>
         <h1>Profile</h1>
         {profile ? (
@@ -645,6 +645,6 @@ export default function Profile() {
           <p className={styles.loading}>Loading Profile...</p>
         )}
       </form>
-    </>
+
   );
 }

@@ -119,7 +119,7 @@ export default function Home() {
         </>
       ) : (
         <>
-          <button onClick={() => setShowProfilePage(false)}>Back</button>
+          <button className={styles.button} onClick={() => setShowProfilePage(false)}>Back</button>
           <SingleUserCard userObject={singleUser} />
         </>
       )}

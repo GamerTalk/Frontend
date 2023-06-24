@@ -4,12 +4,11 @@
     background-color: #6D67E4;
     padding-top: 15px;
     position: fixed;
-    width: 96vw;
     padding-bottom: 15px;
-    bottom: 10px;
-    left: 2vw;
     z-index: 9999;
-    border-radius: 25px;
+    width: 100vw;
+    bottom: 0;
+    left: 0;
 }
 
 .footerIconDiv {

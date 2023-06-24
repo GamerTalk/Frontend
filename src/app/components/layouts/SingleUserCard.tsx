@@ -11,7 +11,7 @@ import Upper from "@/app/utils/Upper";
 import { User } from "@/app/global.t";
 import { MessagesContext } from "@/app/context/MessageContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faGamepad, faGlobe,} from "@fortawesome/free-solid-svg-icons";
+import { faGamepad, faGlobe, faTrash } from "@fortawesome/free-solid-svg-icons";
 
 interface LevelLookup {
   [key: number]: string;
@@ -55,7 +55,7 @@ export default function SingleUserCard(props: any) {
 
   return (
     <div>
-      <h1>Profile</h1>
+      <h1>{userObject.username}</h1>
       {userObject.about_me ? (
         <>
           <div className={styles.userImg}>
@@ -68,8 +68,7 @@ export default function SingleUserCard(props: any) {
               id={styles.image}
             />
           </div>
-          <p className={styles.heading}>Username:</p>
-          <p>{userObject.username}</p>
+        
 
           <p className={styles.heading}>
             Region: <FontAwesomeIcon icon={faGlobe} />

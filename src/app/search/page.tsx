@@ -34,7 +34,6 @@ export default function Search() {
       fetchAllusers();
     }
   }, [filterWords]);
-  console.log("hoge", users);
 
   return (
     <>

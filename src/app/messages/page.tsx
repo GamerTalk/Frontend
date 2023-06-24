@@ -19,7 +19,7 @@ export default function Messages() {
   const { uid } = UserAuth();
   const [chats, setChats] = useState<{ [key: string]: Chat } | undefined>(undefined);
   const [loading, isLoading] = useState<boolean>(true);
-
+  
   useEffect(() => {
     const getChats = async () => {
       if (uid) {
@@ -41,7 +41,6 @@ export default function Messages() {
         }
       }
     }
-    
     getChats();
 
   }, [uid]);

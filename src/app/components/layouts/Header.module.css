@@ -13,6 +13,7 @@
   font-weight: bold;
   font-size: 25px;
   font-weight: 1000;
+  font-family: offside;
 }
 
 #image {
@@ -53,4 +54,12 @@
 
 .userInfoForMessage{
   display: flex;
+}
+
+.imageContainer {
+  margin-top: 10px;
+}
+
+#image {
+  border-radius: 25px;
 }

@@ -1,7 +1,7 @@
 "use client"
 
 import './globals.css'
-import { Inter, Offside } from 'next/font/google'
+import { Inter, Offside, Asap, Open_Sans} from 'next/font/google'
 import Header from './components/layouts/Header'
 import Footer from './components/layouts/Footer'
 import Landing from './landing/page'
@@ -13,8 +13,10 @@ import { usePathname } from 'next/navigation';
 import MessageContextProvider from './context/MessageContext'
 config.autoAddCss = false;
 
-const inter = Inter({ subsets: ['latin'] })
+const inter = Inter({ subsets: ['latin']})
 const offside = Offside({ subsets: ['latin'], weight:['400']})
+const asap = Asap({subsets:['latin'], weight:['400']})
+const open_sans = Open_Sans({subsets:['latin'], weight:['400']})
 
 // export const metadata = {
 //   title: 'GamerTalk',
@@ -34,7 +36,7 @@ export default function RootLayout({
 
   return (
     <html lang="en">
-      <body className={offside.className}>
+      <body className={asap.className}>
          <MessageContextProvider>
           <AuthContextProvider>
           {pathname === "/landing" || pathname === '/' ? "" : <Header />}

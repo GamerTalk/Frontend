@@ -14,7 +14,7 @@ interface Param {
   setShowUserCard: React.Dispatch<React.SetStateAction<boolean>>
 }
 
-const FilterArea: React.FC<Param> = ({ setUsers, setFilterWords, filterWords , setShowUserCard}) => { 
+const FilterArea: React.FC<Param> = ({ setUsers, setFilterWords, filterWords, setShowUserCard }) => {
   
   const [isClick, setClick] = useState(false);
 
@@ -24,18 +24,18 @@ const FilterArea: React.FC<Param> = ({ setUsers, setFilterWords, filterWords , s
   const [selectedRegion, setRegion] = useState<string[]>([]);
 
   const languages: string[] = ["English", "Spanish", "German", "French", "Japanese", "Chinese", "Korean"];
-  const genres: string[] = ["Shooters", "Survial", "Battle Royal", "Strategy","Party","Fighting","RPG","MMO"];
+  const genres: string[] = ["Shooters", "Survial", "Battle Royal", "Strategy", "Party", "Fighting", "RPG", "MMO"];
   const systems: string[] = ["PC", "Switch", "PlayStation", "Xbox"];
   const regions: string[] = ["North America", "South America", "Africa", "Europe", "Asia", "Oceania"];
   
-  const handleFilterClick = (e:React.MouseEvent<HTMLButtonElement>) => { 
+  const handleFilterClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     setClick(!isClick);
     setShowUserCard(false);
     // the words for filter is reset;
     setFilterWords([]);
   }
   
-  const handleApply = async(event: React.FormEvent<HTMLFormElement>) => { 
+  const handleApply = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     
     const url = process.env.NEXT_PUBLIC_API_URL + "/api/filter-users/";
@@ -43,14 +43,14 @@ const FilterArea: React.FC<Param> = ({ setUsers, setFilterWords, filterWords , s
     const config = {
       method: 'GET',
       headers: {
-        systems:JSON.stringify(selectedSystems),
+        systems: JSON.stringify(selectedSystems),
         genre: JSON.stringify(selectedGenres),
         language: selectedLanguage.toLowerCase(),
         regions: JSON.stringify(selectedRegion)
       }
     }
 
-     try { 
+    try {
       const response = await axios.get(url, config);
       const allWords: string[] = [...selectedSystems, ...selectedGenres, ...selectedRegion];
       allWords.push(selectedLanguage);
@@ -67,15 +67,18 @@ const FilterArea: React.FC<Param> = ({ setUsers, setFilterWords, filterWords , s
   }
 
   /**
-   * check slectedItems has target or not.
-   * @param target  
-   * @param selectedItems 
-   * @param setItems 
+   *
+   * update each categories selections
+   * @param {string}target  event.target.name :example => Asia, PC, 
+   * @param {string[]}selectedItems : selected Items
+   * @param {React.Dispatch<React.SetStateAction<string[]>>}setItems : setSomething
+   * @returns {void}
    */
 
   const handleSelection = (target:string,
     selectedItems: string[],
     setItems: React.Dispatch<React.SetStateAction<string[]>>): void => {
+    console.log(target);
     const targetLowerCase = target.toLowerCase();
     if (selectedItems.includes(targetLowerCase)) {
       setItems((prevItems: string[]) => prevItems.filter((item: string) => item !== targetLowerCase));
@@ -84,20 +87,20 @@ const FilterArea: React.FC<Param> = ({ setUsers, setFilterWords, filterWords , s
     }
   };
   
-  const handleGenre = (event: { target: { name : string }; }) => {
-    const { name } = event.target;
-    handleSelection(name, selectedGenres, setGenre);
-  }
+  // const handleGenre = (event: { target: { name : string }; }) => {
+  //   const { name } = event.target;
+  //   handleSelection(name, selectedGenres, setGenre);
+  // }
 
-  const handleSystem = (event: { target: { name : string }; }) => {
-    const { name } = event.target;
-    handleSelection(name, selectedSystems, setSystem);
-  }
+  // const handleSystem = (event: { target: { name : string }; }) => {
+  //   const { name } = event.target;
+  //   handleSelection(name, selectedSystems, setSystem);
+  // }
 
-  const handleRegion = (event: { target: { name: string } }) => { 
-    const { name } = event.target;
-    handleSelection(name, selectedRegion, setRegion);
-  } 
+  // const handleRegion = (event: { target: { name: string } }) => { 
+  //   const { name } = event.target;
+  //   handleSelection(name, selectedRegion, setRegion);
+  // } 
 
   const handleLanguage = (event: { target: {name:string} }) => { 
     const { name } = event.target;
@@ -120,7 +123,7 @@ const FilterArea: React.FC<Param> = ({ setUsers, setFilterWords, filterWords , s
                   return (
                     <div className={styles.category}  key={key}>
                       <label>
-                        <input type="checkbox" name={system} checked={isCheckBoxChecked} onChange={handleSystem} />
+                        <input type="checkbox" name={system} checked={isCheckBoxChecked} onChange={(e)=>handleSelection(e.target.name,selectedSystems,setSystem)} />
                         <span>{system}</span>
                       </label>
                     </div>
@@ -136,7 +139,7 @@ const FilterArea: React.FC<Param> = ({ setUsers, setFilterWords, filterWords , s
                   return (
                     <div className={styles.category} key={key} >
                      <label>
-                        <input type="checkbox" name={genre} checked={isCheckBoxChecked} onChange={handleGenre} />
+                        <input type="checkbox" name={genre} checked={isCheckBoxChecked} onChange={(e) => handleSelection(e.target.name,selectedGenres,setGenre)} />
                         <span>{genre}</span>
                       </label>
                     </div>
@@ -152,7 +155,7 @@ const FilterArea: React.FC<Param> = ({ setUsers, setFilterWords, filterWords , s
                   return (
                     <div className={styles.category} key={key} >
                      <label>
-                        <input type="checkbox" name={region} checked={isCheckBoxChecked} onChange={handleRegion} />
+                        <input type="checkbox" name={region} checked={isCheckBoxChecked} onChange={(e)=> handleSelection(e.target.name, selectedRegion,setRegion)} />
                         <span>{region}</span>
                       </label>
                     </div>

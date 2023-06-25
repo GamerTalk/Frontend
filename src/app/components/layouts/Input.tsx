@@ -14,6 +14,9 @@ import { db } from '@/app/firebase/firebase';
 import { MessagesContext } from '@/app/context/MessageContext';
 import { UserAuth } from '@/app/context/AuthContext';
 import { v4 as uuid } from 'uuid';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {faPaperPlane } from '@fortawesome/free-solid-svg-icons';
+
 
 const Input = () => {
 
@@ -41,7 +44,14 @@ const Input = () => {
   
   const handleSubmit = async (event: any) => {
     event.preventDefault();
-    
+
+    const isWhiteSpace: boolean = /^\s*$/.test(message);
+    // if message is empty , it return anything.
+    console.log("is white space",isWhiteSpace);
+    if (isWhiteSpace) { 
+      return;
+    }
+
     const payloadForChats = {
       messages: arrayUnion({
         id: uuid(),
@@ -114,17 +124,19 @@ const Input = () => {
 
   return (
     <div className={styles.textContainer}>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className={styles.form}>
         <div className={styles.inputText}>
       <textarea
         value={message}
         placeholder="here message"
         onChange={handleMessageChange}
-        className={styles.textbox}
+        id={styles.textbox}
         />
       </div>
-      <div className={styles.sendButton}>    
-        <button type="submit">Send</button>
+        <div className={styles.sendButton}>    
+          <button type="submit" className={styles.sendButton}>
+            <FontAwesomeIcon icon={faPaperPlane} id={styles.sendIcon} />
+        </button>
       </div>
     </form>
     </div>

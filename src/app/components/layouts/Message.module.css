@@ -1,15 +1,30 @@
-.messageBox{
-  height: 30px;
-  width: 50%;
-  background-color: beige;
+.messageBox {
+  height: auto;
+  max-width: 80%;
+  background-color: rgb(137, 137, 137);
   border-radius: 5px;
   font-family: sans-serif;
   text-align: center;
   display: flex;
   align-items: center;
   margin: 10px;
+  overflow-wrap: break-word;
 }
 
 .message{
+  text-align: left;
   margin-left: 5px;
+}
+
+.messageLeft{
+  margin-left: 5px;
+}
+
+.messageRight {
+  margin-right: 5px;
+  margin-left: auto;
+}
+
+.messageText{
+  overflow-wrap: break-word;
 }

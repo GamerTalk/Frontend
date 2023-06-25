@@ -34,18 +34,18 @@ export default function Header() {
   return (
     <>
       {isMessagesPage ? (
-        <div className={styles.messageHeader}>
+        <div className={styles.headerContainer}>
           <div>
             <Link href={"/messages/"}>
               <button>Back</button>
             </Link>
           </div>
           <div className={styles.userInfoForMessage}>
-            <div>
+            <div className={styles.imageContainer}>
               <img src={userProfileURL} alt="userImage" id={styles.image} />
             </div>
-            <div>
-              <p>{userName}</p>
+            <div className={styles.userName}>
+              <p className={styles.userName}>{userName}</p>
             </div>
           </div>
         </div>

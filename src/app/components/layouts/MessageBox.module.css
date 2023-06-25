@@ -3,7 +3,7 @@
   height: 50px;
   width: 80%;
   display: flex;
-  background-color: rgb(40, 40, 40);
+  background-color: #282828;
   border: 1px solid #00000038;
   border-radius: 10px;
   margin: 0 auto;
@@ -28,14 +28,14 @@
 }
 .messageContentLeft{
   margin-left: 10px;
-  color: rgb(255, 255, 255);
+  color: #ffffff;
   font-family: sans-serif;
 }
 
 .messageContentRight{
   margin-left: auto;
   margin-right: 5px;
-  color: rgb(255, 255, 255);
+  color: #ffffff;
   font-family: sans-serif;
 
 }

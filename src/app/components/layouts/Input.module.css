@@ -1,21 +1,48 @@
-.textContainer{
+
+.textContainer {
   display: flex;
-  width: 100%;
-  background-color: aqua;
+  justify-content: center;
+  background-color: #6D67E4;
+  height: 70px;
 }
 
-.inputText{
-  /* width: 100%; */
+.textContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.textbox{
-  width: 300px;
-  height: 50px;
-  max-width:300px;
-  max-height:100px;
+#textbox{
+  width: 80vw;
+  height: 40px;
+  resize: none;
+  margin-top: 5px;
+  margin-left: 10px;
+  font-size: x-large
 }
 
-.sendButton {
-  width: 50px;
-  height: 100px;
+.form {
+  display: flex;
+  align-items: center;
+}
+
+.inputText {
+  margin-left: 2px;
+  margin-bottom: 5px;
+  flex-grow: 1; 
+}
+
+#sendIcon{
+  color: #ffffff;
+  height: 35px;
+  width: 35px;
+  padding: 5px;
+  border: 10px
+}
+
+.sendButton{
+  background-color: #6c4c4c00;
+  border: none;
+  margin-right: 6px;
+  margin-bottom: 5px;
 }

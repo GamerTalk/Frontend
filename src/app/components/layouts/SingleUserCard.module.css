@@ -129,11 +129,13 @@
 
 .learningLanguageContainer{
   display: flex;
+  margin-left: 40px;
  
 }
 
 .languageWraper{
   margin-right: 10px;
+
 }
 
 .scaleWraper {

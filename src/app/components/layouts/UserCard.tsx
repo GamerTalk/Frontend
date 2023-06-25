@@ -9,6 +9,7 @@ import {
 import { faGamepad } from "@fortawesome/free-solid-svg-icons";
 import { User, Systems } from "./../../global.t";
 import Upper from "@/app/utils/Upper";
+import Scale from "../elements/Scale";
 
 interface Props {
   user: User;
@@ -45,6 +46,7 @@ const UserCard = (props: Props) => {
     5: "Proficient",
   };
 
+  
   return (
     <>
       <div
@@ -85,9 +87,19 @@ const UserCard = (props: Props) => {
                 <p className={styles.subTitle}>Learning:</p>
                 {user.languages.learning.map((learn, index) => {
                   return (
-                    <p className={styles.languageLine} key={index}>
-                      {Upper(learn.language)} : {levelLookup[learn.level]}
-                    </p>
+                    <>
+                    <div className={styles.learningLaguagesContainer}>
+                        <div className={styles.languageWraper}>
+                      <p className={styles.languageLine} key={index}>
+                      {/* {Upper(learn.language)} : {levelLookup[learn.level]} */}
+                      {Upper(learn.language)} :
+                      </p>
+                      </div>
+                      <div className={styles.scaleWraper}>
+                         <Scale level={learn.level}/>
+                      </div>
+                    </div>
+                    </>
                   );
                 })}
               </div>

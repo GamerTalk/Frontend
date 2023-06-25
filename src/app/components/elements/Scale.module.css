@@ -1,0 +1,14 @@
+.scaleWrapper{
+  border: 1px solid #333;
+  border-radius: 10px;
+  background: #ffffff;
+  width: 40px;
+  margin: 0px 0;
+}
+
+.scale {
+  height: 10px;
+  width: 20%;
+  border-radius: 10px;
+}
+

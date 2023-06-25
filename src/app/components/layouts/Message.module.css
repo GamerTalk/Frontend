@@ -2,13 +2,14 @@
   height: auto;
   max-width: 80%;
   background-color: rgb(137, 137, 137);
-  border-radius: 5px;
+  border-radius: 10px;
   font-family: sans-serif;
   text-align: center;
   display: flex;
   align-items: center;
   margin: 10px;
   overflow-wrap: break-word;
+  word-break: break-word; 
 }
 
 .message{
@@ -27,4 +28,5 @@
 
 .messageText{
   overflow-wrap: break-word;
+  word-break: break-word; 
 }

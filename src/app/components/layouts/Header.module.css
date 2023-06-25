@@ -8,6 +8,17 @@
   padding: 0 50px 5px 10px;
 }
 
+#backButton{
+  border: none;
+  background-color: transparent;
+}
+
+#backIcon{
+  width: 45px;
+  height: 45px;
+  color: white;
+}
+
 #headerName {
   color: white;
   font-weight: bold;
@@ -24,13 +35,22 @@
   object-fit: cover;
 }
 
+#chatUserImage{
+  width: 55px;
+  height: 55px;
+  object-fit: cover;
+}
+.userName{
+  margin: 0;
+}
+
 #skeletonImage{
   width: 55px;
   height: 55px;  
   border-radius: 50%;
-  background-color: rgb(221, 221, 221);
+  background-color: #dddddd;
   /* animation */
-  background: linear-gradient(90deg, transparent, rgba(169, 169, 169, 0.5), transparent);
+  background: linear-gradient(90deg, transparent, #a9a9a980, transparent);
   animation: loading 5.0s linear infinite;
 }
 
@@ -50,10 +70,6 @@
 .messageHeader{
   display: flex;
   background-color: bisque;
-}
-
-.userInfoForMessage{
-  display: flex;
 }
 
 .imageContainer {

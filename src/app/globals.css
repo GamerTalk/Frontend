@@ -4,19 +4,19 @@ body{
   margin: 0;
   height: 100%;
   text-align: center;
-  background-color: #453C67;
+  background-color: #453c67;
   color: white;
 }
 
 textarea {
   background-color: #272727;
-  color: white;
+  color: #ffffff;
   padding: 10px;
   border-radius: 15px;
 }
 
 textarea::placeholder {
-  color: rgba(236, 236, 236, 0.873);
+  color: #ecececdf;
 }
 
 a {

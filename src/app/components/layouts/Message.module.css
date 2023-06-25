@@ -1,15 +1,38 @@
-.messageBox{
-  height: 30px;
-  width: 50%;
-  background-color: beige;
-  border-radius: 5px;
+.messageBox {
+  height: auto;
+  width: 60%;
   font-family: sans-serif;
   text-align: center;
   display: flex;
   align-items: center;
-  margin: 10px;
+  overflow-wrap: break-word;
+  word-break: break-word;
+  margin-top: 10px; 
+  margin-bottom: 10px;
 }
 
 .message{
+  text-align: left;
   margin-left: 5px;
+  padding: 2px;
+  background-color: #272727;
+  border: 1px solid rgb(53, 53, 53)
+}
+
+.messageLeft{
+  margin-left: 5px;
+  border-radius: 0px 10px 10px 10px;
+}
+
+.messageRight {
+  margin-right: 5px;
+  margin-left: auto;
+  border-radius: 10px 0px 10px 10px;
+}
+
+.messageText{
+  overflow-wrap: break-word;
+  word-break: break-word; 
+  padding: 5px 15px;
+  margin: 0;
 }

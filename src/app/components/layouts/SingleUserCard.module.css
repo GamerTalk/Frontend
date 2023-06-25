@@ -77,7 +77,7 @@
   color: white;
   background-color: hwb(138 2% 40%);
   border-radius: 10px;
-  box-shadow: 2px 2px 2px rgb(82, 82, 82, 50%);
+  box-shadow: 2px 2px 2px #52525280;
   font-family: Arial, Helvetica, sans-serif;
 }
 

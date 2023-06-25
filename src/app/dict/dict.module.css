@@ -4,7 +4,7 @@
 
 .langBox {
   display: grid;
-  border: 3px solid rgb(167, 167, 167);
+  border: 3px solid #a7a7a7;
   grid-template-columns: 10% 45% 45%;
   margin-bottom: 5px;
   margin-top: 5px;
@@ -27,8 +27,8 @@
 }
 
 .front {
-  border-left: 3px solid rgb(167, 167, 167);
-  border-right: 3px solid rgb(167, 167, 167);
+  border-left: 3px solid #a7a7a7;
+  border-right: 3px solid #a7a7a7;
 }
 
 

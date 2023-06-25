@@ -1,12 +1,12 @@
 .authContainer{
   height: 350px;
   width: min(80%,500px);
-  background-color: rgb(255, 255, 255);
+  background-color: #ffffff;
   margin: 0 auto;
   margin-top:40px;
   border: 2px solid #000;
   border-radius: 10px;
-  box-shadow: 4px 5px 4px rgb(64, 64, 64);
+  box-shadow: 4px 5px 4px #404040;
   font-family: Arial, Helvetica, sans-serif;
 }
 

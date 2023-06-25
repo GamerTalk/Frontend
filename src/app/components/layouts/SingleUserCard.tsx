@@ -121,6 +121,7 @@ export default function SingleUserCard(props: any) {
             <FontAwesomeIcon
             icon={systems[system]}
             className={styles.game}
+            key={index}
             />
             ))}
           </div>

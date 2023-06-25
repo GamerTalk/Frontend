@@ -93,7 +93,7 @@ export default function SingleUserCard(props: any) {
               },
               index: number
             ) => (
-              <div className={styles.learningLanguageContainer}>
+              <div className={styles.learningLanguageContainer} key={index}>
               <div className={styles.languageWraper}>
                 <p key={index} className={styles.langText} >
                 {`${Upper(element.language)} :`} 

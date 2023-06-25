@@ -3,7 +3,7 @@
   display: flex;
   justify-content: center;
   background-color: #6D67E4;
-  height: 70px;
+  height: 80px;
 }
 
 .textContainer {
@@ -34,8 +34,8 @@
 
 #sendIcon{
   color: #ffffff;
-  height: 35px;
-  width: 35px;
+  height: 30px;
+  width: 30px;
   padding: 5px;
   border: 10px
 }
@@ -44,5 +44,6 @@
   background-color: #6c4c4c00;
   border: none;
   margin-right: 6px;
+  margin-top: 5px;
   margin-bottom: 5px;
 }

@@ -128,7 +128,7 @@ const Input = () => {
         <div className={styles.inputText}>
       <textarea
         value={message}
-        placeholder="here message"
+        placeholder="Message"
         onChange={handleMessageChange}
         id={styles.textbox}
         />

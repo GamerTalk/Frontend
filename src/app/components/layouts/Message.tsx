@@ -11,13 +11,11 @@ const Message = (props: Prop) => {
   const { uid } = UserAuth();
   const { message, date, id } = props;
 
-  const isRightAligned = id === uid;
-  console.log(isRightAligned);
-  
+  const isRightAligned = id === uid;  
   return (
     <> 
       <div className={`${styles.messageBox} ${isRightAligned ? styles.messageRight : styles.messageLeft}`}>
-        <div className={styles.message}>
+      <div className={`${styles.message} ${isRightAligned ? styles.messageRight : styles.messageLeft}`}>
         <p className={styles.messageText}>{message}</p>
         </div>
     </div>

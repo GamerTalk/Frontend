@@ -8,6 +8,17 @@
   padding: 0 50px 5px 10px;
 }
 
+#backButton{
+  border: none;
+  background-color: transparent;
+}
+
+#backIcon{
+  width: 45px;
+  height: 45px;
+  color: white;
+}
+
 #headerName {
   color: white;
   font-weight: bold;

@@ -9,6 +9,9 @@ import { usePathname } from "next/navigation";
 import { MessagesContext } from "@/app/context/MessageContext";
 import { useContext, useEffect, useState } from "react";
 import Image from "next/image";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faAngleLeft } from '@fortawesome/free-solid-svg-icons';
+
 export default function Header() {
   const { userName, userProfileURL } = useContext(MessagesContext);
     
@@ -37,7 +40,9 @@ export default function Header() {
         <div className={styles.headerContainer}>
           <div>
             <Link href={"/messages/"}>
-              <button>Back</button>
+              <button id={styles.backButton}>
+                <FontAwesomeIcon icon={faAngleLeft} id={styles.backIcon} />
+              </button>
             </Link>
           </div>
           <div className={styles.userInfoForMessage}>

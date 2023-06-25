@@ -10,6 +10,7 @@ import { MessagesContext } from "@/app/context/MessageContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faGamepad, faGlobe, faTrash } from "@fortawesome/free-solid-svg-icons";
 import { faPlaystation, faSteam, faXbox } from "@fortawesome/free-brands-svg-icons";
+import Scale from "../elements/Scale";
 
 interface LevelLookup {
   [key: number]: string;
@@ -83,7 +84,7 @@ export default function SingleUserCard(props: any) {
             <p className={styles.langText} key={index}>{" " + Upper(element)}</p>
           ))}  </p>
 
-          <p> <span className={styles.langHeading}>Learning:</span>
+          <div className={styles.learnContainer}> <span className={styles.langHeading}>Learning:</span>
           {userObject.languages.learning.map(
             (
               element: {
@@ -92,12 +93,19 @@ export default function SingleUserCard(props: any) {
               },
               index: number
             ) => (
-              <p key={index} className={styles.langText} >
-                {Upper(element.language)}:{" "}
-                {levelLookup[element.level]}
-              </p>
+              <div className={styles.learningLanguageContainer}>
+              <div className={styles.languageWraper}>
+                <p key={index} className={styles.langText} >
+                {`${Upper(element.language)} :`} 
+                </p>
+              </div>
+                <div className={styles.scaleWraper}>
+                  <Scale level={element.level}/>
+                </div>
+              </div>
             )
-          )} </p>
+                )}
+          </div>
 
           </div>
 

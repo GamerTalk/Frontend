@@ -55,7 +55,7 @@ export default function Header() {
           </div>
         </div>
       ) : (
-        <div>
+          <div>
           <Head>
             <title>GamerTalk</title>
           </Head>

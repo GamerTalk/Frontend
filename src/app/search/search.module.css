@@ -1,3 +1,10 @@
-.contents-div {
-  position: relative;
+.button{
+    margin-bottom: 20px;
+    border-radius: 25px;
+    font-size: 20px;
+    height: 50px;
+    width: 150px;
+    background-color: #6D67E4;
+    color: white;
+    border: 3px solid white;
 }

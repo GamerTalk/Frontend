@@ -88,11 +88,10 @@ const UserCard = (props: Props) => {
                 {user.languages.learning.map((learn, index) => {
                   return (
                     <>
-                    <div className={styles.learningLaguagesContainer}>
+                      <div className={styles.learningLaguagesContainer} key={index}>
                         <div className={styles.languageWraper}>
-                      <p className={styles.languageLine} key={index}>
-                      {/* {Upper(learn.language)} : {levelLookup[learn.level]} */}
-                      {Upper(learn.language)} :
+                      <p className={styles.languageLine} >
+                      {`${Upper(learn.language)} :`} 
                       </p>
                       </div>
                       <div className={styles.scaleWraper}>

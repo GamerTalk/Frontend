@@ -126,3 +126,19 @@
   justify-self: center;
   text-align: center;
 }
+
+.learningLanguageContainer{
+  display: flex;
+ 
+}
+
+.languageWraper{
+  margin-right: 10px;
+}
+
+.scaleWraper {
+ display: flex;
+ align-items: center;
+ margin-top: 5px;
+}
+

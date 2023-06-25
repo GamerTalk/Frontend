@@ -8,6 +8,7 @@ import axios from "axios";
 import SingleUserCard from "../components/layouts/SingleUserCard";
 // import styles from "./search.module.css"; // This would not work
 import { UserAuth } from "../context/AuthContext";
+import styles from "./search.module.css";
 
 export default function Search() {
   const [users, setUsers] = useState<User[]>([]);
@@ -46,7 +47,7 @@ export default function Search() {
           setShowUserCard={setShowUserCard}
         />
         {showSingleUser ? (
-          <button onClick={(e) => setShowSingleUser(false)}>Back</button>
+          <button className={styles.button} onClick={(e) => setShowSingleUser(false)}>Back</button>
         ) : (
           ""
         )}

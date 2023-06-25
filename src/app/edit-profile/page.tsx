@@ -49,7 +49,7 @@ export default function Profile() {
             .then((result) => result.data);
           if (userData.languages !== null) {
             setProfile(userData);
-            console.log(userData);
+            //console.log(userData);
             setProfileURL(userData.userProfileURL);
             setRegion(userData.user_region);
             setSystem(userData.user_systems);
@@ -59,7 +59,7 @@ export default function Profile() {
             setAboutMe(userData.about_me);
             setCurrPlay(userData.currently_playing);
           } else {
-            console.log("fail");
+            //console.log("fail");
             setProfile({})
           }
         }
@@ -106,7 +106,7 @@ export default function Profile() {
             // update each users /userchats/userinfo/profileurl in firebase firestore when current user changes user profile
             if (Object.keys(userChats).length !== 0) { 
               userChats.forEach(async (element: any,key:number) => {
-                console.log(element.userInfo.uid);
+                //console.log(element.userInfo.uid);
                 await updateDoc(doc(db, "userChats", element.userInfo.uid),{
                   [`${chatRoomIds[key]}.userInfo.userProfileURL`]: newProfileURL
                 });

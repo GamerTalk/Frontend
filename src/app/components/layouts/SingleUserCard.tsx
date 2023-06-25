@@ -23,7 +23,7 @@ interface LevelLookup {
 export default function SingleUserCard(props: any) {
   const { uid } = UserAuth();
   const userObject: User = props.userObject
-  console.log("🐝", userObject)
+  //console.log("🐝", userObject)
   
   const levelLookup: LevelLookup = {
     1: "Beginner",
@@ -61,7 +61,6 @@ export default function SingleUserCard(props: any) {
 
   return (
     <div>
-      <button className={styles.button} onClick={handleGoToMessages}> Message</button>
       <h1 className={styles.username}> {userObject.username}</h1>
       {userObject.about_me ? (
         <>
@@ -127,22 +126,24 @@ export default function SingleUserCard(props: any) {
           </div>
 
           <div className={styles.language}>
-            <p><span className={styles.heading}>Genres:</span>
+            <p className={styles.genreBox}><span className={styles.heading}>Genres</span>
             {userObject.user_genre.map((genre: string, index: number) => (
-              <p className={styles.text} key={index}>{Upper(genre)}</p>
+              <p className={styles.genre} key={index}>{Upper(genre)}</p>
             ))} </p>
 
             <div className={styles.sections}>
-              <p className={styles.heading}>About Me:</p>
+              <p className={styles.heading}>About Me</p>
               <p className={styles.text}>{userObject.about_me}</p>
             </div>
 
             <div className={styles.sections}>
             <p className={styles.heading}>
-              Currently Playing: <FontAwesomeIcon icon={faGamepad} />
+              Currently Playing <FontAwesomeIcon icon={faGamepad} />
             </p>
             <p className={styles.text}>{userObject.currently_playing}</p>
             </div>
+
+            <div className={styles.buttonBox}><button className={styles.button} onClick={handleGoToMessages}>Message</button> </div>
 
           </div>
           

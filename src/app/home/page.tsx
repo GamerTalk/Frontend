@@ -29,7 +29,7 @@ export default function Home() {
       time_of_message: new Date().toISOString(),
     };
 
-    console.log(payload);
+    //console.log(payload);
 
     const url = process.env.NEXT_PUBLIC_API_URL + "/api/new-post/";
 
@@ -76,12 +76,12 @@ export default function Home() {
       }
     }
     getData();
-    console.log("saved");
+    //console.log("saved");
   }, [uid, counter]);
 
-  useEffect(() => {
-    console.log(posts);
-  }, [posts]);
+  // useEffect(() => {
+  //   console.log(posts);
+  // }, [posts]);
 
   return (
     <div className={styles.contents_div}>

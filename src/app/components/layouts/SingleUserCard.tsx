@@ -1,17 +1,15 @@
-import React, { ChangeEvent, useContext, useEffect, useState } from "react";
-import axios from "axios";
+import React, {  useContext, } from "react";
 import styles from "./SingleUserCard.module.css";
+import { Systems } from "@/app/global.t";
 import { UserAuth } from "@/app/context/AuthContext";
-import Checkbox from "../elements/Checkbox";
-import LearningCheckbox from "../elements/Learning-Checkbox";
-import langCall from "@/app/utils/langCheckFunc";
 import { useRouter } from "next/navigation";
 import TitleCase from "@/app/utils/TitleCase";
 import Upper from "@/app/utils/Upper";
 import { User } from "@/app/global.t";
 import { MessagesContext } from "@/app/context/MessageContext";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faGamepad, faGlobe,} from "@fortawesome/free-solid-svg-icons";
+import { faGamepad, faGlobe, faTrash } from "@fortawesome/free-solid-svg-icons";
+import { faPlaystation, faSteam, faXbox } from "@fortawesome/free-brands-svg-icons";
 
 interface LevelLookup {
   [key: number]: string;
@@ -25,7 +23,7 @@ interface LevelLookup {
 export default function SingleUserCard(props: any) {
   const { uid } = UserAuth();
   const userObject: User = props.userObject
-  console.log("🐝", userObject)
+  //console.log("🐝", userObject)
   
   const levelLookup: LevelLookup = {
     1: "Beginner",
@@ -34,6 +32,14 @@ export default function SingleUserCard(props: any) {
     4: "Advanced",
     5: "Proficient",
   };
+
+  const systems: Systems = {
+    pc: faSteam,
+    xbox: faXbox,
+    playstation: faPlaystation,
+    switch: faGamepad,
+  };
+
 
   const { updateChatUserId, updateChatId, updateUserName, updateUserProfileURL } = useContext(MessagesContext);
   
@@ -55,9 +61,10 @@ export default function SingleUserCard(props: any) {
 
   return (
     <div>
-      <h1>Profile</h1>
+      <h1 className={styles.username}> {userObject.username}</h1>
       {userObject.about_me ? (
         <>
+        <div className={styles.first}>
           <div className={styles.userImg}>
             <img
               src={
@@ -68,19 +75,15 @@ export default function SingleUserCard(props: any) {
               id={styles.image}
             />
           </div>
-          <p className={styles.heading}>Username:</p>
-          <p>{userObject.username}</p>
 
-          <p className={styles.heading}>
-            Region: <FontAwesomeIcon icon={faGlobe} />
-          </p>
-          <p>{TitleCase(userObject.user_region)}</p>
+          <div className={styles.speakAndLearn}>
 
-          <p className={styles.heading}>This user speaks:</p>
+          <p><span className={styles.langHeading}>Speaks:</span> 
           {userObject.languages.fluent.map((element: string, index: number) => (
-            <p key={index}>{Upper(element)}</p>
-          ))}
-          <p className={styles.heading}>This user is learning:</p>
+            <p className={styles.langText} key={index}>{" " + Upper(element)}</p>
+          ))}  </p>
+
+          <p> <span className={styles.langHeading}>Learning:</span>
           {userObject.languages.learning.map(
             (
               element: {
@@ -89,35 +92,61 @@ export default function SingleUserCard(props: any) {
               },
               index: number
             ) => (
-              <p key={index}>
-                Learning {Upper(element.language)} at{" "}
+              <p key={index} className={styles.langText} >
+                {Upper(element.language)}:{" "}
                 {levelLookup[element.level]}
               </p>
             )
-          )}
+          )} </p>
 
-          <p className={styles.heading}>Date of Birth: </p>
-          <p> {userObject.date_of_birth}</p>
-
-          <p className={styles.heading}>User Systems:</p>
-          {userObject.user_systems.map((system: string, index: number) => (
-            <p key={index}>{Upper(system)}</p>
-          ))}
-          <div className={styles.language}>
-            <p className={styles.heading}>Genres they play:</p>
-            {userObject.user_genre.map((genre: string, index: number) => (
-              <p key={index}>{Upper(genre)}</p>
-            ))}
-
-            <p className={styles.heading}>About Me:</p>
-            <p>{userObject.about_me}</p>
-
-            <p className={styles.heading}>
-              Currently Playing: <FontAwesomeIcon icon={faGamepad} />
-            </p>
-            <p>{userObject.currently_playing}</p>
           </div>
-          <button className={styles.button} onClick={handleGoToMessages}> Message</button>
+
+          </div>
+        
+
+          <p className={styles.heading}>
+            Region <FontAwesomeIcon icon={faGlobe} />
+          </p>
+          <p className={styles.text}>{TitleCase(userObject.user_region)}</p>
+
+          
+
+          {/* <p className={styles.heading}>Date of Birth: </p>
+          <p> {userObject.date_of_birth}</p> */}
+
+         
+            <p className={styles.heading}>User Systems</p>
+            <div className={styles.systems}>
+            {userObject.user_systems.map((system: string, index: number) => (
+            <FontAwesomeIcon
+            icon={systems[system]}
+            className={styles.game}
+            />
+            ))}
+          </div>
+
+          <div className={styles.language}>
+            <p className={styles.genreBox}><span className={styles.heading}>Genres</span>
+            {userObject.user_genre.map((genre: string, index: number) => (
+              <p className={styles.genre} key={index}>{Upper(genre)}</p>
+            ))} </p>
+
+            <div className={styles.sections}>
+              <p className={styles.heading}>About Me</p>
+              <p className={styles.text}>{userObject.about_me}</p>
+            </div>
+
+            <div className={styles.sections}>
+            <p className={styles.heading}>
+              Currently Playing <FontAwesomeIcon icon={faGamepad} />
+            </p>
+            <p className={styles.text}>{userObject.currently_playing}</p>
+            </div>
+
+            <div className={styles.buttonBox}><button className={styles.button} onClick={handleGoToMessages}>Message</button> </div>
+
+          </div>
+          
         </>
       ) : (
         "Loading Profile..."

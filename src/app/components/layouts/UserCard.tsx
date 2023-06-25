@@ -70,8 +70,8 @@ const UserCard = (props: Props) => {
             <div className={styles.text}>
               <p className={styles.userName}>{user.username}</p>
             </div>
-            <div className={styles.text}>
-              <p className={styles.subTitle}>Speaks:</p>
+            <div className={styles.text}>  
+              <p className={styles.subTitle}>Speaks: </p>
               {user.languages.fluent.map((language, index) => {
                 return (
                   <p className={styles.languageLine} key={index}>

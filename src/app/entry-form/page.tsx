@@ -55,7 +55,7 @@ export default function UserInfo() {
         const downLoadURL: string = await getDownloadURL(uploadedSnapshot.ref);
         // send to data to
         sendFormData(downLoadURL);
-        console.log("upload is successed");
+       // console.log("upload is successed");
       } catch (error) {
         // error handling
         console.error("Upload error:", error);
@@ -67,7 +67,7 @@ export default function UserInfo() {
       try {
         const downloadURL = await getDownloadURL(storageRef);
         sendFormData(downloadURL);
-        console.log("default image upload is successed");
+        //console.log("default image upload is successed");
       } catch (error) {
         console.error("down load error", error);
       }
@@ -75,7 +75,7 @@ export default function UserInfo() {
   };
 
   const sendFormData = (profileImagURL: string) => {
-    console.log(profileImagURL);
+   // console.log(profileImagURL);
     const payload = {
       uid,
       username,
@@ -90,7 +90,7 @@ export default function UserInfo() {
       profile_picture_url: profileImagURL,
     };
 
-    console.log(payload);
+    //console.log(payload);
 
     // send a data to firestore
     setDoc(doc(db, "users", uid!), {

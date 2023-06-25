@@ -3,7 +3,11 @@ export default function Upper(str:string) {
     return "PC"
   } else if (str === "playstation") {
     return "PlayStation"
-  } else {
+  } else if (str === "mmo") {
+    return "MMO"
+  } else if (str === "rpg") {
+    return "RPG"
+  } {
     return str.charAt(0).toUpperCase() + str.slice(1);
   }
 }

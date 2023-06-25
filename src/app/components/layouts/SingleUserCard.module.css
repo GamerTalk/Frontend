@@ -2,9 +2,33 @@
   margin-bottom: 30px;
 }
 
+.username {
+  font-size: 40px;
+}
+
+.text {
+  font-size: 25px;
+}
+
+.first {
+  display: grid;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+
 .heading {
   font-weight: 800;
+  font-size: 30px;
+}
+
+.langText {
   font-size: 20px;
+}
+
+.langHeading {
+  font-weight: 800;
+  font-size: 25px;
 }
 
 .subheading {
@@ -19,7 +43,6 @@
   /* border: 3px solid rgb(231, 231, 231); */
   padding-top: 10px;
   padding-bottom: 10px;
-
 }
 
 .learning {
@@ -34,7 +57,8 @@
 }
 
 .button {
-  margin-bottom: 20px;
+  margin-top: 20px;
+  margin-bottom: 10px;
   border-radius: 25px;
   font-size: 20px;
   height: 50px;
@@ -44,25 +68,61 @@
   border: 3px solid white;
 }
 
-.editButton {
-  margin-top: 30px;
-  margin-bottom: 30px;
-  font-size: 20px;
-  width: 200px;
-  height: 50px;
-  color: white;
-  background-color: hwb(138 2% 40%);
-  border-radius: 10px;
-  box-shadow: 2px 2px 2px #52525280;
-  font-family: Arial, Helvetica, sans-serif;
+.buttonBox {
+  margin: auto;
 }
 
 .userImg{
-
+  margin-top: 30px;
+  align-items: left;
 }
 
 #image {
-  width: 75px;
-  height: 75px;
+  width: 150px;
+  height: 150px;
   object-fit: cover;
+}
+
+.speakAndLearn {
+  grid-column: 2/2;
+}
+
+.systems {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin: 0 auto;
+  border: 3px solid gray;
+  border-radius: 25px;
+  width: 70%;
+  background-color: white;
+  color: black
+}
+
+.game {
+  height: 50px;
+  width: 100px;
+}
+
+.sections {
+  margin-bottom: 10px;
+}
+
+.genreBox {
+  display: grid;
+  grid-row: auto;
+  margin: 0, auto;
+  grid-area: span;
+}
+
+.genre {
+  border: 3px solid white;
+  display: grid;
+  border-radius: 25px;
+  width: 50%;
+  height: 30px;
+  font-size: 20px;
+  color: white;
+  background-color: green;
+  justify-self: center;
+  text-align: center;
 }

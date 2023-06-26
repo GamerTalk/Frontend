@@ -28,7 +28,7 @@ const Auth = ({isSignIn}: Props) => {
     } catch (err) {
       console.error(err);
     }
-    console.log('EMAIL', email, 'PASSWORD', password);
+    // console.log('EMAIL', email, 'PASSWORD', password);
   };
 
   const handleSignUp = async (e: { preventDefault: () => void }) => {

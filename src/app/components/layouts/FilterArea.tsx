@@ -112,7 +112,7 @@ const FilterArea: React.FC<Param> = ({
     selectedItems: string[],
     setItems: React.Dispatch<React.SetStateAction<string[]>>
   ): void => {
-    console.log(target);
+    // console.log(target);
     const targetLowerCase = target.toLowerCase();
     if (selectedItems.includes(targetLowerCase)) {
       setItems((prevItems: string[]) =>

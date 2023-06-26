@@ -32,9 +32,9 @@ const Add: React.FC<Param> = ({ handleClosePopup }) => {
       front,
       back,
     };
-
+    const addCardUrl = process.env.NEXT_PUBLIC_API_URL + "/api/new-flashcard/";
     axios
-      .post('http://127.0.0.1:8000/api/new-flashcard/', payload)
+      .post(addCardUrl, payload)
       .then((response) => {
         // Handle success or perform any necessary actions
         // Close the pop-up

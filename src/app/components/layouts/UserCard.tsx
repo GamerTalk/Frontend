@@ -52,7 +52,7 @@ const UserCard = (props: Props) => {
       <div
         className={styles.userCard}
         onClick={() => {
-          console.log(user.uid);
+          // console.log(user.uid);
           setSingleUser(user);
           setShowSingleUser(true);
         }}

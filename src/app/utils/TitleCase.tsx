@@ -3,7 +3,11 @@ export default function TitleCase(str:string) {
     return "PC";
   } else if (str === "playstation") {
     return "PlayStation";
-  } else {
+  } else if (str === "mmo") {
+    return "MMO"
+  } else if (str ==="RPG") {
+    return "RPG"
+  } {
     const arr = str.split(' ');
     const titleCase = arr.map(e => e.charAt(0).toUpperCase() + e.slice(1));
     return titleCase.join(' ');

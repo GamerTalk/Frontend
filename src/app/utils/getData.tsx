@@ -12,7 +12,7 @@ const config = {
   }
 }
 
-const getURL = "http://localhost:8000/api/get-flashcards/"
+const getURL = process.env.NEXT_PUBLIC_API_URL + "/api/get-flashcards/"
 
 
 const getData = async (setter: (arg0: any) => void) => {

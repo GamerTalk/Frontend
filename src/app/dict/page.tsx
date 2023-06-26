@@ -28,8 +28,8 @@ export default function Dict() {
     }
   }
 
-  const getURL = "http://localhost:8000/api/get-flashcards/"
-  const deleteURL = "http://localhost:8000/api/delete-flashcard/"
+  const getURL = process.env.NEXT_PUBLIC_API_URL + "/api/get-flashcards/"
+  const deleteURL = process.env.NEXT_PUBLIC_API_URL + "/api/delete-flashcard/"
 
   const getData = async () => {
     try {

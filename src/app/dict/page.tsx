@@ -28,8 +28,8 @@ export default function Dict() {
     }
   }
 
-  const getURL = "http://localhost:8000/api/get-flashcards/"
-  const deleteURL = "http://localhost:8000/api/delete-flashcard/"
+  const getURL = process.env.NEXT_PUBLIC_API_URL + "/api/get-flashcards/"
+  const deleteURL = process.env.NEXT_PUBLIC_API_URL + "/api/delete-flashcard/"
 
   const getData = async () => {
     try {
@@ -37,7 +37,7 @@ export default function Dict() {
         const userData: any = await axios.get(getURL, config).then((result) => result.data);
         setCards(userData);
       } else {
-        console.log('fail');
+        // console.log('fail');
       }
     } catch (error) {
       console.log(error);
@@ -58,7 +58,7 @@ export default function Dict() {
         );
         await getData(); // Refresh the data after deleting the cards
       } else {
-        console.log('fail');
+        // console.log('fail');
       }
     } catch (error) {
       console.log(error);
@@ -90,7 +90,7 @@ export default function Dict() {
   }
 
   useEffect(() => {
-    console.log(selectedCards)
+    // console.log(selectedCards)
   },[selectedCards])
 
   useEffect(() => {
@@ -100,7 +100,7 @@ export default function Dict() {
   }, []);
 
   useEffect(() => {
-    console.log(cards)
+    // console.log(cards)
   }, [cards]);
 
 

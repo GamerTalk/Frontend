@@ -22,7 +22,7 @@ export default function PostCard(props: any) {
           <img
             src={
               post.sender_data.profile_picture_url ||
-              "https://firebasestorage.googleapis.com/v0/b/gamertalk-8133c.appspot.com/o/images%2Fdefault%2Fuserdefault.png?alt=media&token=f5201169-c537-485f-ba41-ec38e44464ca"
+              "https://firebasestorage.googleapis.com/v0/b/gamertalk-8133c.appspot.com/o/images%2Fdefault%2Fuserdefault.png?alt=media&token=00630336-daf3-4b5d-ab58-895d704863b6"
             }
             alt=""
             className={styles.image}

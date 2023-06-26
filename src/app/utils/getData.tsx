@@ -21,7 +21,7 @@ const getData = async (setter: (arg0: any) => void) => {
       const userData: any = await axios.get(getURL, config).then((result) => result.data);
       setter(userData);
     } else {
-      console.log('fail');
+      // console.log('fail');
     }
   } catch (error) {
     console.log(error);

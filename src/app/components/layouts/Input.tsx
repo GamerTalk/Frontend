@@ -47,7 +47,7 @@ const Input = () => {
 
     const isWhiteSpace: boolean = /^\s*$/.test(message);
     // if message is empty , it return anything.
-    console.log("is white space",isWhiteSpace);
+    // console.log("is white space",isWhiteSpace);
     if (isWhiteSpace) { 
       return;
     }
@@ -95,7 +95,7 @@ const Input = () => {
     if (uid) {
       try { 
         const res = await getDoc(doc(db, CHATS, chatId));
-        console.log("chat id is exist?", res.exists());
+        // console.log("chat id is exist?", res.exists());
         // when chat room does not exist 
         if (!res.exists()) {
           // create chats with combinedId
@@ -104,12 +104,12 @@ const Input = () => {
           await updateFireStore(CHATS,chatId, payloadForChats)
           await setFireStore(USER_CHATS, uid, payloadForCurrentUserChats);
           await setFireStore(USER_CHATS, chatUserId, payloadForMessagingUserChats);
-          console.log("new chat is created by combinedId");
+          // console.log("new chat is created by combinedId");
         } else {
           await updateFireStore(CHATS, chatId, payloadForChats);
           await updateFireStore(USER_CHATS, uid, updatePayloadForUserChats);
           await updateFireStore(USER_CHATS, chatUserId, updatePayloadForUserChats);
-          console.log("update chat");
+          // console.log("update chat");
         }
   
       } catch (error) {

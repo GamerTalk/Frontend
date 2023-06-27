@@ -66,6 +66,7 @@
   background-color: #6D67E4;
   color: white;
   border: 3px solid white;
+  cursor: pointer;
 }
 
 .buttonBox {
@@ -91,11 +92,11 @@
   margin-top: 10px;
   margin-bottom: 10px;
   margin: 0 auto;
-  border: 3px solid gray;
-  border-radius: 25px;
+  /* border: 3px solid gray;
+  border-radius: 25px; */
   width: 70%;
-  background-color: white;
-  color: black
+  /* background-color: white; */
+  color: white;
 }
 
 .game {

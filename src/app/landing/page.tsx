@@ -5,6 +5,7 @@ import styles from './landing.module.css';
 import Auth from "../components/layouts/Auth"
 import { UserAuth } from '../context/AuthContext';
 import Link from 'next/link';
+import axios from 'axios';
 
 
 export default function Landing() {
@@ -28,6 +29,15 @@ export default function Landing() {
 
     return circleElements;
   };
+
+  useEffect(() => {
+    async function wakeUp() {
+      // wake up the backend on render
+      const response = await axios.get(process.env.NEXT_PUBLIC_API_URL + "/api/")
+    }
+
+    wakeUp()
+  }, [])
 
   return (
     <div className={styles.area}>

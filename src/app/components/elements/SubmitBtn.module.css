@@ -9,6 +9,7 @@
   box-shadow: 2px 2px 2px #52525280;
   color: #ffffff;
   border: 3px solid white;
+  cursor: pointer;
 }
 
 #btn:active{

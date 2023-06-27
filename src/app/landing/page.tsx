@@ -46,11 +46,21 @@ export default function Landing() {
       </div>
       <div className={styles.context}>
         <div className={styles.box}>
-        <img className={styles.image} src="/GamerTalkLogotransparent.png" alt="user-photo" />
+          <img
+            className={styles.image}
+            src="/GamerTalkLogotransparent.png"
+            alt="user-photo"
+          />
         </div>
-        <Link href="/auth/signin"> <button className={styles.signin}> Sign In </button> </Link>
-        <Link href="/auth/signup"> <p className={styles.signup}>Not a member? Sign Up!</p></Link>
+        <Link href="/auth/signin">
+          {" "}
+          <button className={styles.signin}> Sign In </button>{" "}
+        </Link>
+        <br />
+        <Link className={styles.signup} href="/auth/signup">
+          Not a member? Sign Up!
+        </Link>
       </div>
     </div>
-    );
+  );
 }

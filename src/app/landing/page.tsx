@@ -61,6 +61,7 @@ export default function Landing() {
           Not a member? Sign Up!
         </Link>
       </div>
+      <p className={styles.copyright}>© 2023 GamerTalk</p>
     </div>
   );
 }

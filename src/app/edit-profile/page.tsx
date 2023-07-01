@@ -246,11 +246,11 @@ export default function Profile() {
               id={styles.image}
             />
             </div>
-            <div className={styles.userUploadImg}>
-              <label>
-                 <input type="file" name="image" onChange={handleFileChange} />
+            <div>
+              <label htmlFor={styles.userUploadImg}>
+                 <input type="file" name="image" onChange={handleFileChange} id={styles.userUploadImg} />
               </label>
-          </div>
+          </div>   
             <p className={styles.heading}>Username:</p>
             <p>{profile.username}</p>
 

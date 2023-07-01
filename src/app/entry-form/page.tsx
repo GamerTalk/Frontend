@@ -38,6 +38,7 @@ export default function UserInfo() {
 #     "genre": ["FPS", "survival"],
 #     "currently_playing": "I am currently playing COD MW2, Fortnite, and some Ark Survival" // NOT LOWERCASE
   */
+ 
 
   const handleFormSubmit = async (event: { preventDefault: () => void }) => {
     event.preventDefault();

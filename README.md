@@ -32,7 +32,7 @@ Deployment: https://gamertalk.onrender.com/
     
     ```
 
-3. This application uses Firebase for authentication and to store users chat history. Please contact us and we'll provide you with the credentials to log into Firebase through a `.env`. Use the `.env.example` file to see what variables are required.
+3. This application uses Firebase for authentication and to store users chat history. Please create a `.env` file and use the `.env.example` file to see what variables are required.
     
 
 ## Usage

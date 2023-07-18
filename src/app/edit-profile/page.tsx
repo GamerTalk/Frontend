@@ -250,7 +250,8 @@ export default function Profile() {
               <label htmlFor={styles.userUploadImg}>
                  <input type="file" name="image" onChange={handleFileChange} id={styles.userUploadImg} />
               </label>
-          </div>   
+          </div>  
+            <button className={styles.resetButton}>Reset Password</button> 
             <p className={styles.heading}>Username:</p>
             <p>{profile.username}</p>
 

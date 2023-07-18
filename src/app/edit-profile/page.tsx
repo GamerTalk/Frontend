@@ -12,6 +12,7 @@ import { useRouter } from "next/navigation";
 import { DocumentData, collection, doc, getDoc, getDocs, setDoc, updateDoc } from "firebase/firestore";
 import { db, storage } from "../firebase/firebase";
 import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
+import Reset from "../reset-password/page";
 
 export default function Profile() {
   const { uid , updateUserInfo} = UserAuth(); 
@@ -251,7 +252,11 @@ export default function Profile() {
                  <input type="file" name="image" onChange={handleFileChange} id={styles.userUploadImg} />
               </label>
           </div>  
-            <button className={styles.resetButton}>Reset Password</button> 
+            <div>
+            <button type="button" className={styles.resetButton}>Reset Password</button>
+     
+            </div>
+
             <p className={styles.heading}>Username:</p>
             <p>{profile.username}</p>
 

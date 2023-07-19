@@ -5,6 +5,7 @@ import {
   signInWithEmailAndPassword,
   onAuthStateChanged,
   signOut,
+  sendPasswordResetEmail,
 } from "firebase/auth";
 import { auth } from "../firebase/firebase";
 import {
@@ -21,6 +22,7 @@ import { User as firebaseAuthUser } from "firebase/auth";
 interface AuthContextProps {
   createUser: (email: string, password: string) => Promise<any>;
   loginUser: (email: string, password: string) => Promise<any>;
+  resetPasswordEmail: (email: string) => Promise<any>;
   logOut: () => Promise<any>;
   user: firebaseAuthUser | null;
   userEmail: string | null;
@@ -83,6 +85,10 @@ export const AuthContextProvider: React.FC<{ children: ReactNode }> = ({
     }
   };
 
+  const resetPasswordEmail = async (email: string) => {
+    return sendPasswordResetEmail(auth, email);
+  }
+
   useEffect(() => {
     const authenticatedUser = onAuthStateChanged(
       auth,
@@ -111,6 +117,7 @@ export const AuthContextProvider: React.FC<{ children: ReactNode }> = ({
         userInfo,
         retrieve,
         updateUserInfo,
+        resetPasswordEmail,
       }}
     >
       {children}

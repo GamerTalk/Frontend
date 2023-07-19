@@ -6,5 +6,5 @@ export default function Sigin() {
       <Auth isSignIn={true}/>
     </>
   )
-  }
+}
   

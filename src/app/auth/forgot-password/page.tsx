@@ -8,7 +8,6 @@ export default function ForgotPassword() {
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log(email);
     try {
       resetPasswordEmail(email);
     } catch (error) {

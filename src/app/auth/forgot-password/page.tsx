@@ -1,3 +1,4 @@
+"use client"
 import { UserAuth } from "@/app/context/AuthContext";
 import { useState } from "react";
 
@@ -5,14 +6,19 @@ export default function ForgotPassword() {
   const [email, setEmail] = useState<string>("");
   const { resetPasswordEmail } = UserAuth();
 
-  const handleSubmit = () => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
     console.log(email);
-    resetPasswordEmail(email);
+    try {
+      resetPasswordEmail(email);
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   return (
     <>
-      <form action="">
+      <form action="" onSubmit={handleSubmit}>
         <input
           type="text"
           placeholder="email"

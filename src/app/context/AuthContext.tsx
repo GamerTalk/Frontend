@@ -6,7 +6,10 @@ import {
   onAuthStateChanged,
   signOut,
   sendPasswordResetEmail,
-  updatePassword
+  getAuth,
+  updatePassword,
+  reauthenticateWithCredential,
+  EmailAuthProvider,
 } from "firebase/auth";
 import { auth } from "../firebase/firebase";
 import {
@@ -89,6 +92,8 @@ export const AuthContextProvider: React.FC<{ children: ReactNode }> = ({
   const resetPasswordEmail = async (email: string) => {
     return sendPasswordResetEmail(auth, email);
   }
+
+  
 
   useEffect(() => {
     const authenticatedUser = onAuthStateChanged(

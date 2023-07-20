@@ -1,31 +1,64 @@
 "use client"
 
-import React from 'react';
+import React, { useState } from 'react';
 import styles from './password.module.css';
+import { EmailAuthProvider, reauthenticateWithCredential, updatePassword } from 'firebase/auth';
+import { UserAuth } from "../context/AuthContext";
 
-// Define the type/interface for the "Param" prop
-interface Param {
 
-}
+const Reset: React.FC = () => {
+  const [oldPassword, setOldPassword] = useState<string>('');
+  const [newPassword, setNewPassword] = useState<string>('');
+  const [successMessage, setSuccessMessage] = useState<string>('');
+  const [errorMessage, setErrorMessage] = useState<string>('');
 
-// Define the Reset component using React.FC (functional component)
-const Reset: React.FC<Param> = ({  }) => {
+  const {user, userEmail} = UserAuth()
+
+  const handleResetPassword = async (e: React.FormEvent) => {
+    e.preventDefault();
+    try {
+      if (!user) {
+        setErrorMessage('User not found. Please log in again.');
+        return;
+      }
+      // Create the credential using the provided email and old password
+      const credential = EmailAuthProvider.credential(userEmail, oldPassword);
+
+      // Reauthenticate the user with the provided credentials
+      await reauthenticateWithCredential(user, credential);
+
+      // Update the password with the new password
+      await updatePassword(user, newPassword);
+
+      // Show a success message
+      setSuccessMessage('Password updated successfully.');
+
+      // Clear the form inputs after a successful password update
+      setOldPassword('');
+      setNewPassword('');
+      setErrorMessage('');
+    } catch (error) {
+      setErrorMessage('Password update failed. Please try again.');
+      setSuccessMessage('');
+    }
+  };
+
   return (
     <>
-      <form>
-      <h1>Reset Password</h1>
-      <p>Current Password:</p>
-      <input type="text"/>
-      <p>New Password</p>
-      <input type="text"/>
-      <div>
-        <button>Submit</button>
-      </div>
+      <form onSubmit={handleResetPassword}>
+        <h1>Reset Password</h1>
+        <p>Current Password:</p>
+        <input type="password" value={oldPassword} onChange={(e) => setOldPassword(e.target.value)} />
+        <p>New Password:</p>
+        <input type="password" value={newPassword} onChange={(e) => setNewPassword(e.target.value)} />
+        {successMessage && <p style={{ color: 'green' }}>{successMessage}</p>}
+        {errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>}
+        <div>
+          <button type="submit">Submit</button>
+        </div>
       </form>
-      
     </>
   );
 };
 
 export default Reset;
-

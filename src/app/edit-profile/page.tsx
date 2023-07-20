@@ -1,6 +1,7 @@
 "use client";
 
 import React, { ChangeEvent, useContext, useEffect, useState } from "react";
+import Link from "next/link";
 import axios from "axios";
 import styles from "../entry-form/UserInfo.module.css";
 import { UserAuth } from "../context/AuthContext";
@@ -253,7 +254,7 @@ export default function Profile() {
               </label>
           </div>  
             <div>
-            <button type="button" className={styles.resetButton}>Reset Password</button>
+            <Link href="reset-password"><button type="button" className={styles.resetButton}>Reset Password</button></Link>
      
             </div>
 

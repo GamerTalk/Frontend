@@ -6,6 +6,7 @@ import {
   onAuthStateChanged,
   signOut,
   sendPasswordResetEmail,
+  updatePassword
 } from "firebase/auth";
 import { auth } from "../firebase/firebase";
 import {

@@ -54,7 +54,7 @@ const Reset: React.FC = () => {
         {successMessage && <p className={styles.successMessage}>{successMessage}</p>}
         {errorMessage && <p className={styles.errorMessage}>{errorMessage}</p>}
         <div>
-          <button type="submit">Submit</button>
+          <button type="submit" className={styles.submit}>Submit</button>
         </div>
       </form>
     </>

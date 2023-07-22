@@ -1,13 +1,17 @@
-.click {
-  color: #6D67E4
+.successMessage {
+  color: green;
 }
 
-.submit{
+.errorMessage {
+  color: red;
+}
+
+.reset {
   margin-bottom: 20px;
   border-radius: 25px;
-  font-size: 20px;
-  height: 50px;
-  width: 150px;
+  font-size: 15px;
+  height: 40px;
+  width: 145px;
   background-color: #6D67E4;
   color: white;
   margin-top: 20px;

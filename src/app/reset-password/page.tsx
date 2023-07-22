@@ -51,11 +51,9 @@ const Reset: React.FC = () => {
         <input type="password" value={oldPassword} onChange={(e) => setOldPassword(e.target.value)} />
         <p>New Password:</p>
         <input type="password" value={newPassword} onChange={(e) => setNewPassword(e.target.value)} />
+        <div><button type="submit" className={styles.submit}>Submit</button></div>
         {successMessage && <p className={styles.successMessage}>{successMessage}</p>}
         {errorMessage && <p className={styles.errorMessage}>{errorMessage}</p>}
-        <div>
-          <button type="submit" className={styles.submit}>Submit</button>
-        </div>
       </form>
     </>
   );

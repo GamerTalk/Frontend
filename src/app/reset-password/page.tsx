@@ -1,7 +1,7 @@
 "use client"
 
 import React, { useState } from 'react';
-import styles from './password.module.css';
+import styles from './reset.module.css'
 import { EmailAuthProvider, reauthenticateWithCredential, updatePassword } from 'firebase/auth';
 import { UserAuth } from "../context/AuthContext";
 

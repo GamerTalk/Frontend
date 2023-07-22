@@ -16,7 +16,7 @@ export default function ForgotPassword() {
       setErrorMessage('');
       setSuccessMessage('The reset email has been send.')
     } catch (error) {
-      setErrorMessage('The email has not been recongized. Please try again.');
+      setErrorMessage('The email has not been recongized.');
       setSuccessMessage('');
     }
   };
@@ -31,9 +31,9 @@ export default function ForgotPassword() {
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
+        <div><button type="submit" className={styles.reset}>Send reset request</button></div>
         {successMessage && <p className={styles.successMessage}>{successMessage}</p>}
         {errorMessage && <p className={styles.errorMessage}>{errorMessage}</p>}
-        <div><button type="submit" className={styles.reset}>Send reset request</button></div>
       </form>
     </>
   );

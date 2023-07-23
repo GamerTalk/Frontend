@@ -32,7 +32,6 @@ const Reset: React.FC = () => {
     }
   };
 
-
   return (
     <>
       <form onSubmit={handleResetPassword}>

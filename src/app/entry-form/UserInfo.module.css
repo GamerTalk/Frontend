@@ -68,6 +68,20 @@
   cursor: pointer;
 }
 
+.resetButton {
+  margin-bottom: 20px;
+  border-radius: 25px;
+  font-size: 14px;
+  height: 50px;
+  width: 150px;
+  background-color: rgb(195, 11, 11);
+  color: white;
+  margin-top: 20px;
+  border: 3px solid white;
+  cursor: pointer;
+}
+
+
 .levelsbox{
   padding-top: 40px;
 }

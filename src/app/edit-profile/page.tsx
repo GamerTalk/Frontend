@@ -1,6 +1,7 @@
 "use client";
 
 import React, { ChangeEvent, useContext, useEffect, useState } from "react";
+import Link from "next/link";
 import axios from "axios";
 import styles from "../entry-form/UserInfo.module.css";
 import { UserAuth } from "../context/AuthContext";
@@ -12,6 +13,7 @@ import { useRouter } from "next/navigation";
 import { DocumentData, collection, doc, getDoc, getDocs, setDoc, updateDoc } from "firebase/firestore";
 import { db, storage } from "../firebase/firebase";
 import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
+import Reset from "../reset-password/page";
 
 export default function Profile() {
   const { uid , updateUserInfo} = UserAuth(); 
@@ -250,7 +252,12 @@ export default function Profile() {
               <label htmlFor={styles.userUploadImg}>
                  <input type="file" name="image" onChange={handleFileChange} id={styles.userUploadImg} />
               </label>
-          </div>   
+          </div>  
+            <div>
+            <Link href="reset-password"><button type="button" className={styles.resetButton}>Reset Password</button></Link>
+     
+            </div>
+
             <p className={styles.heading}>Username:</p>
             <p>{profile.username}</p>
 

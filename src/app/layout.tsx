@@ -45,7 +45,7 @@ export default function RootLayout({
           {pathname === "/landing" || pathname === '/' ? "" : <Header />}
           {children}
           {(pathname === "/landing" || pathname === '/' ||
-          pathname === "/auth/signin" ||
+          pathname === "/auth/signin" ||  pathname === "/auth/forgot-password" ||
           pathname === "/auth/signup" || isMessagesPage) ? (
             ""
             ) : (

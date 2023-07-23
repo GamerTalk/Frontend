@@ -6,6 +6,10 @@ import {
   onAuthStateChanged,
   signOut,
   sendPasswordResetEmail,
+  getAuth,
+  updatePassword,
+  reauthenticateWithCredential,
+  EmailAuthProvider,
 } from "firebase/auth";
 import { auth } from "../firebase/firebase";
 import {
@@ -40,7 +44,6 @@ export const AuthContextProvider: React.FC<{ children: ReactNode }> = ({
   const [user, setUser] = useState<firebaseAuthUser | null>(null);
   const [userEmail, setUserEmail] = useState<null | string>(null);
   const [uid, setUid] = useState<null | string>(null);
-
   const [userInfo, setUserInfo] = useState<userInfo | null>(null);
 
   const createUser = async (email: string, password: string) => {
@@ -88,6 +91,8 @@ export const AuthContextProvider: React.FC<{ children: ReactNode }> = ({
   const resetPasswordEmail = async (email: string) => {
     return sendPasswordResetEmail(auth, email);
   }
+
+  
 
   useEffect(() => {
     const authenticatedUser = onAuthStateChanged(

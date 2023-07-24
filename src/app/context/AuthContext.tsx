@@ -34,6 +34,7 @@ interface AuthContextProps {
   userInfo: userInfo | null;
   retrieve: (user: firebaseAuthUser) => Promise<void>;
   updateUserInfo: (userData: userInfo) => void;
+  resetPassword: (oldPassword: string | '', newPassword: string) => Promise<any>;
 }
 
 const UserContext = createContext<AuthContextProps | null>(null);
@@ -42,7 +43,7 @@ export const AuthContextProvider: React.FC<{ children: ReactNode }> = ({
   children,
 }) => {
   const [user, setUser] = useState<firebaseAuthUser | null>(null);
-  const [userEmail, setUserEmail] = useState<null | string>(null);
+  const [userEmail, setUserEmail] = useState<string>('');;
   const [uid, setUid] = useState<null | string>(null);
   const [userInfo, setUserInfo] = useState<userInfo | null>(null);
 
@@ -68,7 +69,7 @@ export const AuthContextProvider: React.FC<{ children: ReactNode }> = ({
   const logOut = () => {
     setUser(null);
     setUserInfo(null);
-    setUserEmail(null);
+    setUserEmail('');
     return signOut(auth);
   };
 
@@ -92,14 +93,39 @@ export const AuthContextProvider: React.FC<{ children: ReactNode }> = ({
     return sendPasswordResetEmail(auth, email);
   }
 
+  const resetPasswordCred = async (oldPassword: string | '', newPassword: string, user: firebaseAuthUser | null) => {
+    try {
+      if (!user) {
+        throw new Error('User not found. Please log in again.');
+      }
   
+      // Create the credential using the provided email and old password
+      const credential = EmailAuthProvider.credential(userEmail, oldPassword);
+  
+      // Reauthenticate the user with the provided credentials
+      await reauthenticateWithCredential(user, credential);
+  
+      // Update the password with the new password
+      await updatePassword(user, newPassword);
+  
+      return 'Password updated successfully.';
+    } catch (error) {
+      throw new Error('Password update failed. Please try again.');
+    }
+  };
+  
+  const resetPassword = async (oldPassword: string | '', newPassword: string) => {
+    return resetPasswordCred(oldPassword, newPassword, user);
+  };
+  
+
 
   useEffect(() => {
     const authenticatedUser = onAuthStateChanged(
       auth,
       (currentUser: firebaseAuthUser | null) => {
         setUser(currentUser);
-        setUserEmail(currentUser?.email || null);
+        setUserEmail(currentUser?.email || '');
         setUid(currentUser?.uid || null);
       }
     );
@@ -123,6 +149,7 @@ export const AuthContextProvider: React.FC<{ children: ReactNode }> = ({
         retrieve,
         updateUserInfo,
         resetPasswordEmail,
+        resetPassword
       }}
     >
       {children}

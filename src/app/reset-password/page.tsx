@@ -12,33 +12,22 @@ const Reset: React.FC = () => {
   const [successMessage, setSuccessMessage] = useState<string>('');
   const [errorMessage, setErrorMessage] = useState<string>('');
 
-  const {user, userEmail} = UserAuth()
+  const {resetPassword} = UserAuth()
 
   const handleResetPassword = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      if (!user) {
-        setErrorMessage('User not found. Please log in again.');
-        return;
-      }
-      // Create the credential using the provided email and old password
-      const credential = EmailAuthProvider.credential(userEmail, oldPassword);
-
-      // Reauthenticate the user with the provided credentials
-      await reauthenticateWithCredential(user, credential);
-
-      // Update the password with the new password
-      await updatePassword(user, newPassword);
+      const successMessage = await resetPassword(oldPassword, newPassword);
 
       // Show a success message
-      setSuccessMessage('Password updated successfully.');
+      setSuccessMessage(successMessage);
 
       // Clear the form inputs after a successful password update
       setOldPassword('');
       setNewPassword('');
       setErrorMessage('');
     } catch (error) {
-      setErrorMessage('Password update failed. Please try again.');
+      setErrorMessage('The current password does not match');
       setSuccessMessage('');
     }
   };

@@ -562,11 +562,13 @@ export default function UserInfo() {
         </div>
 
         <p className={styles.heading}>About Me:</p>
-        <textarea rows={5} cols={40} onChange={handleAboutMe} />
+        <textarea rows={5} cols={40} onChange={handleAboutMe} maxLength={500}/>
+        <p className={styles.length}>Length: 0</p>
 
         <p className={styles.heading}>Currently Playing:</p>
-
-        <textarea rows={5} cols={40} onChange={handleCurrPlay} />
+      
+        <textarea rows={5} cols={40} onChange={handleCurrPlay} maxLength={500}/>
+        <p className={styles.length}>Length: 0</p>
 
         <div>
           <button className={styles.button} type="submit">

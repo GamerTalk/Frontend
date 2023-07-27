@@ -1,6 +1,6 @@
 "use client";
 
-import React, { ChangeEvent, useContext, useEffect, useState } from "react";
+import React, { ChangeEvent, useContext, useEffect, useState, MouseEvent } from "react";
 import Link from "next/link";
 import axios from "axios";
 import styles from "../entry-form/UserInfo.module.css";
@@ -16,7 +16,7 @@ import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
 import Reset from "../reset-password/page";
 
 export default function Profile() {
-  const { uid , updateUserInfo} = UserAuth(); 
+  const { uid , updateUserInfo, userDeletion} = UserAuth(); 
 
   const config = {
     method: "GET",
@@ -231,6 +231,16 @@ export default function Profile() {
       setSelectedFile(event.target.files[0]);
     }
   };
+
+  const handleDeletion = (event: MouseEvent<HTMLButtonElement>) => {
+    event.preventDefault();
+
+    if(confirm("Are you sure you want to delete your account?")) {
+      if(confirm("Warning: this cannot be undone. Are you sure you want to delete your account?")) {
+        userDeletion();
+      }
+    }
+  }
 
   return (
 

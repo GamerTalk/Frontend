@@ -72,7 +72,7 @@ export default function UserInfo() {
         sendFormData(downloadURL);
         //console.log("default image upload is successed");
       } catch (error) {
-        console.error("down load error", error);
+        console.error("download error", error);
       }
     }
   };
@@ -230,9 +230,19 @@ export default function UserInfo() {
           </div>
         </div>
 
-        <div className={styles.userUploadImg}>
-          <label>
-            <input type="file" name="image" onChange={handleFileChange} />
+        <div className={styles.userImg}>
+            <img
+              src={
+                "https://firebasestorage.googleapis.com/v0/b/gamertalk-8133c.appspot.com/o/images%2Fdefault%2Fuserdefault.png?alt=media&token=00630336-daf3-4b5d-ab58-895d704863b6"
+              }
+              alt=""
+              id={styles.image}
+            />
+            </div>
+
+        <div>
+          <label htmlFor={styles.userUploadImg}>
+            <input type="file" name="image" onChange={handleFileChange} id={styles.userUploadImg}  />
           </label>
         </div>
 

@@ -623,6 +623,8 @@ export default function Profile() {
                 Submit
               </button>
 
+              <button type="button" onClick={handleDeletion}>Delete user</button>
+
               <div className={styles.levelsbox}>
                 <a
                   id="levels-explain"

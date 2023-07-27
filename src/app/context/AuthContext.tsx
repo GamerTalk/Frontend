@@ -125,12 +125,33 @@ export const AuthContextProvider: React.FC<{ children: ReactNode }> = ({
     const currentAuth = getAuth();
     const user: User | null = currentAuth.currentUser;
 
-    if (!user) {
+
+    console.log(user)
+    if (!user || !user.email) {
       // There is no authenticated user, handle this case accordingly
       return "How did you hit this endpoint";
     }
 
     try {
+
+      // const credentials = EmailAuthProvider.credential(
+      //   user.email,
+      //   "user-password"
+      // );
+      // await reauthenticateWithCredential(user, credentials);
+      
+      const userUid = currentAuth.currentUser?.uid;
+      const url = process.env.NEXT_PUBLIC_API_URL + "/api/delete-user/";
+      const payload = {
+        uid: userUid,
+        secretCode: process.env.NEXT_PUBLIC_SECRET_CODE
+      };
+      const config = {
+        method: "DELETE",
+        data: payload,
+      };
+
+      await axios.delete(url, config)
       await deleteUser(user);
       // User deleted.
     } catch (error) {

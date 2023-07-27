@@ -118,3 +118,9 @@
   overflow: hidden;
   display: none;
 }
+
+.length {
+  margin-top: -2px;
+  color: rgb(181, 179, 179);
+  font-size: 15x;
+}

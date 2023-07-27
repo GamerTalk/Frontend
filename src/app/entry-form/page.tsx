@@ -21,7 +21,9 @@ export default function UserInfo() {
   const [system, setSystem] = useState<string[]>([]);
   const [genre, setGenre] = useState<string[]>([]);
   const [aboutMe, setAboutMe] = useState<string>("");
+  const [aboutMeLength, setAboutMeLength] = useState<number>(0)
   const [currPlay, setCurrPlay] = useState<string>("");
+  const [currPlayLength, setCurrPlayLength] = useState<number>(0)
 
   // for setting up user profile image
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
@@ -191,11 +193,13 @@ export default function UserInfo() {
   const handleAboutMe = (event: { target: { value: string } }) => {
     const { value } = event.target;
     setAboutMe(value);
+    setAboutMeLength(value.length)
   };
 
   const handleCurrPlay = (event: { target: { value: string } }) => {
     const { value } = event.target;
     setCurrPlay(value);
+    setCurrPlayLength(value.length)
   };
 
   const handleFileChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -563,12 +567,12 @@ export default function UserInfo() {
 
         <p className={styles.heading}>About Me:</p>
         <textarea rows={5} cols={40} onChange={handleAboutMe} maxLength={500}/>
-        <p className={styles.length}>Length: 0</p>
+        <p className={styles.length}>{aboutMeLength} / 500</p>
 
         <p className={styles.heading}>Currently Playing:</p>
       
         <textarea rows={5} cols={40} onChange={handleCurrPlay} maxLength={500}/>
-        <p className={styles.length}>Length: 0</p>
+        <p className={styles.length}>{currPlayLength} / 500</p>
 
         <div>
           <button className={styles.button} type="submit">

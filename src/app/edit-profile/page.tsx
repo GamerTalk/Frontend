@@ -238,6 +238,7 @@ export default function Profile() {
     if(confirm("Are you sure you want to delete your account?")) {
       if(confirm("Warning: this cannot be undone. Are you sure you want to delete your account?")) {
         userDeletion();
+        router.push("/");
       }
     }
   }

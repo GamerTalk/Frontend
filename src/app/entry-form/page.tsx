@@ -3,7 +3,7 @@
 import Checkbox from "../components/elements/Checkbox";
 import LearningCheckbox from "../components/elements/Learning-Checkbox";
 import styles from "./UserInfo.module.css";
-import { useState, useEffect, ChangeEvent } from "react";
+import { useState, useEffect, ChangeEvent, SetStateAction } from "react";
 import { UserAuth } from "../context/AuthContext";
 import { useRouter } from "next/navigation";
 import axios from "axios";
@@ -113,6 +113,7 @@ export default function UserInfo() {
       })
       .catch((error) => {
         console.log(error);
+        window.alert('Missing key data')
       });
   };
 
@@ -163,9 +164,33 @@ export default function UserInfo() {
     }
   };
 
+  function getAge(dateString: string) {
+    var today = new Date();
+    var birthDate = new Date(dateString);
+    var age = today.getFullYear() - birthDate.getFullYear();
+    var m = today.getMonth() - birthDate.getMonth();
+      if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
+          age--;
+      }
+  return age;
+  }
+
+  function eighteenYearsAgo(): string | undefined {
+    var today = new Date();
+    var eighteen = today.getFullYear() - 18;
+    return eighteen + "-01-01" 
+  }
+
+
   const handleBirthday = (event: ChangeEvent<HTMLInputElement>) => {
     const dateValue = event.target.value;
-    setBirthday(dateValue);
+    
+    if (getAge(dateValue) < 18) {
+      window.alert('Incorrect Date of Birth')
+    } else {
+      setBirthday(dateValue)
+    }
+    
   };
 
   const handleSystem = (event: { target: { name: string } }) => {
@@ -469,7 +494,7 @@ export default function UserInfo() {
         </div>
 
         <p className={styles.heading}>Date of Birth:</p>
-        <input type="date" onChange={handleBirthday}></input>
+        <input type="date" defaultValue={eighteenYearsAgo()} onChange={handleBirthday}></input>
 
         <p className={styles.heading}>System(s):</p>
         <div className={styles.language}>

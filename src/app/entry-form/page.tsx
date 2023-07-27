@@ -12,7 +12,7 @@ import { db, storage } from "../firebase/firebase";
 import { uploadBytesResumable, ref, getDownloadURL } from "firebase/storage";
 
 export default function UserInfo() {
-  const { uid, user,updateUserInfo,retrieve} = UserAuth()
+  const { uid, user,updateUserInfo,retrieve } = UserAuth()
   const [username, setUsername] = useState<string>("");
   const [region, setRegion] = useState<string>("");
   const [language, setLanguage] = useState<string[]>([]);
@@ -220,6 +220,7 @@ export default function UserInfo() {
               type="text"
               id="UserName"
               name="Username"
+              maxLength={15}
               onChange={handleUsername}
             ></input>
           </div>

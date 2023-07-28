@@ -650,7 +650,7 @@ export default function Profile() {
               type="button"
               onClick={handleDeletion}
             >
-              Delete user
+              Delete Account
             </button>
 
             <div className={styles.levelsbox}>

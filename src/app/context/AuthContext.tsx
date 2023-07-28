@@ -11,7 +11,7 @@ import {
   reauthenticateWithCredential,
   EmailAuthProvider,
   deleteUser,
-  User
+  User,
 } from "firebase/auth";
 import { auth } from "../firebase/firebase";
 import {
@@ -140,19 +140,27 @@ export const AuthContextProvider: React.FC<{ children: ReactNode }> = ({
       // );
       // await reauthenticateWithCredential(user, credentials);
       
-      const userUid = currentAuth.currentUser?.uid;
-      const url = process.env.NEXT_PUBLIC_API_URL + "/api/delete-user/";
-      const payload = {
-        uid: userUid,
-        secretCode: process.env.NEXT_PUBLIC_SECRET_CODE
-      };
-      const config = {
-        method: "DELETE",
-        data: payload,
-      };
-
-      await axios.delete(url, config)
-      await deleteUser(user);
+      const password = prompt("Please enter your password:");
+      if(password) {
+        const credential = EmailAuthProvider.credential(user.email, password);
+  
+        const userUid = currentAuth.currentUser?.uid;
+        const url = process.env.NEXT_PUBLIC_API_URL + "/api/delete-user/";
+        const payload = {
+          uid: userUid,
+          secretCode: process.env.NEXT_PUBLIC_SECRET_CODE
+        };
+        const config = {
+          method: "DELETE",
+          data: payload,
+        };
+  
+        await axios.delete(url, config)
+        await deleteUser(user);
+        
+      } else {
+        alert("You must re-enter your password to delete the account.")
+      }
       // User deleted.
     } catch (error) {
       // An error occurred

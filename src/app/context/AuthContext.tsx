@@ -10,6 +10,8 @@ import {
   updatePassword,
   reauthenticateWithCredential,
   EmailAuthProvider,
+  deleteUser,
+  User,
 } from "firebase/auth";
 import { auth } from "../firebase/firebase";
 import {
@@ -35,6 +37,7 @@ interface AuthContextProps {
   retrieve: (user: firebaseAuthUser) => Promise<void>;
   updateUserInfo: (userData: userInfo) => void;
   resetPassword: (oldPassword: string | '', newPassword: string) => Promise<any>;
+  userDeletion: () => Promise<any>;
 }
 
 const UserContext = createContext<AuthContextProps | null>(null);
@@ -117,6 +120,53 @@ export const AuthContextProvider: React.FC<{ children: ReactNode }> = ({
   const resetPassword = async (oldPassword: string | '', newPassword: string) => {
     return resetPasswordCred(oldPassword, newPassword, user);
   };
+
+  const userDeletion = async () => {
+    const currentAuth = getAuth();
+    const user: User | null = currentAuth.currentUser;
+
+
+    console.log(user)
+    if (!user || !user.email) {
+      // There is no authenticated user, handle this case accordingly
+      return "How did you hit this endpoint";
+    }
+
+    try {
+
+      // const credentials = EmailAuthProvider.credential(
+      //   user.email,
+      //   "user-password"
+      // );
+      // await reauthenticateWithCredential(user, credentials);
+      
+      const password = prompt("Please enter your password:");
+      if(password) {
+        const credential = EmailAuthProvider.credential(user.email, password);
+  
+        const userUid = currentAuth.currentUser?.uid;
+        const url = process.env.NEXT_PUBLIC_API_URL + "/api/delete-user/";
+        const payload = {
+          uid: userUid,
+          secretCode: process.env.NEXT_PUBLIC_SECRET_CODE
+        };
+        const config = {
+          method: "DELETE",
+          data: payload,
+        };
+  
+        await axios.delete(url, config)
+        await deleteUser(user);
+        
+      } else {
+        alert("You must re-enter your password to delete the account.")
+      }
+      // User deleted.
+    } catch (error) {
+      // An error occurred
+      console.error(error);
+    }
+  };
   
 
 
@@ -149,7 +199,8 @@ export const AuthContextProvider: React.FC<{ children: ReactNode }> = ({
         retrieve,
         updateUserInfo,
         resetPasswordEmail,
-        resetPassword
+        resetPassword,
+        userDeletion,
       }}
     >
       {children}

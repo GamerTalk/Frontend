@@ -18,12 +18,14 @@ export default function UserInfo() {
   const [language, setLanguage] = useState<string[]>([]);
   const [learning, setLearning] = useState<string[]>([]);
   const [birthday, setBirthday] = useState("");
+  const [defaultDate, setDefaultDate] = useState<string | undefined>(undefined);
   const [system, setSystem] = useState<string[]>([]);
   const [genre, setGenre] = useState<string[]>([]);
   const [aboutMe, setAboutMe] = useState<string>("");
   const [aboutMeLength, setAboutMeLength] = useState<number>(0)
   const [currPlay, setCurrPlay] = useState<string>("");
   const [currPlayLength, setCurrPlayLength] = useState<number>(0)
+
 
   // for setting up user profile image
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
@@ -181,12 +183,16 @@ export default function UserInfo() {
     return eighteen + "-01-01" 
   }
 
+  useEffect(() => {
+    setDefaultDate(eighteenYearsAgo());
+  }, []);
+
 
   const handleBirthday = (event: ChangeEvent<HTMLInputElement>) => {
     const dateValue = event.target.value;
     
     if (getAge(dateValue) < 18) {
-      window.alert('Incorrect Date of Birth')
+      window.alert('You have to be over 18 to register for GamerTalk')
     } else {
       setBirthday(dateValue)
     }
@@ -494,7 +500,7 @@ export default function UserInfo() {
         </div>
 
         <p className={styles.heading}>Date of Birth:</p>
-        <input type="date" defaultValue={eighteenYearsAgo()} onChange={handleBirthday}></input>
+        <input type="date" defaultValue={defaultDate} onChange={handleBirthday}></input>
 
         <p className={styles.heading}>System(s):</p>
         <div className={styles.language}>
@@ -646,3 +652,7 @@ export default function UserInfo() {
     </div>
   );
 }
+function eighteenYearsAgo(): SetStateAction<string | undefined> {
+  throw new Error("Function not implemented.");
+}
+

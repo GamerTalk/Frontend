@@ -525,7 +525,24 @@ export default function Profile() {
               <div>4</div>
               <div>5</div>
             </div>
-            <LearningCheckbox
+            {categories.languages.map((languageOption, key) => { 
+              const languageOptionLowerCase = languageOption.toLocaleLowerCase();
+              return (
+                <div key={key}>
+                  <LearningCheckbox
+                    label={languageOption}
+                    name={languageOptionLowerCase}
+                    onChange={handleLearning}
+                    defaultChecked1={langCall(languageOptionLowerCase, 1, learning)}
+                    defaultChecked2={langCall(languageOptionLowerCase, 2, learning)}
+                    defaultChecked3={langCall(languageOptionLowerCase, 3, learning)}
+                    defaultChecked4={langCall(languageOptionLowerCase, 4, learning)}
+                    defaultChecked5={langCall(languageOptionLowerCase, 5, learning)}
+                  />
+                </div>
+              );
+            })}
+            {/* <LearningCheckbox
               label="English"
               name="english"
               onChange={handleLearning}
@@ -600,7 +617,7 @@ export default function Profile() {
               defaultChecked3={langCall("korean", 3, learning)}
               defaultChecked4={langCall("korean", 4, learning)}
               defaultChecked5={langCall("korean", 5, learning)}
-            />
+            /> */}
           </div>
 
           <p className={styles.heading}>Genre:</p>

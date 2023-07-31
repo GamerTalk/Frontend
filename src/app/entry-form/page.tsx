@@ -611,12 +611,12 @@ export default function UserInfo() {
         </div>
 
         <p className={styles.heading}>About Me:</p>
-        <textarea rows={5} cols={40} onChange={handleAboutMe} maxLength={500}/>
+        <textarea className={styles.textarea} rows={5} cols={40} onChange={handleAboutMe} maxLength={500} />
         <p className={styles.length}>{aboutMeLength} / 500</p>
 
         <p className={styles.heading}>Currently Playing:</p>
       
-        <textarea rows={5} cols={40} onChange={handleCurrPlay} maxLength={500}/>
+        <textarea className={styles.textarea} rows={5} cols={40} onChange={handleCurrPlay} maxLength={500}/>
         <p className={styles.length}>{currPlayLength} / 500</p>
 
         <div>

@@ -142,3 +142,7 @@
   color: rgb(181, 179, 179);
   font-size: 15x;
 }
+
+.textarea {
+  resize: none;
+}

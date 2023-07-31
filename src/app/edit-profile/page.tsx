@@ -636,6 +636,7 @@ export default function Profile() {
 
           <p className={styles.heading}>About Me:</p>
           <textarea
+            className={styles.textarea} 
             rows={5}
             cols={40}
             value={aboutMe}
@@ -646,6 +647,7 @@ export default function Profile() {
 
           <p className={styles.heading}>Currently Playing:</p>
           <textarea
+            className={styles.textarea} 
             rows={5}
             cols={40}
             value={currPlay}

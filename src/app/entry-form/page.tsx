@@ -300,7 +300,21 @@ export default function UserInfo() {
         <p className={styles.heading}>What language(s) are you fluent in?</p>
         <p className={styles.subheading}>Check all that apply</p>
         <div className={styles.language}>
-          <Checkbox
+        {categories.languages.map((languageOption:string, key:number) => { 
+              return (
+                <div key={key}>
+                  <Checkbox
+                    type="Checkbox"
+                    label={languageOption}
+                    name={languageOption.toLocaleLowerCase()}
+                    value=""
+                    onChange={handleLanguage}
+                    defaultChecked={false}
+                  />
+                </div>
+              )
+            })}
+          {/* <Checkbox
             type="checkbox"
             label="English"
             name="english"
@@ -355,7 +369,7 @@ export default function UserInfo() {
             value=""
             onChange={handleLanguage}
             defaultChecked={false}
-          />
+          /> */}
         </div>
 
         <p id="learning" className={styles.heading}>

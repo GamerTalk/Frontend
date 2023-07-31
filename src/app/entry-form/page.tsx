@@ -403,7 +403,24 @@ export default function UserInfo() {
             <div>4</div>
             <div>5</div>
           </div>
-          <LearningCheckbox
+          {categories.languages.map((languageOption, key) => { 
+              const languageOptionLowerCase = languageOption.toLocaleLowerCase();
+              return (
+                <div key={key}>
+                  <LearningCheckbox
+                    label={languageOption}
+                    name={languageOptionLowerCase}
+                    onChange={handleLearning}
+                    defaultChecked1={false}
+                    defaultChecked2={false}
+                    defaultChecked3={false}
+                    defaultChecked4={false}
+                    defaultChecked5={false}
+                  />
+                </div>
+              );
+            })}
+          {/* <LearningCheckbox
             label="English"
             name="english"
             onChange={handleLearning}
@@ -478,7 +495,7 @@ export default function UserInfo() {
             defaultChecked3={false}
             defaultChecked4={false}
             defaultChecked5={false}
-          />
+          /> */}
         </div>
 
         <p className={styles.heading}>Date of Birth:</p>
@@ -522,7 +539,21 @@ export default function UserInfo() {
 
         <p className={styles.heading}>Genre:</p>
         <div className={styles.language}>
-          <Checkbox
+        {categories.genres.map((genreOption:string, key:number) => { 
+              return (
+                <div key={key}>
+                  <Checkbox
+                    type="Checkbox"
+                    label={genreOption}
+                    name={genreOption.toLocaleLowerCase()}
+                    value=""
+                    onChange={handleGenre}
+                    defaultChecked={false}
+                  />
+                </div>
+              )
+            })}
+          {/* <Checkbox
             type="checkbox"
             label="Shooters"
             name="shooters"
@@ -585,7 +616,7 @@ export default function UserInfo() {
             value=""
             onChange={handleGenre}
             defaultChecked={false}
-          />
+          /> */}
         </div>
 
         <p className={styles.heading}>About Me:</p>

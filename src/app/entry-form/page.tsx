@@ -247,15 +247,6 @@ export default function UserInfo() {
                 </div>
               )
             })}
-          {/* <Checkbox
-            type="radio"
-            label="North America"
-            name="region"
-            value="north america"
-            onChange={handleRegion}
-            defaultChecked={false}
-          />
-        */}
         </div>
 
         <p className={styles.heading}>What language(s) are you fluent in?</p>
@@ -275,15 +266,6 @@ export default function UserInfo() {
                 </div>
               )
             })}
-          {/* <Checkbox
-            type="checkbox"
-            label="English"
-            name="english"
-            value=""
-            onChange={handleLanguage}
-            defaultChecked={false}
-          />
-          */}
         </div>
 
         <p id="learning" className={styles.heading}>
@@ -334,17 +316,6 @@ export default function UserInfo() {
                 </div>
               );
             })}
-          {/* <LearningCheckbox
-            label="English"
-            name="english"
-            onChange={handleLearning}
-            defaultChecked1={false}
-            defaultChecked2={false}
-            defaultChecked3={false}
-            defaultChecked4={false}
-            defaultChecked5={false}
-          />
- */}
         </div>
 
         <p className={styles.heading}>Date of Birth:</p>
@@ -366,14 +337,7 @@ export default function UserInfo() {
                 </div>
               )
             })}
-          {/* <Checkbox
-            type="checkbox"
-            label="PC"
-            name="pc"
-            value=""
-            onChange={handleSystem}
-            defaultChecked={false}
-          /> */}
+          
         </div>
 
         <p className={styles.heading}>Genre:</p>
@@ -392,15 +356,6 @@ export default function UserInfo() {
                 </div>
               )
             })}
-          {/* <Checkbox
-            type="checkbox"
-            label="Shooters"
-            name="shooters"
-            value=""
-            onChange={handleGenre}
-            defaultChecked={false}
-          />
-         */}
         </div>
 
         <p className={styles.heading}>About Me:</p>

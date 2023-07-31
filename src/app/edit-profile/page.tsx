@@ -622,7 +622,21 @@ export default function Profile() {
 
           <p className={styles.heading}>Genre:</p>
           <div className={styles.language}>
-            <Checkbox
+          {categories.genres.map((genreOption:string, key:number) => { 
+              return (
+                <div key={key}>
+                  <Checkbox
+                    type="Checkbox"
+                    label={genreOption}
+                    name={genreOption.toLocaleLowerCase()}
+                    value=""
+                    onChange={handleGenre}
+                    defaultChecked={genre.includes(genreOption.toLocaleLowerCase())}
+                  />
+                </div>
+              )
+            })}
+            {/* <Checkbox
               type="Checkbox"
               label="Shooters"
               name="shooters"
@@ -685,7 +699,7 @@ export default function Profile() {
               value=""
               onChange={handleGenre}
               defaultChecked={genre.includes("mmo")}
-            />
+            /> */}
           </div>
 
           <p className={styles.heading}>About Me:</p>

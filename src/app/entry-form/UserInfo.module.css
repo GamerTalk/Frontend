@@ -132,7 +132,13 @@
 }
 
 .length {
-  margin-top: -2px;
+  margin-top: -3px;
+  color: rgb(181, 179, 179);
+  font-size: 15x;
+}
+
+.usernameLength {
+  margin-top: 5px;
   color: rgb(181, 179, 179);
   font-size: 15x;
 }

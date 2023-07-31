@@ -255,11 +255,15 @@ export default function UserInfo() {
               type="text"
               id="UserName"
               name="Username"
+              minLength={5}
               maxLength={15}
               onChange={handleUsername}
+             
             ></input>
           </div>
+          <p className={styles.usernameLength}>Username should be between 5-15 characters</p>
         </div>
+        
 
         <div className={styles.userImg}>
             <img

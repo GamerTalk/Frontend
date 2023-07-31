@@ -10,7 +10,7 @@ import axios from "axios";
 import { doc, setDoc } from "firebase/firestore";
 import { db, storage } from "../firebase/firebase";
 import { uploadBytesResumable, ref, getDownloadURL } from "firebase/storage";
-
+import categories from "../data/data";
 export default function UserInfo() {
   const { uid, user,updateUserInfo,retrieve} = UserAuth()
   const [username, setUsername] = useState<string>("");
@@ -233,7 +233,21 @@ export default function UserInfo() {
 
         <p className={styles.heading}>Region:</p>
         <div className={styles.language}>
-          <Checkbox
+        {categories.regions.map((regionOption:string, key:number) => { 
+              return (
+                <div key={key}>
+                  <Checkbox
+                    type="radio"
+                    label={regionOption}
+                    name="region"
+                    value={regionOption.toLocaleLowerCase()}
+                    onChange={handleRegion}
+                    defaultChecked={false}
+                  />
+                </div>
+              )
+            })}
+          {/* <Checkbox
             type="radio"
             label="North America"
             name="region"
@@ -280,7 +294,7 @@ export default function UserInfo() {
             value="africa"
             onChange={handleRegion}
             defaultChecked={false}
-          />
+          /> */}
         </div>
 
         <p className={styles.heading}>What language(s) are you fluent in?</p>

@@ -123,21 +123,6 @@ const FilterArea: React.FC<Param> = ({
     }
   };
 
-  // const handleGenre = (event: { target: { name : string }; }) => {
-  //   const { name } = event.target;
-  //   handleSelection(name, selectedGenres, setGenre);
-  // }
-
-  // const handleSystem = (event: { target: { name : string }; }) => {
-  //   const { name } = event.target;
-  //   handleSelection(name, selectedSystems, setSystem);
-  // }
-
-  // const handleRegion = (event: { target: { name: string } }) => {
-  //   const { name } = event.target;
-  //   handleSelection(name, selectedRegion, setRegion);
-  // }
-
   const handleLanguage = (event: { target: { name: string } }) => {
     const { name } = event.target;
     if (selectedLanguage === name) {

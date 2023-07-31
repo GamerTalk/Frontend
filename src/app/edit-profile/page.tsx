@@ -28,6 +28,7 @@ import {
 import { db, storage } from "../firebase/firebase";
 import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
 import Reset from "../reset-password/page";
+import categories from "../data/data";
 
 export default function Profile() {
   const { uid, updateUserInfo, userDeletion } = UserAuth();
@@ -297,6 +298,23 @@ export default function Profile() {
 
           <p className={styles.heading}>Region:</p>
           <div className={styles.language}>
+            {categories.regions.map((regionName:string, key:number) => { 
+              return (
+                <div key={key}>
+                  <Checkbox
+                    type="radio"
+                    label={regionName}
+                    name="region"
+                    value={regionName.toLocaleLowerCase()}
+                    onChange={handleRegion}
+                    defaultChecked={region === regionName.toLocaleLowerCase()
+                    }
+                  />
+                </div>
+              )
+            })}
+          </div>
+          {/* <div className={styles.language}>
             <Checkbox
               type="radio"
               label="North America"
@@ -345,8 +363,9 @@ export default function Profile() {
               onChange={handleRegion}
               defaultChecked={region == "africa"}
             />
-          </div>
+          </div> */}
 
+          
           <p className={styles.heading}>What language(s) are you fluent in?:</p>
           <p className={styles.subheading}>Check all that apply</p>
           <div className={styles.language}>

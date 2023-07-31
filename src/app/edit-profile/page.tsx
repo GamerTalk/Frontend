@@ -446,7 +446,21 @@ export default function Profile() {
 
           <p className={styles.heading}>User Systems:</p>
           <div className={styles.language}>
-            <Checkbox
+          {categories.systems.map((systemOption:string, key:number) => { 
+              return (
+                <div key={key}>
+                  <Checkbox
+                    type="Checkbox"
+                    label={systemOption}
+                    name={systemOption.toLocaleLowerCase()}
+                    value=""
+                    onChange={handleSystem}
+                    defaultChecked={system.includes(systemOption.toLocaleLowerCase())}
+                  />
+                </div>
+              )
+            })}
+            {/* <Checkbox
               type="Checkbox"
               label="PC"
               name="pc"
@@ -477,7 +491,7 @@ export default function Profile() {
               value=""
               onChange={handleSystem}
               defaultChecked={system.includes("xbox")}
-            />
+            /> */}
           </div>
 
           <p id="learning" className={styles.heading}>

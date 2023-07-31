@@ -298,16 +298,16 @@ export default function Profile() {
 
           <p className={styles.heading}>Region:</p>
           <div className={styles.language}>
-            {categories.regions.map((regionName:string, key:number) => { 
+            {categories.regions.map((regionOption:string, key:number) => { 
               return (
                 <div key={key}>
                   <Checkbox
                     type="radio"
-                    label={regionName}
+                    label={regionOption}
                     name="region"
-                    value={regionName.toLocaleLowerCase()}
+                    value={regionOption.toLocaleLowerCase()}
                     onChange={handleRegion}
-                    defaultChecked={region === regionName.toLocaleLowerCase()
+                    defaultChecked={region === regionOption.toLocaleLowerCase()
                     }
                   />
                 </div>
@@ -369,7 +369,21 @@ export default function Profile() {
           <p className={styles.heading}>What language(s) are you fluent in?:</p>
           <p className={styles.subheading}>Check all that apply</p>
           <div className={styles.language}>
-            <Checkbox
+          {categories.languages.map((languageOption:string, key:number) => { 
+              return (
+                <div key={key}>
+                  <Checkbox
+                    type="Checkbox"
+                    label={languageOption}
+                    name={languageOption.toLocaleLowerCase()}
+                    value=""
+                    onChange={handleLanguage}
+                    defaultChecked={language.includes(languageOption.toLocaleLowerCase())}
+                  />
+                </div>
+              )
+            })}
+            {/* <Checkbox
               type="Checkbox"
               label="English"
               name="english"
@@ -424,7 +438,7 @@ export default function Profile() {
               value=""
               onChange={handleLanguage}
               defaultChecked={language.includes("korean")}
-            />
+            /> */}
           </div>
 
           <p className={styles.heading}>Date of Birth: </p>

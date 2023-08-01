@@ -58,3 +58,10 @@ export interface Post {
   message: string;
   sender: string;
 }
+
+export interface Categories {
+  languages: string[];
+  genres: string[];
+  systems: string[];
+  regions: string[];
+}

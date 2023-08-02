@@ -3,7 +3,7 @@
 import Checkbox from "../components/elements/Checkbox";
 import LearningCheckbox from "../components/elements/Learning-Checkbox";
 import styles from "./UserInfo.module.css";
-import { useState, useEffect, ChangeEvent } from "react";
+import { useState, useEffect, ChangeEvent, SetStateAction } from "react";
 import { UserAuth } from "../context/AuthContext";
 import { useRouter } from "next/navigation";
 import axios from "axios";
@@ -12,16 +12,20 @@ import { db, storage } from "../firebase/firebase";
 import { uploadBytesResumable, ref, getDownloadURL } from "firebase/storage";
 import categories from "../data/data";
 export default function UserInfo() {
-  const { uid, user,updateUserInfo,retrieve} = UserAuth()
+  const { uid, user,updateUserInfo,retrieve } = UserAuth()
   const [username, setUsername] = useState<string>("");
   const [region, setRegion] = useState<string>("");
   const [language, setLanguage] = useState<string[]>([]);
   const [learning, setLearning] = useState<string[]>([]);
   const [birthday, setBirthday] = useState("");
+  const [defaultDate, setDefaultDate] = useState<string | undefined>(undefined);
   const [system, setSystem] = useState<string[]>([]);
   const [genre, setGenre] = useState<string[]>([]);
   const [aboutMe, setAboutMe] = useState<string>("");
+  const [aboutMeLength, setAboutMeLength] = useState<number>(0)
   const [currPlay, setCurrPlay] = useState<string>("");
+  const [currPlayLength, setCurrPlayLength] = useState<number>(0)
+
 
   // for setting up user profile image
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
@@ -70,7 +74,7 @@ export default function UserInfo() {
         sendFormData(downloadURL);
         //console.log("default image upload is successed");
       } catch (error) {
-        console.error("down load error", error);
+        console.error("download error", error);
       }
     }
   };
@@ -111,6 +115,7 @@ export default function UserInfo() {
       })
       .catch((error) => {
         console.log(error);
+        window.alert('Missing key data')
       });
   };
 
@@ -161,9 +166,37 @@ export default function UserInfo() {
     }
   };
 
+  function getAge(dateString: string) {
+    var today = new Date();
+    var birthDate = new Date(dateString);
+    var age = today.getFullYear() - birthDate.getFullYear();
+    var m = today.getMonth() - birthDate.getMonth();
+      if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
+          age--;
+      }
+  return age;
+  }
+
+  function eighteenYearsAgo(): string | undefined {
+    var today = new Date();
+    var eighteen = today.getFullYear() - 18;
+    return eighteen + "-01-01" 
+  }
+
+  useEffect(() => {
+    setDefaultDate(eighteenYearsAgo());
+  }, []);
+
+
   const handleBirthday = (event: ChangeEvent<HTMLInputElement>) => {
     const dateValue = event.target.value;
-    setBirthday(dateValue);
+    
+    if (getAge(dateValue) < 18) {
+      window.alert('You have to be over 18 to register for GamerTalk')
+    } else {
+      setBirthday(dateValue)
+    }
+    
   };
 
   const handleSystem = (event: { target: { name: string } }) => {
@@ -191,11 +224,13 @@ export default function UserInfo() {
   const handleAboutMe = (event: { target: { value: string } }) => {
     const { value } = event.target;
     setAboutMe(value);
+    setAboutMeLength(value.length)
   };
 
   const handleCurrPlay = (event: { target: { value: string } }) => {
     const { value } = event.target;
     setCurrPlay(value);
+    setCurrPlayLength(value.length)
   };
 
   const handleFileChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -220,14 +255,29 @@ export default function UserInfo() {
               type="text"
               id="UserName"
               name="Username"
+              minLength={5}
+              maxLength={15}
               onChange={handleUsername}
+             
             ></input>
           </div>
+          <p className={styles.usernameLength}>Username should be between 5-15 characters</p>
         </div>
+        
 
-        <div className={styles.userUploadImg}>
-          <label>
-            <input type="file" name="image" onChange={handleFileChange} />
+        <div className={styles.userImg}>
+            <img
+              src={
+                "https://firebasestorage.googleapis.com/v0/b/gamertalk-8133c.appspot.com/o/images%2Fdefault%2Fuserdefault.png?alt=media&token=00630336-daf3-4b5d-ab58-895d704863b6"
+              }
+              alt=""
+              id={styles.image}
+            />
+            </div>
+
+        <div>
+          <label htmlFor={styles.userUploadImg}>
+            <input type="file" name="image" onChange={handleFileChange} id={styles.userUploadImg}  />
           </label>
         </div>
 
@@ -319,7 +369,7 @@ export default function UserInfo() {
         </div>
 
         <p className={styles.heading}>Date of Birth:</p>
-        <input type="date" onChange={handleBirthday}></input>
+        <input type="date" defaultValue={defaultDate} onChange={handleBirthday}></input>
 
         <p className={styles.heading}>System(s):</p>
         <div className={styles.language}>
@@ -359,11 +409,13 @@ export default function UserInfo() {
         </div>
 
         <p className={styles.heading}>About Me:</p>
-        <textarea rows={5} cols={40} onChange={handleAboutMe} />
+        <textarea className={styles.textarea} rows={5} cols={40} onChange={handleAboutMe} maxLength={500} />
+        <p className={styles.length}>{aboutMeLength} / 500</p>
 
         <p className={styles.heading}>Currently Playing:</p>
-
-        <textarea rows={5} cols={40} onChange={handleCurrPlay} />
+      
+        <textarea className={styles.textarea} rows={5} cols={40} onChange={handleCurrPlay} maxLength={500}/>
+        <p className={styles.length}>{currPlayLength} / 500</p>
 
         <div>
           <button className={styles.button} type="submit">
@@ -402,3 +454,7 @@ export default function UserInfo() {
     </div>
   );
 }
+function eighteenYearsAgo(): SetStateAction<string | undefined> {
+  throw new Error("Function not implemented.");
+}
+

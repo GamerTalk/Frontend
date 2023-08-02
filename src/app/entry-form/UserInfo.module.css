@@ -83,8 +83,7 @@
 
 .deleteButton {
   margin-bottom: 20px;
-  border-radius: 25px;
-  font-size: 20px;
+  font-size: 18px;
   height: 50px;
   width: 150px;
   background-color: #ff0000;
@@ -130,4 +129,20 @@
   width: 90px;
   overflow: hidden;
   display: none;
+}
+
+.length {
+  margin-top: -3px;
+  color: rgb(181, 179, 179);
+  font-size: 15x;
+}
+
+.usernameLength {
+  margin-top: 5px;
+  color: rgb(181, 179, 179);
+  font-size: 15x;
+}
+
+.textarea {
+  resize: none;
 }

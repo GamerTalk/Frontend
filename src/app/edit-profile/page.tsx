@@ -49,15 +49,21 @@ export default function Profile() {
   const [aboutMe, setAboutMe] = useState<string>(
     profile ? profile.about_me : ""
   );
+  const [aboutMeLength, setAboutMeLength] = useState<number>(0)
   const [currPlay, setCurrPlay] = useState<string>(
     profile ? profile.currently_playing : ""
   );
+  const [currPlayLength, setCurrPlayLength] = useState<number>(0)
   const [profileURL, setProfileURL] = useState<string>(
     profile ? profile.profile_picture_url : ""
   );
   // for setting up user profile image
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
   const router = useRouter();
+
+  useEffect(() => {
+    console.log(aboutMeLength)
+  })
 
   useEffect(() => {
     async function getData() {
@@ -76,7 +82,9 @@ export default function Profile() {
             setGenre(userData.user_genre);
             setLearning(userData.languages.learning);
             setAboutMe(userData.about_me);
+            setAboutMeLength(userData.about_me.length)
             setCurrPlay(userData.currently_playing);
+            setCurrPlayLength(userData.currently_playing.length)
           } else {
             //console.log("fail");
             setProfile({});
@@ -232,11 +240,13 @@ export default function Profile() {
   const handleAboutMe = (event: { target: { value: string } }) => {
     const { value } = event.target;
     setAboutMe(value);
+    setAboutMeLength(value.length)
   };
 
   const handleCurrPlay = (event: { target: { value: string } }) => {
     const { value } = event.target;
     setCurrPlay(value);
+    setCurrPlayLength(value.length)
   };
 
   const handleFileChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -429,19 +439,25 @@ export default function Profile() {
 
           <p className={styles.heading}>About Me:</p>
           <textarea
+            className={styles.textarea} 
             rows={5}
             cols={40}
             value={aboutMe}
             onChange={handleAboutMe}
+            maxLength={500}
           />
+          <p className={styles.length}>{aboutMeLength} / 500</p>
 
           <p className={styles.heading}>Currently Playing:</p>
           <textarea
+            className={styles.textarea} 
             rows={5}
             cols={40}
             value={currPlay}
             onChange={handleCurrPlay}
+            maxLength={500}
           />
+          <p className={styles.length}>{currPlayLength} / 500</p>
 
           <div>
             <button className={styles.editButton} type="submit">
@@ -453,7 +469,7 @@ export default function Profile() {
               type="button"
               onClick={handleDeletion}
             >
-              Delete user
+              Delete Account
             </button>
 
             <div className={styles.levelsbox}>

@@ -11,18 +11,13 @@ import Link from "next/link";
 import axios from "axios";
 import styles from "../entry-form/UserInfo.module.css";
 import { UserAuth } from "../context/AuthContext";
-import { MessagesContext } from "@/app/context/MessageContext";
 import Checkbox from "../components/elements/Checkbox";
 import LearningCheckbox from "../components/elements/Learning-Checkbox";
 import langCall from "../utils/langCheckFunc";
 import { useRouter } from "next/navigation";
 import {
-  DocumentData,
-  collection,
   doc,
   getDoc,
-  getDocs,
-  setDoc,
   updateDoc,
 } from "firebase/firestore";
 import { db, storage } from "../firebase/firebase";
@@ -60,10 +55,6 @@ export default function Profile() {
   // for setting up user profile image
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
   const router = useRouter();
-
-  useEffect(() => {
-    console.log(aboutMeLength)
-  })
 
   useEffect(() => {
     async function getData() {

@@ -115,7 +115,7 @@ export default function UserInfo() {
       })
       .catch((error) => {
         console.log(error);
-        window.alert('Missing key data')
+        window.alert('Please fill in all required fields')
       });
   };
 

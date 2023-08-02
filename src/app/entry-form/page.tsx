@@ -10,7 +10,7 @@ import axios from "axios";
 import { doc, setDoc } from "firebase/firestore";
 import { db, storage } from "../firebase/firebase";
 import { uploadBytesResumable, ref, getDownloadURL } from "firebase/storage";
-
+import categories from "../data/data";
 export default function UserInfo() {
   const { uid, user,updateUserInfo,retrieve } = UserAuth()
   const [username, setUsername] = useState<string>("");
@@ -283,115 +283,39 @@ export default function UserInfo() {
 
         <p className={styles.heading}>Region:</p>
         <div className={styles.language}>
-          <Checkbox
-            type="radio"
-            label="North America"
-            name="region"
-            value="north america"
-            onChange={handleRegion}
-            defaultChecked={false}
-          />
-          <Checkbox
-            type="radio"
-            label="South America"
-            name="region"
-            value="south america"
-            onChange={handleRegion}
-            defaultChecked={false}
-          />
-          <Checkbox
-            type="radio"
-            label="Europe"
-            name="region"
-            value="europe"
-            onChange={handleRegion}
-            defaultChecked={false}
-          />
-          <Checkbox
-            type="radio"
-            label="Asia"
-            name="region"
-            value="asia"
-            onChange={handleRegion}
-            defaultChecked={false}
-          />
-          <Checkbox
-            type="radio"
-            label="Oceania"
-            name="region"
-            value="oceania"
-            onChange={handleRegion}
-            defaultChecked={false}
-          />
-          <Checkbox
-            type="radio"
-            label="Africa"
-            name="region"
-            value="africa"
-            onChange={handleRegion}
-            defaultChecked={false}
-          />
+        {categories.regions.map((regionOption:string, key:number) => { 
+              return (
+                <div key={key}>
+                  <Checkbox
+                    type="radio"
+                    label={regionOption}
+                    name="region"
+                    value={regionOption.toLocaleLowerCase()}
+                    onChange={handleRegion}
+                    defaultChecked={false}
+                  />
+                </div>
+              )
+            })}
         </div>
 
         <p className={styles.heading}>What language(s) are you fluent in?</p>
         <p className={styles.subheading}>Check all that apply</p>
         <div className={styles.language}>
-          <Checkbox
-            type="checkbox"
-            label="English"
-            name="english"
-            value=""
-            onChange={handleLanguage}
-            defaultChecked={false}
-          />
-          <Checkbox
-            type="checkbox"
-            label="Spanish"
-            name="spanish"
-            value=""
-            onChange={handleLanguage}
-            defaultChecked={false}
-          />
-          <Checkbox
-            type="checkbox"
-            label="German"
-            name="german"
-            value=""
-            onChange={handleLanguage}
-            defaultChecked={false}
-          />
-          <Checkbox
-            type="checkbox"
-            label="French"
-            name="french"
-            value=""
-            onChange={handleLanguage}
-            defaultChecked={false}
-          />
-          <Checkbox
-            type="checkbox"
-            label="Japanese"
-            name="japanese"
-            value=""
-            onChange={handleLanguage}
-            defaultChecked={false}
-          />
-          <Checkbox
-            type="checkbox"
-            label="Chinese"
-            name="chinese"
-            value=""
-            onChange={handleLanguage}
-            defaultChecked={false}
-          />
-          <Checkbox
-            type="checkbox"
-            label="Korean"
-            name="korean"
-            value=""
-            onChange={handleLanguage}
-            defaultChecked={false}
-          />
+        {categories.languages.map((languageOption:string, key:number) => { 
+              return (
+                <div key={key}>
+                  <Checkbox
+                    type="Checkbox"
+                    label={languageOption}
+                    name={languageOption.toLocaleLowerCase()}
+                    value=""
+                    onChange={handleLanguage}
+                    defaultChecked={false}
+                  />
+                </div>
+              )
+            })}
         </div>
 
         <p id="learning" className={styles.heading}>
@@ -425,82 +349,23 @@ export default function UserInfo() {
             <div>4</div>
             <div>5</div>
           </div>
-          <LearningCheckbox
-            label="English"
-            name="english"
-            onChange={handleLearning}
-            defaultChecked1={false}
-            defaultChecked2={false}
-            defaultChecked3={false}
-            defaultChecked4={false}
-            defaultChecked5={false}
-          />
-
-          <LearningCheckbox
-            label="Spanish"
-            name="spanish"
-            onChange={handleLearning}
-            defaultChecked1={false}
-            defaultChecked2={false}
-            defaultChecked3={false}
-            defaultChecked4={false}
-            defaultChecked5={false}
-          />
-
-          <LearningCheckbox
-            label="German"
-            name="german"
-            onChange={handleLearning}
-            defaultChecked1={false}
-            defaultChecked2={false}
-            defaultChecked3={false}
-            defaultChecked4={false}
-            defaultChecked5={false}
-          />
-
-          <LearningCheckbox
-            label="French"
-            name="french"
-            onChange={handleLearning}
-            defaultChecked1={false}
-            defaultChecked2={false}
-            defaultChecked3={false}
-            defaultChecked4={false}
-            defaultChecked5={false}
-          />
-
-          <LearningCheckbox
-            label="Japanese"
-            name="japanese"
-            onChange={handleLearning}
-            defaultChecked1={false}
-            defaultChecked2={false}
-            defaultChecked3={false}
-            defaultChecked4={false}
-            defaultChecked5={false}
-          />
-
-          <LearningCheckbox
-            label="Chinese"
-            name="chinese"
-            onChange={handleLearning}
-            defaultChecked1={false}
-            defaultChecked2={false}
-            defaultChecked3={false}
-            defaultChecked4={false}
-            defaultChecked5={false}
-          />
-
-          <LearningCheckbox
-            label="Korean"
-            name="korean"
-            onChange={handleLearning}
-            defaultChecked1={false}
-            defaultChecked2={false}
-            defaultChecked3={false}
-            defaultChecked4={false}
-            defaultChecked5={false}
-          />
+          {categories.languages.map((languageOption, key) => { 
+              const languageOptionLowerCase = languageOption.toLocaleLowerCase();
+              return (
+                <div key={key}>
+                  <LearningCheckbox
+                    label={languageOption}
+                    name={languageOptionLowerCase}
+                    onChange={handleLearning}
+                    defaultChecked1={false}
+                    defaultChecked2={false}
+                    defaultChecked3={false}
+                    defaultChecked4={false}
+                    defaultChecked5={false}
+                  />
+                </div>
+              );
+            })}
         </div>
 
         <p className={styles.heading}>Date of Birth:</p>
@@ -508,106 +373,39 @@ export default function UserInfo() {
 
         <p className={styles.heading}>System(s):</p>
         <div className={styles.language}>
-          <Checkbox
-            type="checkbox"
-            label="PC"
-            name="pc"
-            value=""
-            onChange={handleSystem}
-            defaultChecked={false}
-          />
-          <Checkbox
-            type="checkbox"
-            label="Switch"
-            name="switch"
-            value=""
-            onChange={handleSystem}
-            defaultChecked={false}
-          />
-          <Checkbox
-            type="checkbox"
-            label="PlayStation"
-            name="playstation"
-            value=""
-            onChange={handleSystem}
-            defaultChecked={false}
-          />
-          <Checkbox
-            type="checkbox"
-            label="Xbox"
-            name="xbox"
-            value=""
-            onChange={handleSystem}
-            defaultChecked={false}
-          />
+        {categories.systems.map((systemOption:string, key:number) => { 
+              return (
+                <div key={key}>
+                  <Checkbox
+                    type="checkbox"
+                    label={systemOption}
+                    name={systemOption.toLocaleLowerCase()}
+                    value=""
+                    onChange={handleSystem}
+                    defaultChecked={false}
+                  />
+                </div>
+              )
+            })}
+          
         </div>
 
         <p className={styles.heading}>Genre:</p>
         <div className={styles.language}>
-          <Checkbox
-            type="checkbox"
-            label="Shooters"
-            name="shooters"
-            value=""
-            onChange={handleGenre}
-            defaultChecked={false}
-          />
-          <Checkbox
-            type="checkbox"
-            label="Survival"
-            name="survival"
-            value=""
-            onChange={handleGenre}
-            defaultChecked={false}
-          />
-          <Checkbox
-            type="checkbox"
-            label="Battle Royal"
-            name="battle royal"
-            value=""
-            onChange={handleGenre}
-            defaultChecked={false}
-          />
-          <Checkbox
-            type="checkbox"
-            label="Strategy"
-            name="strategy"
-            value=""
-            onChange={handleGenre}
-            defaultChecked={false}
-          />
-          <Checkbox
-            type="checkbox"
-            label="Party"
-            name="party"
-            value=""
-            onChange={handleGenre}
-            defaultChecked={false}
-          />
-          <Checkbox
-            type="checkbox"
-            label="Fighting"
-            name="fighting"
-            value=""
-            onChange={handleGenre}
-            defaultChecked={false}
-          />
-          <Checkbox
-            type="checkbox"
-            label="RPG"
-            name="rpg"
-            value=""
-            onChange={handleGenre}
-            defaultChecked={false}
-          />
-          <Checkbox
-            type="checkbox"
-            label="MMO"
-            name="mmo"
-            value=""
-            onChange={handleGenre}
-            defaultChecked={false}
-          />
+        {categories.genres.map((genreOption:string, key:number) => { 
+              return (
+                <div key={key}>
+                  <Checkbox
+                    type="Checkbox"
+                    label={genreOption}
+                    name={genreOption.toLocaleLowerCase()}
+                    value=""
+                    onChange={handleGenre}
+                    defaultChecked={false}
+                  />
+                </div>
+              )
+            })}
         </div>
 
         <p className={styles.heading}>About Me:</p>

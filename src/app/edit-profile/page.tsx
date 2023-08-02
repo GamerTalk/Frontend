@@ -57,6 +57,10 @@ export default function Profile() {
   const router = useRouter();
 
   useEffect(() => {
+    console.log(aboutMeLength)
+  })
+
+  useEffect(() => {
     async function getData() {
       try {
         if (uid) {

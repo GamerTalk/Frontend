@@ -41,6 +41,7 @@ const Add: React.FC<Param> = ({ handleClosePopup }) => {
         handleClosePopup();
       })
       .catch((error) => {
+        window.alert('Please enter in words for both the Front and Back')
         console.log(error);
       });
   };

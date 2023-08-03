@@ -40,6 +40,7 @@ export default function Home() {
         setMessage("");
       })
       .catch((error) => {
+        window.alert('Please enter a message.')
         console.log(error);
       });
   };

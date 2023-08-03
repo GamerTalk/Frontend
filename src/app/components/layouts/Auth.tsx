@@ -26,6 +26,7 @@ const Auth = ({isSignIn}: Props) => {
       await loginUser(email, password);
       router.push('/home');
     } catch (err) {
+      window.alert('Incorrect Email or Password')
       console.error(err);
     }
     // console.log('EMAIL', email, 'PASSWORD', password);
@@ -37,6 +38,7 @@ const Auth = ({isSignIn}: Props) => {
       await createUser(email,password);
       router.push('/entry-form')
     } catch (err) {
+      window.alert('Invaild Email or Password \nThe Password needs to be at least 4 charcaters')
       console.error(err);
     }
   }

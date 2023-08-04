@@ -1,4 +1,4 @@
-<img src="/public\GamerTalkLogo.png" alt="Header" title="Header" width="400">
+<img src="/public\GamerTalkWideLogo.png" alt="Header" title="Header" width="400">
 
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 

@@ -6,7 +6,6 @@
   width: 90vw;
   margin: 10px auto;
   /* border: 1px solid #626262; */
-  border-bottom: 1px solid white;;
   padding: 10px;
   font-family: Arial, Helvetica, sans-serif;
   
@@ -16,8 +15,7 @@
 .languageLine {
   margin-top: 3px;
   margin-bottom: 2px;
-  text-align: right;
-  border: 3px solid red;
+  display: inline-block;
 }
 
 .subTitle {
@@ -96,11 +94,17 @@
   display: flex;
 }
 
-.scaleWraper{
+.scaleWrapper {
   margin-left: 10px;
   margin-top: 7px;
+  display: inline-block;
 }
 
-.languageWraper{
+.languageWrapper {
   margin: 0;
+  display: inline-block;
+}
+
+.languageLineWrapper {
+  display: inline-block;
 }

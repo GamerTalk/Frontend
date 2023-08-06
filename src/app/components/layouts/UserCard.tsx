@@ -8,6 +8,7 @@ import {
 } from "@fortawesome/free-brands-svg-icons";
 import { faGamepad } from "@fortawesome/free-solid-svg-icons";
 import { User, Systems } from "./../../global.t";
+import { Divider } from '@mui/material';
 import Upper from "@/app/utils/Upper";
 import Scale from "../elements/Scale";
 
@@ -72,48 +73,36 @@ const UserCard = (props: Props) => {
             <div className={styles.text}>
               <p className={styles.userName}>{user.username} </p>
             </div>
-            {/* <div className={styles.text}>  
-              <p className={styles.subTitle}>Speaks: </p>
-              {user.languages.fluent.map((language, index) => {
-                return (
-                  <p className={styles.languageLine} key={index}>
-                    {Upper(language)}
-                  </p>
-                );
-              })}
-            </div> */}
             <div className={styles.text}>
-              <div>
-              {user.languages.fluent.map((language, index) => {
+              <div className={styles.learningLaguagesContainer}>
+                {user.languages.fluent.map((language, index) => {
+                   return (
+                    <div key={index} className={styles.languageLineWrapper}>
+                      <p className={styles.languageLine}>
+                        {Upper(language)}
+                      </p>
+                      <span className={styles.scaleWrapper}>
+                        <Scale level={5} />
+                      </span>
+                    </div>
+                    );
+                  })}
+              </div>
+              {user.languages.learning.map((learn, index) => {
                 return (
-                  <>
-                  <span className={styles.languageLine} key={index}>
-                    {Upper(language)}
-                  </span>
-                    <span className={styles.scaleWraper}>
-                    <Scale level={5}/>
-                 </span>
-                 </>
+                  <div className={styles.learningLaguagesContainer} key={index}>
+                    <div className={styles.languageWrapper}>
+                      <p className={styles.languageLine}>
+                        {`${Upper(learn.language)} :`}
+                      </p>
+                  </div>
+                  <div className={styles.scaleWrapper}>
+                    <Scale level={learn.level} />
+                  </div>
+                </div>
                 );
               })}
-                {user.languages.learning.map((learn, index) => {
-                  return (
-                    <>
-                      <div className={styles.learningLaguagesContainer} key={index}>
-                        <div className={styles.languageWraper}>
-                      <p className={styles.languageLine} >
-                      {`${Upper(learn.language)} :`} 
-                      </p>
-                      </div>
-                      <div className={styles.scaleWraper}>
-                         <Scale level={learn.level}/>
-                      </div>
-                    </div>
-                    </>
-                  );
-                })}
-              </div>
-            </div>
+          </div>
           <div className={styles.systems}>
             <div className={styles.gamesWrapper}>
               {user.user_systems.map((system, index) => {
@@ -129,9 +118,9 @@ const UserCard = (props: Props) => {
             </div>
           </div>
           </div>
-
         </div>
       </div>
+      <Divider/>
     </>
   );
 };

@@ -11,6 +11,7 @@ import { User, Systems } from "./../../global.t";
 import { Divider } from '@mui/material';
 import Upper from "@/app/utils/Upper";
 import Scale from "../elements/Scale";
+import { Asap} from 'next/font/google'
 
 interface Props {
   user: User;
@@ -27,6 +28,22 @@ interface LevelLookup {
   4: string;
   5: string;
 }
+
+const asap = Asap({subsets:['latin'], weight:['400']})
+
+const MyCustomDivider = () => {
+  return (
+    <Divider
+      classes={{
+        root: 'custom-divider', // Replace 'custom-divider' with your desired CSS class name
+      }}
+      style={{
+        backgroundColor: 'grey', // Replace 'red' with your desired color
+        height: '2px', // Customize the height of the divider
+      }}
+    />
+  );
+};
 
 // const UserCard = ({ users }: usersProps) => {
 const UserCard = (props: Props) => {
@@ -120,7 +137,7 @@ const UserCard = (props: Props) => {
           </div>
         </div>
       </div>
-      <Divider/>
+      <MyCustomDivider/>
     </>
   );
 };

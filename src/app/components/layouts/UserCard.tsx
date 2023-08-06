@@ -70,9 +70,9 @@ const UserCard = (props: Props) => {
           </div>
           <div className={styles.userAbout}>
             <div className={styles.text}>
-              <p className={styles.userName}>{user.username}</p>
+              <p className={styles.userName}>{user.username} </p>
             </div>
-            <div className={styles.text}>  
+            {/* <div className={styles.text}>  
               <p className={styles.subTitle}>Speaks: </p>
               {user.languages.fluent.map((language, index) => {
                 return (
@@ -81,10 +81,21 @@ const UserCard = (props: Props) => {
                   </p>
                 );
               })}
-            </div>
+            </div> */}
             <div className={styles.text}>
               <div>
-                <p className={styles.subTitle}>Learning:</p>
+              {user.languages.fluent.map((language, index) => {
+                return (
+                  <>
+                  <span className={styles.languageLine} key={index}>
+                    {Upper(language)}
+                  </span>
+                    <span className={styles.scaleWraper}>
+                    <Scale level={5}/>
+                 </span>
+                 </>
+                );
+              })}
                 {user.languages.learning.map((learn, index) => {
                   return (
                     <>

@@ -1,19 +1,23 @@
+
+
 .userCard{
-  background-color: #272727;
+  /* background-color: #272727; */
   width: min(100%,600px);
-  border-radius: 1px;
   width: 90vw;
   margin: 10px auto;
-  border: 1px solid #626262;
+  /* border: 1px solid #626262; */
+  border-bottom: 1px solid white;;
   padding: 10px;
   font-family: Arial, Helvetica, sans-serif;
-  border-radius: 20px;
+  
   cursor: pointer;
 }
 
 .languageLine {
   margin-top: 3px;
   margin-bottom: 2px;
+  text-align: right;
+  border: 3px solid red;
 }
 
 .subTitle {
@@ -50,7 +54,7 @@
 }
 
 .userAbout{
-  background-color:#272727;
+   /* background-color:#272727;  */
 }
 
 .userName {

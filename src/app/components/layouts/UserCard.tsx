@@ -11,7 +11,6 @@ import { User, Systems } from "./../../global.t";
 import { Divider } from '@mui/material';
 import Upper from "@/app/utils/Upper";
 import Scale from "../elements/Scale";
-import { Asap} from 'next/font/google'
 
 interface Props {
   user: User;
@@ -28,8 +27,6 @@ interface LevelLookup {
   4: string;
   5: string;
 }
-
-const asap = Asap({subsets:['latin'], weight:['400']})
 
 const MyCustomDivider = () => {
   return (
@@ -91,21 +88,26 @@ const UserCard = (props: Props) => {
               <p className={styles.userName}>{user.username} </p>
             </div>
             <div className={styles.text}>
-              <div className={styles.learningLaguagesContainer}>
+
                 {user.languages.fluent.map((language, index) => {
-                   return (
-                    <div key={index} className={styles.languageLineWrapper}>
-                      <p className={styles.languageLine}>
-                        {Upper(language)}
-                      </p>
-                      <span className={styles.scaleWrapper}>
+
+                  return (
+                     <div className={styles.learningLaguagesContainer} key={index}>
+                       <div className={styles.languageWrapper}>
+                        <p className={styles.languageLine}>
+                          {Upper(language)} :
+                        </p>
+                      </div>
+                      <div className={styles.scaleWrapper}>
                         <Scale level={5} />
-                      </span>
-                    </div>
+                      </div>
+                      </div>
                     );
                   })}
               </div>
+
               {user.languages.learning.map((learn, index) => {
+
                 return (
                   <div className={styles.learningLaguagesContainer} key={index}>
                     <div className={styles.languageWrapper}>
@@ -120,6 +122,7 @@ const UserCard = (props: Props) => {
                 );
               })}
           </div>
+
           <div className={styles.systems}>
             <div className={styles.gamesWrapper}>
               {user.user_systems.map((system, index) => {
@@ -127,7 +130,6 @@ const UserCard = (props: Props) => {
                   <div className={styles.game} key={index}>
                     <FontAwesomeIcon
                       icon={systems[system]}
-                      className={styles.game}
                     />
                   </div>
                 );
@@ -136,7 +138,6 @@ const UserCard = (props: Props) => {
           </div>
           </div>
         </div>
-      </div>
       <MyCustomDivider/>
     </>
   );

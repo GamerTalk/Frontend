@@ -8,6 +8,7 @@ import {
 } from "@fortawesome/free-brands-svg-icons";
 import { faGamepad } from "@fortawesome/free-solid-svg-icons";
 import { User, Systems } from "./../../global.t";
+import { Divider } from '@mui/material';
 import Upper from "@/app/utils/Upper";
 import Scale from "../elements/Scale";
 
@@ -26,6 +27,20 @@ interface LevelLookup {
   4: string;
   5: string;
 }
+
+const MyCustomDivider = () => {
+  return (
+    <Divider
+      classes={{
+        root: 'custom-divider', // Replace 'custom-divider' with your desired CSS class name
+      }}
+      style={{
+        backgroundColor: 'grey', // Replace 'red' with your desired color
+        height: '2px', // Customize the height of the divider
+      }}
+    />
+  );
+};
 
 // const UserCard = ({ users }: usersProps) => {
 const UserCard = (props: Props) => {
@@ -70,39 +85,43 @@ const UserCard = (props: Props) => {
           </div>
           <div className={styles.userAbout}>
             <div className={styles.text}>
-              <p className={styles.userName}>{user.username}</p>
-            </div>
-            <div className={styles.text}>  
-              <p className={styles.subTitle}>Speaks: </p>
-              {user.languages.fluent.map((language, index) => {
-                return (
-                  <p className={styles.languageLine} key={index}>
-                    {Upper(language)}
-                  </p>
-                );
-              })}
+              <p className={styles.userName}>{user.username} </p>
             </div>
             <div className={styles.text}>
-              <div>
-                <p className={styles.subTitle}>Learning:</p>
-                {user.languages.learning.map((learn, index) => {
+              {user.languages.fluent.map((language, index) => {
+
                   return (
-                    <>
-                      <div className={styles.learningLaguagesContainer} key={index}>
-                        <div className={styles.languageWraper}>
-                      <p className={styles.languageLine} >
-                      {`${Upper(learn.language)} :`} 
-                      </p>
+                    <div className={styles.learningLaguagesContainer} key={index}>
+                      <div className={styles.languageWrapper}>
+                        <p className={styles.languageLine}>
+                          {Upper(language)}
+                        </p>
                       </div>
-                      <div className={styles.scaleWraper}>
-                         <Scale level={learn.level}/>
+                      <div className={styles.scaleWrapper}>
+                        <Scale level={5} />
                       </div>
                     </div>
-                    </>
                   );
                 })}
-              </div>
             </div>
+
+            {user.languages.learning.map((learn, index) => {
+
+              return (
+                <div className={styles.learningLaguagesContainer} key={index}>
+                  <div className={styles.languageWrapper}>
+                    <p className={styles.languageLine}>
+                      {`${Upper(learn.language)}`}
+                    </p>
+                  </div>
+                  <div className={styles.scaleWrapper}>
+                    <Scale level={learn.level} />
+                  </div>
+                </div>
+              );
+            })}
+         </div>
+
           <div className={styles.systems}>
             <div className={styles.gamesWrapper}>
               {user.user_systems.map((system, index) => {
@@ -110,7 +129,6 @@ const UserCard = (props: Props) => {
                   <div className={styles.game} key={index}>
                     <FontAwesomeIcon
                       icon={systems[system]}
-                      className={styles.game}
                     />
                   </div>
                 );
@@ -118,9 +136,8 @@ const UserCard = (props: Props) => {
             </div>
           </div>
           </div>
-
         </div>
-      </div>
+      <MyCustomDivider/>
     </>
   );
 };

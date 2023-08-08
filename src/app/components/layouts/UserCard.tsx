@@ -88,12 +88,11 @@ const UserCard = (props: Props) => {
               <p className={styles.userName}>{user.username} </p>
             </div>
             <div className={styles.text}>
-
-                {user.languages.fluent.map((language, index) => {
+              {user.languages.fluent.map((language, index) => {
 
                   return (
-                     <div className={styles.learningLaguagesContainer} key={index}>
-                       <div className={styles.languageWrapper}>
+                    <div className={styles.learningLaguagesContainer} key={index}>
+                      <div className={styles.languageWrapper}>
                         <p className={styles.languageLine}>
                           {Upper(language)}
                         </p>
@@ -101,27 +100,27 @@ const UserCard = (props: Props) => {
                       <div className={styles.scaleWrapper}>
                         <Scale level={5} />
                       </div>
-                      </div>
-                    );
-                  })}
-              </div>
+                    </div>
+                  );
+                })}
+            </div>
 
-              {user.languages.learning.map((learn, index) => {
+            {user.languages.learning.map((learn, index) => {
 
-                return (
-                  <div className={styles.learningLaguagesContainer} key={index}>
-                    <div className={styles.languageWrapper}>
-                      <p className={styles.languageLine}>
-                        {`${Upper(learn.language)}`}
-                      </p>
+              return (
+                <div className={styles.learningLaguagesContainer} key={index}>
+                  <div className={styles.languageWrapper}>
+                    <p className={styles.languageLine}>
+                      {`${Upper(learn.language)}`}
+                    </p>
                   </div>
                   <div className={styles.scaleWrapper}>
                     <Scale level={learn.level} />
                   </div>
                 </div>
-                );
-              })}
-          </div>
+              );
+            })}
+         </div>
 
           <div className={styles.systems}>
             <div className={styles.gamesWrapper}>

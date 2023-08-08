@@ -95,7 +95,7 @@ const UserCard = (props: Props) => {
                      <div className={styles.learningLaguagesContainer} key={index}>
                        <div className={styles.languageWrapper}>
                         <p className={styles.languageLine}>
-                          {Upper(language)} :
+                          {Upper(language)}
                         </p>
                       </div>
                       <div className={styles.scaleWrapper}>
@@ -112,7 +112,7 @@ const UserCard = (props: Props) => {
                   <div className={styles.learningLaguagesContainer} key={index}>
                     <div className={styles.languageWrapper}>
                       <p className={styles.languageLine}>
-                        {`${Upper(learn.language)} :`}
+                        {`${Upper(learn.language)}`}
                       </p>
                   </div>
                   <div className={styles.scaleWrapper}>

@@ -1,19 +1,15 @@
 .userCard{
-  background-color: #272727;
   width: min(100%,600px);
-  border-radius: 1px;
   width: 90vw;
   margin: 10px auto;
-  border: 1px solid #626262;
   padding: 10px;
-  font-family: Arial, Helvetica, sans-serif;
-  border-radius: 20px;
   cursor: pointer;
 }
 
 .languageLine {
   margin-top: 3px;
   margin-bottom: 2px;
+  display: inline-block;
 }
 
 .subTitle {
@@ -24,8 +20,8 @@
 
 .userInfo{
   text-align: left;
-  display: flex;  
-
+  display: grid;  
+  grid-template-columns: 30% 30%;
 }
 
 .userImg{
@@ -34,69 +30,67 @@
   margin: 0 20px;
   justify-content: center;
   align-items: center;
-  /* position: relative;
-  width: 30%; */
 }
 
 #image {
   width: 100px;
   height: 100px;
-  /* position: absolute; */
   border-radius: 25px;
   object-fit: cover;
-  top: 50%;
-  left: 50%;
-  /* transform: translate(-50%, -50%); */
-}
-
-.userAbout{
-  background-color:#272727;
+  margin-top: 10px;
+  margin-left: 10px;
+  margin-right: 20px;
 }
 
 .userName {
-  font-size: 20px;
+  font-size: 25px;
   margin: 3px 0 5px;
+  font-weight: bold;
+  width: 200px;
 }
 
 .systems{
-  width: 100%;
-  position: relative;
+  position: grid;
+  grid-template-columns: 50% 50%;
+  grid-column: 2/2;
+  align-self: center;
+  width: 300px;
 }
 
 .gamesWrapper{
-  /* position: absolute; */
-  /* top: 50%;
-  left: 50%; */
-  /* transform: translate(-50%, -50%); */
   width: 90%;
   height: 40px;
   border-radius: 10px;
-  display: flex;
-  flex-wrap: wrap;
-  /* justify-content:space-around; */
+  display: grid;
+  justify-content:space-around;
+  grid-template-columns: 20% 20% 20% 20% 20%;
 }
 
 .game{
   color: white;
   font-size: 30px;
-  display: flex;
   align-items: center;
-  margin-right: 10px;
-}
-
-.text {
-  margin-bottom: 5px;
+  margin-right: 15px;
+  margin-top: 5px;
+  width: auto;
 }
 
 .learningLaguagesContainer{
-  display: flex;
+  display: grid;
+  grid-template-columns: 70% 30%;
 }
 
-.scaleWraper{
+.scaleWrapper {
   margin-left: 10px;
   margin-top: 7px;
+  display: inline-block;
 }
 
-.languageWraper{
+.languageWrapper {
   margin: 0;
+  display: inline-block;
+}
+
+.languageLineWrapper {
+  display: inline-block;
 }

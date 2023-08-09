@@ -1,10 +1,15 @@
 <img src="/public\GamerTalkWideLogo.png" alt="Header" title="Header" width="1200">
 
-[![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE) ![GitHub last updated (branch)](https://img.shields.io/github/last-commit/GamerTalk/Frontend/main) ![GitHub issues](https://img.shields.io/github/issues/GamerTalk/Frontend) 
+
+
+
 
 ## Description
 
-This is the frontend server of the project GamerTalk. GamerTalk is an application that allows gamers to connect with each other with the goal of building connections and offering language exchange opportunities.
+This is the frontend server of the project GamerTalk. For the Backend, click <a href="https://github.com/GamerTalk/Backend">here</a>
+
+GamerTalk is an application that allows gamers to connect with each other with the goal of building connections and offering language exchange opportunities.
 
 Deployment: https://gamertalk.onrender.com/
 

@@ -13,6 +13,10 @@ GamerTalk is an application that allows gamers to connect with each other with t
 
 Deployment: https://gamertalk.onrender.com/
 
+<p align="center"><img src="/public\demo_video.gif"  width="600"></p>
+
+
+
 ## Table of Contents
 
 - [Installation](#installation)

@@ -3,8 +3,6 @@
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE) ![GitHub last updated (branch)](https://img.shields.io/github/last-commit/GamerTalk/Frontend/main) ![GitHub issues](https://img.shields.io/github/issues/GamerTalk/Frontend) 
 
 
-
-
 ## Description
 
 This is the frontend server of the project GamerTalk. For the Backend, click <a href="https://github.com/GamerTalk/Backend">here</a>
@@ -15,14 +13,23 @@ Deployment: https://gamertalk.onrender.com/
 
 <p align="center"><img src="/public\demo_video.gif"  width="600"></p>
 
-
-
 ## Table of Contents
 
+- [Tech Stack](#tech&nbsp;stack)
 - [Installation](#installation)
 - [Usage](#usage)
 - [Contributing](#contributing)
 - [License](#license)
+
+## Tech Stack
+| Tech |
+| --- | 
+| Next.js |  
+| TypeScript |  
+| Python |  
+| PostgrSQL |  
+| Firebase |  
+
 
 ## Installation
 

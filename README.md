@@ -15,7 +15,7 @@ Deployment: https://gamertalk.onrender.com/
 
 ## Table of Contents
 
-- [Tech Stack](#tech&nbsp;stack)
+- [Tech Stack](#tech-stack)
 - [Installation](#installation)
 - [Usage](#usage)
 - [Contributing](#contributing)
@@ -27,7 +27,8 @@ Deployment: https://gamertalk.onrender.com/
 | Next.js |  
 | TypeScript |  
 | Python |  
-| PostgrSQL |  
+| Django |  
+| PostgreSQL |  
 | Firebase |  
 
 

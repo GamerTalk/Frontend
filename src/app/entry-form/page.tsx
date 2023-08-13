@@ -11,6 +11,9 @@ import { doc, setDoc } from "firebase/firestore";
 import { db, storage } from "../firebase/firebase";
 import { uploadBytesResumable, ref, getDownloadURL } from "firebase/storage";
 import categories from "../data/data";
+import Alert from '@mui/material/Alert';
+import AlertTitle from '@mui/material/AlertTitle';
+
 export default function UserInfo() {
   const { uid, user,updateUserInfo,retrieve } = UserAuth()
   const [username, setUsername] = useState<string>("");
@@ -26,14 +29,13 @@ export default function UserInfo() {
   const [currPlay, setCurrPlay] = useState<string>("");
   const [currPlayLength, setCurrPlayLength] = useState<number>(0)
 
-
   // for setting up user profile image
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
   const router = useRouter();
   /*
       "uid": "delete me", // NOT LOWER CASE
 #     "username": "GodSlayerXD", // NOT LOWERCASE
-       region: 
+#      region: 
 #     "about_me": "I was born in a log cabin.", // NOT LOWERCASE
 #     "fluent": ["english", "spanish"],
 #     "learning": [{"language":"german", "level": 1}, {"language":"japanese", "level": 3}],
@@ -42,10 +44,35 @@ export default function UserInfo() {
 #     "genre": ["FPS", "survival"],
 #     "currently_playing": "I am currently playing COD MW2, Fortnite, and some Ark Survival" // NOT LOWERCASE
   */
- 
+  
+  const isAllFieldsFilled = () => { 
+    return (username.trim() !== '' &&
+      region.trim() !== '' &&
+      language.length > 0 &&
+      learning.length > 0 &&
+      birthday.trim() !== '' &&
+      system.length > 0 &&
+      genre.length > 0 &&
+      aboutMe.trim() !== '' &&
+      currPlay.trim() !== '');
+  }
 
   const handleFormSubmit = async (event: { preventDefault: () => void }) => {
     event.preventDefault();
+
+    console.log("hoge", {
+      uid,
+      username,
+      region,
+      about_me: aboutMe,
+      fluent: language,
+      learning,
+      date_of_birth: birthday,
+      systems: system,
+      genre,
+      currently_playing: currPlay,
+    });
+
     // upload a user profile picutre to firebase
     if (selectedFile) {
       // uid + filename makes a path of profile img in firebase storage
@@ -80,7 +107,7 @@ export default function UserInfo() {
   };
 
   const sendFormData = (profileImagURL: string) => {
-   // console.log(profileImagURL);
+
     const payload = {
       uid,
       username,
@@ -244,7 +271,7 @@ export default function UserInfo() {
       <h1>Welcome!</h1>
       <p>Tell us about yourself!</p>
 
-      <form onSubmit={handleFormSubmit}>
+      <form method="post" onSubmit={handleFormSubmit}>
         <div className={styles.usernameBox}>
           <label htmlFor="Username" className={styles.heading}>
             {" "}

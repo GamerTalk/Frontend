@@ -21,15 +21,14 @@ Deployment: https://gamertalk.onrender.com/
 - [Contributing](#contributing)
 - [License](#license)
 
-## Tech Stack
-| Tech |
-| --- | 
-| Next.js |  
-| TypeScript |  
-| Python |  
-| Django |  
-| PostgreSQL |  
-| Firebase |  
+## Tech Stack - Frontend
+
+| Task       | Tech        |
+| ---------- | ----------- |
+| Language   | Next.js     |
+| Framework  | TypeScript  |
+|   Style    | CSS         |
+|  User Auth | Firebase    |
 
 
 ## Installation

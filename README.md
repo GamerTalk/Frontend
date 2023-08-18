@@ -5,7 +5,9 @@
 
 ## Description
 
-This is the frontend server of the project GamerTalk. GamerTalk is an application that allows gamers to connect with each other with the goal of building connections and offering language exchange opportunities.
+This is the frontend server of the project GamerTalk. For the Backend, click <a href="https://github.com/GamerTalk/Backend">here</a>
+
+GamerTalk is an application that allows gamers to connect with each other with the goal of building connections and offering language exchange opportunities.
 
 Deployment: https://gamertalk.onrender.com/
 

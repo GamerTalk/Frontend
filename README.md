@@ -29,6 +29,8 @@ Deployment: https://gamertalk.onrender.com/
 | Framework  | ![Next JS](https://img.shields.io/badge/Next-black?style=for-the-badge&logo=next.js&logoColor=white)    |
 |  User Auth <br>Messages <br>Photo Storage  | ![Firebase](https://img.shields.io/badge/firebase-%23039BE5.svg?style=for-the-badge&logo=firebase) |
 
+Click [here](https://github.com/GamerTalk/Backend#tech-stack---backend) for the Backend Tech Stack.
+
 
 
 ## Installation

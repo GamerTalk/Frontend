@@ -13,6 +13,10 @@ import { uploadBytesResumable, ref, getDownloadURL } from "firebase/storage";
 import categories from "../data/data";
 import Alert from '@mui/material/Alert';
 import AlertTitle from '@mui/material/AlertTitle';
+import Typography from '@mui/material/Typography';
+import Modal from '@mui/material/Modal';
+import Box from '@mui/material/Box';
+import AlertModal from "../components/layouts/AlertModal";
 
 export default function UserInfo() {
   const { uid, user,updateUserInfo,retrieve } = UserAuth()
@@ -28,6 +32,9 @@ export default function UserInfo() {
   const [aboutMeLength, setAboutMeLength] = useState<number>(0)
   const [currPlay, setCurrPlay] = useState<string>("");
   const [currPlayLength, setCurrPlayLength] = useState<number>(0)
+  const [open, setOpen] = useState<boolean>(false);
+
+  const [showAlert, setShowAlert] = useState(false);
 
   // for setting up user profile image
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
@@ -43,37 +50,37 @@ export default function UserInfo() {
 #     "systems": ["playstation","PC"],
 #     "genre": ["FPS", "survival"],
 #     "currently_playing": "I am currently playing COD MW2, Fortnite, and some Ark Survival" // NOT LOWERCASE
-  */
+*/
+  
+const handleOpen = () => setOpen(true);
+const handleClose = () => setOpen(false);
   
   const isAllFieldsFilled = () => { 
-    return (username.trim() !== '' &&
-      region.trim() !== '' &&
-      language.length > 0 &&
-      learning.length > 0 &&
-      birthday.trim() !== '' &&
-      system.length > 0 &&
-      genre.length > 0 &&
-      aboutMe.trim() !== '' &&
-      currPlay.trim() !== '');
+    return (
+      username.trim() === '' ||
+      region.trim() === '' ||
+      language.length === 0 ||
+      learning.length === 0 ||
+      birthday.trim() === '' ||
+      system.length === 0 ||
+      genre.length === 0 ||
+      aboutMe.trim() === '' ||
+      currPlay.trim() === ''
+    );
   }
 
   const handleFormSubmit = async (event: { preventDefault: () => void }) => {
     event.preventDefault();
-
-    console.log("hoge", {
-      uid,
-      username,
-      region,
-      about_me: aboutMe,
-      fluent: language,
-      learning,
-      date_of_birth: birthday,
-      systems: system,
-      genre,
-      currently_playing: currPlay,
-    });
-
-    // upload a user profile picutre to firebase
+    
+    // 
+    if (isAllFieldsFilled()) {
+      setOpen(true);
+      // after 5 seconds
+      setTimeout(() => {
+        setShowAlert(false);
+      }, 5000); 
+    } else {
+      // upload a user profile picutre to firebase
     if (selectedFile) {
       // uid + filename makes a path of profile img in firebase storage
       const storageRef = ref(storage, `/images/${uid}/${selectedFile.name}`);
@@ -104,6 +111,40 @@ export default function UserInfo() {
         console.error("download error", error);
       }
     }
+    }
+
+    // upload a user profile picutre to firebase
+    // if (selectedFile) {
+    //   // uid + filename makes a path of profile img in firebase storage
+    //   const storageRef = ref(storage, `/images/${uid}/${selectedFile.name}`);
+    //   try {
+    //     // upload
+    //     const uploadedSnapshot = await uploadBytesResumable(
+    //       storageRef,
+    //       selectedFile
+    //     );
+    //     // url to access to firebase storage
+    //     const downLoadURL: string = await getDownloadURL(uploadedSnapshot.ref);
+    //     // send to data to
+    //     sendFormData(downLoadURL);
+    //    // console.log("upload is successed");
+    //   } catch (error) {
+    //     // error handling
+    //     console.error("Upload error:", error);
+    //   }
+    // } else {
+    //   // user image as default
+    //   const defaultPath = "/images/default/userdefault.png";
+    //   const storageRef = ref(storage, defaultPath);
+    //   try {
+    //     const downloadURL = await getDownloadURL(storageRef);
+    //     sendFormData(downloadURL);
+    //     //console.log("default image upload is successed");
+    //   } catch (error) {
+    //     console.error("download error", error);
+    //   }
+    // }
+
   };
 
   const sendFormData = (profileImagURL: string) => {
@@ -121,8 +162,6 @@ export default function UserInfo() {
       currently_playing: currPlay,
       profile_picture_url: profileImagURL,
     };
-
-    //console.log(payload);
 
     // send a data to firestore
     setDoc(doc(db, "users", uid!), {
@@ -270,6 +309,12 @@ export default function UserInfo() {
     <div>
       <h1>Welcome!</h1>
       <p>Tell us about yourself!</p>
+
+      {open && (
+        <AlertModal open={open} handleClose={handleClose} title="Validation Error"
+        message=" All sections must be filled."
+        />
+      )}
 
       <form method="post" onSubmit={handleFormSubmit}>
         <div className={styles.usernameBox}>

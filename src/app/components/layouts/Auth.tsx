@@ -5,6 +5,7 @@ import Link from "next/link"
 import SubmitButton from "../elements/SubmitBtn"
 import { useRouter } from 'next/navigation';
 import { UserAuth } from '../../context/AuthContext'
+import AlertModal from "./AlertModal"
 
  interface Props {
   isSignIn: boolean
@@ -14,9 +15,13 @@ const Auth = ({isSignIn}: Props) => {
   
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-
+  const [open, setOpen] = useState<boolean>(false);
+  const [alertMessage, setAlertMessage] = useState<string>("");
   const { loginUser, createUser } = UserAuth();
   const router = useRouter();
+
+  // handling alert modal
+  const handleClose = () => setOpen(false);
 
   // handling submit email and password
   const handleSubmit = async (e:React.FormEvent<HTMLFormElement>) => {
@@ -26,7 +31,8 @@ const Auth = ({isSignIn}: Props) => {
       await loginUser(email, password);
       router.push('/home');
     } catch (err) {
-      window.alert('Incorrect Email or Password')
+      setOpen(true);
+      setAlertMessage('Incorrect Email or Password');
       console.error(err);
     }
     // console.log('EMAIL', email, 'PASSWORD', password);
@@ -38,7 +44,8 @@ const Auth = ({isSignIn}: Props) => {
       await createUser(email,password);
       router.push('/entry-form')
     } catch (err) {
-      window.alert('Invaild Email or Password \nThe Password needs to be at least 4 charcaters')
+      setOpen(true);
+      setAlertMessage('Invaild Email or Password \nThe Password needs to be at least 4 charcaters');
       console.error(err);
     }
   }
@@ -46,7 +53,13 @@ const Auth = ({isSignIn}: Props) => {
   return (
     
     <div className={styles.authContainer}>
-
+      {open && (
+          <AlertModal open={open} handleClose={handleClose} title="Validation Error"
+          message={alertMessage}
+        />
+      )
+      
+      }
       {isSignIn ? (
         <p className={styles.title}>Welcome Back!</p>
          ) : (

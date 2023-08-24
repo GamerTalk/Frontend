@@ -46,7 +46,7 @@ export default function UserInfo() {
 #     "currently_playing": "I am currently playing COD MW2, Fortnite, and some Ark Survival" // NOT LOWERCASE
 */
   
-const handleOpen = () => setOpen(true);
+  
 const handleClose = () => setOpen(false);
   
   const isAllFieldsFilled = () => { 

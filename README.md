@@ -1,19 +1,37 @@
 <img src="/public\GamerTalkWideLogo.png" alt="Header" title="Header" width="1200">
 
-[![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE) ![GitHub last updated (branch)](https://img.shields.io/github/last-commit/GamerTalk/Frontend/main) ![GitHub issues](https://img.shields.io/github/issues/GamerTalk/Frontend) 
+
 
 ## Description
 
-This is the frontend server of the project GamerTalk. GamerTalk is an application that allows gamers to connect with each other with the goal of building connections and offering language exchange opportunities.
+This is the frontend server of the project GamerTalk. For the Backend, click <a href="https://github.com/GamerTalk/Backend">here</a>
+
+GamerTalk is an application that allows gamers to connect with each other with the goal of building connections and offering language exchange opportunities.
 
 Deployment: https://gamertalk.onrender.com/
 
+<p align="center"><img src="/public\demo_video.gif"  width="600"></p>
+
 ## Table of Contents
 
+- [Tech Stack - Frontend](#tech-stack---frontend)
 - [Installation](#installation)
 - [Usage](#usage)
 - [Contributing](#contributing)
 - [License](#license)
+
+## Tech Stack - Frontend
+
+| Task       | Tech        |
+| ---------- | ----------- |
+| Language  | ![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)  |
+| Framework  | ![Next JS](https://img.shields.io/badge/Next-black?style=for-the-badge&logo=next.js&logoColor=white)    |
+|  User Auth <br>Messages <br>Photo Storage  | ![Firebase](https://img.shields.io/badge/firebase-%23039BE5.svg?style=for-the-badge&logo=firebase) |
+
+Click [here](https://github.com/GamerTalk/Backend#tech-stack---backend) for the Backend Tech Stack.
+
+
 
 ## Installation
 

@@ -11,11 +11,6 @@ import { doc, setDoc } from "firebase/firestore";
 import { db, storage } from "../firebase/firebase";
 import { uploadBytesResumable, ref, getDownloadURL } from "firebase/storage";
 import categories from "../data/data";
-import Alert from '@mui/material/Alert';
-import AlertTitle from '@mui/material/AlertTitle';
-import Typography from '@mui/material/Typography';
-import Modal from '@mui/material/Modal';
-import Box from '@mui/material/Box';
 import AlertModal from "../components/layouts/AlertModal";
 
 export default function UserInfo() {
@@ -32,10 +27,9 @@ export default function UserInfo() {
   const [aboutMeLength, setAboutMeLength] = useState<number>(0)
   const [currPlay, setCurrPlay] = useState<string>("");
   const [currPlayLength, setCurrPlayLength] = useState<number>(0)
+  // AlertModal
   const [open, setOpen] = useState<boolean>(false);
-
-  const [showAlert, setShowAlert] = useState(false);
-
+  const [alertMessage, setAlertMessage] = useState<string>("");
   // for setting up user profile image
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
   const router = useRouter();
@@ -72,13 +66,9 @@ const handleClose = () => setOpen(false);
   const handleFormSubmit = async (event: { preventDefault: () => void }) => {
     event.preventDefault();
     
-    // 
     if (isAllFieldsFilled()) {
+      setAlertMessage("All sections must be filled.");
       setOpen(true);
-      // after 5 seconds
-      setTimeout(() => {
-        setShowAlert(false);
-      }, 5000); 
     } else {
       // upload a user profile picutre to firebase
     if (selectedFile) {
@@ -181,7 +171,8 @@ const handleClose = () => setOpen(false);
       })
       .catch((error) => {
         console.log(error);
-        window.alert('Please fill in all required fields')
+        setAlertMessage('Please fill in all required fields');
+        setOpen(true);
       });
   };
 
@@ -258,7 +249,8 @@ const handleClose = () => setOpen(false);
     const dateValue = event.target.value;
     
     if (getAge(dateValue) < 18) {
-      window.alert('You have to be over 18 to register for GamerTalk')
+      setAlertMessage('You have to be over 18 to register for GamerTalk');
+      setOpen(true);
     } else {
       setBirthday(dateValue)
     }
@@ -312,7 +304,7 @@ const handleClose = () => setOpen(false);
 
       {open && (
         <AlertModal open={open} handleClose={handleClose} title="Validation Error"
-        message=" All sections must be filled."
+          message={alertMessage}
         />
       )}
 

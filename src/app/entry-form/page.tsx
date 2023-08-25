@@ -11,6 +11,8 @@ import { doc, setDoc } from "firebase/firestore";
 import { db, storage } from "../firebase/firebase";
 import { uploadBytesResumable, ref, getDownloadURL } from "firebase/storage";
 import categories from "../data/data";
+import AlertModal from "../components/layouts/AlertModal";
+
 export default function UserInfo() {
   const { uid, user,updateUserInfo,retrieve } = UserAuth()
   const [username, setUsername] = useState<string>("");
@@ -25,15 +27,16 @@ export default function UserInfo() {
   const [aboutMeLength, setAboutMeLength] = useState<number>(0)
   const [currPlay, setCurrPlay] = useState<string>("");
   const [currPlayLength, setCurrPlayLength] = useState<number>(0)
-
-
+  // AlertModal
+  const [open, setOpen] = useState<boolean>(false);
+  const [alertMessage, setAlertMessage] = useState<string>("");
   // for setting up user profile image
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
   const router = useRouter();
   /*
       "uid": "delete me", // NOT LOWER CASE
 #     "username": "GodSlayerXD", // NOT LOWERCASE
-       region: 
+#      region: 
 #     "about_me": "I was born in a log cabin.", // NOT LOWERCASE
 #     "fluent": ["english", "spanish"],
 #     "learning": [{"language":"german", "level": 1}, {"language":"japanese", "level": 3}],
@@ -41,12 +44,33 @@ export default function UserInfo() {
 #     "systems": ["playstation","PC"],
 #     "genre": ["FPS", "survival"],
 #     "currently_playing": "I am currently playing COD MW2, Fortnite, and some Ark Survival" // NOT LOWERCASE
-  */
- 
+*/
+  
+  
+const handleClose = () => setOpen(false);
+  
+  const isAllFieldsFilled = () => { 
+    return (
+      username.trim() === '' ||
+      region.trim() === '' ||
+      language.length === 0 ||
+      learning.length === 0 ||
+      birthday.trim() === '' ||
+      system.length === 0 ||
+      genre.length === 0 ||
+      aboutMe.trim() === '' ||
+      currPlay.trim() === ''
+    );
+  }
 
   const handleFormSubmit = async (event: { preventDefault: () => void }) => {
     event.preventDefault();
-    // upload a user profile picutre to firebase
+    
+    if (isAllFieldsFilled()) {
+      setAlertMessage("All sections must be filled.");
+      setOpen(true);
+    } else {
+      // upload a user profile picutre to firebase
     if (selectedFile) {
       // uid + filename makes a path of profile img in firebase storage
       const storageRef = ref(storage, `/images/${uid}/${selectedFile.name}`);
@@ -77,10 +101,44 @@ export default function UserInfo() {
         console.error("download error", error);
       }
     }
+    }
+
+    // upload a user profile picutre to firebase
+    // if (selectedFile) {
+    //   // uid + filename makes a path of profile img in firebase storage
+    //   const storageRef = ref(storage, `/images/${uid}/${selectedFile.name}`);
+    //   try {
+    //     // upload
+    //     const uploadedSnapshot = await uploadBytesResumable(
+    //       storageRef,
+    //       selectedFile
+    //     );
+    //     // url to access to firebase storage
+    //     const downLoadURL: string = await getDownloadURL(uploadedSnapshot.ref);
+    //     // send to data to
+    //     sendFormData(downLoadURL);
+    //    // console.log("upload is successed");
+    //   } catch (error) {
+    //     // error handling
+    //     console.error("Upload error:", error);
+    //   }
+    // } else {
+    //   // user image as default
+    //   const defaultPath = "/images/default/userdefault.png";
+    //   const storageRef = ref(storage, defaultPath);
+    //   try {
+    //     const downloadURL = await getDownloadURL(storageRef);
+    //     sendFormData(downloadURL);
+    //     //console.log("default image upload is successed");
+    //   } catch (error) {
+    //     console.error("download error", error);
+    //   }
+    // }
+
   };
 
   const sendFormData = (profileImagURL: string) => {
-   // console.log(profileImagURL);
+
     const payload = {
       uid,
       username,
@@ -94,8 +152,6 @@ export default function UserInfo() {
       currently_playing: currPlay,
       profile_picture_url: profileImagURL,
     };
-
-    //console.log(payload);
 
     // send a data to firestore
     setDoc(doc(db, "users", uid!), {
@@ -115,7 +171,8 @@ export default function UserInfo() {
       })
       .catch((error) => {
         console.log(error);
-        window.alert('Please fill in all required fields')
+        setAlertMessage('Please fill in all required fields');
+        setOpen(true);
       });
   };
 
@@ -192,7 +249,8 @@ export default function UserInfo() {
     const dateValue = event.target.value;
     
     if (getAge(dateValue) < 18) {
-      window.alert('You have to be over 18 to register for GamerTalk')
+      setAlertMessage('You have to be over 18 to register for GamerTalk');
+      setOpen(true);
     } else {
       setBirthday(dateValue)
     }
@@ -244,7 +302,13 @@ export default function UserInfo() {
       <h1>Welcome!</h1>
       <p>Tell us about yourself!</p>
 
-      <form onSubmit={handleFormSubmit}>
+      {open && (
+        <AlertModal open={open} handleClose={handleClose} title="Validation Error"
+          message={alertMessage}
+        />
+      )}
+
+      <form method="post" onSubmit={handleFormSubmit}>
         <div className={styles.usernameBox}>
           <label htmlFor="Username" className={styles.heading}>
             {" "}

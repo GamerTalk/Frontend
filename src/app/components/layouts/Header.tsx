@@ -76,7 +76,8 @@ export default function Header() {
                     id={styles.image}
                     src={userInfo?.profile_picture_url}
                     alt="user-photo"
-                    width='55'
+                    width={55}
+                    height={55}
                   />
                 ) : (
                   ""

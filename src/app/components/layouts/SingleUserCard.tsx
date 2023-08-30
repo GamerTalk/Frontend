@@ -74,6 +74,8 @@ export default function SingleUserCard(props: any) {
                 "https://firebasestorage.googleapis.com/v0/b/gamertalk-8133c.appspot.com/o/images%2Fdefault%2Fuserdefault.png?alt=media&token=00630336-daf3-4b5d-ab58-895d704863b6"
               }
               alt='profile-image'
+              width={150}
+              height={150}
               id={styles.image}
             />
           </div>

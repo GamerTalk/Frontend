@@ -82,6 +82,8 @@ const UserCard = (props: Props) => {
                 "https://firebasestorage.googleapis.com/v0/b/gamertalk-8133c.appspot.com/o/images%2Fdefault%2Fuserdefault.png?alt=media&token=00630336-daf3-4b5d-ab58-895d704863b6"
               }
               id={styles.image}
+              height={100}
+              width={100}
               alt='profile-picture'
             />
           </div>

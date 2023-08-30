@@ -27,6 +27,8 @@ export default function PostCard(props: any) {
             }
             alt='profile-picture'
             className={styles.image}
+            width='50'
+            height='50'
           />
         </div>
         <div className={styles.userAndDate}>

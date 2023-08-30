@@ -32,7 +32,7 @@ const MessageBox = (prop:Prop) => {
     <Link href={"/messages/message"}>
     <div className={styles.messageBox} onClick={handleSelect}>
       <div className={styles.imageWrapper}>
-      <Image src={chatUserProfileURL} id={styles.userImg} alt='user-image' />
+      <Image src={chatUserProfileURL} id={styles.userImg} alt='user-image' width={40} height={40}/>
       </div>
         <div className={styles.messageInfo}>
           <div className={styles.messageContentLeft}>

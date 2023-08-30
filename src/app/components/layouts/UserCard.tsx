@@ -11,6 +11,7 @@ import { User, Systems } from "./../../global.t";
 import { Divider } from '@mui/material';
 import Upper from "@/app/utils/Upper";
 import Scale from "../elements/Scale";
+import Image from "next/image";
 
 interface Props {
   user: User;
@@ -75,12 +76,13 @@ const UserCard = (props: Props) => {
       >
         <div className={styles.userInfo}>
           <div className={styles.userImg}>
-            <img
+            <Image
               src={
                 user.profile_picture_url ||
                 "https://firebasestorage.googleapis.com/v0/b/gamertalk-8133c.appspot.com/o/images%2Fdefault%2Fuserdefault.png?alt=media&token=00630336-daf3-4b5d-ab58-895d704863b6"
               }
               id={styles.image}
+              alt='profile-picture'
             />
           </div>
           <div className={styles.userAbout}>

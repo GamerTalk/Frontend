@@ -184,7 +184,7 @@ export const AuthContextProvider: React.FC<{ children: ReactNode }> = ({
 
   useEffect(() => {
     retrieve(user);
-  }, [user]);
+  }, [user, retrieve]);
 
   return (
     <UserContext.Provider

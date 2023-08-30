@@ -2,6 +2,7 @@
 import React, { useContext } from 'react'
 import styles from "./MessageBox.module.css";
 import Link from 'next/link';
+import Image from "next/image";
 import { MessagesContext } from '@/app/context/MessageContext';
 import { modifyDate } from '@/app/utils/modifyDate';
 
@@ -31,7 +32,7 @@ const MessageBox = (prop:Prop) => {
     <Link href={"/messages/message"}>
     <div className={styles.messageBox} onClick={handleSelect}>
       <div className={styles.imageWrapper}>
-      <img src={chatUserProfileURL} id={styles.userImg} />
+      <Image src={chatUserProfileURL} id={styles.userImg} alt='user-image' />
       </div>
         <div className={styles.messageInfo}>
           <div className={styles.messageContentLeft}>

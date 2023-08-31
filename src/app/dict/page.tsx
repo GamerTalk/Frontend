@@ -2,7 +2,7 @@
 
 "use client"
 
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useMemo, useCallback } from 'react'
 import styles from './dict.module.css'
 import DictCheckbox from '../components/elements/Dict-Checkbox'
 import Add from '../components/elements/dict-add/page'

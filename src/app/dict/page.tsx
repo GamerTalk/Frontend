@@ -67,7 +67,7 @@ export default function Dict() {
   
   useEffect(() => {
     getData();
-  }, [uid]);
+  }, [uid, getData]);
 
   const openPopup = () => {
     setIsPopupOpen(true);

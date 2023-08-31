@@ -12,6 +12,7 @@ import { db, storage } from "../firebase/firebase";
 import { uploadBytesResumable, ref, getDownloadURL } from "firebase/storage";
 import categories from "../data/data";
 import AlertModal from "../components/layouts/AlertModal";
+import Image from "next/image";
 
 export default function UserInfo() {
   const { uid, user,updateUserInfo,retrieve } = UserAuth()
@@ -330,12 +331,14 @@ const handleClose = () => setOpen(false);
         
 
         <div className={styles.userImg}>
-            <img
+            <Image
               src={
                 "https://firebasestorage.googleapis.com/v0/b/gamertalk-8133c.appspot.com/o/images%2Fdefault%2Fuserdefault.png?alt=media&token=00630336-daf3-4b5d-ab58-895d704863b6"
               }
-              alt=""
+              alt='profile-image'
               id={styles.image}
+              height={70}
+              width={70}
             />
             </div>
 

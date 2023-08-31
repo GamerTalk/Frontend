@@ -39,7 +39,7 @@ useEffect(() => {
   if (timer) {
     redirect();
   }
-}, [timer, uid]);
+}, [timer, uid, router]);
 
 return null; // Render a blank screen
 }

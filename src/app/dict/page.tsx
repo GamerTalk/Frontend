@@ -20,29 +20,30 @@ export default function Dict() {
   const [selectedCards, setSelectedCards] = useState<string[]>([]);
   const [timer, setTimer] = useState(false)
   const {uid} = UserAuth();
-
-  const config = {
-    method: 'GET',
-    headers: {
-      'uid' : uid
-    }
-  }
+  const config = useMemo(() => {
+    return {
+      method: 'GET',
+      headers: {
+        'uid': uid
+      }
+    };
+  }, [uid]); // Only recreate the config object when uid changes
 
   const getURL = process.env.NEXT_PUBLIC_API_URL + "/api/get-flashcards/"
   const deleteURL = process.env.NEXT_PUBLIC_API_URL + "/api/delete-flashcard/"
 
-  const getData = async () => {
+  const getData = useCallback(async () => {
     try {
       if (uid) {
-        const userData: any = await axios.get(getURL, config).then((result) => result.data);
+        const userData = await axios.get(getURL, config).then((result) => result.data);
         setCards(userData);
       } else {
-        // console.log('fail');
+        console.log('fail');
       }
     } catch (error) {
       console.log(error);
     }
-  };
+  }, [uid, getURL, config]); // List dependencies that getData relies on
 
   const deleteData = async () => {
     try {

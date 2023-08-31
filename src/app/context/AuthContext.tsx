@@ -91,7 +91,7 @@ export const AuthContextProvider: React.FC<{ children: ReactNode }> = ({
         .then((result) => result.data);
       return setUserInfo(userData);
     }
-  }, []);
+  }, [uid]);
 
   const resetPasswordEmail = async (email: string) => {
     return sendPasswordResetEmail(auth, email);

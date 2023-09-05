@@ -47,7 +47,7 @@ export default function Header() {
           </div>
           <div className={styles.userInfoForMessage}>
             <div className={styles.imageContainer}>
-              <img src={userProfileURL} alt="userImage" id={styles.image} />
+              <Image src={userProfileURL} alt="userImage" id={styles.image} width='55'/>
             </div>
             <div className={styles.userName}>
               <p className={styles.userName}>{userName}</p>
@@ -72,10 +72,12 @@ export default function Header() {
             <div className={styles.userInfo}>
               <div className={styles.imageContainer}>
                 {userInfo?.profile_picture_url ? (
-                  <img
+                  <Image
                     id={styles.image}
                     src={userInfo?.profile_picture_url}
                     alt="user-photo"
+                    width={55}
+                    height={55}
                   />
                 ) : (
                   ""

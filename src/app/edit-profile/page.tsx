@@ -24,6 +24,7 @@ import { db, storage } from "../firebase/firebase";
 import { getDownloadURL, ref, uploadBytesResumable } from "firebase/storage";
 import Reset from "../reset-password/page";
 import categories from "../data/data";
+import Image from "next/image";
 
 export default function Profile() {
   const { uid, updateUserInfo, userDeletion } = UserAuth();
@@ -86,7 +87,7 @@ export default function Profile() {
       }
     }
     getData();
-  }, [uid]);
+  }, [uid, config, url]);
 
   const handleFormSubmit = async (event: { preventDefault: () => void }) => {
     event.preventDefault();
@@ -267,13 +268,15 @@ export default function Profile() {
       {profile ? (
         <>
           <div className={styles.userImg}>
-            <img
+            <Image
               src={
                 profile.profile_picture_url ||
                 "https://firebasestorage.googleapis.com/v0/b/gamertalk-8133c.appspot.com/o/images%2Fdefault%2Fuserdefault.png?alt=media&token=00630336-daf3-4b5d-ab58-895d704863b6"
               }
-              alt=""
+              alt='profile-image'
               id={styles.image}
+              height={70}
+              width={70}
             />
           </div>
           <div>

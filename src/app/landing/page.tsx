@@ -6,6 +6,7 @@ import Auth from "../components/layouts/Auth"
 import { UserAuth } from '../context/AuthContext';
 import Link from 'next/link';
 import axios from 'axios';
+import Image from 'next/image';
 
 
 export default function Landing() {
@@ -46,10 +47,12 @@ export default function Landing() {
       </div>
       <div className={styles.context}>
         <div className={styles.box}>
-          <img
+          <Image
             className={styles.image}
             src="/GamerTalkLogotransparent.png"
             alt="user-photo"
+            height={250}
+            width={350}
           />
         </div>
         <Link href="/auth/signin">

@@ -6,13 +6,18 @@ import React, { useState } from 'react';
 import styles from './add.module.css';
 import axios from 'axios';
 import { UserAuth } from '@/app/context/AuthContext';
-
+import AlertModal from '../../layouts/AlertModal';
 
 const Add: React.FC<Param> = ({ handleClosePopup }) => {
   const [front, setFront] = useState('');
   const [back, setBack] = useState('');
+  // AlertModal
+  const [open, setOpen] = useState<boolean>(false);
+  const [alertMessage, setAlertMessage] = useState<string>("");
 
   const { uid } = UserAuth();
+
+  const handleClose = () => setOpen(false);
 
   const handleFront = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = event.target;
@@ -41,13 +46,19 @@ const Add: React.FC<Param> = ({ handleClosePopup }) => {
         handleClosePopup();
       })
       .catch((error) => {
-        window.alert('Please enter in words for both the Front and Back')
+        setAlertMessage('Please enter in words for both the Front and Back');
+        setOpen(true);
         console.log(error);
       });
   };
 
   return (
     <div className={styles.popup}>
+      {open && (
+         <AlertModal open={open} handleClose={handleClose} title="Validation Error"
+         message={alertMessage}
+       />
+      )}
       <div className={styles.content}>
         <h2>Add a new card</h2>
         <form onSubmit={handleFormSubmit}>

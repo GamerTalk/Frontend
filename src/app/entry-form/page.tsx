@@ -104,38 +104,6 @@ const handleClose = () => setOpen(false);
     }
     }
 
-    // upload a user profile picutre to firebase
-    // if (selectedFile) {
-    //   // uid + filename makes a path of profile img in firebase storage
-    //   const storageRef = ref(storage, `/images/${uid}/${selectedFile.name}`);
-    //   try {
-    //     // upload
-    //     const uploadedSnapshot = await uploadBytesResumable(
-    //       storageRef,
-    //       selectedFile
-    //     );
-    //     // url to access to firebase storage
-    //     const downLoadURL: string = await getDownloadURL(uploadedSnapshot.ref);
-    //     // send to data to
-    //     sendFormData(downLoadURL);
-    //    // console.log("upload is successed");
-    //   } catch (error) {
-    //     // error handling
-    //     console.error("Upload error:", error);
-    //   }
-    // } else {
-    //   // user image as default
-    //   const defaultPath = "/images/default/userdefault.png";
-    //   const storageRef = ref(storage, defaultPath);
-    //   try {
-    //     const downloadURL = await getDownloadURL(storageRef);
-    //     sendFormData(downloadURL);
-    //     //console.log("default image upload is successed");
-    //   } catch (error) {
-    //     console.error("download error", error);
-    //   }
-    // }
-
   };
 
   const sendFormData = (profileImagURL: string) => {

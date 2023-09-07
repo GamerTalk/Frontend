@@ -50,18 +50,6 @@ export default function Home() {
     setMessage(value);
   };
 
-  // useEffect(() => {
-  //   if (!uid) {
-  //     const timeout = setTimeout(() => {
-  //       router.push('/landing');
-  //     }, 3000); // Delay of 3 seconds before redirecting
-
-  //     return () => {
-  //       clearTimeout(timeout);
-  //     };
-  //   }
-  // }, [uid]);
-
   useEffect(() => {
     async function getData() {
       try {
@@ -77,12 +65,8 @@ export default function Home() {
       }
     }
     getData();
-    //console.log("saved");
   }, [uid, counter]);
 
-  // useEffect(() => {
-  //   console.log(posts);
-  // }, [posts]);
 
   return (
     <div className={styles.contents_div}>

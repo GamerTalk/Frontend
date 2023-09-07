@@ -8,6 +8,7 @@ import axios from "axios";
 import SingleUserCard from "../components/layouts/SingleUserCard";
 import { User, Post } from "../global.t";
 import PostCard from "../components/layouts/PostCard";
+import AlertModal from "../components/layouts/AlertModal";
 
 export default function Home() {
   const [message, setMessage] = useState<string>("");
@@ -16,6 +17,8 @@ export default function Home() {
   const [singleUser, setSingleUser] = useState<User | object>({});
   const [showProfilePage, setShowProfilePage] = useState<boolean>(false);
   const [showPostForm, setPostForm] = useState<boolean>(true)
+  const [open, setOpen] = useState<boolean>(false);
+  const [alertMessage, setAlertMessage] = useState<string>("");
 
   const { uid, userInfo } = UserAuth();
   const router = useRouter();
@@ -29,18 +32,16 @@ export default function Home() {
       time_of_message: new Date().toISOString(),
     };
 
-    //console.log(payload);
-
     const url = process.env.NEXT_PUBLIC_API_URL + "/api/new-post/";
 
-    axios
-      .post(url, payload)
+    axios.post(url, payload)
       .then((response) => {
         setCounter(counter + 1);
         setMessage("");
       })
       .catch((error) => {
-        window.alert('Please enter a message.')
+        setAlertMessage('Please enter a message');
+        setOpen(true);
         console.log(error);
       });
   };
@@ -49,6 +50,9 @@ export default function Home() {
     const { value } = event.target;
     setMessage(value);
   };
+
+  // for alert message
+  const handleClose = () => setOpen(false);
 
   useEffect(() => {
     async function getData() {
@@ -67,9 +71,14 @@ export default function Home() {
     getData();
   }, [uid, counter]);
 
-
+  
   return (
     <div className={styles.contents_div}>
+      {open && (
+        <AlertModal open={open} handleClose={handleClose} title="Validation Error"
+         message={alertMessage}
+       />
+      )}
       {!showProfilePage ? (
         <>
           {showPostForm ? (

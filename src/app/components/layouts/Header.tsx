@@ -72,6 +72,8 @@ export default function Header() {
             <div className={styles.userInfo}>
               <div className={styles.imageContainer}>
                 {userInfo?.profile_picture_url ? (
+                  <img src={userProfileURL} alt="userImage" id={styles.image} />
+                  /*
                   <Image
                     id={styles.image}
                     src={userInfo?.profile_picture_url}
@@ -79,6 +81,7 @@ export default function Header() {
                     width={55}
                     height={55}
                   />
+                  */
                 ) : (
                   ""
                 )}

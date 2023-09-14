@@ -268,7 +268,15 @@ export default function Profile() {
       {profile ? (
         <>
           <div className={styles.userImg}>
-            <Image
+            <img
+              src={
+                profile.profile_picture_url ||
+                "https://firebasestorage.googleapis.com/v0/b/gamertalk-8133c.appspot.com/o/images%2Fdefault%2Fuserdefault.png?alt=media&token=00630336-daf3-4b5d-ab58-895d704863b6"
+              }
+              alt='profile-image'
+              id={styles.image}
+            />
+            {/* <Image
               src={
                 profile.profile_picture_url ||
                 "https://firebasestorage.googleapis.com/v0/b/gamertalk-8133c.appspot.com/o/images%2Fdefault%2Fuserdefault.png?alt=media&token=00630336-daf3-4b5d-ab58-895d704863b6"
@@ -277,7 +285,7 @@ export default function Profile() {
               id={styles.image}
               height={70}
               width={70}
-            />
+            /> */}
           </div>
           <div>
             <label htmlFor={styles.userUploadImg}>

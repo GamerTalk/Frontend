@@ -47,13 +47,18 @@ export default function Landing() {
       </div>
       <div className={styles.context}>
         <div className={styles.box}>
-          <Image
+          <img
+            className={styles.image}
+            src="/GamerTalkLogotransparent.png"
+            alt="user-photo"
+          />
+          {/* <Image
             className={styles.image}
             src="/GamerTalkLogotransparent.png"
             alt="user-photo"
             height={250}
             width={350}
-          />
+          /> */}
         </div>
         <Link href="/auth/signin">
           {" "}

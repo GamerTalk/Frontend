@@ -68,7 +68,15 @@ export default function SingleUserCard(props: any) {
         <>
         <div className={styles.first}>
           <div className={styles.userImg}>
-            <Image
+          <img
+              src={
+                userObject.profile_picture_url ||
+                "https://firebasestorage.googleapis.com/v0/b/gamertalk-8133c.appspot.com/o/images%2Fdefault%2Fuserdefault.png?alt=media&token=00630336-daf3-4b5d-ab58-895d704863b6"
+              }
+              alt='profile-image'
+              id={styles.image}
+            />
+            {/* <Image
               src={
                 userObject.profile_picture_url ||
                 "https://firebasestorage.googleapis.com/v0/b/gamertalk-8133c.appspot.com/o/images%2Fdefault%2Fuserdefault.png?alt=media&token=00630336-daf3-4b5d-ab58-895d704863b6"
@@ -77,7 +85,7 @@ export default function SingleUserCard(props: any) {
               width={150}
               height={150}
               id={styles.image}
-            />
+            /> */}
           </div>
 
           <div className={styles.speakAndLearn}>

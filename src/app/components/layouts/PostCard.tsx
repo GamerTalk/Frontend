@@ -20,7 +20,15 @@ export default function PostCard(props: any) {
     <div className={styles.post} key={post.id} onClick={singleUserView}>
       <div className={styles.info_contents}>
         <div className={styles.pic}>
-          <Image
+        <img
+          src={
+          post.sender_data.profile_picture_url ||
+          "https://firebasestorage.googleapis.com/v0/b/gamertalk-8133c.appspot.com/o/images%2Fdefault%2Fuserdefault.png?alt=media&token=00630336-daf3-4b5d-ab58-895d704863b6"
+          }
+          alt='profile-picture'
+          className={styles.image}
+        />
+          {/* <Image
             src={
               post.sender_data.profile_picture_url ||
               "https://firebasestorage.googleapis.com/v0/b/gamertalk-8133c.appspot.com/o/images%2Fdefault%2Fuserdefault.png?alt=media&token=00630336-daf3-4b5d-ab58-895d704863b6"
@@ -29,7 +37,7 @@ export default function PostCard(props: any) {
             className={styles.image}
             width={50}
             height={50}
-          />
+          /> */}
         </div>
         <div className={styles.userAndDate}>
           <div className={styles.user}>{post.sender_data.username}</div>

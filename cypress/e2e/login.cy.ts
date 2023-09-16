@@ -4,5 +4,7 @@ describe('Sign in', () => {
     cy.get('#email').type(Cypress.env("username"));
     cy.get('#password').type(Cypress.env("user_password"));
     cy.get('form').submit();
+
+    cy.url().should('include', 'home');
   })
 })

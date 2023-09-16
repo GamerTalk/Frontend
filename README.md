@@ -5,7 +5,7 @@
 
 ## Description
 
-This is the frontend server of the project GamerTalk. For the Backend, click <a href="https://github.com/GamerTalk/Backend">here</a>
+This is the frontend repository of the project GamerTalk. For the Backend, click <a href="https://github.com/GamerTalk/Backend">here</a>
 
 GamerTalk is an application that allows gamers to connect with each other with the goal of building connections and offering language exchange opportunities.
 
@@ -18,6 +18,8 @@ Deployment: https://gamertalk.onrender.com/
 - [Tech Stack - Frontend](#tech-stack---frontend)
 - [Installation](#installation)
 - [Usage](#usage)
+- [Running Tests](#running-tests)
+- [Writing Tests](#writing-tests)
 - [Contributing](#contributing)
 - [License](#license)
 
@@ -28,6 +30,7 @@ Deployment: https://gamertalk.onrender.com/
 | Language  | ![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)  |
 | Framework  | ![Next JS](https://img.shields.io/badge/Next-black?style=for-the-badge&logo=next.js&logoColor=white)    |
 |  User Auth <br>Messages <br>Photo Storage  | ![Firebase](https://img.shields.io/badge/firebase-%23039BE5.svg?style=for-the-badge&logo=firebase) |
+| Testing | ![cypress](https://img.shields.io/badge/-cypress-%23E5E5E5?style=for-the-badge&logo=cypress&logoColor=058a5e)
 
 Click [here](https://github.com/GamerTalk/Backend#tech-stack---backend) for the Backend Tech Stack.
 
@@ -65,25 +68,25 @@ Click [here](https://github.com/GamerTalk/Backend#tech-stack---backend) for the 
     
 2. Open your browser and go to **`http://localhost:3000/`** to access the application.
 
-## Running Test
-There are two ways to run cypress test: in the terminal, and in the browser. The terminal may be quicker and not require a login. The browser gives you step by step results from each step in your test but requires a login through cypress which can be done with your Github account.
+## Running Tests
+There are two ways to run the Cypress test: in the terminal and in the browser. The terminal may be quicker and not require a login. The browser gives you step-by-step results from each step in your test but requires a login through Cypress, which can be done with your GitHub account.
 
-For all test, they are saved in the `/cypress/e2e` folder as `[name].cy.js` files. If you have used Chai, it might look very familiar.
+All tests are saved in the `/cypress/e2e` folder as `[name].cy.js` files. If you have used Chai, it might look very familiar.
 
-Note: All test require that you are running the dev server on your local machine.
+Note: All tests require that you are running the dev server on your local machine.
 
 ### Terminal testing
-To run the cypres test in the brower simply run the following command
+To run the cypres test in the browser, simply run the following command
 
 ```bash
 npx cypress run
 ```
 
-This will run all test in the `/cypress/e2e` folder. This will also record a video of the test so you can check what, if anything, failed. These videos will be saved in the `/cypress/videos` folder.
+This will run all tests in the `/cypress/e2e` folder. This will also record a video of the test so you can check what, if anything, failed. These videos will be saved in the `/cypress/videos` folder.
 
 ### Browser testing
 
-To run test in the browser, run the following command in the terminal:
+To run the test in the browser, run the following command in the terminal:
 
 ```bash
 npm run cypress:open
@@ -91,16 +94,16 @@ npm run cypress:open
 
 This may take a while on your first time.
 
-After it loads, a window will appear. This window will ask you to sign in and then allow you to create and run test. 
+After it loads, a window will appear. This window will ask you to sign in and then allow you to create and run the test. 
 
-Once you are signed in, click the button labeled `E2E testing` and select the browser you want to use (I recommend Chrome for its developer tools). This will load a version of your selected browsers to run the test.
+Once you are signed in, click the `E2E testing` button and select the browser you want to use (We recommend Chrome for its developer tools). This will load a version of your selected browsers to run the test.
 
-To locate your test, select the `Specs` page on the left-side of the screen. From this page, you can select on of the test from the page, which will run that test live, with a preview window for you to observe, as well as showing which test pass or fail.
+To locate your test, select the `Specs` page on the left side of the screen. From this page, you can select on of the tests from the page, which will run that test live, with a preview window for you to observe, as well as showing which test passed or failed.
 
-## Writing test
-To write test using cypress, you can either create the `~.cy.js` file in the `/cypress/e2e` folder directly, or preferably create it through the browser version. 
+## Writing Tests
+To write a test using Cypress, you can either create the `~.cy.js` file in the `/cypress/e2e` folder directly or preferably create it through the browser version. 
 
-First, login through the same process as in `Browser testing` and then in the `Specs` window, select `new spec`. Title it and it should appear in your code editor in the `/cypress/e2e` folder.
+First, login through the same process as in `Browser testing` and then select' new spec' in the `Specs` window. Title it, and it should appear in your code editor in the `/cypress/e2e` folder.
 
 ## **Contributing**
 

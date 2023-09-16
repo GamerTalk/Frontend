@@ -65,6 +65,43 @@ Click [here](https://github.com/GamerTalk/Backend#tech-stack---backend) for the 
     
 2. Open your browser and go to **`http://localhost:3000/`** to access the application.
 
+## Running Test
+There are two ways to run cypress test: in the terminal, and in the browser. The terminal may be quicker and not require a login. The browser gives you step by step results from each step in your test but requires a login through cypress which can be done with your Github account.
+
+For all test, they are saved in the `/cypress/e2e` folder as `[name].cy.js` files. If you have used Chai, it might look very familiar.
+
+Note: All test require that you are running the dev server on your local machine.
+
+### Terminal testing
+To run the cypres test in the brower simply run the following command
+
+```bash
+npx cypress run
+```
+
+This will run all test in the `/cypress/e2e` folder. This will also record a video of the test so you can check what, if anything, failed. These videos will be saved in the `/cypress/videos` folder.
+
+### Browser testing
+
+To run test in the browser, run the following command in the terminal:
+
+```bash
+npm run cypress:open
+```
+
+This may take a while on your first time.
+
+After it loads, a window will appear. This window will ask you to sign in and then allow you to create and run test. 
+
+Once you are signed in, click the button labeled `E2E testing` and select the browser you want to use (I recommend Chrome for its developer tools). This will load a version of your selected browsers to run the test.
+
+To locate your test, select the `Specs` page on the left-side of the screen. From this page, you can select on of the test from the page, which will run that test live, with a preview window for you to observe, as well as showing which test pass or fail.
+
+## Writing test
+To write test using cypress, you can either create the `~.cy.js` file in the `/cypress/e2e` folder directly, or preferably create it through the browser version. 
+
+First, login through the same process as in `Browser testing` and then in the `Specs` window, select `new spec`. Title it and it should appear in your code editor in the `/cypress/e2e` folder.
+
 ## **Contributing**
 
 Contributions are welcome! Please follow these steps to contribute to the project:

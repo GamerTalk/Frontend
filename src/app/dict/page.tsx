@@ -20,6 +20,15 @@ export default function Dict() {
   const [selectedCards, setSelectedCards] = useState<string[]>([]);
   const [timer, setTimer] = useState(false)
   const {uid} = UserAuth();
+
+  const config = {
+    method: 'GET',
+    headers: {
+      'uid' : uid
+    }
+  }
+
+  /*
   const config = useMemo(() => {
     return {
       method: 'GET',
@@ -28,11 +37,13 @@ export default function Dict() {
       }
     };
   }, [uid]); // Only recreate the config object when uid changes
+  */
 
   const getURL = process.env.NEXT_PUBLIC_API_URL + "/api/get-flashcards/"
   const deleteURL = process.env.NEXT_PUBLIC_API_URL + "/api/delete-flashcard/"
 
-  const getData = useCallback(async () => {
+  const getData = async () => {
+  //const getData = useCallback(async () => {
     try {
       if (uid) {
         const userData = await axios.get(getURL, config).then((result) => result.data);
@@ -43,7 +54,8 @@ export default function Dict() {
     } catch (error) {
       console.log(error);
     }
-  }, [uid, getURL, config]); // List dependencies that getData relies on
+  };
+ // }, [uid, getURL, config]); // List dependencies that getData relies on
 
   const deleteData = async () => {
     try {
@@ -68,7 +80,8 @@ export default function Dict() {
   
   useEffect(() => {
     getData();
-  }, [uid, getData]);
+  }, [uid]);
+  //}, [uid, getData]);
 
   const openPopup = () => {
     setIsPopupOpen(true);

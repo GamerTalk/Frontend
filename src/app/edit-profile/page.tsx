@@ -87,7 +87,8 @@ export default function Profile() {
       }
     }
     getData();
-  }, [uid, config, url]);
+  }, [uid]);
+  //}, [uid, config, url]);
 
   const handleFormSubmit = async (event: { preventDefault: () => void }) => {
     event.preventDefault();

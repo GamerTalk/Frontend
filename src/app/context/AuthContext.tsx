@@ -77,7 +77,9 @@ export const AuthContextProvider: React.FC<{ children: ReactNode }> = ({
     return signOut(auth);
   };
 
-  const retrieve = useCallback(async (user: firebaseAuthUser | null) => {
+  
+  const retrieve = async (user: firebaseAuthUser | null) => {
+ // const retrieve = useCallback(async (user: firebaseAuthUser | null) => {
     if (user) {
       const config = {
         method: "GET",
@@ -91,7 +93,8 @@ export const AuthContextProvider: React.FC<{ children: ReactNode }> = ({
         .then((result) => result.data);
       return setUserInfo(userData);
     }
-  }, [uid]);
+  //}, [uid]);
+  };
 
   const resetPasswordEmail = async (email: string) => {
     return sendPasswordResetEmail(auth, email);
@@ -185,7 +188,9 @@ export const AuthContextProvider: React.FC<{ children: ReactNode }> = ({
 
   useEffect(() => {
     retrieve(user);
-  }, [user, retrieve]);
+  }, [user]);
+ // }, [user, retrieve]);
+
 
   return (
     <UserContext.Provider

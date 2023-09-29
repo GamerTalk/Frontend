@@ -8,7 +8,7 @@
 }
 
 .subheading {
-  margin-top: -18px;
+  margin-top: 0;
   font-size: 15px;
 }
 
@@ -123,6 +123,7 @@
   height: 70px;
   width: 70px;
   object-fit: cover;
+  margin: auto;
 }
 
 .userUploadImg {

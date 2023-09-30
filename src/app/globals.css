@@ -1,5 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Offside&display=swap');
 
+/* imports tailwindcss classes */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 body{
   margin: 0;
   height: 100%;

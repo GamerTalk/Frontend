@@ -73,33 +73,42 @@ export default function Home() {
 
   
   return (
-    <div className={styles.contents_div}>
+    <div className="p-1 mb-20">
       {open && (
-        <AlertModal open={open} handleClose={handleClose} title="Validation Error"
-         message={alertMessage}
-       />
+        <AlertModal
+          open={open}
+          handleClose={handleClose}
+          title="Validation Error"
+          message={alertMessage}
+        />
       )}
       {!showProfilePage ? (
         <>
           {showPostForm ? (
-            <form onSubmit={handleFormSubmit}>
+            <form className="mb-5" onSubmit={handleFormSubmit}>
               <textarea
                 rows={5}
                 cols={40}
                 onChange={handleMessage}
-                className={styles.textarea}
+                className="mt-5 mb-2 resize-none"
                 placeholder="What are you playing?"
                 value={message}
               />
               <div>
-                <button className={styles.button}>Post</button>
+                <button className='"mb-5 rounded-full text-lg h-14 w-36 bg-purple-600 text-white border-2 border-white cursor-pointer"'>
+                  Post
+                </button>
               </div>
             </form>
-
-          ) :
-          (<button onClick={() => {
-            setPostForm(!showPostForm)
-          }}>Make a post!</button>)}
+          ) : (
+            <button
+              onClick={() => {
+                setPostForm(!showPostForm);
+              }}
+            >
+              Make a post!
+            </button>
+          )}
 
           {/* Renders out the post */}
           {posts.map((post: Post, index: number) => {
@@ -115,7 +124,12 @@ export default function Home() {
         </>
       ) : (
         <>
-          <button className={styles.button} onClick={() => setShowProfilePage(false)}>Back</button>
+          <button
+            className="mb-5 rounded-full text-lg h-14 w-36 bg-purple-600 text-white border-2 border-white cursor-pointer"
+            onClick={() => setShowProfilePage(false)}
+          >
+            Back
+          </button>
           <SingleUserCard userObject={singleUser} />
         </>
       )}

@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { UserAuth } from './context/AuthContext';
 import { useRouter } from 'next/navigation';
 import axios from "axios";
-
+import './globals.css'
 
 export default function Open() {
 const {uid} = UserAuth()

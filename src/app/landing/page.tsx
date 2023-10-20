@@ -2,16 +2,13 @@
 
 import React, { useEffect, useState } from 'react';
 import styles from './landing.module.css';
-import Auth from "../components/layouts/Auth"
-import { UserAuth } from '../context/AuthContext';
 import Link from 'next/link';
 import axios from 'axios';
 import Image from 'next/image';
 
 
 export default function Landing() {
-  const {uid, userInfo} = UserAuth()
-  const [flag, setFlag] = useState(false)
+
 
   const renderCircleElements = () => {
     const circleElements = [];
@@ -36,7 +33,6 @@ export default function Landing() {
       // wake up the backend on render
       const response = await axios.get(process.env.NEXT_PUBLIC_API_URL + "/api/")
     }
-
     wakeUp()
   }, [])
 

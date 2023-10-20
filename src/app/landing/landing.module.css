@@ -7,8 +7,9 @@
   width: 350px;
   height: 250px;
   margin-top: 100px;
- 
   margin-bottom: -40px;
+  margin: 0, auto;
+  justify-content: center; 
 }
 
 .signin {

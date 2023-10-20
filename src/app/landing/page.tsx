@@ -46,7 +46,7 @@ export default function Landing() {
         <ul>{renderCircleElements()}</ul>
       </div>
       <div className={styles.context}>
-        <div className={styles.box}>
+        <div className={styles.title}>
           <img
             className={styles.image}
             src="/GamerTalkLogotransparent.png"

@@ -41,6 +41,7 @@
     "node": ">=18 <19"
   },
   "devDependencies": {
+    "@flydotio/dockerfile": "^0.4.10",
     "@types/file-saver": "^2.0.5",
     "cypress": "^13.2.0"
   }

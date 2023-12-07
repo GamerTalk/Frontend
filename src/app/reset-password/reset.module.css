@@ -1,11 +1,3 @@
-.successMessage {
-  color: rgb(0, 204, 0);
-}
-
-.errorMessage {
-  color: red;
-}
-
 .submit{
   margin-bottom: 20px;
   border-radius: 25px;

@@ -5,7 +5,9 @@ module.exports = {
     extend: {
       colors: {
         background: "#F0F2F5",
-        buttonBackground: '#6D67E4'
+        buttonBackground: "#6D67E4",
+        errorMessage: "#ff0000",
+        successMessage: "#00cc00",
       },
       fontFamily: {},
     },

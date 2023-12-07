@@ -51,7 +51,20 @@ const Reset: React.FC = () => {
           onChange={(e) => setNewPassword(e.target.value)}
         />
         <div>
-          <button type="submit" className={styles.submit}>
+          <button
+            type="submit"
+            className="mb-5
+    mt-5
+    rounded-full
+    text-base
+    h-10
+    w-28
+    bg-buttonBackground
+    text-white
+    border-2
+    border-white
+    cursor-pointer"
+          >
             Submit
           </button>
         </div>

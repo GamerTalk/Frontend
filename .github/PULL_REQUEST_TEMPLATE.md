@@ -1,6 +1,5 @@
 ## Description
-<!-- What you did:
-- Describe your pull request and related issue -->
+<!-- Describe your pull request and related issue -->
 
 
 

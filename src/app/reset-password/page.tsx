@@ -1,17 +1,15 @@
-"use client"
+"use client";
 
-import React, { useState } from 'react';
-import { EmailAuthProvider, reauthenticateWithCredential, updatePassword } from 'firebase/auth';
+import React, { useState } from "react";
 import { UserAuth } from "../context/AuthContext";
 
-
 const Reset: React.FC = () => {
-  const [oldPassword, setOldPassword] = useState<string>('');
-  const [newPassword, setNewPassword] = useState<string>('');
-  const [successMessage, setSuccessMessage] = useState<string>('');
-  const [errorMessage, setErrorMessage] = useState<string>('');
+  const [oldPassword, setOldPassword] = useState<string>("");
+  const [newPassword, setNewPassword] = useState<string>("");
+  const [successMessage, setSuccessMessage] = useState<string>("");
+  const [errorMessage, setErrorMessage] = useState<string>("");
 
-  const {resetPassword} = UserAuth()
+  const { resetPassword } = UserAuth();
 
   const handleResetPassword = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -22,12 +20,12 @@ const Reset: React.FC = () => {
       setSuccessMessage(successMessage);
 
       // Clear the form inputs after a successful password update
-      setOldPassword('');
-      setNewPassword('');
-      setErrorMessage('');
+      setOldPassword("");
+      setNewPassword("");
+      setErrorMessage("");
     } catch (error) {
-      setErrorMessage('The current password does not match');
-      setSuccessMessage('');
+      setErrorMessage("The current password does not match");
+      setSuccessMessage("");
     }
   };
 

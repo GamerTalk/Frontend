@@ -46,16 +46,7 @@ export default function Search() {
         />
         {showSingleUser ? (
           <button
-            className="mb-5
-    rounded-full
-    text-lg
-    h-14
-    w-40
-    bg-buttonBackground
-    text-white
-    border-2
-    border-white
-    cursor-pointer"
+            className="mb-5 rounded-full text-lg h-14 w-40 bg-buttonBackground text-white border-2 border-white cursor-pointer"
             onClick={(e) => setShowSingleUser(false)}
           >
             Back

@@ -24,7 +24,7 @@ useEffect(() => {
 useEffect(() => {
   setTimeout(() => {
     setTimer(true);
-  }, 1000);
+  }, 1);
 }, []);
 
 useEffect(() => {

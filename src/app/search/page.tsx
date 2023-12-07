@@ -47,7 +47,21 @@ export default function Search() {
           setShowUserCard={setShowUserCard}
         />
         {showSingleUser ? (
-          <button className={styles.button} onClick={(e) => setShowSingleUser(false)}>Back</button>
+          <button
+            className="mb-5
+    rounded-full
+    text-lg
+    h-14
+    w-40
+    bg-buttonBackground
+    text-white
+    border-2
+    border-white
+    cursor-pointer"
+            onClick={(e) => setShowSingleUser(false)}
+          >
+            Back
+          </button>
         ) : (
           ""
         )}
@@ -68,8 +82,7 @@ export default function Search() {
                   );
                 }
               })
-            )
-            }
+            )}
           </div>
         )}
       </div>

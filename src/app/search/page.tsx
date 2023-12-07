@@ -6,9 +6,7 @@ import FilterArea from "../components/layouts/FilterArea";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import SingleUserCard from "../components/layouts/SingleUserCard";
-// import styles from "./search.module.css"; // This would not work
 import { UserAuth } from "../context/AuthContext";
-import styles from "./search.module.css";
 
 export default function Search() {
   const [users, setUsers] = useState<User[]>([]);

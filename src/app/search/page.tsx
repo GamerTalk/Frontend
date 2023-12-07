@@ -32,7 +32,7 @@ export default function Search() {
     if (filterWords.length === 0 && users.length === 0) {
       fetchAllusers();
     }
-  }, [filterWords]);
+  }, [filterWords, users.length]);
 
   return (
     <>

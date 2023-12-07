@@ -7,7 +7,7 @@
 <!-- Write down any dependencies added with this PR -->
 
 
-## Any addition comments you might wish to raise related to this pull request:
+## Any additional comments you might wish to raise related to this pull request:
 
 
 

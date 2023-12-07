@@ -37,12 +37,28 @@ const Reset: React.FC = () => {
       <form onSubmit={handleResetPassword}>
         <h1>Reset Password</h1>
         <p>Current Password:</p>
-        <input className='text-black' type="password" value={oldPassword} onChange={(e) => setOldPassword(e.target.value)} />
+        <input
+          className="text-black"
+          type="password"
+          value={oldPassword}
+          onChange={(e) => setOldPassword(e.target.value)}
+        />
         <p>New Password:</p>
-        <input type="password" value={newPassword} onChange={(e) => setNewPassword(e.target.value)} />
-        <div><button type="submit" className={styles.submit}>Submit</button></div>
-        {successMessage && <p className='text-successMessage'>{successMessage}</p>}
-        {errorMessage && <p className='text-errorMessage'>{errorMessage}</p>}
+        <input
+          className="text-black"
+          type="password"
+          value={newPassword}
+          onChange={(e) => setNewPassword(e.target.value)}
+        />
+        <div>
+          <button type="submit" className={styles.submit}>
+            Submit
+          </button>
+        </div>
+        {successMessage && (
+          <p className="text-successMessage">{successMessage}</p>
+        )}
+        {errorMessage && <p className="text-errorMessage">{errorMessage}</p>}
       </form>
     </>
   );

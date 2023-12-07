@@ -6,9 +6,7 @@ import FilterArea from "../components/layouts/FilterArea";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import SingleUserCard from "../components/layouts/SingleUserCard";
-// import styles from "./search.module.css"; // This would not work
 import { UserAuth } from "../context/AuthContext";
-import styles from "./search.module.css";
 
 export default function Search() {
   const [users, setUsers] = useState<User[]>([]);
@@ -47,7 +45,12 @@ export default function Search() {
           setShowUserCard={setShowUserCard}
         />
         {showSingleUser ? (
-          <button className={styles.button} onClick={(e) => setShowSingleUser(false)}>Back</button>
+          <button
+            className="mb-5 rounded-full text-lg h-12 w-36 bg-buttonBackground text-white border-2 border-white cursor-pointer"
+            onClick={(e) => setShowSingleUser(false)}
+          >
+            Back
+          </button>
         ) : (
           ""
         )}
@@ -68,8 +71,7 @@ export default function Search() {
                   );
                 }
               })
-            )
-            }
+            )}
           </div>
         )}
       </div>

@@ -1,5 +1,4 @@
 import { ChangeEventHandler, useState } from "react";
-import styles from "../../dict/dict.module.css";
 
 interface Param {
   front: string;

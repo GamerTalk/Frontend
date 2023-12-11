@@ -3,7 +3,6 @@
 "use client"
 
 import React, { useEffect, useState, useMemo, useCallback } from 'react'
-import styles from './dict.module.css'
 import DictCheckbox from '../components/elements/Dict-Checkbox'
 import Add from '../components/elements/dict-add/page'
 import axios from 'axios'
@@ -194,7 +193,10 @@ export default function Dict() {
       </div>
 
       <div>
-        <button className={styles.csv} onClick={downloadCSV}>
+        <button
+          className="mt-5 rounded-full text-lg h-14 w-52 bg-buttonBackground text-white border-2 border-white cursor-pointer"
+          onClick={downloadCSV}
+        >
           Download CSV
         </button>
       </div>

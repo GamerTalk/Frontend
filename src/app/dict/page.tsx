@@ -174,14 +174,20 @@ export default function Dict() {
       </form>
       <div className="grid grid-cols-2">
         <div>
-          <button className={styles.plus} onClick={openPopup}>
+          <button
+            className="mt-10 h-14 w-14 text-2xl text-white bg-successMessage cursor-pointer"
+            onClick={openPopup}
+          >
             <FontAwesomeIcon icon={faPlus} />
           </button>
           {isPopupOpen && <Add handleClosePopup={closePopup} />}
         </div>
 
         <div>
-          <button className={styles.minus} onClick={myFunction}>
+          <button
+            className="mt-10 h-14 w-14 text-2xl text-white bg-errorMessage cursor-pointer"
+            onClick={myFunction}
+          >
             <FontAwesomeIcon icon={faTrash} />{" "}
           </button>
         </div>
@@ -194,7 +200,7 @@ export default function Dict() {
       </div>
     </div>
   ) : (
-    <p className='pb-20'>Loading Profile...</p>
+    <p className="pb-20">Loading Profile...</p>
   );
 }
 

@@ -322,7 +322,7 @@ const handleClose = () => setOpen(false);
           </label>
         </div>
 
-        <p className={styles.heading}>Region:</p>
+        <p className="font-bold text-2xl">Region:</p>
         <div className={styles.language}>
         {categories.regions.map((regionOption:string, key:number) => { 
               return (
@@ -340,7 +340,7 @@ const handleClose = () => setOpen(false);
             })}
         </div>
 
-        <p className={styles.heading}>What language(s) are you fluent in?</p>
+        <p className="font-bold text-2xl">What language(s) are you fluent in?</p>
         <p className={styles.subheading}>Check all that apply</p>
         <div className={styles.language}>
         {categories.languages.map((languageOption:string, key:number) => { 
@@ -359,7 +359,7 @@ const handleClose = () => setOpen(false);
             })}
         </div>
 
-        <p id="learning" className={styles.heading}>
+        <p id="learning" className="font-bold text-2xl">
           What language(s) do you want to learn and what is your level?
         </p>
         <p className={styles.learningSubheading}>
@@ -409,10 +409,10 @@ const handleClose = () => setOpen(false);
             })}
         </div>
 
-        <p className={styles.heading}>Date of Birth:</p>
+        <p className="font-bold text-2xl">Date of Birth:</p>
         <input type="date" defaultValue={defaultDate} onChange={handleBirthday}></input>
 
-        <p className={styles.heading}>System(s):</p>
+        <p className="font-bold text-2xl">System(s):</p>
         <div className={styles.language}>
         {categories.systems.map((systemOption:string, key:number) => { 
               return (
@@ -431,7 +431,7 @@ const handleClose = () => setOpen(false);
           
         </div>
 
-        <p className={styles.heading}>Genre:</p>
+        <p className="font-bold text-2xl">Genre:</p>
         <div className={styles.language}>
         {categories.genres.map((genreOption:string, key:number) => { 
               return (
@@ -449,11 +449,11 @@ const handleClose = () => setOpen(false);
             })}
         </div>
 
-        <p className={styles.heading}>About Me:</p>
+        <p className="font-bold text-2xl">About Me:</p>
         <textarea className={styles.textarea} rows={5} cols={40} onChange={handleAboutMe} maxLength={500} />
         <p className={styles.length}>{aboutMeLength} / 500</p>
 
-        <p className={styles.heading}>Currently Playing:</p>
+        <p className="font-bold text-2xl">Currently Playing:</p>
       
         <textarea className={styles.textarea} rows={5} cols={40} onChange={handleCurrPlay} maxLength={500}/>
         <p className={styles.length}>{currPlayLength} / 500</p>

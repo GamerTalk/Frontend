@@ -19,7 +19,7 @@ const DictCheckbox: React.FC<Param> = ({ front, back, onChange, name }) => {
   };
 
   return (
-    <div className="flex border-3 border-gray-400 my-1">
+    <div className="flex border-2 border-gray-400 my-1">
       <input
         className="mx-auto h-4 w-2/12"
         type="checkbox"
@@ -27,10 +27,10 @@ const DictCheckbox: React.FC<Param> = ({ front, back, onChange, name }) => {
         name={name}
         checked={isChecked}
       ></input>
-      <div className="w-5/12 border-l-3 border-r-3 border-gray-400">
+      <div className="w-5/12 border-l-2 border-r-2 border-gray-400">
         <label>{front}</label>
       </div>
-      <div className='w-5/12'>
+      <div className="w-5/12">
         <label>{back}</label>
       </div>
     </div>

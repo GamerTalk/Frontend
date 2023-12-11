@@ -268,8 +268,8 @@ const handleClose = () => setOpen(false);
 
   return (
     <div>
-      <h1>Welcome!</h1>
-      <p>Tell us about yourself!</p>
+      <h1 className="font-bold text-3xl py-5">Welcome!</h1>
+      <p className="pb-5">Tell us about yourself!</p>
 
       {open && (
         <AlertModal open={open} handleClose={handleClose} title="Validation Error"
@@ -279,7 +279,7 @@ const handleClose = () => setOpen(false);
 
       <form method="post" onSubmit={handleFormSubmit}>
         <div className={styles.usernameBox}>
-          <label htmlFor="Username" className="font-bold text-2xl">
+          <label htmlFor="Username" className="font-bold text-2xl py-5">
             {" "}
             Username:{" "}
           </label>
@@ -322,7 +322,7 @@ const handleClose = () => setOpen(false);
           </label>
         </div>
 
-        <p className="font-bold text-2xl">Region:</p>
+        <p className="font-bold text-2xl py-5">Region:</p>
         <div className={styles.language}>
         {categories.regions.map((regionOption:string, key:number) => { 
               return (
@@ -340,7 +340,7 @@ const handleClose = () => setOpen(false);
             })}
         </div>
 
-        <p className="font-bold text-2xl">What language(s) are you fluent in?</p>
+        <p className="font-bold text-2xl py-5">What language(s) are you fluent in?</p>
         <p className={styles.subheading}>Check all that apply</p>
         <div className={styles.language}>
         {categories.languages.map((languageOption:string, key:number) => { 
@@ -359,7 +359,7 @@ const handleClose = () => setOpen(false);
             })}
         </div>
 
-        <p id="learning" className="font-bold text-2xl">
+        <p id="learning" className="font-bold text-2xl py-5">
           What language(s) do you want to learn and what is your level?
         </p>
         <p className={styles.learningSubheading}>
@@ -409,10 +409,10 @@ const handleClose = () => setOpen(false);
             })}
         </div>
 
-        <p className="font-bold text-2xl">Date of Birth:</p>
+        <p className="font-bold text-2xl py-5">Date of Birth:</p>
         <input type="date" defaultValue={defaultDate} onChange={handleBirthday}></input>
 
-        <p className="font-bold text-2xl">System(s):</p>
+        <p className="font-bold text-2xl py-5">System(s):</p>
         <div className={styles.language}>
         {categories.systems.map((systemOption:string, key:number) => { 
               return (
@@ -431,7 +431,7 @@ const handleClose = () => setOpen(false);
           
         </div>
 
-        <p className="font-bold text-2xl">Genre:</p>
+        <p className="font-bold text-2xl py-5">Genre:</p>
         <div className={styles.language}>
         {categories.genres.map((genreOption:string, key:number) => { 
               return (
@@ -449,11 +449,11 @@ const handleClose = () => setOpen(false);
             })}
         </div>
 
-        <p className="font-bold text-2xl">About Me:</p>
+        <p className="font-bold text-2xl py-5">About Me:</p>
         <textarea className={styles.textarea} rows={5} cols={40} onChange={handleAboutMe} maxLength={500} />
         <p className={styles.length}>{aboutMeLength} / 500</p>
 
-        <p className="font-bold text-2xl">Currently Playing:</p>
+        <p className="font-bold text-2xl py-5">Currently Playing:</p>
       
         <textarea className={styles.textarea} rows={5} cols={40} onChange={handleCurrPlay} maxLength={500}/>
         <p className={styles.length}>{currPlayLength} / 500</p>

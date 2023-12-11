@@ -147,43 +147,54 @@ export default function Dict() {
 
 
   return timer ? (
-    <div className={styles.body}>
+    <div>
       <h1>Dictionary</h1>
 
       <form>
-      <div className={styles.wholeBox}>  
-      <div className={styles.langBoxHeader}>  
-        <p></p>
-        <p>Front</p>
-        <p>Back</p>
+        <div className={styles.wholeBox}>
+          <div className={styles.langBoxHeader}>
+            <p></p>
+            <p>Front</p>
+            <p>Back</p>
+          </div>
+
+          {cards
+            .map((card: any) => (
+              <DictCheckbox
+                front={card.front}
+                back={card.back}
+                key={card.id}
+                name={card.id}
+                isChecked={false}
+                onChange={handleDeleteCards}
+              />
+            ))
+            .reverse()}
+        </div>
+      </form>
+      <div className="grid grid-cols-2">
+        <div>
+          <button className={styles.plus} onClick={openPopup}>
+            <FontAwesomeIcon icon={faPlus} />
+          </button>
+          {isPopupOpen && <Add handleClosePopup={closePopup} />}
+        </div>
+
+        <div>
+          <button className={styles.minus} onClick={myFunction}>
+            <FontAwesomeIcon icon={faTrash} />{" "}
+          </button>
+        </div>
       </div>
 
-      {cards.map((card: any) => (
-        <DictCheckbox front={card.front} back={card.back} key={card.id} name={card.id} isChecked={false} onChange={handleDeleteCards}/>
-      )).reverse()}
-
-    </div> 
-      </form>
-      <div className={styles.plusAndMinus}>
-        <div>
-          <button className={styles.plus} onClick={openPopup}><FontAwesomeIcon icon={faPlus} /></button>
-          {isPopupOpen && <Add handleClosePopup={closePopup}/>}
-        </div>
-
-        <div>
-          <button className={styles.minus} onClick={myFunction}><FontAwesomeIcon icon={faTrash}/> </button>
-        </div>
-  
-     </div>
-
-     <div>
-      <button className={styles.csv} onClick={downloadCSV}>Download CSV</button>
-     </div>
-     
-
-
-
+      <div>
+        <button className={styles.csv} onClick={downloadCSV}>
+          Download CSV
+        </button>
+      </div>
     </div>
-  ) : <p className={styles.loading}>Loading Profile...</p>
+  ) : (
+    <p className={styles.loading}>Loading Profile...</p>
+  );
 }
 

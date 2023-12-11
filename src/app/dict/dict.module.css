@@ -36,11 +36,6 @@
   cursor: pointer;
 }
 
-.loading{
-  padding-bottom: 50px;
-  height: 100vh;
-}
-
 .csv {
   margin-top: 20px;
   border-radius: 25px;

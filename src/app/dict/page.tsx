@@ -194,7 +194,7 @@ export default function Dict() {
       </div>
     </div>
   ) : (
-    <p className={styles.loading}>Loading Profile...</p>
+    <p className='pb-20'>Loading Profile...</p>
   );
 }
 

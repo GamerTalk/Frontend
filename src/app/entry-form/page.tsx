@@ -279,7 +279,7 @@ const handleClose = () => setOpen(false);
 
       <form method="post" onSubmit={handleFormSubmit}>
         <div className={styles.usernameBox}>
-          <label htmlFor="Username" className={styles.heading}>
+          <label htmlFor="Username" className="font-bold text-2xl">
             {" "}
             Username:{" "}
           </label>
@@ -290,11 +290,10 @@ const handleClose = () => setOpen(false);
               name="Username"
               minLength={5}
               maxLength={15}
-              onChange={handleUsername}
-             
+              onChange={handleUsername}  
             ></input>
           </div>
-          <p className={styles.usernameLength}>Username should be between 5-15 characters</p>
+          <p className={"mt-5 text-gray-500 text-15xl"}>Username should be between 5-15 characters</p>
         </div>
         
 
@@ -318,7 +317,7 @@ const handleClose = () => setOpen(false);
         </div>
 
         <div>
-          <label htmlFor={styles.userUploadImg}>
+          <label htmlFor="w-90 overflow-hidden hidden">
             <input type="file" name="image" onChange={handleFileChange} id={styles.userUploadImg}  />
           </label>
         </div>
@@ -367,7 +366,7 @@ const handleClose = () => setOpen(false);
           <p>
             {" "}
             <span className={styles.number}>1</span>: Beginner
-            <span className={styles.number}> 2</span>: Elementary{" "}
+            <span className={styles.number}>2</span>: Elementary{" "}
           </p>
           <p>
             {" "}

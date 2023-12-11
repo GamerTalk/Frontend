@@ -148,14 +148,14 @@ export default function Dict() {
 
   return timer ? (
     <div>
-      <h1>Dictionary</h1>
+      <h1 className="mb-5 mt-5">Dictionary</h1>
 
       <form>
-        <div className={styles.wholeBox}>
-          <div className={styles.langBoxHeader}>
-            <p></p>
-            <p>Front</p>
-            <p>Back</p>
+        <div>
+          <div className="mx-auto flex font-bold border-3 border-black bg-black text-white">
+            <p className="w-2/12 min-w-2/12"> </p>
+            <p className="w-5/12">Front</p>
+            <p className="w-5/12">Back</p>
           </div>
 
           {cards

@@ -16,18 +16,6 @@
   color: white;
 }
 
-.checkbox {
-  margin: 0 auto;
-  margin-top: 5px;
-  margin-bottom: 5px;
-}
-
-.front {
-  border-left: 3px solid #a7a7a7;
-  border-right: 3px solid #a7a7a7;
-}
-
-
 .plus {
   margin-top: 50px;
   height: 50px;

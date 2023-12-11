@@ -3,7 +3,6 @@
 "use client"
 
 import React, { useEffect, useState, useMemo, useCallback } from 'react'
-import styles from './dict.module.css'
 import DictCheckbox from '../components/elements/Dict-Checkbox'
 import Add from '../components/elements/dict-add/page'
 import axios from 'axios'
@@ -147,43 +146,63 @@ export default function Dict() {
 
 
   return timer ? (
-    <div className={styles.body}>
-      <h1>Dictionary</h1>
+    <div>
+      <h1 className="mb-5 mt-5">Dictionary</h1>
 
       <form>
-      <div className={styles.wholeBox}>  
-      <div className={styles.langBoxHeader}>  
-        <p></p>
-        <p>Front</p>
-        <p>Back</p>
+        <div>
+          <div className="mx-auto flex font-bold border-3 border-black bg-black text-white">
+            <p className="w-2/12 min-w-2/12"> </p>
+            <p className="w-5/12">Front</p>
+            <p className="w-5/12">Back</p>
+          </div>
+
+          {cards
+            .map((card: any) => (
+              <DictCheckbox
+                front={card.front}
+                back={card.back}
+                key={card.id}
+                name={card.id}
+                isChecked={false}
+                onChange={handleDeleteCards}
+              />
+            ))
+            .reverse()}
+        </div>
+      </form>
+      <div className="grid grid-cols-2">
+        <div>
+          <button
+            className="mt-10 h-14 w-14 text-2xl text-white bg-successMessage cursor-pointer"
+            onClick={openPopup}
+          >
+            <FontAwesomeIcon icon={faPlus} />
+          </button>
+          {isPopupOpen && <Add handleClosePopup={closePopup} />}
+        </div>
+
+        <div>
+          <button
+            className="mt-10 h-14 w-14 text-2xl text-white bg-errorMessage cursor-pointer"
+            onClick={myFunction}
+          >
+            <FontAwesomeIcon icon={faTrash} />{" "}
+          </button>
+        </div>
       </div>
 
-      {cards.map((card: any) => (
-        <DictCheckbox front={card.front} back={card.back} key={card.id} name={card.id} isChecked={false} onChange={handleDeleteCards}/>
-      )).reverse()}
-
-    </div> 
-      </form>
-      <div className={styles.plusAndMinus}>
-        <div>
-          <button className={styles.plus} onClick={openPopup}><FontAwesomeIcon icon={faPlus} /></button>
-          {isPopupOpen && <Add handleClosePopup={closePopup}/>}
-        </div>
-
-        <div>
-          <button className={styles.minus} onClick={myFunction}><FontAwesomeIcon icon={faTrash}/> </button>
-        </div>
-  
-     </div>
-
-     <div>
-      <button className={styles.csv} onClick={downloadCSV}>Download CSV</button>
-     </div>
-     
-
-
-
+      <div>
+        <button
+          className="mt-5 rounded-full text-lg h-14 w-52 bg-buttonBackground text-white border-2 border-white cursor-pointer"
+          onClick={downloadCSV}
+        >
+          Download CSV
+        </button>
+      </div>
     </div>
-  ) : <p className={styles.loading}>Loading Profile...</p>
+  ) : (
+    <p className="pb-20">Loading Profile...</p>
+  );
 }
 

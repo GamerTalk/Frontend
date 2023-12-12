@@ -1,7 +1,6 @@
 "use client";
 import { UserAuth } from "@/app/context/AuthContext";
 import { useState } from "react";
-import styles from "./forgot.module.css";
 
 export default function ForgotPassword() {
   const [email, setEmail] = useState<string>("");
@@ -33,7 +32,10 @@ export default function ForgotPassword() {
           onChange={(e) => setEmail(e.target.value)}
         />
         <div>
-          <button type="submit" className={styles.reset}>
+          <button
+            type="submit"
+            className="my-5 rounded-full bg-buttonBackground w-40 h-10 border-2 border-white"
+          >
             Send reset request
           </button>
         </div>

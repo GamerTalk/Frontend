@@ -51,7 +51,7 @@ const Auth = ({isSignIn}: Props) => {
   }
 
   return (
-    <div className={styles.authContainer}>
+    <div className="bg-white h-96 mx-auto w-[90%] sm:w-[50%] mt-10 border-2 border-black rounded-xl shadow-md font-sans">
       {open && (
         <AlertModal
           open={open}
@@ -69,7 +69,7 @@ const Auth = ({isSignIn}: Props) => {
       )}
 
       <form onSubmit={isSignIn ? handleSubmit : handleSignUp}>
-        <div className={styles.formGroup}>
+        <div>
           <input
             type="email"
             placeholder="Email"
@@ -80,7 +80,7 @@ const Auth = ({isSignIn}: Props) => {
           />
         </div>
 
-        <div className={styles.formGroup}>
+        <div>
           <input
             type="password"
             placeholder="Password"

@@ -27,8 +27,9 @@ export default function ForgotPassword() {
         <h1>Reset Password</h1>
         <p>E-Mail Address:</p>
         <input
-          type="text"
+          type="email"
           value={email}
+          className="text-black"
           onChange={(e) => setEmail(e.target.value)}
         />
         <div>

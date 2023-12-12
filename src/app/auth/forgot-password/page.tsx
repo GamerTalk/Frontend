@@ -33,7 +33,7 @@ export default function ForgotPassword() {
         />
         <div><button type="submit" className={styles.reset}>Send reset request</button></div>
         {successMessage && <p className={styles.successMessage}>{successMessage}</p>}
-        {errorMessage && <p className={styles.errorMessage}>{errorMessage}</p>}
+        {errorMessage && <p className='text-errorMessage'>{errorMessage}</p>}
       </form>
     </>
   );

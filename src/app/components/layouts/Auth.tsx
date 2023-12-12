@@ -1,6 +1,5 @@
 "use client"
 import { useState , FC} from "react"
-import styles from "./Auth.module.css"
 import Link from "next/link"
 import SubmitButton from "../elements/SubmitBtn"
 import { useRouter } from 'next/navigation';
@@ -75,7 +74,7 @@ const Auth = ({isSignIn}: Props) => {
             placeholder="Email"
             value={email}
             id="email"
-            className={styles.input}
+            className="w-[80%] h-9 mt-7 mx-auto border-b-2 border-b-slate-500 text-black focus:outline-none"
             onChange={(e) => setEmail(e.target.value)}
           />
         </div>
@@ -86,7 +85,7 @@ const Auth = ({isSignIn}: Props) => {
             placeholder="Password"
             value={password}
             id="password"
-            className={styles.input}
+            className="w-[80%] h-9 mt-7 mx-auto border-b-2 border-b-slate-500 text-black focus:outline-none"
             onChange={(e) => setPassword(e.target.value)}
           />
         </div>

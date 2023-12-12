@@ -23,7 +23,7 @@ export default function ForgotPassword() {
 
   return (
     <>
-      <form action="" onSubmit={handleSubmit}>
+      <form className="mt-5" action="" onSubmit={handleSubmit}>
         <h1>Reset Password</h1>
         <p>E-Mail Address:</p>
         <input

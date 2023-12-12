@@ -51,25 +51,25 @@ const Auth = ({isSignIn}: Props) => {
   }
 
   return (
-    
     <div className={styles.authContainer}>
       {open && (
-          <AlertModal open={open} handleClose={handleClose} title="Validation Error"
+        <AlertModal
+          open={open}
+          handleClose={handleClose}
+          title="Validation Error"
           message={alertMessage}
         />
-      )
-      
-      }
-      {isSignIn ? (
-        <p className={styles.title}>Welcome Back!</p>
-         ) : (
-        <p className={styles.title}>Do not have an account? Sign Up!</p>
       )}
-      
-      <form onSubmit={ isSignIn ? handleSubmit : handleSignUp}>
+      {isSignIn ? (
+        <p className="text-black mt-9 mb-0 text-large">Welcome Back!</p>
+      ) : (
+        <p className="text-black mt-9 mb-0 text-large">
+          Do not have an account? Sign Up!
+        </p>
+      )}
 
-        <div className={styles.formGroup}>    
-    
+      <form onSubmit={isSignIn ? handleSubmit : handleSignUp}>
+        <div className={styles.formGroup}>
           <input
             type="email"
             placeholder="Email"
@@ -80,34 +80,32 @@ const Auth = ({isSignIn}: Props) => {
           />
         </div>
 
-        <div className={styles.formGroup}>  
-         
-        <input
-          type="password"
-          placeholder="Password"
-          value={password}
-          id="password"  
-          className={styles.input}
-          onChange={(e) => setPassword(e.target.value)}
-        />
+        <div className={styles.formGroup}>
+          <input
+            type="password"
+            placeholder="Password"
+            value={password}
+            id="password"
+            className={styles.input}
+            onChange={(e) => setPassword(e.target.value)}
+          />
         </div>
-        
+
         {isSignIn ? (
           <>
             <SubmitButton word="Sign In" />
-              <Link href="/auth/signup">
-               <p id={styles.toAuth}>Do not have an account? Sign-up here!</p>
-              </Link>
+            <Link href="/auth/signup">
+              <p id={styles.toAuth}>Do not have an account? Sign-up here!</p>
+            </Link>
           </>
-          ) : (
-            <>
-              <SubmitButton word="Sign Up"/>
-              <Link href="/auth/signin">
-               <p id={styles.toAuth}>Already a user? Sign-in!</p>
-              </Link>
-           </>      
-        )
-      }
+        ) : (
+          <>
+            <SubmitButton word="Sign Up" />
+            <Link href="/auth/signin">
+              <p id={styles.toAuth}>Already a user? Sign-in!</p>
+            </Link>
+          </>
+        )}
       </form>
     </div>
   );

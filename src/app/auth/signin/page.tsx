@@ -1,6 +1,5 @@
-import Link from "next/link"
-import Auth from "../../components/layouts/Auth"
-import styles from './signin.module.css'
+import Link from "next/link";
+import Auth from "../../components/layouts/Auth";
 
 export default function Sigin() {
   return (
@@ -15,4 +14,3 @@ export default function Sigin() {
     </>
   );
 }
-  

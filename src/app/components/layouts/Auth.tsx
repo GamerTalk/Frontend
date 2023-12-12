@@ -1,6 +1,5 @@
 "use client"
 import { useState , FC} from "react"
-import styles from "./Auth.module.css"
 import Link from "next/link"
 import SubmitButton from "../elements/SubmitBtn"
 import { useRouter } from 'next/navigation';
@@ -51,63 +50,63 @@ const Auth = ({isSignIn}: Props) => {
   }
 
   return (
-    
-    <div className={styles.authContainer}>
+    <div className="bg-white h-96 mx-auto w-[90%] sm:w-[50%] mt-10 border-2 border-black rounded-xl shadow-md font-sans">
       {open && (
-          <AlertModal open={open} handleClose={handleClose} title="Validation Error"
+        <AlertModal
+          open={open}
+          handleClose={handleClose}
+          title="Validation Error"
           message={alertMessage}
         />
-      )
-      
-      }
-      {isSignIn ? (
-        <p className={styles.title}>Welcome Back!</p>
-         ) : (
-        <p className={styles.title}>Do not have an account? Sign Up!</p>
       )}
-      
-      <form onSubmit={ isSignIn ? handleSubmit : handleSignUp}>
+      {isSignIn ? (
+        <p className="text-black mt-9 mb-0 text-large">Welcome Back!</p>
+      ) : (
+        <p className="text-black mt-9 mb-0 text-large">
+          Do not have an account? Sign Up!
+        </p>
+      )}
 
-        <div className={styles.formGroup}>    
-    
+      <form onSubmit={isSignIn ? handleSubmit : handleSignUp}>
+        <div>
           <input
             type="email"
             placeholder="Email"
             value={email}
             id="email"
-            className={styles.input}
+            className="w-[80%] h-9 mt-7 mx-auto border-b-2 border-b-slate-500 text-black focus:outline-none"
             onChange={(e) => setEmail(e.target.value)}
           />
         </div>
 
-        <div className={styles.formGroup}>  
-         
-        <input
-          type="password"
-          placeholder="Password"
-          value={password}
-          id="password"  
-          className={styles.input}
-          onChange={(e) => setPassword(e.target.value)}
-        />
+        <div>
+          <input
+            type="password"
+            placeholder="Password"
+            value={password}
+            id="password"
+            className="w-[80%] h-9 mt-7 mx-auto border-b-2 border-b-slate-500 text-black focus:outline-none"
+            onChange={(e) => setPassword(e.target.value)}
+          />
         </div>
-        
+
         {isSignIn ? (
           <>
             <SubmitButton word="Sign In" />
-              <Link href="/auth/signup">
-               <p id={styles.toAuth}>Do not have an account? Sign-up here!</p>
-              </Link>
+            <Link href="/auth/signup">
+              <p className="text-blue-600 mt-6">
+                Do not have an account? Sign-up here!
+              </p>
+            </Link>
           </>
-          ) : (
-            <>
-              <SubmitButton word="Sign Up"/>
-              <Link href="/auth/signin">
-               <p id={styles.toAuth}>Already a user? Sign-in!</p>
-              </Link>
-           </>      
-        )
-      }
+        ) : (
+          <>
+            <SubmitButton word="Sign Up" />
+            <Link href="/auth/signin">
+              <p className="text-blue-600 mt-6">Already a user? Sign-in!</p>
+            </Link>
+          </>
+        )}
       </form>
     </div>
   );

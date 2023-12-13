@@ -279,7 +279,7 @@ const handleClose = () => setOpen(false);
 
       <form method="post" onSubmit={handleFormSubmit}>
         <div className={styles.usernameBox}>
-          <label htmlFor="Username" className="font-bold text-2xl py-5">
+          <label htmlFor="Username" className="font-bold text-2xl py-5-align-left">
             {" "}
             Username:{" "}
           </label>
@@ -322,7 +322,7 @@ const handleClose = () => setOpen(false);
           </label>
         </div>
 
-        <p className="font-bold text-2xl py-5">Region:</p>
+        <p className="font-bold text-2xl py-5-align-left">Region:</p>
         <div className={styles.language}>
         {categories.regions.map((regionOption:string, key:number) => { 
               return (
@@ -340,8 +340,8 @@ const handleClose = () => setOpen(false);
             })}
         </div>
 
-        <p className="font-bold text-2xl py-5">What language(s) are you fluent in?</p>
-        <p className={styles.subheading}>Check all that apply</p>
+        <p className="font-bold text-2xl py-2-align-left">What language(s) are you fluent in?</p>
+        <p className="mt-0 text-base py-5">Check all that apply</p>
         <div className={styles.language}>
         {categories.languages.map((languageOption:string, key:number) => { 
               return (
@@ -359,7 +359,7 @@ const handleClose = () => setOpen(false);
             })}
         </div>
 
-        <p id="learning" className="font-bold text-2xl py-5">
+        <p id="learning" className="font-bold text-2xl py-5-align-left">
           What language(s) do you want to learn and what is your level?
         </p>
         <p className={styles.learningSubheading}>
@@ -409,10 +409,10 @@ const handleClose = () => setOpen(false);
             })}
         </div>
 
-        <p className="font-bold text-2xl py-5">Date of Birth:</p>
+        <p className="font-bold text-2xl py-5-align-left">Date of Birth:</p>
         <input type="date" defaultValue={defaultDate} onChange={handleBirthday}></input>
 
-        <p className="font-bold text-2xl py-5">System(s):</p>
+        <p className="font-bold text-2xl py-5-align-left">System(s):</p>
         <div className={styles.language}>
         {categories.systems.map((systemOption:string, key:number) => { 
               return (
@@ -431,7 +431,7 @@ const handleClose = () => setOpen(false);
           
         </div>
 
-        <p className="font-bold text-2xl py-5">Genre:</p>
+        <p className="font-bold text-2xl py-5-align-left">Genre:</p>
         <div className={styles.language}>
         {categories.genres.map((genreOption:string, key:number) => { 
               return (
@@ -449,11 +449,11 @@ const handleClose = () => setOpen(false);
             })}
         </div>
 
-        <p className="font-bold text-2xl py-5">About Me:</p>
+        <p className="font-bold text-2xl py-5 align-left">About Me:</p>
         <textarea className={styles.textarea} rows={5} cols={40} onChange={handleAboutMe} maxLength={500} />
         <p className={styles.length}>{aboutMeLength} / 500</p>
 
-        <p className="font-bold text-2xl py-5">Currently Playing:</p>
+        <p className="font-bold text-2xl py-5 align-left">Currently Playing:</p>
       
         <textarea className={styles.textarea} rows={5} cols={40} onChange={handleCurrPlay} maxLength={500}/>
         <p className={styles.length}>{currPlayLength} / 500</p>
@@ -464,29 +464,29 @@ const handleClose = () => setOpen(false);
           </button>
         </div>
 
-        <div className={styles.levelsbox}>
+        <div className="pt-40 pb-80 border-2">
           <a id="levels-explain" href="#learning" className={styles.links}>
             Go back
           </a>
           <h1>Language Levels</h1>
-          <h2 className={styles.candoHeadings}>Beginner</h2>
+          <h2 className="font-bold text-2xl text-left pt-4">Beginner</h2>
           <p className={styles.cando}>
             Can make introductions and can ask and answer simple questions.
           </p>
-          <h2 className={styles.candoHeadings}>Elementary</h2>
+          <h2 className="font-bold text-2xl text-left pt-4">Elementary</h2>
           <p className={styles.cando}>
             Can converse common topics and in daily situations.
           </p>
-          <h2 className={styles.candoHeadings}>Intermediate</h2>
+          <h2 className="font-bold text-2xl text-left pt-4">Intermediate</h2>
           <p className={styles.cando}>
             Can interact with native speakers more fluently and spontaneously.
           </p>
-          <h2 className={styles.candoHeadings}>Advanced</h2>
+          <h2 className="font-bold text-2xl text-left pt-4">Advanced</h2>
           <p className={styles.cando}>
             Can express yourself naturally, effortlessly recalling authentic
             expressions.
           </p>
-          <h2 className={styles.candoHeadings}>Proficient</h2>
+          <h2 className="font-bold text-2xl text-left pt-4">Proficient</h2>
           <p className={styles.cando}>
             Can comfortably comphrehend most things heard and read.
           </p>

@@ -59,7 +59,7 @@ const Add: React.FC<Param> = ({ handleClosePopup }) => {
          message={alertMessage}
        />
       )}
-      <div className={styles.content}>
+      <div className="bg-white p-5 rounded-lg">
         <h2>Add a new card</h2>
         <form onSubmit={handleFormSubmit}>
           <div className={styles.card}>

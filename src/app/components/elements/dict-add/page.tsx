@@ -3,7 +3,7 @@
 "use client"
 
 import React, { useState } from 'react';
-import styles from './add.module.css';
+
 import axios from 'axios';
 import { UserAuth } from '@/app/context/AuthContext';
 import AlertModal from '../../layouts/AlertModal';
@@ -81,9 +81,9 @@ const Add: React.FC<Param> = ({ handleClosePopup }) => {
               onChange={handleBack}
             />
           </div>
-          <button className={styles.submit}>Add</button>
+          <button className="h-8 w-20 text-xl text-white bg-successMessage">Add</button>
         </form>
-        <button className={styles.close} onClick={handleClosePopup}>
+        <button className="h-8 w-20 text-xl m-8" onClick={handleClosePopup}>
           Close
         </button>
       </div>

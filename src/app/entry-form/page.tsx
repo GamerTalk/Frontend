@@ -268,7 +268,7 @@ const handleClose = () => setOpen(false);
 
   return (
     <div>
-      <h1 className="font-bold text-3xl py-5">Welcome!</h1>
+      <h1 className="font-bold text-3xl pt-5 pb-1">Welcome!</h1>
       <p className="pb-5">Tell us about yourself!</p>
 
       {open && (
@@ -278,7 +278,7 @@ const handleClose = () => setOpen(false);
       )}
 
       <form method="post" onSubmit={handleFormSubmit}>
-        <div className={styles.usernameBox}>
+        <div className="pb-5" >
           <label htmlFor="Username" className="font-bold text-2xl py-5-align-left">
             {" "}
             Username:{" "}
@@ -293,7 +293,7 @@ const handleClose = () => setOpen(false);
               onChange={handleUsername}  
             ></input>
           </div>
-          <p className={"mt-5 text-gray-500 text-15xl"}>Username should be between 5-15 characters</p>
+          <p className={"mt-2 text-gray-400 text-15xl"}>Username should be between 5-15 characters</p>
         </div>
         
 
@@ -304,6 +304,7 @@ const handleClose = () => setOpen(false);
               }
               alt='profile-image'
               id={styles.image}
+            
           />
             {/* <Image
               src={
@@ -317,13 +318,13 @@ const handleClose = () => setOpen(false);
         </div>
 
         <div>
-          <label htmlFor="w-90 overflow-hidden hidden">
+          <label htmlFor="w-90 overflow-hidden hidden pb-5">
             <input type="file" name="image" onChange={handleFileChange} id={styles.userUploadImg}  />
           </label>
         </div>
 
-        <p className="font-bold text-2xl py-5-align-left">Region:</p>
-        <div className={styles.language}>
+        <p className="font-bold text-2xl pt-5  align-left">Region:</p>
+        <div className="grid grid-cols-2 gap-3 pt-5 pb-10">
         {categories.regions.map((regionOption:string, key:number) => { 
               return (
                 <div key={key}>
@@ -340,7 +341,7 @@ const handleClose = () => setOpen(false);
             })}
         </div>
 
-        <p className="font-bold text-2xl py-2-align-left">What language(s) are you fluent in?</p>
+        <p className="font-bold text-2xl py-2 align-left">What language(s) are you fluent in?</p>
         <p className="mt-0 text-base py-5">Check all that apply</p>
         <div className={styles.language}>
         {categories.languages.map((languageOption:string, key:number) => { 
@@ -359,7 +360,7 @@ const handleClose = () => setOpen(false);
             })}
         </div>
 
-        <p id="learning" className="font-bold text-2xl py-5-align-left">
+        <p id="learning" className="font-bold text-2xl py-5 align-left">
           What language(s) do you want to learn and what is your level?
         </p>
         <p className={styles.learningSubheading}>
@@ -409,10 +410,10 @@ const handleClose = () => setOpen(false);
             })}
         </div>
 
-        <p className="font-bold text-2xl py-5-align-left">Date of Birth:</p>
+        <p className="font-bold text-2xl py-5 align-left">Date of Birth:</p>
         <input type="date" defaultValue={defaultDate} onChange={handleBirthday}></input>
 
-        <p className="font-bold text-2xl py-5-align-left">System(s):</p>
+        <p className="font-bold text-2xl py-5 align-left">System(s):</p>
         <div className={styles.language}>
         {categories.systems.map((systemOption:string, key:number) => { 
               return (
@@ -431,7 +432,7 @@ const handleClose = () => setOpen(false);
           
         </div>
 
-        <p className="font-bold text-2xl py-5-align-left">Genre:</p>
+        <p className="font-bold text-2xl py-5 align-left">Genre:</p>
         <div className={styles.language}>
         {categories.genres.map((genreOption:string, key:number) => { 
               return (
@@ -464,11 +465,11 @@ const handleClose = () => setOpen(false);
           </button>
         </div>
 
-        <div className="pt-40 pb-80 border-2">
+        <div className="pt-40 pb-20 border-2">
           <a id="levels-explain" href="#learning" className={styles.links}>
             Go back
           </a>
-          <h1>Language Levels</h1>
+          <h1 className="text-2xl">Language Levels</h1>
           <h2 className="font-bold text-2xl text-left pt-4">Beginner</h2>
           <p className={styles.cando}>
             Can make introductions and can ask and answer simple questions.

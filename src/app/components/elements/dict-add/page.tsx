@@ -53,22 +53,33 @@ const Add: React.FC<Param> = ({ handleClosePopup }) => {
   };
 
   return (
-    <div className={styles.popup}>
+    <div className="fixed top-0 left-0 w-[100%] h-[100%] bg-black flex justify-center items-center text-black">
       {open && (
-         <AlertModal open={open} handleClose={handleClose} title="Validation Error"
-         message={alertMessage}
-       />
+        <AlertModal
+          open={open}
+          handleClose={handleClose}
+          title="Validation Error"
+          message={alertMessage}
+        />
       )}
       <div className="bg-white p-5 rounded-lg">
         <h2>Add a new card</h2>
         <form onSubmit={handleFormSubmit}>
           <div className={styles.card}>
             <p className={styles.title}>Front</p>
-            <input className={styles.input} value={front} onChange={handleFront} />
+            <input
+              className={styles.input}
+              value={front}
+              onChange={handleFront}
+            />
           </div>
           <div className={styles.card}>
             <p className={styles.title}>Back</p>
-            <input className={styles.input} value={back} onChange={handleBack} />
+            <input
+              className={styles.input}
+              value={back}
+              onChange={handleBack}
+            />
           </div>
           <button className={styles.submit}>Add</button>
         </form>

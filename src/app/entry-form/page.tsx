@@ -323,7 +323,7 @@ const handleClose = () => setOpen(false);
           </label>
         </div>
 
-        <p className="font-bold text-2xl pt-5  align-left">Region:</p>
+        <p className="font-bold text-2xl pt-5 align-left">Region</p>
         <div className="grid grid-cols-2 gap-3 pt-5 pb-10">
         {categories.regions.map((regionOption:string, key:number) => { 
               return (
@@ -342,8 +342,8 @@ const handleClose = () => setOpen(false);
         </div>
 
         <p className="font-bold text-2xl py-2 align-left">What language(s) are you fluent in?</p>
-        <p className="mt-0 text-base py-5">Check all that apply</p>
-        <div className={styles.language}>
+        <p className="mt-0 text-base">Check all that apply</p>
+        <div className="grid grid-cols-2 gap-2 pt-5 pb-10">
         {categories.languages.map((languageOption:string, key:number) => { 
               return (
                 <div key={key}>
@@ -363,22 +363,21 @@ const handleClose = () => setOpen(false);
         <p id="learning" className="font-bold text-2xl py-5 align-left">
           What language(s) do you want to learn and what is your level?
         </p>
-        <p className={styles.learningSubheading}>
-          <p>
-            {" "}
-            <span className={styles.number}>1</span>: Beginner
-            <span className={styles.number}>2</span>: Elementary{" "}
-          </p>
-          <p>
-            {" "}
-            <span className={styles.number}>3</span>: Intermediate
-            <span className={styles.number}> 4</span>: Advanced
-            <span className={styles.number}> 5</span>: Proficent
-          </p>
-        </p>
-        <p className={styles.learningSubheading}>
+        <div className="pb-3">
+          <div className="flex justify-around pb-3">
+            {"  "}
+            <p><span className="font-bold">1</span>: Beginner</p>
+            <p><span className="font-bold">2</span>: Elementary</p>
+            <p><span className="font-bold">3</span>: Intermediate</p>
+          </div>
+          <div className="flex justify-around">
+            <p><span className="font-bold"> 4</span>: Advanced</p>
+            <p><span className="font-bold"> 5</span>: Proficent</p>
+          </div>
+        </div>
+        <p className="pb-3">
           For a more detailed explanation{" "}
-          <a href="#levels-explain" className={styles.links}>
+          <a href="#levels-explain" className="text-blue-600">
             click here
           </a>{" "}
         </p>

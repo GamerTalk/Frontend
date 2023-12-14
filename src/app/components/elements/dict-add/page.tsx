@@ -65,7 +65,7 @@ const Add: React.FC<Param> = ({ handleClosePopup }) => {
       <div className="bg-white p-5 rounded-lg">
         <h2>Add a new card</h2>
         <form onSubmit={handleFormSubmit}>
-          <div className={styles.card}>
+          <div className="m-10 h-32 w-52 bg-gray-500 border-2 border-black">
             <p className={styles.title}>Front</p>
             <input
               className={styles.input}
@@ -73,7 +73,7 @@ const Add: React.FC<Param> = ({ handleClosePopup }) => {
               onChange={handleFront}
             />
           </div>
-          <div className={styles.card}>
+          <div className="m-10 h-32 w-52 bg-gray-500 border-2 border-black">
             <p className={styles.title}>Back</p>
             <input
               className={styles.input}

@@ -451,12 +451,12 @@ const handleClose = () => setOpen(false);
 
         <p className="font-bold text-2xl py-5 align-left">About Me:</p>
         <textarea className={styles.textarea} rows={5} cols={40} onChange={handleAboutMe} maxLength={500} />
-        <p className={styles.length}>{aboutMeLength} / 500</p>
+        <p className="mt-n3 text-zinc-400 text-15xl">{aboutMeLength} / 500</p>
 
         <p className="font-bold text-2xl py-5 align-left">Currently Playing:</p>
       
         <textarea className={styles.textarea} rows={5} cols={40} onChange={handleCurrPlay} maxLength={500}/>
-        <p className={styles.length}>{currPlayLength} / 500</p>
+        <p className="mt-n3 text-zinc-400 text-15xl">{currPlayLength} / 500</p>
 
         <div>
           <button className={styles.button} type="submit">

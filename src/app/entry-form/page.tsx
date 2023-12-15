@@ -363,7 +363,7 @@ const handleClose = () => setOpen(false);
         <p id="learning" className="font-bold text-2xl py-5 align-left">
           What language(s) do you want to learn and what is your level?
         </p>
-        <div className="pb-3">
+        <div className="mx-auto pb-3 w-4/5">
           <div className="flex justify-around pb-3">
             {"  "}
             <p><span className="font-bold">1</span>: Beginner</p>
@@ -382,7 +382,7 @@ const handleClose = () => setOpen(false);
           </a>{" "}
         </p>
         <div>
-          <div className={styles.learningHeadings}>
+          <div className="grid grid-cols-6 font-bold">
             <div>Language</div>
             <div>1</div>
             <div>2</div>

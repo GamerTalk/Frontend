@@ -409,11 +409,11 @@ const handleClose = () => setOpen(false);
             })}
         </div>
 
-        <p className="font-bold text-2xl py-5 align-left">Date of Birth:</p>
+        <p className="font-bold text-2xl py-6 align-left">Date of Birth:</p>
         <input type="date" defaultValue={defaultDate} onChange={handleBirthday}></input>
 
         <p className="font-bold text-2xl py-5 align-left">System(s):</p>
-        <div className={styles.language}>
+        <div className="grid grid-cols-2 gap-2 pt-3 pb-10">
         {categories.systems.map((systemOption:string, key:number) => { 
               return (
                 <div key={key}>
@@ -432,7 +432,7 @@ const handleClose = () => setOpen(false);
         </div>
 
         <p className="font-bold text-2xl py-5 align-left">Genre:</p>
-        <div className={styles.language}>
+        <div className="grid grid-cols-2 gap-2 pt-3 pb-10">
         {categories.genres.map((genreOption:string, key:number) => { 
               return (
                 <div key={key}>
@@ -464,7 +464,7 @@ const handleClose = () => setOpen(false);
           </button>
         </div>
 
-        <div className="pt-40 pb-20 border-2">
+        <div className="pt-40 pb-20">
           <a id="levels-explain" href="#learning" className={styles.links}>
             Go back
           </a>

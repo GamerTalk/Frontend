@@ -281,7 +281,7 @@ const handleClose = () => setOpen(false);
         <div className="pb-5" >
           <label htmlFor="Username" className="font-bold text-2xl py-5-align-left">
             {" "}
-            Username:{" "}
+            Username
           </label>
           <div>
             <input
@@ -409,10 +409,10 @@ const handleClose = () => setOpen(false);
             })}
         </div>
 
-        <p className="font-bold text-2xl py-6 align-left">Date of Birth:</p>
+        <p className="font-bold text-2xl py-6 align-left">Date of Birth</p>
         <input type="date" defaultValue={defaultDate} onChange={handleBirthday}></input>
 
-        <p className="font-bold text-2xl py-5 align-left">System(s):</p>
+        <p className="font-bold text-2xl py-5 align-left">System(s)</p>
         <div className="grid grid-cols-2 gap-2 pt-3 pb-10">
         {categories.systems.map((systemOption:string, key:number) => { 
               return (
@@ -431,7 +431,7 @@ const handleClose = () => setOpen(false);
           
         </div>
 
-        <p className="font-bold text-2xl py-5 align-left">Genre:</p>
+        <p className="font-bold text-2xl py-5 align-left">Genre</p>
         <div className="grid grid-cols-2 gap-2 pt-3 pb-10">
         {categories.genres.map((genreOption:string, key:number) => { 
               return (
@@ -449,17 +449,17 @@ const handleClose = () => setOpen(false);
             })}
         </div>
 
-        <p className="font-bold text-2xl py-5 align-left">About Me:</p>
-        <textarea className={styles.textarea} rows={5} cols={40} onChange={handleAboutMe} maxLength={500} />
+        <p className="font-bold text-2xl py-5 align-left">About Me</p>
+        <textarea className="resize-none" rows={5} cols={40} onChange={handleAboutMe} maxLength={500} />
         <p className="mt-n3 text-zinc-400 text-15xl">{aboutMeLength} / 500</p>
 
-        <p className="font-bold text-2xl py-5 align-left">Currently Playing:</p>
+        <p className="font-bold text-2xl py-5 align-left">Currently Playing</p>
       
-        <textarea className={styles.textarea} rows={5} cols={40} onChange={handleCurrPlay} maxLength={500}/>
+        <textarea className="resize-none" rows={5} cols={40} onChange={handleCurrPlay} maxLength={500}/>
         <p className="mt-n3 text-zinc-400 text-15xl">{currPlayLength} / 500</p>
 
         <div>
-          <button className={styles.button} type="submit">
+          <button className="mt-8 mb-5 text-xl h-12 w-40 bg-indigo-600 text-white rounded-2xl hover:bg-indigo-700" type="submit">
             Submit
           </button>
         </div>

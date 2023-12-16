@@ -297,14 +297,12 @@ const handleClose = () => setOpen(false);
         </div>
         
 
-        <div className={styles.userImg}>
+        <div className="h-16 w-16 mb-5 object-cover m-auto">
           <img
               src={
                 "https://firebasestorage.googleapis.com/v0/b/gamertalk-8133c.appspot.com/o/images%2Fdefault%2Fuserdefault.png?alt=media&token=00630336-daf3-4b5d-ab58-895d704863b6"
               }
-              alt='profile-image'
-              id={styles.image}
-            
+              alt='profile-image' 
           />
             {/* <Image
               src={
@@ -318,8 +316,8 @@ const handleClose = () => setOpen(false);
         </div>
 
         <div>
-          <label htmlFor="w-90 overflow-hidden hidden pb-5">
-            <input type="file" name="image" onChange={handleFileChange} id={styles.userUploadImg}  />
+          <label>
+            <input type="file" name="image" onChange={handleFileChange} id="w-24 overflow-hidden mt-4 pt-3 hidden" />
           </label>
         </div>
 

@@ -288,12 +288,13 @@ const handleClose = () => setOpen(false);
               type="text"
               id="UserName"
               name="Username"
+              className="text-black px-3 py-1"
               minLength={5}
               maxLength={15}
               onChange={handleUsername}  
             ></input>
           </div>
-          <p className={"mt-2 text-gray-400 text-15xl"}>Username should be between 5-15 characters</p>
+          <p className="mt-2 text-gray-400 text-15xl" >Username should be between 5-15 characters</p>
         </div>
         
 
@@ -408,7 +409,7 @@ const handleClose = () => setOpen(false);
         </div>
 
         <p className="font-bold text-2xl py-6 align-left">Date of Birth</p>
-        <input type="date" defaultValue={defaultDate} onChange={handleBirthday}></input>
+        <input type="date" className=" p-2 text-black" defaultValue={defaultDate} onChange={handleBirthday}></input>
 
         <p className="font-bold text-2xl py-5 align-left">System(s)</p>
         <div className="grid grid-cols-2 gap-2 p-5 border-2 border-gray-400 rounded-2xl">
@@ -463,29 +464,29 @@ const handleClose = () => setOpen(false);
         </div>
 
         <div className="pt-40 pb-20">
-          <a id="levels-explain" href="#learning" className={styles.links}>
+          <a id="levels-explain" href="#learning" className="text-blue-600">
             Go back
           </a>
           <h1 className="text-2xl">Language Levels</h1>
           <h2 className="font-bold text-2xl text-left pt-4">Beginner</h2>
-          <p className={styles.cando}>
+          <p className="text-left">
             Can make introductions and can ask and answer simple questions.
           </p>
           <h2 className="font-bold text-2xl text-left pt-4">Elementary</h2>
-          <p className={styles.cando}>
+          <p className="text-left">
             Can converse common topics and in daily situations.
           </p>
           <h2 className="font-bold text-2xl text-left pt-4">Intermediate</h2>
-          <p className={styles.cando}>
+          <p className="text-left">
             Can interact with native speakers more fluently and spontaneously.
           </p>
           <h2 className="font-bold text-2xl text-left pt-4">Advanced</h2>
-          <p className={styles.cando}>
+          <p className="text-left">
             Can express yourself naturally, effortlessly recalling authentic
             expressions.
           </p>
           <h2 className="font-bold text-2xl text-left pt-4">Proficient</h2>
-          <p className={styles.cando}>
+          <p className="text-left">
             Can comfortably comphrehend most things heard and read.
           </p>
         </div>

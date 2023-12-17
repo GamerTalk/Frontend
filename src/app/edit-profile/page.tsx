@@ -306,11 +306,11 @@ export default function Profile() {
             </Link>
           </div>
 
-          <p className={styles.heading}>Username:</p>
-          <p>{profile.username}</p>
+          <p className="font-bold text-2xl py-5-align-left">Username</p>
+          <p className="text-2xl p-5">{profile.username}</p>
 
-          <p className={styles.heading}>Region:</p>
-          <div className={styles.language}>
+          <p className="font-bold text-2xl pt-5 pb-5 align-left">Region</p>
+          <div className="grid grid-cols-2 gap-3 p-5 border-2 border-gray-400 rounded-2xl">
             {categories.regions.map((regionOption:string, key:number) => { 
               return (
                 <div key={key}>
@@ -328,9 +328,9 @@ export default function Profile() {
             })}
           </div>
           
-          <p className={styles.heading}>What language(s) are you fluent in?:</p>
-          <p className={styles.subheading}>Check all that apply</p>
-          <div className={styles.language}>
+        <p className="font-bold text-2xl py-2 pt-5 align-left">What language(s) are you fluent in?</p>
+        <p className="mt-0 text-base pb-2">Check all that apply</p>
+        <div className="grid grid-cols-2 gap-2 p-5 border-2 border-gray-400 rounded-2xl">
           {categories.languages.map((languageOption:string, key:number) => { 
               return (
                 <div key={key}>
@@ -341,28 +341,6 @@ export default function Profile() {
                     value=""
                     onChange={handleLanguage}
                     defaultChecked={language.includes(languageOption.toLocaleLowerCase())}
-                  />
-                </div>
-              )
-            })}
-            
-          </div>
-
-          <p className={styles.heading}>Date of Birth: </p>
-          <p> {profile.date_of_birth}</p>
-
-          <p className={styles.heading}>User Systems:</p>
-          <div className={styles.language}>
-          {categories.systems.map((systemOption:string, key:number) => { 
-              return (
-                <div key={key}>
-                  <Checkbox
-                    type="Checkbox"
-                    label={systemOption}
-                    name={systemOption.toLocaleLowerCase()}
-                    value=""
-                    onChange={handleSystem}
-                    defaultChecked={system.includes(systemOption.toLocaleLowerCase())}
                   />
                 </div>
               )
@@ -420,6 +398,30 @@ export default function Profile() {
             })}
             
           </div>
+
+          <p className={styles.heading}>Date of Birth: </p>
+          <p> {profile.date_of_birth}</p>
+
+          <p className={styles.heading}>User Systems:</p>
+          <div className={styles.language}>
+          {categories.systems.map((systemOption:string, key:number) => { 
+              return (
+                <div key={key}>
+                  <Checkbox
+                    type="Checkbox"
+                    label={systemOption}
+                    name={systemOption.toLocaleLowerCase()}
+                    value=""
+                    onChange={handleSystem}
+                    defaultChecked={system.includes(systemOption.toLocaleLowerCase())}
+                  />
+                </div>
+              )
+            })}
+            
+          </div>
+
+          
 
           <p className={styles.heading}>Genre:</p>
           <div className={styles.language}>

@@ -265,17 +265,17 @@ export default function Profile() {
 
   return (
     <form style={{ paddingBottom: "100px" }} onSubmit={handleFormSubmit}>
-      <h1>Profile</h1>
+      <h1 className="font-bold text-3xl pt-5 pb-1">Profile</h1>
       {profile ? (
         <>
-          <div className={styles.userImg}>
+          <div className="h-16 w-16 mb-5 object-cover m-auto">
             <img
               src={
                 profile.profile_picture_url ||
                 "https://firebasestorage.googleapis.com/v0/b/gamertalk-8133c.appspot.com/o/images%2Fdefault%2Fuserdefault.png?alt=media&token=00630336-daf3-4b5d-ab58-895d704863b6"
               }
               alt='profile-image'
-              id={styles.image}
+              id="w-24 overflow-hidden mt-4 pt-3 hidden" 
             />
             {/* <Image
               src={
@@ -294,13 +294,13 @@ export default function Profile() {
                 type="file"
                 name="image"
                 onChange={handleFileChange}
-                id={styles.userUploadImg}
+                id="w-24 overflow-hidden mt-4 pt-3 hidden" 
               />
             </label>
           </div>
           <div>
             <Link href="reset-password">
-              <button type="button" className={styles.resetButton}>
+              <button type="button" className="mb-5 text-sm h-12 w-40 bg-red-700 text-white mt-5 cursor-pointer rounded-2xl hover:bg-red-800">
                 Reset Password
               </button>
             </Link>

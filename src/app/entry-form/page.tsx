@@ -2,7 +2,6 @@
 
 import Checkbox from "../components/elements/Checkbox";
 import LearningCheckbox from "../components/elements/Learning-Checkbox";
-import styles from "./UserInfo.module.css";
 import { useState, useEffect, ChangeEvent, SetStateAction } from "react";
 import { UserAuth } from "../context/AuthContext";
 import { useRouter } from "next/navigation";

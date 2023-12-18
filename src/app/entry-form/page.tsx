@@ -448,7 +448,13 @@ const handleClose = () => setOpen(false);
         </div>
 
         <p className="font-bold text-2xl py-5 align-left">About Me</p>
-        <textarea className="resize-none" rows={5} cols={40} onChange={handleAboutMe} maxLength={500} />
+        <textarea 
+          className="resize-none" 
+          rows={5} 
+          cols={40} 
+          onChange={handleAboutMe} 
+          maxLength={500} 
+        />
         <p className="mt-n3 text-zinc-400 text-15xl">{aboutMeLength} / 500</p>
 
         <p className="font-bold text-2xl py-5 align-left">Currently Playing</p>

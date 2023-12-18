@@ -420,7 +420,7 @@ export default function Profile() {
             
           </div>
 
-          <p className="font-bold text-2xl py-5 align-left">Genre:</p>
+          <p className="font-bold text-2xl py-5 align-left">Genre</p>
           <div className="grid grid-cols-2 gap-2 p-5 border-2 border-gray-400 rounded-2xl">
           {categories.genres.map((genreOption:string, key:number) => { 
               return (
@@ -439,7 +439,7 @@ export default function Profile() {
             
           </div>
 
-          <p className="font-bold text-2xl py-5 align-left">About Me:</p>
+          <p className="font-bold text-2xl py-5 align-left">About Me</p>
           <textarea
             className="resize-none"
             rows={5}
@@ -450,7 +450,7 @@ export default function Profile() {
           />
           <p className="mt-n3 text-zinc-400 text-15xl">{aboutMeLength} / 500</p>
 
-          <p className="font-bold text-2xl py-5 align-left">Currently Playing:</p>
+          <p className="font-bold text-2xl py-5 align-left">Currently Playing</p>
           <textarea
             className="resize-none" 
             rows={5}

@@ -9,7 +9,6 @@ import React, {
 } from "react";
 import Link from "next/link";
 import axios from "axios";
-import styles from "../entry-form/UserInfo.module.css";
 import { UserAuth } from "../context/AuthContext";
 import Checkbox from "../components/elements/Checkbox";
 import LearningCheckbox from "../components/elements/Learning-Checkbox";
@@ -289,7 +288,7 @@ export default function Profile() {
             /> */}
           </div>
           <div>
-            <label htmlFor={styles.userUploadImg}>
+            <label>
               <input
                 type="file"
                 name="image"
@@ -479,34 +478,34 @@ export default function Profile() {
               <a id="levels-explain" href="#learning" className="text-blue-600">
                 Go back
               </a>
-              <h1>Language Levels</h1>
-              <h2 className={styles.candoHeadings}>Beginner</h2>
-              <p className={styles.cando}>
+              <h1 className="text-2xl">Language Levels</h1>
+              <h2 className="font-bold text-2xl text-left pt-4">Beginner</h2>
+              <p className="text-left">
                 Can make introductions and can ask and answer simple questions.
               </p>
-              <h2 className={styles.candoHeadings}>Elementary</h2>
-              <p className={styles.cando}>
+              <h2 className="font-bold text-2xl text-left pt-4">Elementary</h2>
+              <p className="text-left">
                 Can converse common topics and in daily situations.
               </p>
-              <h2 className={styles.candoHeadings}>Intermediate</h2>
-              <p className={styles.cando}>
+              <h2 className="font-bold text-2xl text-left pt-4">Intermediate</h2>
+              <p className="text-left">
                 Can interact with native speakers more fluently and
                 spontaneously.
               </p>
-              <h2 className={styles.candoHeadings}>Advanced</h2>
-              <p className={styles.cando}>
+              <h2 className="font-bold text-2xl text-left pt-4">Advanced</h2>
+              <p className="text-left">
                 Can express yourself naturally, effortlessly recalling authentic
                 expressions.
               </p>
-              <h2 className={styles.candoHeadings}>Proficient</h2>
-              <p className={styles.cando}>
+              <h2 className="font-bold text-2xl text-left pt-4">Proficient</h2>
+              <p className="text-left">
                 Can comfortably comphrehend most things heard and read.
               </p>
             </div>
           </div>
         </>
       ) : (
-        <p className={styles.loading}>Loading Profile...</p>
+        <p className="pb-12 h-screen">Loading Profile...</p>
       )}
     </form>
   );

@@ -458,8 +458,13 @@ const handleClose = () => setOpen(false);
         <p className="mt-n3 text-zinc-400 text-15xl">{aboutMeLength} / 500</p>
 
         <p className="font-bold text-2xl py-5 align-left">Currently Playing</p>
-      
-        <textarea className="resize-none" rows={5} cols={40} onChange={handleCurrPlay} maxLength={500}/>
+        <textarea 
+          className="resize-none" 
+          rows={5} 
+          cols={40} 
+          onChange={handleCurrPlay} 
+          maxLength={500}
+        />
         <p className="mt-n3 text-zinc-400 text-15xl">{currPlayLength} / 500</p>
 
         <div>

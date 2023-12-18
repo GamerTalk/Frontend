@@ -453,30 +453,30 @@ export default function Profile() {
 
           <p className="font-bold text-2xl py-5 align-left">Currently Playing:</p>
           <textarea
-            className={styles.textarea} 
+            className="resize-none" 
             rows={5}
             cols={40}
             value={currPlay}
             onChange={handleCurrPlay}
             maxLength={500}
           />
-          <p className={styles.length}>{currPlayLength} / 500</p>
+          <p className="mt-n3 text-zinc-400 text-15xl">{currPlayLength} / 500</p>
 
           <div>
-            <button className={styles.editButton} type="submit">
+            <button className="mt-8 mb-5 text-xl h-12 w-40 bg-indigo-600 text-white rounded-2xl hover:bg-indigo-700" type="submit">
               Submit
             </button>
             <br />
             <button
-              className={styles.deleteButton}
+              className="mb-5 text-lg h-12 w-40 bg-red-700 hover:bg-red-800 text-white mt-5 cursor-pointer"
               type="button"
               onClick={handleDeletion}
             >
               Delete Account
             </button>
 
-            <div className={styles.levelsbox}>
-              <a id="levels-explain" href="#learning" className={styles.links}>
+            <div className="pt-40 pb-20">
+              <a id="levels-explain" href="#learning" className="text-blue-600">
                 Go back
               </a>
               <h1>Language Levels</h1>

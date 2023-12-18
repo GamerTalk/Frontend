@@ -309,7 +309,7 @@ export default function Profile() {
           <p className="text-2xl p-5">{profile.username}</p>
 
           <p className="font-bold text-2xl pt-5 pb-5 align-left">Region</p>
-          <div className="grid grid-cols-2 gap-3 p-5 border-2 border-gray-400 rounded-2xl">
+          <div className="grid grid-cols-2 gap-3 py-5 px-10 border-2 border-gray-400 mx-auto w-[95%] rounded-2xl">
             {categories.regions.map((regionOption:string, key:number) => { 
               return (
                 <div key={key}>
@@ -329,7 +329,7 @@ export default function Profile() {
           
         <p className="font-bold text-2xl py-2 pt-5 align-left">What language(s) are you fluent in?</p>
         <p className="mt-0 text-base pb-2">Check all that apply</p>
-        <div className="grid grid-cols-2 gap-2 p-5 border-2 border-gray-400 rounded-2xl">
+        <div className="grid grid-cols-2 gap-2 py-5 px-10 border-2 border-gray-400 mx-auto w-[95%] rounded-2xl">
           {categories.languages.map((languageOption:string, key:number) => { 
               return (
                 <div key={key}>
@@ -347,7 +347,7 @@ export default function Profile() {
             
           </div>
 
-          <p id="learning" className="font-bold text-2xl py-5 align-left">
+          <p id="learning" className="font-bold text-2xl py-5 align-left ">
             What language(s) do you want to learn and what is your level?
           </p>
           <div className="mx-auto pb-3 w-4/5">
@@ -369,7 +369,7 @@ export default function Profile() {
               click here
             </a>{" "}
           </p>
-          <div>
+          <div className="w-[95%] mx-auto">
             <div className="grid grid-cols-6 font-bold">
               <div>Language</div>
               <div>1</div>
@@ -401,8 +401,8 @@ export default function Profile() {
           <p className="font-bold text-2xl pt-6 pb-2 align-left">Date of Birth</p>
           <p className="text-2xl pt-2 pb-5"> {profile.date_of_birth}</p>
 
-          <p className="font-bold text-2xl py-5 align-left">Systems</p>
-          <div className="grid grid-cols-2 gap-2 p-5 border-2 border-gray-400 rounded-2xl">
+          <p className="font-bold text-2xl py-5 align-left ">Systems</p>
+          <div className="grid grid-cols-2 gap-2 p-5 border-2 border-gray-400 mx-auto w-[95%] rounded-2xl">
           {categories.systems.map((systemOption:string, key:number) => { 
               return (
                 <div key={key}>
@@ -424,7 +424,7 @@ export default function Profile() {
           <div className="grid grid-cols-2 gap-2 p-5 border-2 border-gray-400 rounded-2xl">
           {categories.genres.map((genreOption:string, key:number) => { 
               return (
-                <div key={key}>
+                <div key={key} className="flex items-center">
                   <Checkbox
                     type="Checkbox"
                     label={genreOption}

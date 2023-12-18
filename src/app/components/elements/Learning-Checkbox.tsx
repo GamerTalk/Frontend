@@ -48,7 +48,7 @@ const LearningCheckbox: React.FC<Param> = ({ label, name, onChange, defaultCheck
   
   return (
     <div className="grid grid-cols-6">
-      <span>{label}</span>
+      <span className="text-left">{label}</span>
       <div><input type="radio" name={name} value="1" onChange={handleCheckboxChange1} checked={isChecked1} /> </div>
       <div><input type="radio" name={name} value="2" onChange={handleCheckboxChange2} checked={isChecked2} /> </div>
       <div><input type="radio" name={name} value="3" onChange={handleCheckboxChange3} checked={isChecked3} /> </div>

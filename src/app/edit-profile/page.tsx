@@ -348,30 +348,30 @@ export default function Profile() {
             
           </div>
 
-          <p id="learning" className={styles.heading}>
+          <p id="learning" className="font-bold text-2xl py-5 align-left">
             What language(s) do you want to learn and what is your level?
           </p>
-          <p className={styles.learningSubheading}>
-            <p>
+          <div className="mx-auto pb-3 w-4/5">
+            <div className="flex justify-around pb-3">
               {" "}
-              <span className={styles.number}>1</span>: Beginner
-              <span className={styles.number}> 2</span>: Elementary{" "}
-            </p>
-            <p>
-              {" "}
-              <span className={styles.number}>3</span>: Intermediate
-              <span className={styles.number}> 4</span>: Advanced
-              <span className={styles.number}> 5</span>: Proficent
-            </p>{" "}
-          </p>
-          <p className={styles.learningSubheading}>
+              <p><span className="font-bold">1</span>: Beginner</p>
+              <p><span className="font-bold">2</span>: Elementary</p>
+              <p><span className="font-bold">3</span>: Intermediate</p>
+            </div>
+            <div className="flex justify-around">
+              <p><span className="font-bold"> 4</span>: Advanced</p>
+              <p><span className="font-bold"> 5</span>: Proficent</p>
+            </div>
+          </div>
+
+          <p className="pb-3">
             For a more detailed explanation{" "}
-            <a href="#levels-explain" className={styles.links}>
+            <a href="#levels-explain" className="text-blue-600">
               click here
             </a>{" "}
           </p>
           <div>
-            <div className={styles.learningHeadings}>
+            <div className="grid grid-cols-6 font-bold">
               <div>Language</div>
               <div>1</div>
               <div>2</div>
@@ -399,10 +399,10 @@ export default function Profile() {
             
           </div>
 
-          <p className={styles.heading}>Date of Birth: </p>
-          <p> {profile.date_of_birth}</p>
+          <p className="font-bold text-2xl pt-6 pb-2 align-left">Date of Birth</p>
+          <p className="text-2xl pt-2 pb-5"> {profile.date_of_birth}</p>
 
-          <p className={styles.heading}>User Systems:</p>
+          <p className="font-bold text-2xl py-5 align-left">Systems</p>
           <div className={styles.language}>
           {categories.systems.map((systemOption:string, key:number) => { 
               return (

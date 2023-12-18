@@ -468,7 +468,7 @@ const handleClose = () => setOpen(false);
         <p className="mt-n3 text-zinc-400 text-15xl">{currPlayLength} / 500</p>
 
         <div>
-          <button className="mt-8 mb-5 text-xl h-12 w-40 bg-indigo-600 text-white rounded-2xl hover:bg-indigo-700" type="submit">
+          <button className="mt-8 mb-5 text-xl h-12 w-40 bg-indigo-600 text-white rounded-2xl hover:bg-indigo-700 border-2 border-white" type="submit">
             Submit
           </button>
         </div>

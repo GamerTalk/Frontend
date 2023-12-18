@@ -299,7 +299,7 @@ export default function Profile() {
           </div>
           <div>
             <Link href="reset-password">
-              <button type="button" className="mb-5 text-sm h-12 w-40 bg-red-700 text-white mt-5 cursor-pointer rounded-2xl hover:bg-red-800">
+              <button type="button" className="mb-5 text-sm h-12 w-40 bg-red-700 text-white mt-5 cursor-pointer rounded-2xl hover:bg-red-800 border-2 border-white">
                 Reset Password
               </button>
             </Link>
@@ -462,12 +462,12 @@ export default function Profile() {
           <p className="mt-n3 text-zinc-400 text-15xl">{currPlayLength} / 500</p>
 
           <div>
-            <button className="mt-8 mb-5 text-xl h-12 w-40 bg-indigo-600 text-white rounded-2xl hover:bg-indigo-700" type="submit">
+            <button className="mt-8 mb-5 text-xl h-12 w-40 bg-indigo-600 text-white rounded-2xl hover:bg-indigo-700 border-2 border-white" type="submit">
               Submit
             </button>
             <br />
             <button
-              className="mb-5 text-lg h-12 w-40 bg-red-700 hover:bg-red-800 text-white mt-5 cursor-pointer"
+              className="mb-5 text-lg h-12 w-40 bg-red-700 hover:bg-red-800 text-white mt-5 border-2 border-white cursor-pointer"
               type="button"
               onClick={handleDeletion}
             >

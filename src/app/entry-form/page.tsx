@@ -322,7 +322,7 @@ const handleClose = () => setOpen(false);
         </div>
 
         <p className="font-bold text-2xl pt-5 pb-5 align-left">Region</p>
-        <div className="grid grid-cols-2 gap-3 p-5 border-2 border-gray-400 rounded-2xl">
+        <div className="grid grid-cols-2 gap-3 p-5 border-2 border-gray-400 mx-auto w-[95%] rounded-2xl">
         {categories.regions.map((regionOption:string, key:number) => { 
               return (
                 <div key={key}>
@@ -341,7 +341,7 @@ const handleClose = () => setOpen(false);
 
         <p className="font-bold text-2xl py-2 pt-5 align-left">What language(s) are you fluent in?</p>
         <p className="mt-0 text-base pb-2">Check all that apply</p>
-        <div className="grid grid-cols-2 gap-2 p-5 border-2 border-gray-400 rounded-2xl">
+        <div className="grid grid-cols-2 gap-2 p-5 border-2 border-gray-400 mx-auto w-[95%] rounded-2xl">
         {categories.languages.map((languageOption:string, key:number) => { 
               return (
                 <div key={key}>
@@ -379,7 +379,7 @@ const handleClose = () => setOpen(false);
             click here
           </a>{" "}
         </p>
-        <div>
+        <div className="w-[95%] mx-auto">
           <div className="grid grid-cols-6 font-bold">
             <div>Language</div>
             <div>1</div>
@@ -411,7 +411,7 @@ const handleClose = () => setOpen(false);
         <input type="date" className=" p-2 text-black" defaultValue={defaultDate} onChange={handleBirthday}></input>
 
         <p className="font-bold text-2xl py-5 align-left">System(s)</p>
-        <div className="grid grid-cols-2 gap-2 p-5 border-2 border-gray-400 rounded-2xl">
+        <div className="grid grid-cols-2 gap-2 p-5 border-2 border-gray-400 mx-auto w-[95%] rounded-2xl">
         {categories.systems.map((systemOption:string, key:number) => { 
               return (
                 <div key={key}>
@@ -430,7 +430,7 @@ const handleClose = () => setOpen(false);
         </div>
 
         <p className="font-bold text-2xl py-5 align-left">Genre</p>
-        <div className="grid grid-cols-2 gap-2 p-5 border-2 border-gray-400 rounded-2xl">
+        <div className="grid grid-cols-2 gap-2 p-5 border-2 border-gray-400 mx-auto w-[95%] rounded-2xl">
         {categories.genres.map((genreOption:string, key:number) => { 
               return (
                 <div key={key}>

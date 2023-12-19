@@ -401,7 +401,7 @@ export default function Profile() {
           <p className="font-bold text-2xl pt-6 pb-2 align-left">Date of Birth</p>
           <p className="text-2xl pt-2 pb-5"> {profile.date_of_birth}</p>
 
-          <p className="font-bold text-2xl py-5 align-left ">Systems</p>
+          <p className="font-bold text-2xl py-5 align-left">System(s)</p>
           <div className="grid grid-cols-2 gap-2 p-5 border-2 border-gray-400 mx-auto w-[95%] rounded-2xl">
           {categories.systems.map((systemOption:string, key:number) => { 
               return (
@@ -421,10 +421,10 @@ export default function Profile() {
           </div>
 
           <p className="font-bold text-2xl py-5 align-left">Genre</p>
-          <div className="grid grid-cols-2 gap-2 p-5 border-2 border-gray-400 rounded-2xl">
+          <div className="grid grid-cols-2 gap-2 p-5 border-2 border-gray-400 mx-auto w-[95%] rounded-2xl">
           {categories.genres.map((genreOption:string, key:number) => { 
               return (
-                <div key={key} className="flex items-center">
+                <div key={key}>
                   <Checkbox
                     type="Checkbox"
                     label={genreOption}

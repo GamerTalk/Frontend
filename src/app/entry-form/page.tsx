@@ -361,16 +361,14 @@ const handleClose = () => setOpen(false);
         <p id="learning" className="font-bold text-2xl py-5 align-left">
           What language(s) do you want to learn and what is your level?
         </p>
-        <div className="mx-auto pb-3 w-4/5">
-          <div className="flex justify-around pb-3">
+        <div className="mx-auto pb-3 w-4/5 md:w-[50%] lg:w-[50%]">
+          <div className="text-center pb-3">
             {"  "}
             <p><span className="font-bold">1</span>: Beginner</p>
             <p><span className="font-bold">2</span>: Elementary</p>
             <p><span className="font-bold">3</span>: Intermediate</p>
-          </div>
-          <div className="flex justify-around">
-            <p><span className="font-bold"> 4</span>: Advanced</p>
-            <p><span className="font-bold"> 5</span>: Proficent</p>
+            <p><span className="font-bold">4</span>: Advanced</p>
+            <p><span className="font-bold">5</span>: Proficent</p>
           </div>
         </div>
         <p className="pb-3">

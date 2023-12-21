@@ -21,7 +21,7 @@ const Checkbox = ({ label, name, type, onChange, defaultChecked, value}: Param) 
   };
 
   return (
-    <div className="checkbox-wrapper">
+    <div>
       <label>
         <input type={type}  checked={isChecked} onChange={handleCheckboxChange} name={name} value={value} />
         <span>{label}</span>

@@ -321,7 +321,7 @@ const handleClose = () => setOpen(false);
           </label>
         </div>
 
-        <p className="font-bold text-2xl pt-5 pb-5 align-left">Region</p>
+        <p className="font-bold text-2xl pt-5 pb-5">Region</p>
         <div className="grid grid-cols-2 gap-3 p-5 border-2 border-gray-400 mx-auto w-[95%] rounded-2xl">
         {categories.regions.map((regionOption:string, key:number) => { 
               return (
@@ -339,7 +339,7 @@ const handleClose = () => setOpen(false);
             })}
         </div>
 
-        <p className="font-bold text-2xl py-2 pt-5 align-left">What language(s) are you fluent in?</p>
+        <p className="font-bold text-2xl py-2 pt-5">What language(s) are you fluent in?</p>
         <p className="mt-0 text-base pb-2">Check all that apply</p>
         <div className="grid grid-cols-2 gap-2 p-5 border-2 border-gray-400 mx-auto w-[95%] rounded-2xl">
         {categories.languages.map((languageOption:string, key:number) => { 
@@ -358,7 +358,7 @@ const handleClose = () => setOpen(false);
             })}
         </div>
 
-        <p id="learning" className="font-bold text-2xl py-5 align-left">
+        <p id="learning" className="font-bold text-2xl py-5">
           What language(s) do you want to learn and what is your level?
         </p>
         <div className="mx-auto pb-3 w-4/5 md:w-[50%] lg:w-[50%]">
@@ -405,10 +405,10 @@ const handleClose = () => setOpen(false);
             })}
         </div>
 
-        <p className="font-bold text-2xl py-6 align-left">Date of Birth</p>
+        <p className="font-bold text-2xl py-6">Date of Birth</p>
         <input type="date" className=" p-2 text-black" defaultValue={defaultDate} onChange={handleBirthday}></input>
 
-        <p className="font-bold text-2xl py-5 align-left">System(s)</p>
+        <p className="font-bold text-2xl py-5">System(s)</p>
         <div className="grid grid-cols-2 gap-2 p-5 border-2 border-gray-400 mx-auto w-[95%] rounded-2xl">
         {categories.systems.map((systemOption:string, key:number) => { 
               return (
@@ -427,7 +427,7 @@ const handleClose = () => setOpen(false);
           
         </div>
 
-        <p className="font-bold text-2xl py-5 align-left">Genre</p>
+        <p className="font-bold text-2xl py-5">Genre</p>
         <div className="grid grid-cols-2 gap-2 p-5 border-2 border-gray-400 mx-auto w-[95%] rounded-2xl">
         {categories.genres.map((genreOption:string, key:number) => { 
               return (
@@ -445,7 +445,7 @@ const handleClose = () => setOpen(false);
             })}
         </div>
 
-        <p className="font-bold text-2xl py-5 align-left">About Me</p>
+        <p className="font-bold text-2xl py-5">About Me</p>
         <textarea 
           className="resize-none" 
           rows={5} 
@@ -455,7 +455,7 @@ const handleClose = () => setOpen(false);
         />
         <p className="mt-n3 text-zinc-400 text-15xl">{aboutMeLength} / 500</p>
 
-        <p className="font-bold text-2xl py-5 align-left">Currently Playing</p>
+        <p className="font-bold text-2xl py-5">Currently Playing</p>
         <textarea 
           className="resize-none" 
           rows={5} 

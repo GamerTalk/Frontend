@@ -305,10 +305,10 @@ export default function Profile() {
             </Link>
           </div>
 
-          <p className="font-bold text-2xl py-5-align-left">Username</p>
+          <p className="font-bold text-2xl py-5">Username</p>
           <p className="text-2xl p-5">{profile.username}</p>
 
-          <p className="font-bold text-2xl pt-5 pb-5 align-left">Region</p>
+          <p className="font-bold text-2xl pt-5 pb-5">Region</p>
           <div className="grid grid-cols-2 gap-3 py-5 px-10 border-2 border-gray-400 mx-auto w-[95%] rounded-2xl">
             {categories.regions.map((regionOption:string, key:number) => { 
               return (
@@ -327,7 +327,7 @@ export default function Profile() {
             })}
           </div>
           
-        <p className="font-bold text-2xl py-2 pt-5 align-left">What language(s) are you fluent in?</p>
+        <p className="font-bold text-2xl py-2 pt-5">What language(s) are you fluent in?</p>
         <p className="mt-0 text-base pb-2">Check all that apply</p>
         <div className="grid grid-cols-2 gap-2 py-5 px-10 border-2 border-gray-400 mx-auto w-[95%] rounded-2xl">
           {categories.languages.map((languageOption:string, key:number) => { 
@@ -347,7 +347,7 @@ export default function Profile() {
             
           </div>
 
-          <p id="learning" className="font-bold text-2xl py-5 align-left ">
+          <p id="learning" className="font-bold text-2xl py-5">
             What language(s) do you want to learn and what is your level?
           </p>
           <div className="mx-auto pb-3 w-4/5">
@@ -396,10 +396,10 @@ export default function Profile() {
             
           </div>
 
-          <p className="font-bold text-2xl pt-6 pb-2 align-left">Date of Birth</p>
+          <p className="font-bold text-2xl pt-6 pb-2">Date of Birth</p>
           <p className="text-2xl pt-2 pb-5"> {profile.date_of_birth}</p>
 
-          <p className="font-bold text-2xl py-5 align-left">System(s)</p>
+          <p className="font-bold text-2xl py-5">System(s)</p>
           <div className="grid grid-cols-2 gap-2 p-5 border-2 border-gray-400 mx-auto w-[95%] rounded-2xl">
           {categories.systems.map((systemOption:string, key:number) => { 
               return (
@@ -418,7 +418,7 @@ export default function Profile() {
             
           </div>
 
-          <p className="font-bold text-2xl py-5 align-left">Genre</p>
+          <p className="font-bold text-2xl py-5">Genre</p>
           <div className="grid grid-cols-2 gap-2 p-5 border-2 border-gray-400 mx-auto w-[95%] rounded-2xl">
           {categories.genres.map((genreOption:string, key:number) => { 
               return (
@@ -437,7 +437,7 @@ export default function Profile() {
             
           </div>
 
-          <p className="font-bold text-2xl py-5 align-left">About Me</p>
+          <p className="font-bold text-2xl py-5">About Me</p>
           <textarea
             className="resize-none"
             rows={5}
@@ -448,7 +448,7 @@ export default function Profile() {
           />
           <p className="mt-n3 text-zinc-400 text-15xl">{aboutMeLength} / 500</p>
 
-          <p className="font-bold text-2xl py-5 align-left">Currently Playing</p>
+          <p className="font-bold text-2xl py-5">Currently Playing</p>
           <textarea
             className="resize-none" 
             rows={5}

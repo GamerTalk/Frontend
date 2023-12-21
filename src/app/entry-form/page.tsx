@@ -2,7 +2,6 @@
 
 import Checkbox from "../components/elements/Checkbox";
 import LearningCheckbox from "../components/elements/Learning-Checkbox";
-import styles from "./UserInfo.module.css";
 import { useState, useEffect, ChangeEvent, SetStateAction } from "react";
 import { UserAuth } from "../context/AuthContext";
 import { useRouter } from "next/navigation";
@@ -268,8 +267,8 @@ const handleClose = () => setOpen(false);
 
   return (
     <div>
-      <h1>Welcome!</h1>
-      <p>Tell us about yourself!</p>
+      <h1 className="font-bold text-3xl pt-5 pb-1">Welcome!</h1>
+      <p className="pb-5">Tell us about yourself!</p>
 
       {open && (
         <AlertModal open={open} handleClose={handleClose} title="Validation Error"
@@ -278,33 +277,32 @@ const handleClose = () => setOpen(false);
       )}
 
       <form method="post" onSubmit={handleFormSubmit}>
-        <div className={styles.usernameBox}>
-          <label htmlFor="Username" className={styles.heading}>
+        <div className="pb-5" >
+          <label htmlFor="Username" className="font-bold text-2xl py-5-align-left">
             {" "}
-            Username:{" "}
+            Username
           </label>
           <div>
             <input
               type="text"
               id="UserName"
               name="Username"
+              className="text-black px-3 py-1"
               minLength={5}
               maxLength={15}
-              onChange={handleUsername}
-             
+              onChange={handleUsername}  
             ></input>
           </div>
-          <p className={styles.usernameLength}>Username should be between 5-15 characters</p>
+          <p className="mt-2 text-gray-400 text-15xl" >Username should be between 5-15 characters</p>
         </div>
         
 
-        <div className={styles.userImg}>
+        <div className="h-16 w-16 mb-5 object-cover m-auto">
           <img
               src={
                 "https://firebasestorage.googleapis.com/v0/b/gamertalk-8133c.appspot.com/o/images%2Fdefault%2Fuserdefault.png?alt=media&token=00630336-daf3-4b5d-ab58-895d704863b6"
               }
-              alt='profile-image'
-              id={styles.image}
+              alt='profile-image' 
           />
             {/* <Image
               src={
@@ -318,13 +316,13 @@ const handleClose = () => setOpen(false);
         </div>
 
         <div>
-          <label htmlFor={styles.userUploadImg}>
-            <input type="file" name="image" onChange={handleFileChange} id={styles.userUploadImg}  />
+          <label>
+            <input type="file" name="image" onChange={handleFileChange} id="w-24 overflow-hidden mt-4 pt-3 hidden" />
           </label>
         </div>
 
-        <p className={styles.heading}>Region:</p>
-        <div className={styles.language}>
+        <p className="font-bold text-2xl pt-5 pb-5">Region</p>
+        <div className="grid grid-cols-2 gap-3 p-5 border-2 border-gray-400 mx-auto w-[95%] rounded-2xl">
         {categories.regions.map((regionOption:string, key:number) => { 
               return (
                 <div key={key}>
@@ -341,9 +339,9 @@ const handleClose = () => setOpen(false);
             })}
         </div>
 
-        <p className={styles.heading}>What language(s) are you fluent in?</p>
-        <p className={styles.subheading}>Check all that apply</p>
-        <div className={styles.language}>
+        <p className="font-bold text-2xl py-2 pt-5">What language(s) are you fluent in?</p>
+        <p className="mt-0 text-base pb-2">Check all that apply</p>
+        <div className="grid grid-cols-2 gap-2 p-5 border-2 border-gray-400 mx-auto w-[95%] rounded-2xl">
         {categories.languages.map((languageOption:string, key:number) => { 
               return (
                 <div key={key}>
@@ -360,30 +358,27 @@ const handleClose = () => setOpen(false);
             })}
         </div>
 
-        <p id="learning" className={styles.heading}>
+        <p id="learning" className="font-bold text-2xl py-5">
           What language(s) do you want to learn and what is your level?
         </p>
-        <p className={styles.learningSubheading}>
-          <p>
-            {" "}
-            <span className={styles.number}>1</span>: Beginner
-            <span className={styles.number}> 2</span>: Elementary{" "}
-          </p>
-          <p>
-            {" "}
-            <span className={styles.number}>3</span>: Intermediate
-            <span className={styles.number}> 4</span>: Advanced
-            <span className={styles.number}> 5</span>: Proficent
-          </p>
-        </p>
-        <p className={styles.learningSubheading}>
+        <div className="mx-auto pb-3 w-4/5 md:w-[50%] lg:w-[50%]">
+          <div className="text-center pb-3">
+            {"  "}
+            <p><span className="font-bold">1</span>: Beginner</p>
+            <p><span className="font-bold">2</span>: Elementary</p>
+            <p><span className="font-bold">3</span>: Intermediate</p>
+            <p><span className="font-bold">4</span>: Advanced</p>
+            <p><span className="font-bold">5</span>: Proficent</p>
+          </div>
+        </div>
+        <p className="pb-3">
           For a more detailed explanation{" "}
-          <a href="#levels-explain" className={styles.links}>
+          <a href="#levels-explain" className="text-blue-600">
             click here
           </a>{" "}
         </p>
-        <div>
-          <div className={styles.learningHeadings}>
+        <div className="w-[95%] mx-auto">
+          <div className="grid grid-cols-6 font-bold">
             <div>Language</div>
             <div>1</div>
             <div>2</div>
@@ -410,11 +405,11 @@ const handleClose = () => setOpen(false);
             })}
         </div>
 
-        <p className={styles.heading}>Date of Birth:</p>
-        <input type="date" defaultValue={defaultDate} onChange={handleBirthday}></input>
+        <p className="font-bold text-2xl py-6">Date of Birth</p>
+        <input type="date" className=" p-2 text-black" defaultValue={defaultDate} onChange={handleBirthday}></input>
 
-        <p className={styles.heading}>System(s):</p>
-        <div className={styles.language}>
+        <p className="font-bold text-2xl py-5">System(s)</p>
+        <div className="grid grid-cols-2 gap-2 p-5 border-2 border-gray-400 mx-auto w-[95%] rounded-2xl">
         {categories.systems.map((systemOption:string, key:number) => { 
               return (
                 <div key={key}>
@@ -432,8 +427,8 @@ const handleClose = () => setOpen(false);
           
         </div>
 
-        <p className={styles.heading}>Genre:</p>
-        <div className={styles.language}>
+        <p className="font-bold text-2xl py-5">Genre</p>
+        <div className="grid grid-cols-2 gap-2 p-5 border-2 border-gray-400 mx-auto w-[95%] rounded-2xl">
         {categories.genres.map((genreOption:string, key:number) => { 
               return (
                 <div key={key}>
@@ -450,45 +445,56 @@ const handleClose = () => setOpen(false);
             })}
         </div>
 
-        <p className={styles.heading}>About Me:</p>
-        <textarea className={styles.textarea} rows={5} cols={40} onChange={handleAboutMe} maxLength={500} />
-        <p className={styles.length}>{aboutMeLength} / 500</p>
+        <p className="font-bold text-2xl py-5">About Me</p>
+        <textarea 
+          className="resize-none" 
+          rows={5} 
+          cols={40} 
+          onChange={handleAboutMe} 
+          maxLength={500} 
+        />
+        <p className="mt-n3 text-zinc-400 text-15xl">{aboutMeLength} / 500</p>
 
-        <p className={styles.heading}>Currently Playing:</p>
-      
-        <textarea className={styles.textarea} rows={5} cols={40} onChange={handleCurrPlay} maxLength={500}/>
-        <p className={styles.length}>{currPlayLength} / 500</p>
+        <p className="font-bold text-2xl py-5">Currently Playing</p>
+        <textarea 
+          className="resize-none" 
+          rows={5} 
+          cols={40} 
+          onChange={handleCurrPlay} 
+          maxLength={500}
+        />
+        <p className="mt-n3 text-zinc-400 text-15xl">{currPlayLength} / 500</p>
 
         <div>
-          <button className={styles.button} type="submit">
+          <button className="mt-8 mb-5 text-xl h-12 w-40 bg-indigo-600 text-white rounded-2xl hover:bg-indigo-700 border-2 border-white" type="submit">
             Submit
           </button>
         </div>
 
-        <div className={styles.levelsbox}>
-          <a id="levels-explain" href="#learning" className={styles.links}>
+        <div className="pt-40 pb-20">
+          <a id="levels-explain" href="#learning" className="text-blue-600">
             Go back
           </a>
-          <h1>Language Levels</h1>
-          <h2 className={styles.candoHeadings}>Beginner</h2>
-          <p className={styles.cando}>
+          <h1 className="text-2xl">Language Levels</h1>
+          <h2 className="font-bold text-2xl text-left pt-4">Beginner</h2>
+          <p className="text-left">
             Can make introductions and can ask and answer simple questions.
           </p>
-          <h2 className={styles.candoHeadings}>Elementary</h2>
-          <p className={styles.cando}>
+          <h2 className="font-bold text-2xl text-left pt-4">Elementary</h2>
+          <p className="text-left">
             Can converse common topics and in daily situations.
           </p>
-          <h2 className={styles.candoHeadings}>Intermediate</h2>
-          <p className={styles.cando}>
+          <h2 className="font-bold text-2xl text-left pt-4">Intermediate</h2>
+          <p className="text-left">
             Can interact with native speakers more fluently and spontaneously.
           </p>
-          <h2 className={styles.candoHeadings}>Advanced</h2>
-          <p className={styles.cando}>
+          <h2 className="font-bold text-2xl text-left pt-4">Advanced</h2>
+          <p className="text-left">
             Can express yourself naturally, effortlessly recalling authentic
             expressions.
           </p>
-          <h2 className={styles.candoHeadings}>Proficient</h2>
-          <p className={styles.cando}>
+          <h2 className="font-bold text-2xl text-left pt-4">Proficient</h2>
+          <p className="text-left">
             Can comfortably comphrehend most things heard and read.
           </p>
         </div>

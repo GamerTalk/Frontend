@@ -9,7 +9,6 @@ import React, {
 } from "react";
 import Link from "next/link";
 import axios from "axios";
-import styles from "../entry-form/UserInfo.module.css";
 import { UserAuth } from "../context/AuthContext";
 import Checkbox from "../components/elements/Checkbox";
 import LearningCheckbox from "../components/elements/Learning-Checkbox";
@@ -265,17 +264,17 @@ export default function Profile() {
 
   return (
     <form style={{ paddingBottom: "100px" }} onSubmit={handleFormSubmit}>
-      <h1>Profile</h1>
+      <h1 className="font-bold text-3xl pt-5 pb-1">Profile</h1>
       {profile ? (
         <>
-          <div className={styles.userImg}>
+          <div className="h-16 w-16 mb-5 object-cover m-auto">
             <img
               src={
                 profile.profile_picture_url ||
                 "https://firebasestorage.googleapis.com/v0/b/gamertalk-8133c.appspot.com/o/images%2Fdefault%2Fuserdefault.png?alt=media&token=00630336-daf3-4b5d-ab58-895d704863b6"
               }
               alt='profile-image'
-              id={styles.image}
+              id="w-24 overflow-hidden mt-4 pt-3 hidden" 
             />
             {/* <Image
               src={
@@ -289,28 +288,28 @@ export default function Profile() {
             /> */}
           </div>
           <div>
-            <label htmlFor={styles.userUploadImg}>
+            <label>
               <input
                 type="file"
                 name="image"
                 onChange={handleFileChange}
-                id={styles.userUploadImg}
+                id="w-24 overflow-hidden mt-4 pt-3 hidden" 
               />
             </label>
           </div>
           <div>
             <Link href="reset-password">
-              <button type="button" className={styles.resetButton}>
+              <button type="button" className="mb-5 text-sm h-12 w-40 bg-red-700 text-white mt-5 cursor-pointer rounded-2xl hover:bg-red-800 border-2 border-white">
                 Reset Password
               </button>
             </Link>
           </div>
 
-          <p className={styles.heading}>Username:</p>
-          <p>{profile.username}</p>
+          <p className="font-bold text-2xl py-5">Username</p>
+          <p className="text-2xl p-5">{profile.username}</p>
 
-          <p className={styles.heading}>Region:</p>
-          <div className={styles.language}>
+          <p className="font-bold text-2xl pt-5 pb-5">Region</p>
+          <div className="grid grid-cols-2 gap-3 py-5 px-10 border-2 border-gray-400 mx-auto w-[95%] rounded-2xl">
             {categories.regions.map((regionOption:string, key:number) => { 
               return (
                 <div key={key}>
@@ -328,9 +327,9 @@ export default function Profile() {
             })}
           </div>
           
-          <p className={styles.heading}>What language(s) are you fluent in?:</p>
-          <p className={styles.subheading}>Check all that apply</p>
-          <div className={styles.language}>
+        <p className="font-bold text-2xl py-2 pt-5">What language(s) are you fluent in?</p>
+        <p className="mt-0 text-base pb-2">Check all that apply</p>
+        <div className="grid grid-cols-2 gap-2 py-5 px-10 border-2 border-gray-400 mx-auto w-[95%] rounded-2xl">
           {categories.languages.map((languageOption:string, key:number) => { 
               return (
                 <div key={key}>
@@ -348,52 +347,28 @@ export default function Profile() {
             
           </div>
 
-          <p className={styles.heading}>Date of Birth: </p>
-          <p> {profile.date_of_birth}</p>
-
-          <p className={styles.heading}>User Systems:</p>
-          <div className={styles.language}>
-          {categories.systems.map((systemOption:string, key:number) => { 
-              return (
-                <div key={key}>
-                  <Checkbox
-                    type="Checkbox"
-                    label={systemOption}
-                    name={systemOption.toLocaleLowerCase()}
-                    value=""
-                    onChange={handleSystem}
-                    defaultChecked={system.includes(systemOption.toLocaleLowerCase())}
-                  />
-                </div>
-              )
-            })}
-            
-          </div>
-
-          <p id="learning" className={styles.heading}>
+          <p id="learning" className="font-bold text-2xl py-5">
             What language(s) do you want to learn and what is your level?
           </p>
-          <p className={styles.learningSubheading}>
-            <p>
+          <div className="mx-auto pb-3 w-4/5">
+            <div className="text-center pb-3">
               {" "}
-              <span className={styles.number}>1</span>: Beginner
-              <span className={styles.number}> 2</span>: Elementary{" "}
-            </p>
-            <p>
-              {" "}
-              <span className={styles.number}>3</span>: Intermediate
-              <span className={styles.number}> 4</span>: Advanced
-              <span className={styles.number}> 5</span>: Proficent
-            </p>{" "}
-          </p>
-          <p className={styles.learningSubheading}>
+              <p><span className="font-bold">1</span>: Beginner</p>
+              <p><span className="font-bold">2</span>: Elementary</p>
+              <p><span className="font-bold">3</span>: Intermediate</p>
+              <p><span className="font-bold">4</span>: Advanced</p>
+              <p><span className="font-bold">5</span>: Proficent</p>
+            </div>
+          </div>
+
+          <p className="pb-3">
             For a more detailed explanation{" "}
-            <a href="#levels-explain" className={styles.links}>
+            <a href="#levels-explain" className="text-blue-600">
               click here
             </a>{" "}
           </p>
-          <div>
-            <div className={styles.learningHeadings}>
+          <div className="w-[95%] mx-auto">
+            <div className="grid grid-cols-6 font-bold">
               <div>Language</div>
               <div>1</div>
               <div>2</div>
@@ -421,8 +396,30 @@ export default function Profile() {
             
           </div>
 
-          <p className={styles.heading}>Genre:</p>
-          <div className={styles.language}>
+          <p className="font-bold text-2xl pt-6 pb-2">Date of Birth</p>
+          <p className="text-2xl pt-2 pb-5"> {profile.date_of_birth}</p>
+
+          <p className="font-bold text-2xl py-5">System(s)</p>
+          <div className="grid grid-cols-2 gap-2 p-5 border-2 border-gray-400 mx-auto w-[95%] rounded-2xl">
+          {categories.systems.map((systemOption:string, key:number) => { 
+              return (
+                <div key={key}>
+                  <Checkbox
+                    type="Checkbox"
+                    label={systemOption}
+                    name={systemOption.toLocaleLowerCase()}
+                    value=""
+                    onChange={handleSystem}
+                    defaultChecked={system.includes(systemOption.toLocaleLowerCase())}
+                  />
+                </div>
+              )
+            })}
+            
+          </div>
+
+          <p className="font-bold text-2xl py-5">Genre</p>
+          <div className="grid grid-cols-2 gap-2 p-5 border-2 border-gray-400 mx-auto w-[95%] rounded-2xl">
           {categories.genres.map((genreOption:string, key:number) => { 
               return (
                 <div key={key}>
@@ -440,73 +437,73 @@ export default function Profile() {
             
           </div>
 
-          <p className={styles.heading}>About Me:</p>
+          <p className="font-bold text-2xl py-5">About Me</p>
           <textarea
-            className={styles.textarea} 
+            className="resize-none"
             rows={5}
             cols={40}
             value={aboutMe}
             onChange={handleAboutMe}
             maxLength={500}
           />
-          <p className={styles.length}>{aboutMeLength} / 500</p>
+          <p className="mt-n3 text-zinc-400 text-15xl">{aboutMeLength} / 500</p>
 
-          <p className={styles.heading}>Currently Playing:</p>
+          <p className="font-bold text-2xl py-5">Currently Playing</p>
           <textarea
-            className={styles.textarea} 
+            className="resize-none" 
             rows={5}
             cols={40}
             value={currPlay}
             onChange={handleCurrPlay}
             maxLength={500}
           />
-          <p className={styles.length}>{currPlayLength} / 500</p>
+          <p className="mt-n3 text-zinc-400 text-15xl">{currPlayLength} / 500</p>
 
           <div>
-            <button className={styles.editButton} type="submit">
+            <button className="mt-8 mb-5 text-xl h-12 w-40 bg-indigo-600 text-white rounded-2xl hover:bg-indigo-700 border-2 border-white" type="submit">
               Submit
             </button>
             <br />
             <button
-              className={styles.deleteButton}
+              className="mb-5 text-lg h-12 w-40 bg-red-700 hover:bg-red-800 text-white mt-5 border-2 border-white cursor-pointer"
               type="button"
               onClick={handleDeletion}
             >
               Delete Account
             </button>
 
-            <div className={styles.levelsbox}>
-              <a id="levels-explain" href="#learning" className={styles.links}>
+            <div className="pt-40 pb-20">
+              <a id="levels-explain" href="#learning" className="text-blue-600">
                 Go back
               </a>
-              <h1>Language Levels</h1>
-              <h2 className={styles.candoHeadings}>Beginner</h2>
-              <p className={styles.cando}>
+              <h1 className="text-2xl">Language Levels</h1>
+              <h2 className="font-bold text-2xl text-left pt-4">Beginner</h2>
+              <p className="text-left">
                 Can make introductions and can ask and answer simple questions.
               </p>
-              <h2 className={styles.candoHeadings}>Elementary</h2>
-              <p className={styles.cando}>
+              <h2 className="font-bold text-2xl text-left pt-4">Elementary</h2>
+              <p className="text-left">
                 Can converse common topics and in daily situations.
               </p>
-              <h2 className={styles.candoHeadings}>Intermediate</h2>
-              <p className={styles.cando}>
+              <h2 className="font-bold text-2xl text-left pt-4">Intermediate</h2>
+              <p className="text-left">
                 Can interact with native speakers more fluently and
                 spontaneously.
               </p>
-              <h2 className={styles.candoHeadings}>Advanced</h2>
-              <p className={styles.cando}>
+              <h2 className="font-bold text-2xl text-left pt-4">Advanced</h2>
+              <p className="text-left">
                 Can express yourself naturally, effortlessly recalling authentic
                 expressions.
               </p>
-              <h2 className={styles.candoHeadings}>Proficient</h2>
-              <p className={styles.cando}>
+              <h2 className="font-bold text-2xl text-left pt-4">Proficient</h2>
+              <p className="text-left">
                 Can comfortably comphrehend most things heard and read.
               </p>
             </div>
           </div>
         </>
       ) : (
-        <p className={styles.loading}>Loading Profile...</p>
+        <p className="pb-12 h-screen">Loading Profile...</p>
       )}
     </form>
   );
